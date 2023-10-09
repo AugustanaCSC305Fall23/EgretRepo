@@ -16,7 +16,7 @@
                   <Insets left="5.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Open Schedule" textFill="#216065">
+            <Button fx:id="scheduleButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#openSchedule" text="Open Schedule" textFill="#216065">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

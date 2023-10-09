@@ -9,4 +9,8 @@ public class libraryController {
     private void switchToSchedule() throws IOException {
         App.setRoot("schedulePage");
     }
+    @FXML
+    void connectToHomePage() {
+        App.switchToHomeView();
+    }
 }
