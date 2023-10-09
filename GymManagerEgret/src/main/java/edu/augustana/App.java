@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("libraryPage"), 640, 480);
+        scene = new Scene(loadFXML("HomePage"), 690, 630);
         stage.setScene(scene);
         stage.show();
     }
@@ -33,6 +33,20 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private static void switchToView(String fxmlFileName) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxmlFileName));
+            scene.setRoot(fxmlLoader.load());
+        } catch (IOException ex) {
+            System.err.println("Can't find FXML file " + fxmlFileName);
+            ex.printStackTrace();
+        }
+
+    }
+    public static void switchToMainView() {
+        switchToView("libraryPage.fxml");
     }
 
 }
