@@ -49,4 +49,8 @@ public class App extends Application {
         switchToView("libraryPage.fxml");
     }
 
+    public static void switchToPlanMaker() {
+        switchToView("PlanMakerPage.fxml");
+    }
+
 }

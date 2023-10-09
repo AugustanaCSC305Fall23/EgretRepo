@@ -15,7 +15,7 @@
                <font>
                   <Font name="Georgia Bold" size="30.0" />
                </font></Label>
-            <Button minHeight="-Infinity" mnemonicParsing="false" prefHeight="109.0" prefWidth="309.0" text="Plan Maker" textFill="#216065">
+            <Button fx:id="planMaker" minHeight="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="109.0" prefWidth="309.0" text="Plan Maker" textFill="#216065">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>

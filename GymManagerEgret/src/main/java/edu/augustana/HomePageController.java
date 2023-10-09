@@ -18,8 +18,16 @@ public class HomePageController {
     private Button lessonLibrary;
 
     @FXML
+    private Button planMaker;
+
+    @FXML
     void connectToLibrary(ActionEvent event) {
         App.switchToMainView();
+    }
+
+    @FXML
+    void connectToPlanMaker(ActionEvent event){
+        App.switchToPlanMaker();
     }
 
     @FXML
