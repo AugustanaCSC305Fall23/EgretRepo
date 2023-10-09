@@ -50,7 +50,11 @@ public class App extends Application {
     }
 
     public static void switchToPlanMaker() {
-        switchToView("PlanMakerPage.fxml");
+        switchToView("PlanMakerCardPage.fxml");
+    }
+
+    public static void switchToHomeView() {
+        switchToView("HomePage.fxml");
     }
 
 }

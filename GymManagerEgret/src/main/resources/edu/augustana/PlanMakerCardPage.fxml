@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerScheduleController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerCardCatalogueController">
    <top>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="690.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" text="Back" textFill="#216065">
+            <Button fx:id="homePage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#connectToHomePage" text="Back" textFill="#216065">
                <HBox.margin>
                   <Insets left="5.0" top="5.0" />
                </HBox.margin>

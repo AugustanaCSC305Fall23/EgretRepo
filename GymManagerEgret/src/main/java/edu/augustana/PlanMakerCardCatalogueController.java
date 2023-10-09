@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
-public class PlanMakerScheduleController {
+public class PlanMakerCardCatalogueController {
 
         @FXML
         private ResourceBundle resources;
@@ -15,6 +15,10 @@ public class PlanMakerScheduleController {
         @FXML
         void initialize() {
 
+        }
+        @FXML
+        void connectToHomePage() {
+                App.switchToHomeView();
         }
 
 }
