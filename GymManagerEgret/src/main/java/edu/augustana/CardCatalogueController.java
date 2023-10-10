@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
-public class PlanMakerCardCatalogueController {
+public class CardCatalogueController {
 
         @FXML
         private ResourceBundle resources;

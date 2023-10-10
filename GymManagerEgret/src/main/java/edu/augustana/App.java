@@ -46,11 +46,11 @@ public class App extends Application {
 
     }
     public static void switchToMainView() {
-        switchToView("libraryPage.fxml");
+        switchToView("LibraryPage.fxml");
     }
 
     public static void switchToPlanMaker() {
-        switchToView("PlanMakerCardPage.fxml");
+        switchToView("CardCataloguePage.fxml");
     }
 
     public static void switchToHomeView() {
