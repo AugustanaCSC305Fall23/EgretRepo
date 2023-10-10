@@ -6,42 +6,165 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.scheduleController">
-    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <top>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="690.0" BorderPane.alignment="CENTER">
-               <children>
-                    <Button fx:id="libraryButton" alignment="TOP_LEFT" onAction="#switchToLibrary" text="Library" textFill="#216065">
-                     <HBox.margin>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.scheduleController">
+    <top>
+        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="libraryButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToLibrary" text="Back" textFill="#216065">
+                    <HBox.margin>
                         <Insets left="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="cardsButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openCards" text="Open Cards" textFill="#216065">
-                     <opaqueInsets>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="cardsButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#openCards" text="Open Card Catalogue" textFill="#216065">
+                    <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets left="5.0" top="10.0" />
-               </padding>
-            </HBox>
-         </top>
-         <left>
-              <Label text="Schedule" BorderPane.alignment="TOP_LEFT">
-               <BorderPane.margin>
-                  <Insets left="10.0" top="5.0" />
-               </BorderPane.margin>
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="20.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+            <Label text="Week 1" textFill="#216065">
+               <HBox.margin>
+                  <Insets left="100.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
             </Label>
-         </left>
-      </BorderPane>
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+                <Button alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Print" textFill="#216065">
+                    <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="240.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="5.0" top="10.0" />
+            </padding>
+        </HBox>
+    </top>
+    <center>
+        <VBox prefHeight="560.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+            <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Floor" textFill="#216065">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="58.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="188.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="188.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="20.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="15.0" />
+                            </HBox.margin>
+                        </Rectangle>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                            <HBox.margin>
+                                <Insets bottom="10.0" right="15.0" />
+                            </HBox.margin>
+                        </Rectangle>
+                    </children>
+                </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="90.0" text="Uneven Bars" textFill="#216065">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="40.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="58.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="188.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="188.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="425.0" layoutY="10.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" opacity="0.37" stroke="BLACK" strokeType="INSIDE" width="120.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Rectangle>
+               </children>
+            </HBox>
+            </children>
+            <padding>
+                <Insets top="30.0" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>
