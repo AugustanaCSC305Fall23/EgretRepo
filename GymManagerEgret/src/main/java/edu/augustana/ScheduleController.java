@@ -1,19 +1,39 @@
 package edu.augustana;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class ScheduleController {
 
     @FXML
-    private void switchToLibrary() throws IOException {
-        App.setRoot("libraryPage");
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private Button cardsButton;
+
+    @FXML
+    private Button homePage;
+
+    @FXML
+    void switchToLibrary() throws IOException {
+        App.setRoot("LibraryPage");
     }
 
     @FXML
-    private void openCards() throws IOException {
-        App.setRoot("PlanMakerCardPage");
+    void openCards() throws IOException {
+        App.setRoot("CardCataloguePage");
     }
 
+    @FXML
+    void initialize() {
+
+    }
 
 }
