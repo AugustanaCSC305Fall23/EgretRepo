@@ -7,7 +7,7 @@ public class LibraryController {
 
     @FXML
     private void switchToSchedule() throws IOException {
-        App.setRoot("schedulePage");
+        App.setRoot("LessonViewPage");
     }
     @FXML
     void connectToHomePage() {

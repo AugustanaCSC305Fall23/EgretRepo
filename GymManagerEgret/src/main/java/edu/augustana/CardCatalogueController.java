@@ -24,7 +24,7 @@ public class CardCatalogueController {
 
         @FXML
         private void openSchedule() throws IOException {
-                App.setRoot("schedulePage");
+                App.setRoot("LessonViewPage");
         }
 
 }
