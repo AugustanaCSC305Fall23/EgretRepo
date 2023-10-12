@@ -14,7 +14,7 @@
     <top>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="690.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="libraryButton" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLibrary" text="Lesson" textFill="#216065">
+                <Button fx:id="libraryButton" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLibrary" text="Library" textFill="#216065">
                     <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                     </HBox.margin>
