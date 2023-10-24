@@ -2,11 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.ButtonBar?>
+=======
+<?import javafx.scene.control.ChoiceBox?>
+>>>>>>> 7226597c97d3d15ea2b5e747305bc4a132f79aa6
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -16,12 +21,100 @@
     <left>
         <VBox prefHeight="650.0" prefWidth="400.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="200.0" />
-                <ScrollPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="200.0">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
-                </ScrollPane>
+            <VBox prefHeight="250.0" prefWidth="400.0">
+               <children>
+                  <StackPane prefHeight="43.0" prefWidth="400.0">
+                     <children>
+                        <TextField prefHeight="0.0" prefWidth="400.0" />
+                        <Label text="Search Title" />
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="23.0" prefWidth="400.0">
+                     <children>
+                        <TextField />
+                        <Label text="Search Code" />
+                     </children>
+                  </StackPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="59.0" text="Gender" />
+                        <Button mnemonicParsing="false" text="M">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="F">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="206.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Difficulty" />
+                        <Button mnemonicParsing="false" text="Button">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Button">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Button">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Equipment" />
+                        <ChoiceBox prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Category" />
+                        <ChoiceBox prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Event" />
+                        <ChoiceBox prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Clear" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="400.0">
+               <children>
+                      <ScrollPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="400.0">
+                     <content>
+                        <ScrollBar nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="395.0" prefWidth="16.0" />
+                     </content>
+                      </ScrollPane>
+               </children></VBox>
             </children></VBox>
     </left>
     <center>
