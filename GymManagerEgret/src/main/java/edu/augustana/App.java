@@ -17,9 +17,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("HomePage"), 690, 630);
+        scene = new Scene(loadFXML("HomePage"), 800, 650);
         stage.setScene(scene);
         stage.show();
+
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -45,15 +46,15 @@ public class App extends Application {
         }
 
     }
-    public static void switchToMainView() {
+    public static void switchToLibraryView() {
         switchToView("LibraryPage.fxml");
     }
 
-    public static void switchToPlanMaker() {
-        switchToView("CardCataloguePage.fxml");
+    public static void switchToPlanMakerView() {
+        switchToView("PlanMakerPage.fxml");
     }
 
-    public static void switchToHomeView() {
+    public static void switchToHomePageView() {
         switchToView("HomePage.fxml");
     }
 

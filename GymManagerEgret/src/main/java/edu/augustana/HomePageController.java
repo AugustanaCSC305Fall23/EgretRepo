@@ -2,9 +2,15 @@ package edu.augustana;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import edu.augustana.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.StackPane;
+
+
 
 public class HomePageController {
 
@@ -20,20 +26,23 @@ public class HomePageController {
     @FXML
     private Button planMaker;
 
+
     @FXML
-    void connectToLibrary() {
-        App.switchToMainView();
+    void connectToLibrary(ActionEvent event) {
+        App.switchToLibraryView();
     }
 
     @FXML
-    void connectToPlanMaker(){
-        App.switchToPlanMaker();
+    void connectToPlanMaker(ActionEvent event) {
+        App.switchToPlanMakerView();
     }
 
     @FXML
     void initialize() {
-        assert lessonLibrary != null : "fx:id=\"lessonLibrary\" was not injected: check your FXML file 'HomePage.fxml'.";
 
     }
 
 }
+
+
+
