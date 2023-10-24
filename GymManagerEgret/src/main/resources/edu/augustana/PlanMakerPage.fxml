@@ -49,17 +49,17 @@
                   <HBox layoutX="10.0" layoutY="206.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Difficulty" />
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" text="Easy">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" text="Medium">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" text="Difficult">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
