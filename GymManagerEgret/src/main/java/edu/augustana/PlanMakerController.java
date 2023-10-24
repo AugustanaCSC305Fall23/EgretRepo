@@ -43,12 +43,15 @@ public class PlanMakerController {
     }
 
 
+
+
     void initialize() {
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
 
     }
+
 
     @FXML
     void onLabelClick(MouseEvent event) {
