@@ -12,11 +12,6 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="homePage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-            </Button>
             <Label alignment="CENTER" contentDisplay="TOP" text="Library" textFill="#216065">
                <HBox.margin>
                   <Insets left="300.0" right="10.0" top="20.0" />
@@ -25,6 +20,11 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
+            <Button fx:id="homePage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065">
+               <HBox.margin>
+                  <Insets left="350.0" top="10.0" />
+               </HBox.margin>
+            </Button>
 
 
          </children>
