@@ -15,4 +15,5 @@ public class LibraryController {
         App.switchToHomePageView();
     }
 
+
 }
