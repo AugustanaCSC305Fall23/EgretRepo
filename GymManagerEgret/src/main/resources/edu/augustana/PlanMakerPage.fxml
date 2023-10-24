@@ -2,11 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<<<<<<< HEAD
 <?import javafx.scene.control.ButtonBar?>
-=======
 <?import javafx.scene.control.ChoiceBox?>
->>>>>>> 7226597c97d3d15ea2b5e747305bc4a132f79aa6
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.ScrollPane?>
@@ -144,7 +141,7 @@
               <buttons>
                 <Button mnemonicParsing="false" text="Print" textFill="#216065" />
                   <Button mnemonicParsing="false" text="Save" textFill="#216065" />
-                  <Button mnemonicParsing="false" text="Edit" textFill="#216065" />
+                  <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
               </buttons>
                <VBox.margin>
                   <Insets bottom="5.0" right="10.0" />

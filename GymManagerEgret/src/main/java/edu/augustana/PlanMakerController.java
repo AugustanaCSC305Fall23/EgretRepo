@@ -23,6 +23,8 @@ public class PlanMakerController {
 
     @FXML
     private Button home;
+    @FXML
+    private Button edit;
 
     @FXML
     private BorderPane rootPane;
@@ -49,6 +51,7 @@ public class PlanMakerController {
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
+        edit.setOnAction(event -> onEditButtonClick());
 
     }
 
@@ -58,8 +61,19 @@ public class PlanMakerController {
         label.setVisible(false);
         textArea.setVisible(true);
         textArea.setText(label.getText());
-        //textArea.requestFocus();
+        textArea.requestFocus();
+        edit.setDisable(true);
     }
+
+    @FXML
+    void onEditButtonClick() {
+        label.setVisible(false);
+        textArea.setVisible(true);
+        textArea.setText(label.getText());
+        textArea.requestFocus();
+        edit.setDisable(true); // Disable the "edit" button while editing
+    }
+
 
     @FXML
     void onEnterPressed(KeyEvent event) {
@@ -68,7 +82,9 @@ public class PlanMakerController {
             label.setText(editedText);
             textArea.setVisible(false);
             label.setVisible(true);
+            edit.setDisable(false);
         }
+
     }
 
 
