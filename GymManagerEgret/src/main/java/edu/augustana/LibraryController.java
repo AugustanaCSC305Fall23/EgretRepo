@@ -6,7 +6,13 @@ import javafx.fxml.FXML;
 public class LibraryController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    private void switchToSchedule() throws IOException {
+        App.setRoot("LessonViewPage");
     }
+
+    @FXML
+    void connectToHomePage() {
+        App.switchToHomePageView();
+    }
+
 }
