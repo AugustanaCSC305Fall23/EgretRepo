@@ -5,20 +5,20 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
     <left>
-        <VBox prefHeight="650.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
             <children>
-            <VBox prefHeight="250.0" prefWidth="400.0">
+            <VBox prefHeight="325.0" prefWidth="450.0">
                <children>
                   <StackPane prefHeight="43.0" prefWidth="400.0">
                      <children>
@@ -104,18 +104,19 @@
                   </HBox>
                </children>
             </VBox>
-                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="400.0">
+                <VBox prefHeight="325.0" prefWidth="400.0">
                <children>
-                      <ScrollPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="400.0">
-                     <content>
-                        <ScrollBar nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="395.0" prefWidth="16.0" />
-                     </content>
-                      </ScrollPane>
+                  <StackPane prefHeight="325.0" prefWidth="450.0">
+                     <children>
+                        <ScrollPane prefHeight="325.0" prefWidth="400.0" />
+                        <FlowPane prefHeight="325.0" prefWidth="470.0" />
+                     </children>
+                  </StackPane>
                </children></VBox>
             </children></VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER" prefHeight="650.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="650.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065">
                     <VBox.margin>
@@ -136,7 +137,7 @@
                         </Label>
                     </children>
                 </StackPane>
-            <HBox prefHeight="550.0" prefWidth="200.0" />
+            <HBox prefHeight="550.0" prefWidth="150.0" />
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
               <buttons>
                 <Button mnemonicParsing="false" text="Print" textFill="#216065" />

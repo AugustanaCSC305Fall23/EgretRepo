@@ -13,28 +13,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
+
 public class PlanMakerController {
 
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private Button home;
     @FXML
     private Button edit;
-
     @FXML
     private BorderPane rootPane;
-
     @FXML
     private Label label;
-
     @FXML
     private TextArea textArea;
-
     @FXML
     private StackPane stackPane;
 
@@ -45,16 +40,12 @@ public class PlanMakerController {
     }
 
 
-
-
     void initialize() {
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
-
-    }
-
+        }
 
     @FXML
     void onLabelClick(MouseEvent event) {
