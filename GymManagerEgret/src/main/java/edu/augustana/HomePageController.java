@@ -28,8 +28,8 @@ public class HomePageController {
 
 
     @FXML
-    void connectToLibrary(ActionEvent event) {
-        App.switchToLibraryView();
+    void connectToCourseLibrary(ActionEvent event) {
+        App.switchToCourseLibraryView();
     }
 
     @FXML

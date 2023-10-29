@@ -58,4 +58,10 @@ public class App extends Application {
         switchToView("HomePage.fxml");
     }
 
+    public static void switchToCourseLibraryView() {
+        switchToView("CourseLibraryPage.fxml");
+    }
+
+
+
 }

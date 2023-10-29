@@ -20,17 +20,22 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="View" textFill="#216065">
+            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" text="Add" textFill="#216065">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete" textFill="#216065">
+            <Button mnemonicParsing="false" text="Delete" textFill="#216065">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </Button>
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Duplicate" textFill="#216065">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Share" textFill="#216065">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
@@ -41,12 +46,12 @@
    <top>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="TOP" text="Library" textFill="#216065" StackPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="TOP" text="Lesson Library" textFill="#216065" StackPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="homePage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065" StackPane.alignment="TOP_RIGHT">
+            <Button fx:id="courseLibraryPage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#connectToCourseLibraryPage" text="Back" textFill="#216065" StackPane.alignment="TOP_RIGHT">
                <StackPane.margin>
                   <Insets right="10.0" />
                </StackPane.margin>

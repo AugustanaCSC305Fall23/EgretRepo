@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="lessonLibrary" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065">
+            <Button fx:id="lessonLibrary" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Course Library" textFill="#216065">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>

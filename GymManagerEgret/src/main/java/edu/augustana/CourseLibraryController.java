@@ -3,7 +3,7 @@ package edu.augustana;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class LibraryController {
+public class CourseLibraryController {
 
     @FXML
     private void switchToSchedule() throws IOException {
@@ -11,8 +11,8 @@ public class LibraryController {
     }
 
     @FXML
-    void connectToCourseLibraryPage() {
-        App.switchToCourseLibraryView();
+    void connectToHomePage() {
+        App.switchToHomePageView();
     }
 
     @FXML
