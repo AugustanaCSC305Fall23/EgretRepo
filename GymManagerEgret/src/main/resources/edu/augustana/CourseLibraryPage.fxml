@@ -20,11 +20,6 @@
     <bottom>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" text="View" textFill="#216065">
-                    <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                    </HBox.margin>
-                </Button>
                 <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete" textFill="#216065">
                     <HBox.margin>
                         <Insets left="10.0" top="10.0" />
@@ -35,6 +30,16 @@
                         <Insets left="10.0" top="10.0" />
                     </HBox.margin>
                 </Button>
+            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" text="Rename" textFill="#216065">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="83.0" layoutY="20.0" mnemonicParsing="false" text="Share" textFill="#216065">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
     </bottom>
