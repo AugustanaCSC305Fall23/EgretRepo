@@ -15,5 +15,10 @@ public class LibraryController {
         App.switchToHomePageView();
     }
 
+    @FXML
+    void initialize() {
+
+    }
+
 
 }

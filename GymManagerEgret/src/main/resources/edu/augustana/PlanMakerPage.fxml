@@ -22,25 +22,26 @@
                <children>
                   <StackPane prefHeight="43.0" prefWidth="400.0">
                      <children>
-                        <TextField prefHeight="0.0" prefWidth="400.0" />
-                        <Label text="Search Title" />
+                        <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" />
+                         <Label fx:id="titleLabel" text="Search Title" textFill="#216065" />
+                         <Button mnemonicParsing="false" text="Button" textFill="#216065" StackPane.alignment="TOP_RIGHT" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="23.0" prefWidth="400.0">
                      <children>
-                        <TextField />
-                        <Label text="Search Code" />
+                        <TextField onKeyPressed="#onCodeLabelPress" onMouseClicked="#onCodeLabelClick" />
+                        <Label fx:id="codeLabel" text="Search Code" textFill="#216065" />
                      </children>
                   </StackPane>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="59.0" text="Gender" />
-                        <Button mnemonicParsing="false" text="M">
+                        <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
+                        <Button mnemonicParsing="false" text="M" textFill="#216065">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="F">
+                        <Button mnemonicParsing="false" text="F" textFill="#216065">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -49,18 +50,18 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="206.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Difficulty" />
-                        <Button mnemonicParsing="false" text="Easy">
+                        <Label text="Difficulty" textFill="#216065" />
+                        <Button mnemonicParsing="false" text="Easy" textFill="#216065">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Medium">
+                        <Button mnemonicParsing="false" text="Medium" textFill="#216065">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Difficult">
+                        <Button mnemonicParsing="false" text="Difficult" textFill="#216065">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -69,7 +70,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Equipment" />
+                        <Label text="Equipment" textFill="#216065" />
                         <ChoiceBox prefWidth="150.0">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -79,7 +80,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Category" />
+                        <Label text="Category" textFill="#216065" />
                         <ChoiceBox prefWidth="150.0">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -89,7 +90,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Event" />
+                        <Label text="Event" textFill="#216065" />
                         <ChoiceBox prefWidth="150.0">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -99,7 +100,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Clear" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Clear" textFill="#216065" />
                      </children>
                   </HBox>
                </children>
@@ -120,7 +121,7 @@
             <children>
                 <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065">
                     <VBox.margin>
-                        <Insets left="300.0" top="5.0" />
+                        <Insets left="250.0" top="5.0" />
                     </VBox.margin>
                 </Button>
                 <StackPane prefHeight="20.0" prefWidth="50.0">
@@ -130,7 +131,7 @@
                                 <Insets left="5.0" right="5.0" top="10.0" />
                             </StackPane.margin>
                         </TextArea>
-                        <Label fx:id="label" alignment="CENTER" onMouseClicked="#onLabelClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+                        <Label fx:id="label" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                             <StackPane.margin>
                                 <Insets top="10.0" />
                             </StackPane.margin>
