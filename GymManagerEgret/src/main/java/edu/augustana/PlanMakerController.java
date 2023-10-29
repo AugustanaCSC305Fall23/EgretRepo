@@ -189,7 +189,7 @@ public class PlanMakerController {
             categoryHbox.setVisible(false);
             eventHbox.setVisible(false);
             clearHbox.setVisible(false);
-            pictureStackPane.setPrefHeight(Double.MAX_VALUE);
+            pictureStackPane.setMaxHeight(Double.MAX_VALUE);
 
         } else {
             // Filters are hidden, show them
@@ -200,7 +200,7 @@ public class PlanMakerController {
             categoryHbox.setVisible(true);
             eventHbox.setVisible(true);
             clearHbox.setVisible(true);
-            pictureStackPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+            pictureStackPane.setMaxHeight(pictureStackPane.getMaxHeight());
 
 
 
