@@ -2,6 +2,8 @@ package edu.augustana;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,34 +14,70 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
+
 
 
 public class PlanMakerController {
 
     @FXML
     private ResourceBundle resources;
+
     @FXML
     private URL location;
+
     @FXML
-    private Button home;
+    private HBox categoryHbox;
+
     @FXML
-    private Button edit;
-    @FXML
-    private BorderPane rootPane;
-    @FXML
-    private Label label;
-    @FXML
-    private TextArea textArea;
-    @FXML
-    private StackPane stackPane;
-    @FXML
-    private TextField textField;
-    @FXML
-    private Label titleLabel;
+    private HBox clearHbox;
+
     @FXML
     private Label codeLabel;
+
     @FXML
+    private StackPane codeStackPane;
+
+    @FXML
+    private Button collapseButton;
+
+    @FXML
+    private HBox difficultyHbox;
+
+    @FXML
+    private Button edit;
+
+    @FXML
+    private HBox equipmentHbox;
+
+    @FXML
+    private HBox eventHbox;
+
+    @FXML
+    private HBox genderHbox;
+
+    @FXML
+    private Button home;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private TextArea textArea;
+
+    @FXML
+    private TextField textField;
+
+    @FXML
+    private Label titleLabel;
+
+    @FXML
+    private StackPane titleStackPane;
+
+    @FXML
+    private StackPane pictureStackPane;
     private String enteredTitle;
 
 
@@ -50,21 +88,20 @@ public class PlanMakerController {
 
 
     void initialize() {
-        home.requestFocus();
+        titleStackPane.setVisible(true);
+        codeStackPane.setVisible(false);
+        genderHbox.setVisible(false);
+        difficultyHbox.setVisible(false);
+        equipmentHbox.setVisible(false);
+        categoryHbox.setVisible(false);
+        eventHbox.setVisible(false);
+        clearHbox.setVisible(false);
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         }
 
-//    @FXML
-//    void onLabelClick(MouseEvent event) {
-//        label.setVisible(false);
-//        textArea.setVisible(true);
-//        textArea.setText(label.getText());
-//        textArea.requestFocus();
-//        edit.setDisable(true);
-//    }
 
     @FXML
     void onEditButtonClick() {
@@ -141,6 +178,33 @@ public class PlanMakerController {
     }
 
 
+    @FXML
+    void onButtonClick(ActionEvent event) {
+        if (codeStackPane.isVisible()) {
+            // Filters are visible, hide them
+            codeStackPane.setVisible(false);
+            difficultyHbox.setVisible(false);
+            genderHbox.setVisible(false);
+            equipmentHbox.setVisible(false);
+            categoryHbox.setVisible(false);
+            eventHbox.setVisible(false);
+            clearHbox.setVisible(false);
+            pictureStackPane.setPrefHeight(Double.MAX_VALUE);
 
+        } else {
+            // Filters are hidden, show them
+            codeStackPane.setVisible(true);
+            difficultyHbox.setVisible(true);
+            genderHbox.setVisible(true);
+            equipmentHbox.setVisible(true);
+            categoryHbox.setVisible(true);
+            eventHbox.setVisible(true);
+            clearHbox.setVisible(true);
+            pictureStackPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+
+
+        }
+    }
 
 }
