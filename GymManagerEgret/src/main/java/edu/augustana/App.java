@@ -1,5 +1,6 @@
 package edu.augustana;
 
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,8 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+
+    private static final CardDatabase database = new CardDatabase();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -32,7 +35,12 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CsvValidationException, IOException {
+        database.addCardsFromCSV();
+        /*filter.filterFloor();*/
+        database.printCards();
+        //flowController.initializeCards(allCards);
+
         launch();
     }
 

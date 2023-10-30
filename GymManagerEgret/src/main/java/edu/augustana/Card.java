@@ -1,6 +1,8 @@
 package edu.augustana;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Card {
     private final String code;
@@ -10,13 +12,15 @@ public class Card {
 
     private final String title;
 
+    private final String pack;
+
     private final String image;
 
     private final String gender;
 
     private final String modelSex;
 
-    private final String level;
+    private final ArrayList<String> level;
 
     private final ArrayList<String> equipment;
 
@@ -38,18 +42,18 @@ public class Card {
                 '}';
     }
 
-    public Card(String code, String event, String category, String title,
-                String image, String gender, String modelSex, String level, ArrayList<String> equipment, ArrayList<String> keywords) {
-        this.code = code;
-        this.event = event;
-        this.category = category;
-        this.title = title;
-        this.image = image;
-        this.gender = gender;
-        this.modelSex = modelSex;
-        this.level = level;
-        this.equipment = equipment;
-        this.keywords = keywords;
+    public Card(String [] cardData) {
+        this.code = cardData[0];
+        this.event = cardData[1];
+        this.category = cardData[2];
+        this.title = cardData[3];
+        this.pack = cardData[4];
+        this.image = cardData[5];
+        this.gender = cardData[6];
+        this.modelSex = cardData[7];
+        this.level = new ArrayList<>(Arrays.asList(cardData[8].split(" ")));
+        this.equipment = new ArrayList<>(Arrays.asList(cardData[9].split(",")));
+        this.keywords = new ArrayList<>(Arrays.asList(cardData[10].split(",")));;
     }
 
     public String getCode() {
@@ -68,6 +72,10 @@ public class Card {
         return title;
     }
 
+    public String getPack() {
+        return pack;
+    }
+
     public String getImage() {
         return image;
     }
@@ -80,7 +88,7 @@ public class Card {
         return modelSex;
     }
 
-    public String getLevel() {
+    public ArrayList<String> getLevel() {
         return level;
     }
 
