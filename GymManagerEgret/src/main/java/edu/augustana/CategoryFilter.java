@@ -1,11 +1,11 @@
 package edu.augustana;
 
 public class CategoryFilter {
-    private String category;
-    public CategoryFilter(String category){
-        this.category = category;
+    private String desiredCategory;
+    public CategoryFilter(String desiredCategory){
+        this.desiredCategory = desiredCategory;
     }
     public boolean event(Card card){
-        return card.getCategory().equals(category);
+        return card.getCategory().equals(desiredCategory);
     }
 }
