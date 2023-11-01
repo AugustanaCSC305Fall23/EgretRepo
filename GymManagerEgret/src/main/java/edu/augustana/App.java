@@ -5,8 +5,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -16,7 +18,7 @@ public class App extends Application {
 
     private static Scene scene;
 
-    private static final CardDatabase database = new CardDatabase();
+    public static final CardDatabase database = new CardDatabase();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -40,7 +42,10 @@ public class App extends Application {
         /*filter.filterFloor();*/
         database.printCards();
         //flowController.initializeCards(allCards);
-
+        //System.out.println("@../../../../../DEMO1ImagePack/" + CardDatabase.allCards.get(1).getImage());
+        //Image cardImage = new Image("../../../../../DEMO1ImagePack/" + CardDatabase.allCards.get(1).getImage());
+        Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/2.png"));
+        System.out.println(cardImage);
         launch();
     }
 

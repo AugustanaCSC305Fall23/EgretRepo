@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -113,8 +114,15 @@
                <children>
                   <StackPane fx:id="pictureStackPane" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scrollPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" StackPane.alignment="BOTTOM_LEFT" />
-                        <FlowPane fx:id="flowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="245.0" />
+                        <ScrollPane fx:id="cardScrollPane" prefHeight="325.0" prefWidth="245.0" StackPane.alignment="BOTTOM_LEFT" />
+                        <FlowPane fx:id="cardFlowPane" prefHeight="200.0" prefWidth="245.0">
+                           <children>
+                              <ImageView fx:id="cardImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <FlowPane.margin>
+                                    <Insets right="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                           </children></FlowPane>
                      </children>
                   </StackPane>
                </children>

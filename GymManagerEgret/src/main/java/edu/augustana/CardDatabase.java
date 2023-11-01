@@ -11,12 +11,13 @@ import com.opencsv.exceptions.CsvValidationException;
 
 
 public class CardDatabase {
+
     public static ArrayList<Card> allCards = new ArrayList<>();
     public static ArrayList<Card> filteredCards = allCards;
     CardDatabase(){};
 
     public void addCardsFromCSV() throws IOException, CsvValidationException {
-        CSVReader reader = new CSVReaderBuilder(new FileReader("DEMO1.csv")).build();
+        CSVReader reader = new CSVReaderBuilder(new FileReader("DEMO1.csv")).withSkipLines(1).build();
         String [] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line
@@ -31,6 +32,10 @@ public class CardDatabase {
 
     public void printCards(){
         System.out.println(filteredCards);
+    }
+
+    public static ArrayList<Card> getAllCards() {
+        return allCards;
     }
 
     /*public void filterFloor(){

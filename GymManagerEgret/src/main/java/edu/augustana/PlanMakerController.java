@@ -1,23 +1,22 @@
 package edu.augustana;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.HBox;
-
+import javafx.scene.layout.*;
 
 
 public class PlanMakerController {
@@ -78,7 +77,18 @@ public class PlanMakerController {
 
     @FXML
     private StackPane pictureStackPane;
+
+    @FXML
+    private FlowPane cardFlowPane;
+
+    @FXML
+    private ScrollPane cardScrollPane;
+    @FXML
+    private ImageView cardImageView;
+
     private String enteredTitle;
+
+    private ArrayList<Card> allCards = CardDatabase.allCards;
 
 
     @FXML
@@ -86,8 +96,8 @@ public class PlanMakerController {
         App.switchToHomePageView();
     }
 
-
-    void initialize() {
+    @FXML
+    void initialize() throws FileNotFoundException {
         titleStackPane.setVisible(true);
         codeStackPane.setVisible(false);
         genderHbox.setVisible(false);
@@ -100,6 +110,23 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
+        cardScrollPane.setFitToHeight(true);
+
+        cardFlowPane.setPadding(new Insets(5,5,5,5));
+        for(Card card : allCards) {
+            ImageView newCardView = new ImageView();
+            newCardView.setImage(new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage())));
+            newCardView.setFitHeight(150);
+            newCardView.setFitWidth(200);
+            cardFlowPane.getChildren().add(newCardView);
+        }
+        //Image cardImage = new Image("DEMO1ImagePack/" + allCards.get(1).getImage());
+        Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
+        //System.out.println(cardImage);
+        //System.out.println(cardImage);
+        cardImageView.setImage(cardImage);
+
+
         }
 
 
@@ -118,6 +145,7 @@ public class PlanMakerController {
         if (event.getCode() == KeyCode.ENTER) {
             String editedText = textArea.getText();
             label.setText(editedText);
+            enteredTitle = editedText;
             textArea.setVisible(false);
             label.setVisible(true);
             edit.setDisable(false);
