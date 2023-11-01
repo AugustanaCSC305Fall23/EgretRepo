@@ -10,14 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.HBox;
-
+import javafx.scene.layout.*;
 
 
 public class PlanMakerController {
@@ -56,6 +54,9 @@ public class PlanMakerController {
     private HBox eventHbox;
 
     @FXML
+    private StackPane pictureStackPane;
+
+    @FXML
     private HBox genderHbox;
 
     @FXML
@@ -76,9 +77,10 @@ public class PlanMakerController {
     @FXML
     private StackPane titleStackPane;
 
-    @FXML
-    private StackPane pictureStackPane;
     private String enteredTitle;
+
+    @FXML
+    private FlowPane cardImages;
 
 
     @FXML
@@ -100,6 +102,13 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
+
+        for (int i=1; i<22; i++){
+            Image image = new Image(i+".png");
+            cardImages.getChildren().add(new ImageView(image));
+        }
+
+
         }
 
 
@@ -110,6 +119,7 @@ public class PlanMakerController {
         textArea.setText(label.getText());
         textArea.requestFocus();
         edit.setDisable(true); // Disable the "edit" button while editing
+
     }
 
 

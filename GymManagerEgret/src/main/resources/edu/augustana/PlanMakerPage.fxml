@@ -8,6 +8,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -114,7 +116,39 @@
                   <StackPane fx:id="pictureStackPane" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" VBox.vgrow="ALWAYS">
                      <children>
                         <ScrollPane fx:id="scrollPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" StackPane.alignment="BOTTOM_LEFT" />
-                        <FlowPane fx:id="flowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="245.0" />
+                        <FlowPane fx:id="flowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="245.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/1.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/3.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/4.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/5.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../DEMO1Pack/DEMO1Pack/6.png" />
+                                 </image>
+                              </ImageView>
+                           </children></FlowPane>
                      </children>
                   </StackPane>
                </children>
@@ -126,10 +160,17 @@
             <children>
                 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="50.0">
                     <children>
-                      <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065" StackPane.alignment="TOP_RIGHT">
+                      <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" textFill="#216065" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
                         <Insets right="10.0" />
                      </StackPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../home_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                       </Button>
                         <TextArea fx:id="textArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                             <StackPane.margin>
