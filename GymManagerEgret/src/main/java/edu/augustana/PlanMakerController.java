@@ -128,10 +128,10 @@ public class PlanMakerController {
             cardFlowPane.getChildren().add(newCardView);
         }
         //Image cardImage = new Image("DEMO1ImagePack/" + allCards.get(1).getImage());
-        Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
+        //Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
         //System.out.println(cardImage);
         //System.out.println(cardImage);
-        cardImageView.setImage(cardImage);
+        //cardImageView.setImage(cardImage);
 
 
         }
