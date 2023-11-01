@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.image.Image?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
     <left>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
@@ -134,10 +135,17 @@
             <children>
                 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="50.0">
                     <children>
-                      <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" text="Home" textFill="#216065" StackPane.alignment="TOP_RIGHT">
+                      <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" textFill="#216065" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
                         <Insets right="10.0" />
                      </StackPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../home_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                       </Button>
                         <TextArea fx:id="textArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                             <StackPane.margin>

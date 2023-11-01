@@ -38,7 +38,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        database.addCardsFromCSV();
+        //database.addCardsFromCSV();
         /*filter.filterFloor();*/
         database.printCards();
         //flowController.initializeCards(allCards);

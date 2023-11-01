@@ -1,16 +1,18 @@
 package edu.augustana;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -55,6 +57,9 @@ public class PlanMakerController {
     private HBox eventHbox;
 
     @FXML
+    private StackPane pictureStackPane;
+
+    @FXML
     private HBox genderHbox;
 
     @FXML
@@ -76,9 +81,6 @@ public class PlanMakerController {
     private StackPane titleStackPane;
 
     @FXML
-    private StackPane pictureStackPane;
-
-    @FXML
     private FlowPane cardFlowPane;
 
     @FXML
@@ -89,6 +91,10 @@ public class PlanMakerController {
     private String enteredTitle;
 
     private ArrayList<Card> allCards = CardDatabase.allCards;
+
+    @FXML
+    private FlowPane cardImages;
+
 
 
     @FXML
@@ -110,6 +116,7 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
+
         cardScrollPane.setFitToHeight(true);
 
         cardFlowPane.setPadding(new Insets(5,5,5,5));
@@ -137,6 +144,7 @@ public class PlanMakerController {
         textArea.setText(label.getText());
         textArea.requestFocus();
         edit.setDisable(true); // Disable the "edit" button while editing
+
     }
 
 
