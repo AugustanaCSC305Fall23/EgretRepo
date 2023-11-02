@@ -60,6 +60,9 @@ public class PlanMakerController {
     private StackPane pictureStackPane;
 
     @FXML
+    private AnchorPane cardAnchorPane;
+
+    @FXML
     private HBox genderHbox;
 
     @FXML
@@ -116,8 +119,10 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
-
-        cardScrollPane.setFitToHeight(true);
+        //cardScrollPane = new ScrollPane();
+       // cardAnchorPane.getChildren().add(cardScrollPane);
+        //cardScrollPane.setMaxWidth(Double.MAX_VALUE);
+        //cardScrollPane.setFitToHeight(true);
 
         cardFlowPane.setPadding(new Insets(5,5,5,5));
         for(Card card : allCards) {
@@ -127,13 +132,16 @@ public class PlanMakerController {
             newCardView.setFitWidth(200);
             cardFlowPane.getChildren().add(newCardView);
         }
-        cardScrollPane = new ScrollPane();
-        cardScrollPane.setFitToHeight(true);
+
+        //cardScrollPane.setFitToHeight(true);
         //Image cardImage = new Image("DEMO1ImagePack/" + allCards.get(1).getImage());
         //Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
         //System.out.println(cardImage);
         //System.out.println(cardImage);
         //cardImageView.setImage(cardImage);
+
+        //AnchorPane.setVgrow(cardScrollPane, Priority.ALWAYS);
+
 
 
         }
@@ -227,7 +235,7 @@ public class PlanMakerController {
             categoryHbox.setVisible(false);
             eventHbox.setVisible(false);
             clearHbox.setVisible(false);
-            pictureStackPane.setMaxHeight(Double.MAX_VALUE);
+
 
         } else {
             // Filters are hidden, show them
@@ -238,7 +246,7 @@ public class PlanMakerController {
             categoryHbox.setVisible(true);
             eventHbox.setVisible(true);
             clearHbox.setVisible(true);
-            pictureStackPane.setMaxHeight(pictureStackPane.getMaxHeight());
+
 
 
 

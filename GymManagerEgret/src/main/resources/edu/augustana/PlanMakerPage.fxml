@@ -6,10 +6,12 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,119 +21,117 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
     <left>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
-            <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0">
-               <children>
-                  <StackPane fx:id="titleStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="245.0">
+         <children>
+            <SplitPane dividerPositions="0.502774352651048" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" />
-                        <Button fx:id="buttonClick" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onButtonClick" text="Button" StackPane.alignment="TOP_RIGHT">
-                           <StackPane.margin>
-                              <Insets top="8.0" />
-                           </StackPane.margin>
-                        </Button>
-                         <Label fx:id="titleLabel" prefHeight="17.0" prefWidth="73.0" text="Search Title" textFill="#216065" />
-                     </children>
-                  </StackPane>
-                  <StackPane fx:id="codeStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <TextField onKeyPressed="#onCodeLabelPress" onMouseClicked="#onCodeLabelClick" />
-                        <Label fx:id="codeLabel" prefHeight="17.0" prefWidth="94.0" text="Search Code" textFill="#216065" />
-                     </children>
-                  </StackPane>
-                  <HBox fx:id="genderHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                        <Button mnemonicParsing="false" text="M" textFill="#216065">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="F" textFill="#216065">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="difficultyHbox" layoutX="10.0" layoutY="206.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Label text="Difficulty" textFill="#216065" />
-                        <Button mnemonicParsing="false" text="Easy" textFill="#216065">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Medium" textFill="#216065">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Difficult" textFill="#216065">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="equipmentHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Label text="Equipment" textFill="#216065" />
-                        <ChoiceBox prefWidth="150.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="categoryHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Label text="Category" textFill="#216065" />
-                        <ChoiceBox prefWidth="150.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="eventHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Label text="Event" textFill="#216065" />
-                        <ChoiceBox prefWidth="150.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="clearHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
-                     <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Clear" textFill="#216065" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0">
-               <children>
-                  <StackPane fx:id="pictureStackPane" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" VBox.vgrow="NEVER">
-                     <children>
-                        <ScrollPane fx:id="cardScrollPane" prefHeight="325.0" prefWidth="245.0" vbarPolicy="ALWAYS" StackPane.alignment="BOTTOM_LEFT">
-                           <content>
-                              <FlowPane fx:id="cardFlowPane" prefHeight="331.0" prefWidth="490.0">
+                        <VBox prefHeight="322.0" prefWidth="490.0">
+                           <children>
+                              <StackPane fx:id="titleStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="245.0">
                                  <children>
-                                    <ImageView fx:id="cardImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <FlowPane.margin>
-                                          <Insets right="10.0" />
-                                       </FlowPane.margin>
-                                    </ImageView>
+                                    <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" />
+                                    <Button fx:id="buttonClick" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onButtonClick" text="Button" StackPane.alignment="TOP_RIGHT">
+                                       <StackPane.margin>
+                                          <Insets top="8.0" />
+                                       </StackPane.margin>
+                                    </Button>
+                                     <Label fx:id="titleLabel" prefHeight="17.0" prefWidth="73.0" text="Search Title" textFill="#216065" />
                                  </children>
-                              </FlowPane>
-                           </content></ScrollPane>
+                              </StackPane>
+                              <StackPane fx:id="codeStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <TextField onKeyPressed="#onCodeLabelPress" onMouseClicked="#onCodeLabelClick" />
+                                    <Label fx:id="codeLabel" prefHeight="17.0" prefWidth="94.0" text="Search Code" textFill="#216065" />
+                                 </children>
+                              </StackPane>
+                              <HBox fx:id="genderHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
+                                    <Button mnemonicParsing="false" text="M" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="F" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="difficultyHbox" layoutX="10.0" layoutY="206.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Label text="Difficulty" textFill="#216065" />
+                                    <Button mnemonicParsing="false" text="Easy" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Medium" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Difficult" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="equipmentHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Label text="Equipment" textFill="#216065" />
+                                    <ChoiceBox prefWidth="150.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </ChoiceBox>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="categoryHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Label text="Category" textFill="#216065" />
+                                    <ChoiceBox prefWidth="150.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </ChoiceBox>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="eventHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Label text="Event" textFill="#216065" />
+                                    <ChoiceBox prefWidth="150.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </ChoiceBox>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="clearHbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="245.0" visible="false">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Clear" textFill="#216065" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
-                  </StackPane>
-               </children>
-            </VBox>
-            </children></VBox>
+                  </AnchorPane>
+                <AnchorPane fx:id="cardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="321.0" prefWidth="490.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <FlowPane fx:id="cardFlowPane" alignment="CENTER" columnHalignment="CENTER" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </VBox>
     </left>
     <center>
         <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
