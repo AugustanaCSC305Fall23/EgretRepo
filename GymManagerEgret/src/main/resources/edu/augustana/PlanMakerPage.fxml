@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -15,7 +16,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.image.Image?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
     <left>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
@@ -113,17 +113,20 @@
             </VBox>
                 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0">
                <children>
-                  <StackPane fx:id="pictureStackPane" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" VBox.vgrow="ALWAYS">
+                  <StackPane fx:id="pictureStackPane" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="325.0" prefWidth="245.0" VBox.vgrow="NEVER">
                      <children>
-                        <ScrollPane fx:id="cardScrollPane" prefHeight="325.0" prefWidth="245.0" StackPane.alignment="BOTTOM_LEFT" />
-                        <FlowPane fx:id="cardFlowPane" prefHeight="200.0" prefWidth="245.0">
-                           <children>
-                              <ImageView fx:id="cardImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <FlowPane.margin>
-                                    <Insets right="10.0" />
-                                 </FlowPane.margin>
-                              </ImageView>
-                           </children></FlowPane>
+                        <ScrollPane fx:id="cardScrollPane" prefHeight="325.0" prefWidth="245.0" vbarPolicy="ALWAYS" StackPane.alignment="BOTTOM_LEFT">
+                           <content>
+                              <FlowPane fx:id="cardFlowPane" prefHeight="331.0" prefWidth="490.0">
+                                 <children>
+                                    <ImageView fx:id="cardImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <FlowPane.margin>
+                                          <Insets right="10.0" />
+                                       </FlowPane.margin>
+                                    </ImageView>
+                                 </children>
+                              </FlowPane>
+                           </content></ScrollPane>
                      </children>
                   </StackPane>
                </children>

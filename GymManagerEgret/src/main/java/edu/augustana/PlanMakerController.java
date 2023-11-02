@@ -127,6 +127,8 @@ public class PlanMakerController {
             newCardView.setFitWidth(200);
             cardFlowPane.getChildren().add(newCardView);
         }
+        cardScrollPane = new ScrollPane();
+        cardScrollPane.setFitToHeight(true);
         //Image cardImage = new Image("DEMO1ImagePack/" + allCards.get(1).getImage());
         //Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
         //System.out.println(cardImage);
