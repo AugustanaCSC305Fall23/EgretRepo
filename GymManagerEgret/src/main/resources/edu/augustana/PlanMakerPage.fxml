@@ -20,13 +20,13 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
     <left>
-        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane dividerPositions="0.502774352651048" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+            <SplitPane dividerPositions="0.502774352651048" orientation="VERTICAL" prefWidth="650.0" VBox.vgrow="ALWAYS">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="650.0">
                      <children>
-                        <VBox prefHeight="322.0" prefWidth="490.0">
+                        <VBox prefHeight="322.0" prefWidth="650.0">
                            <children>
                               <StackPane fx:id="titleStackPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="245.0">
                                  <children>
@@ -119,9 +119,9 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                <AnchorPane fx:id="cardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane fx:id="cardAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="650.0">
                      <children>
-                        <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="321.0" prefWidth="490.0" vbarPolicy="ALWAYS">
+                        <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="321.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                            <content>
                               <FlowPane fx:id="cardFlowPane" alignment="CENTER" columnHalignment="CENTER" />
                            </content>
@@ -134,10 +134,10 @@
       </VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="400.0" BorderPane.alignment="CENTER">
             <children>
-                <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="50.0">
-                    <children>
+            <StackPane prefHeight="20.0" prefWidth="200.0">
+               <children>
                       <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" textFill="#216065" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
                         <Insets right="10.0" />
@@ -150,6 +150,10 @@
                         </ImageView>
                      </graphic>
                       </Button>
+               </children>
+            </StackPane>
+                <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="50.0">
+                    <children>
                         <TextArea fx:id="textArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                             <StackPane.margin>
                                 <Insets left="5.0" right="5.0" top="10.0" />
@@ -163,7 +167,7 @@
                     </children>
                 </StackPane>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="150.0" />
-            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0">
+            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0">
               <buttons>
                 <Button mnemonicParsing="false" text="Print" textFill="#216065" />
                   <Button mnemonicParsing="false" text="Save" textFill="#216065" />
