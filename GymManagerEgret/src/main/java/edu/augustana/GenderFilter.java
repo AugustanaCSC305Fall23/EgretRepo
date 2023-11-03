@@ -1,6 +1,6 @@
 package edu.augustana;
 
-public class GenderFilter {
+public class GenderFilter implements CardFilter {
     private String desiredGender = " ";
     public GenderFilter(String desiredGender){
         this.desiredGender = desiredGender;
