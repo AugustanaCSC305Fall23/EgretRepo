@@ -119,28 +119,18 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
-        //cardScrollPane = new ScrollPane();
-       // cardAnchorPane.getChildren().add(cardScrollPane);
-        //cardScrollPane.setMaxWidth(Double.MAX_VALUE);
-        //cardScrollPane.setFitToHeight(true);
 
+        //Loops through every card, turns them into an imageView, and then displays them.
         cardFlowPane.setPadding(new Insets(5,5,5,5));
         for(Card card : allCards) {
             ImageView newCardView = new ImageView();
             newCardView.setImage(new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage())));
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
+            newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
             cardFlowPane.getChildren().add(newCardView);
         }
 
-        //cardScrollPane.setFitToHeight(true);
-        //Image cardImage = new Image("DEMO1ImagePack/" + allCards.get(1).getImage());
-        //Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + allCards.get(3).getImage()));
-        //System.out.println(cardImage);
-        //System.out.println(cardImage);
-        //cardImageView.setImage(cardImage);
-
-        //AnchorPane.setVgrow(cardScrollPane, Priority.ALWAYS);
 
 
 
