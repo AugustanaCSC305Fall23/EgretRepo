@@ -141,18 +141,14 @@ public class PlanMakerController {
 
     private void showImagePopup(Image image) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
-        imageAlert.initOwner(App.primaryStage); // Set the owner to the primary stage
-        imageAlert.setTitle("Image Pop-up");
+        imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
-
-        // Create an ImageView to display the image
+        imageAlert.setTitle("Add Card");
         ImageView popupImageView = new ImageView(image);
-        popupImageView.setFitWidth(400); // Adjust the width as needed
-        popupImageView.setFitHeight(300); // Adjust the height as needed
-
-        // Set the image as the content of the dialog
+        popupImageView.setFitWidth(400);
+        popupImageView.setFitHeight(300);
         imageAlert.getDialogPane().setContent(popupImageView);
-
+        imageAlert.setGraphic(null);
         imageAlert.showAndWait();
     }
 
@@ -165,8 +161,7 @@ public class PlanMakerController {
         textArea.setVisible(true);
         textArea.setText(label.getText());
         textArea.requestFocus();
-        edit.setDisable(true); // Disable the "edit" button while editing
-
+        edit.setDisable(true);
     }
 
 
