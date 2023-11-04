@@ -107,14 +107,14 @@ public class PlanMakerController {
 
     @FXML
     void initialize() throws FileNotFoundException {
-        titleStackPane.setVisible(true);
-        codeStackPane.setVisible(false);
-        genderHbox.setVisible(false);
-        difficultyHbox.setVisible(false);
-        equipmentHbox.setVisible(false);
-        categoryHbox.setVisible(false);
-        eventHbox.setVisible(false);
-        clearHbox.setVisible(false);
+//        titleStackPane.setVisible(true);
+//        codeStackPane.setVisible(false);
+//        genderHbox.setVisible(false);
+//        difficultyHbox.setVisible(false);
+//        equipmentHbox.setVisible(false);
+//        categoryHbox.setVisible(false);
+//        eventHbox.setVisible(false);
+//        clearHbox.setVisible(false);
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
