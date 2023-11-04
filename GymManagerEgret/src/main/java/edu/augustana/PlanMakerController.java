@@ -214,33 +214,4 @@ public class PlanMakerController {
     }
 
 
-    @FXML
-    void onButtonClick(ActionEvent event) {
-        if (codeStackPane.isVisible()) {
-            // Filters are visible, hide them
-            codeStackPane.setVisible(false);
-            difficultyHbox.setVisible(false);
-            genderHbox.setVisible(false);
-            equipmentHbox.setVisible(false);
-            categoryHbox.setVisible(false);
-            eventHbox.setVisible(false);
-            clearHbox.setVisible(false);
-
-
-        } else {
-            // Filters are hidden, show them
-            codeStackPane.setVisible(true);
-            difficultyHbox.setVisible(true);
-            genderHbox.setVisible(true);
-            equipmentHbox.setVisible(true);
-            categoryHbox.setVisible(true);
-            eventHbox.setVisible(true);
-            clearHbox.setVisible(true);
-
-
-
-
-        }
-    }
-
 }

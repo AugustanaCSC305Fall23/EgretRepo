@@ -19,12 +19,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" promptText="Search Title" />
-            <Accordion>
+            <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" prefWidth="650.0" promptText="Search Title" />
+            <Accordion prefWidth="650.0">
                <panes>
                   <TitledPane animated="false" text="Filters">
                      <content>
@@ -108,11 +108,11 @@
                   </TitledPane>
                </panes>
             </Accordion>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="cardAnchorPane" prefHeight="800.0" prefWidth="650.0">
                <children>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="349.0" prefWidth="490.0" vbarPolicy="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" />
+                        <FlowPane fx:id="cardFlowPane" prefHeight="800.0" prefWidth="650.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -149,8 +149,8 @@
                   </Label>
                </children>
             </StackPane>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="150.0" />
-            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
+            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
                   <Button mnemonicParsing="false" text="Print" textFill="#216065" />
                   <Button mnemonicParsing="false" text="Save" textFill="#216065" />

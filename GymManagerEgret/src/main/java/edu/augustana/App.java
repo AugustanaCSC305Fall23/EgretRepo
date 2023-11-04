@@ -25,7 +25,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("HomePage"), 800, 650);
         stage.setScene(scene);
         stage.show();
-        stage.setMaximized(true);
+        stage.setFullScreen(true);
 
     }
 
