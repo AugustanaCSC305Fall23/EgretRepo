@@ -113,11 +113,11 @@
                   </TitledPane>
                </panes>
             </Accordion>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="800.0" prefWidth="650.0">
+            <AnchorPane fx:id="cardAnchorPane" prefHeight="850.0" prefWidth="650.0">
                <children>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="650.0" vbarPolicy="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" prefHeight="800.0" prefWidth="650.0" />
+                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -154,7 +154,7 @@
                   </Label>
                </children>
             </StackPane>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
+            <HBox fx:id="displayLesson" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
                   <Button mnemonicParsing="false" text="Print" textFill="#216065" />

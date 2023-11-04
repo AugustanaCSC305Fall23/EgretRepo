@@ -3,7 +3,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -24,6 +27,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.control.ButtonType;
 
 
 public class PlanMakerController {
@@ -63,6 +67,8 @@ public class PlanMakerController {
 
     private String enteredTitle;
 
+    @FXML
+    private HBox displayLesson;
 
     private ArrayList<Card> allCards = CardDatabase.allCards;
 
@@ -71,6 +77,10 @@ public class PlanMakerController {
 
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
+
+    private Set<String> addedCardIDs = new HashSet<>();
+
+
 
     @FXML
     void connectToHomePage() {
@@ -106,19 +116,53 @@ public class PlanMakerController {
 
     private void showImagePopup(Image image) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
-        imageAlert.initOwner(App.primaryStage); // Set the owner to the primary stage
-        imageAlert.setTitle("Image Pop-up");
+        imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
+        imageAlert.setTitle("Add Card");
 
-        // Create an ImageView to display the image
         ImageView popupImageView = new ImageView(image);
-        popupImageView.setFitWidth(400); // Adjust the width as needed
-        popupImageView.setFitHeight(300); // Adjust the height as needed
+        popupImageView.setFitWidth(400);
+        popupImageView.setFitHeight(300);
 
-        // Set the image as the content of the dialog
-        imageAlert.getDialogPane().setContent(popupImageView);
+        VBox contentVBox = new VBox(popupImageView);
+        contentVBox.setAlignment(Pos.CENTER);
+        contentVBox.setSpacing(10);
+
+        imageAlert.getDialogPane().setContent(contentVBox);
+        imageAlert.setGraphic(null);
+
+        ButtonType addCardButtonType = new ButtonType("Add Card");
+
+        imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
+
+        imageAlert.setResultConverter(buttonType -> {
+            if (buttonType == addCardButtonType) {
+                String cardID = image.toString();
+                if (!addedCardIDs.contains(cardID)) {
+                    ImageView cardImageView = new ImageView(image);
+                    cardImageView.setFitWidth(200);
+                    cardImageView.setFitHeight(150);
+                    displayLesson.getChildren().add(cardImageView);
+
+                    // Add the card ID to the set of added card IDs
+                    addedCardIDs.add(cardID);
+                }else{
+                    Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+                    alreadyAddedAlert.setHeaderText(null);
+                    alreadyAddedAlert.setTitle("Add Card");
+                    alreadyAddedAlert.setContentText("Already added image");
+                    alreadyAddedAlert.initOwner(App.primaryStage);
+                    alreadyAddedAlert.showAndWait();
+                }
+            }
+            return null;
+        });
+
 
         imageAlert.showAndWait();
+
+
+
     }
 
 
@@ -130,8 +174,7 @@ public class PlanMakerController {
         textArea.setVisible(true);
         textArea.setText(label.getText());
         textArea.requestFocus();
-        edit.setDisable(true); // Disable the "edit" button while editing
-
+        edit.setDisable(true);
     }
 
 

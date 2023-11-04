@@ -19,7 +19,7 @@ public class App extends Application {
     private static Scene scene;
 
     public static final CardDatabase database = new CardDatabase();
-    public static Stage primaryStage; // Add this line
+    public static Stage primaryStage;
 
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
@@ -27,7 +27,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("HomePage"), 800, 650);
-        primaryStage = stage; // Set the primary stage
+        primaryStage = stage;
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setFullScreen(true);
