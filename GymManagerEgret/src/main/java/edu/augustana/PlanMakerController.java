@@ -7,13 +7,18 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.stage.Stage.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +30,8 @@ public class PlanMakerController {
 
     @FXML
     private ResourceBundle resources;
+
+
 
     @FXML
     private URL location;
@@ -93,6 +100,7 @@ public class PlanMakerController {
 
     private String enteredTitle;
 
+
     private ArrayList<Card> allCards = CardDatabase.allCards;
 
     @FXML
@@ -107,14 +115,7 @@ public class PlanMakerController {
 
     @FXML
     void initialize() throws FileNotFoundException {
-//        titleStackPane.setVisible(true);
-//        codeStackPane.setVisible(false);
-//        genderHbox.setVisible(false);
-//        difficultyHbox.setVisible(false);
-//        equipmentHbox.setVisible(false);
-//        categoryHbox.setVisible(false);
-//        eventHbox.setVisible(false);
-//        clearHbox.setVisible(false);
+
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         label.setVisible(true);
         textArea.setVisible(false);
@@ -124,17 +125,38 @@ public class PlanMakerController {
         cardFlowPane.setPadding(new Insets(5,5,5,5));
         for(Card card : allCards) {
             ImageView newCardView = new ImageView();
-            newCardView.setImage(new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage())));
+            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
             newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
             cardFlowPane.getChildren().add(newCardView);
+            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
+
+
         }
 
 
-
-
         }
+
+    private void showImagePopup(Image image) {
+        Alert imageAlert = new Alert(AlertType.INFORMATION);
+        imageAlert.initOwner(App.primaryStage); // Set the owner to the primary stage
+        imageAlert.setTitle("Image Pop-up");
+        imageAlert.setHeaderText(null);
+
+        // Create an ImageView to display the image
+        ImageView popupImageView = new ImageView(image);
+        popupImageView.setFitWidth(400); // Adjust the width as needed
+        popupImageView.setFitHeight(300); // Adjust the height as needed
+
+        // Set the image as the content of the dialog
+        imageAlert.getDialogPane().setContent(popupImageView);
+
+        imageAlert.showAndWait();
+    }
+
+
 
 
     @FXML
