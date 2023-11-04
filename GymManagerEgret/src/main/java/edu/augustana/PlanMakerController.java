@@ -78,8 +78,16 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
 
+    @FXML
+    private ChoiceBox<String> eventChoiceBox;
+
+    @FXML
+    private ChoiceBox<String> equipmentChoiceBox;
+
     private Set<String> addedCardIDs = new HashSet<>();
 
+    public PlanMakerController() {
+    }
 
 
     @FXML
@@ -96,10 +104,8 @@ public class PlanMakerController {
         edit.setOnAction(event -> onEditButtonClick());
         initializeCardDisplay();
         //category filter
-        categoryChoiceBox.getItems().addAll("Shapes", "Handstand", "Backward Salto",
-                "Walkovers","Handsprings","Cartwheel Progressions","Round Off Progression",
-                "Forward Salto Progression","Bars","Block Drills on Beam","Beam",
-                "Vault","Tramp","Beam Strength","Strength");
+        initializeComboBoxes();
+
     }
 
     private void showImagePopup(Image image) {
@@ -151,6 +157,29 @@ public class PlanMakerController {
 
 
 
+    }
+
+    private void initializeComboBoxes(){
+        ArrayList<String> category = new ArrayList<>();
+        ArrayList<String> equipment = new ArrayList<>();
+        ArrayList<String> event = new ArrayList<>();
+        category.add(" ");
+        equipment.add(" ");
+        event.add(" ");
+        for(Card card : allCards){
+            equipment.addAll(card.getEquipment());
+            if(!event.contains(card.getEvent())) {
+                event.add(card.getEvent());
+            }
+            if(!category.contains(card.getCategory())) {
+                category.add(card.getCategory());
+            }
+        }
+
+
+        categoryChoiceBox.getItems().addAll(category);
+        equipmentChoiceBox.getItems().addAll(equipment);
+        eventChoiceBox.getItems().addAll(event);
     }
 
     private void initializeCardDisplay() throws FileNotFoundException {
