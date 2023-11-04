@@ -31,46 +31,14 @@ public class PlanMakerController {
     @FXML
     private ResourceBundle resources;
 
-
-
     @FXML
     private URL location;
 
-    @FXML
-    private HBox categoryHbox;
-
-    @FXML
-    private HBox clearHbox;
-
-    @FXML
-    private Label codeLabel;
-
-    @FXML
-    private StackPane codeStackPane;
-
-    @FXML
-    private Button collapseButton;
-
-    @FXML
-    private HBox difficultyHbox;
 
     @FXML
     private Button edit;
 
-    @FXML
-    private HBox equipmentHbox;
 
-    @FXML
-    private HBox eventHbox;
-
-    @FXML
-    private StackPane pictureStackPane;
-
-    @FXML
-    private AnchorPane cardAnchorPane;
-
-    @FXML
-    private HBox genderHbox;
 
     @FXML
     private Button home;
@@ -84,11 +52,6 @@ public class PlanMakerController {
     @FXML
     private TextField textField;
 
-    @FXML
-    private Label titleLabel;
-
-    @FXML
-    private StackPane titleStackPane;
 
     @FXML
     private FlowPane cardFlowPane;
@@ -106,7 +69,8 @@ public class PlanMakerController {
     @FXML
     private FlowPane cardImages;
 
-
+    @FXML
+    private ChoiceBox<String> categoryChoiceBox;
 
     @FXML
     void connectToHomePage() {
@@ -132,12 +96,13 @@ public class PlanMakerController {
             newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
             cardFlowPane.getChildren().add(newCardView);
             newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
-
-
         }
-
-
-        }
+        //category filter
+        categoryChoiceBox.getItems().addAll("Shapes", "Handstand", "Backward Salto",
+                "Walkovers","Handsprings","Cartwheel Progressions","Round Off Progression",
+                "Forward Salto Progression","Bars","Block Drills on Beam","Beam",
+                "Vault","Tramp","Beam Strength","Strength");
+    }
 
     private void showImagePopup(Image image) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
@@ -182,57 +147,10 @@ public class PlanMakerController {
         }
 
     }
-
     @FXML
-    void onTitleLabelClick(MouseEvent event) {
-        // Hide the label
-        titleLabel.setVisible(false);
-        // Make the TextField visible for user input
-        textField.setVisible(true);
-        //textField.requestFocus();
-    }
-
-    @FXML
-    void onCodeLabelClick(MouseEvent event) {
-        // Hide the label
-        codeLabel.setVisible(false);
-        // Make the TextField visible for user input
-        textField.setVisible(true);
-       // textField.requestFocus();
-    }
-
-    @FXML
-    void onTitleLabelPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            // Hide the label
-            titleLabel.setVisible(false);
-
-            // Make the TextField visible
-            textField.setVisible(true);
-
-            // Remove focus from the TextField
-            textField.getParent().requestFocus();
-
-            // Save the entered title
-            enteredTitle = textField.getText();
-        }
-    }
-
-    @FXML
-    void onCodeLabelPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            // Hide the label
-            titleLabel.setVisible(false);
-
-            // Make the TextField visible
-            textField.setVisible(true);
-
-            // Remove focus from the TextField
-            textField.getParent().requestFocus();
-
-            // Save the entered title
-            enteredTitle = textField.getText();
-        }
+    public void applyCategoryFilter() {
+        String selectedCategory = categoryChoiceBox.getValue();
+        CategoryFilter categoryFilter = new CategoryFilter(selectedCategory);
     }
 
 
