@@ -23,14 +23,14 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" prefWidth="650.0" promptText="Search Title" />
+            <TextField fx:id="textField" prefWidth="650.0" promptText="Search Title" />
             <Accordion prefWidth="650.0">
                <panes>
-                  <TitledPane animated="false" text="Filters">
+                  <TitledPane animated="false" text="Filters" textFill="#216065">
                      <content>
                         <AnchorPane>
                            <children>
-                              <TextField layoutX="-6.0" onKeyPressed="#onCodeLabelPress" onMouseClicked="#onCodeLabelClick" promptText="Search Code" />
+                              <TextField layoutX="-6.0" promptText="Search Code" />
                               <HBox fx:id="eventHbox" layoutY="137.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label text="Event" textFill="#216065" />
@@ -51,6 +51,11 @@
                                        </HBox.margin>
                                     </Button>
                                     <Button mnemonicParsing="false" text="F" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="N" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -95,7 +100,7 @@
                               <HBox fx:id="categoryHbox" layoutY="177.0">
                                  <children>
                                     <Label text="Category" textFill="#216065" />
-                                    <ChoiceBox prefWidth="150.0">
+                                    <ChoiceBox fx:id="categoryChoiceBox" prefWidth="150.0">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -108,11 +113,11 @@
                   </TitledPane>
                </panes>
             </Accordion>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="800.0" prefWidth="650.0">
+            <AnchorPane fx:id="cardAnchorPane" prefHeight="850.0" prefWidth="650.0">
                <children>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="650.0" vbarPolicy="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" prefHeight="800.0" prefWidth="650.0" />
+                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -149,7 +154,7 @@
                   </Label>
                </children>
             </StackPane>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
+            <HBox fx:id="displayLesson" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
                   <Button mnemonicParsing="false" text="Print" textFill="#216065" />

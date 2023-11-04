@@ -3,7 +3,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -24,6 +27,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.control.ButtonType;
 
 
 public class PlanMakerController {
@@ -34,41 +38,11 @@ public class PlanMakerController {
     @FXML
     private URL location;
 
-    @FXML
-    private HBox categoryHbox;
-
-    @FXML
-    private HBox clearHbox;
-
-    @FXML
-    private Label codeLabel;
-
-    @FXML
-    private StackPane codeStackPane;
-
-    @FXML
-    private Button collapseButton;
-
-    @FXML
-    private HBox difficultyHbox;
 
     @FXML
     private Button edit;
 
-    @FXML
-    private HBox equipmentHbox;
 
-    @FXML
-    private HBox eventHbox;
-
-    @FXML
-    private StackPane pictureStackPane;
-
-    @FXML
-    private AnchorPane cardAnchorPane;
-
-    @FXML
-    private HBox genderHbox;
 
     @FXML
     private Button home;
@@ -82,11 +56,6 @@ public class PlanMakerController {
     @FXML
     private TextField textField;
 
-    @FXML
-    private Label titleLabel;
-
-    @FXML
-    private StackPane titleStackPane;
 
     @FXML
     private FlowPane cardFlowPane;
@@ -98,11 +67,18 @@ public class PlanMakerController {
 
     private String enteredTitle;
 
+    @FXML
+    private HBox displayLesson;
 
     private ArrayList<Card> allCards = CardDatabase.allCards;
 
     @FXML
     private FlowPane cardImages;
+
+    @FXML
+    private ChoiceBox<String> categoryChoiceBox;
+
+    private Set<String> addedCardIDs = new HashSet<>();
 
 
 
@@ -119,21 +95,62 @@ public class PlanMakerController {
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         initializeCardDisplay();
-
-
-        }
+        //category filter
+        categoryChoiceBox.getItems().addAll("Shapes", "Handstand", "Backward Salto",
+                "Walkovers","Handsprings","Cartwheel Progressions","Round Off Progression",
+                "Forward Salto Progression","Bars","Block Drills on Beam","Beam",
+                "Vault","Tramp","Beam Strength","Strength");
+    }
 
     private void showImagePopup(Image image) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("Add Card");
+
         ImageView popupImageView = new ImageView(image);
         popupImageView.setFitWidth(400);
         popupImageView.setFitHeight(300);
-        imageAlert.getDialogPane().setContent(popupImageView);
+
+        VBox contentVBox = new VBox(popupImageView);
+        contentVBox.setAlignment(Pos.CENTER);
+        contentVBox.setSpacing(10);
+
+        imageAlert.getDialogPane().setContent(contentVBox);
         imageAlert.setGraphic(null);
+
+        ButtonType addCardButtonType = new ButtonType("Add Card");
+
+        imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
+
+        imageAlert.setResultConverter(buttonType -> {
+            if (buttonType == addCardButtonType) {
+                String cardID = image.toString();
+                if (!addedCardIDs.contains(cardID)) {
+                    ImageView cardImageView = new ImageView(image);
+                    cardImageView.setFitWidth(200);
+                    cardImageView.setFitHeight(150);
+                    displayLesson.getChildren().add(cardImageView);
+
+                    // Add the card ID to the set of added card IDs
+                    addedCardIDs.add(cardID);
+                }else{
+                    Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+                    alreadyAddedAlert.setHeaderText(null);
+                    alreadyAddedAlert.setTitle("Add Card");
+                    alreadyAddedAlert.setContentText("Already added image");
+                    alreadyAddedAlert.initOwner(App.primaryStage);
+                    alreadyAddedAlert.showAndWait();
+                }
+            }
+            return null;
+        });
+
+
         imageAlert.showAndWait();
+
+
+
     }
 
     private void initializeCardDisplay() throws FileNotFoundException {
@@ -173,58 +190,6 @@ public class PlanMakerController {
             edit.setDisable(false);
         }
 
-    }
-
-    @FXML
-    void onTitleLabelClick(MouseEvent event) {
-        // Hide the label
-        titleLabel.setVisible(false);
-        // Make the TextField visible for user input
-        textField.setVisible(true);
-        //textField.requestFocus();
-    }
-
-    @FXML
-    void onCodeLabelClick(MouseEvent event) {
-        // Hide the label
-        codeLabel.setVisible(false);
-        // Make the TextField visible for user input
-        textField.setVisible(true);
-       // textField.requestFocus();
-    }
-
-    @FXML
-    void onTitleLabelPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            // Hide the label
-            titleLabel.setVisible(false);
-
-            // Make the TextField visible
-            textField.setVisible(true);
-
-            // Remove focus from the TextField
-            textField.getParent().requestFocus();
-
-            // Save the entered title
-            enteredTitle = textField.getText();
-        }
-    }
-
-    @FXML
-    void onCodeLabelPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            // Hide the label
-            titleLabel.setVisible(false);
-
-            // Make the TextField visible
-            textField.setVisible(true);
-
-            // Remove focus from the TextField
-            textField.getParent().requestFocus();
-
-            // Save the entered title
-            enteredTitle = textField.getText();
-        }
     }
 
 
