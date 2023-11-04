@@ -26,7 +26,7 @@
             <TextField fx:id="textField" onKeyPressed="#onTitleLabelPress" onMouseClicked="#onTitleLabelClick" prefWidth="650.0" promptText="Search Title" />
             <Accordion prefWidth="650.0">
                <panes>
-                  <TitledPane animated="false" text="Filters">
+                  <TitledPane animated="false" text="Filters" textFill="#216065">
                      <content>
                         <AnchorPane>
                            <children>
@@ -51,6 +51,11 @@
                                        </HBox.margin>
                                     </Button>
                                     <Button mnemonicParsing="false" text="F" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="N" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
