@@ -1,6 +1,9 @@
-package edu.augustana;
+package edu.augustana.filters;
 
-public class CodeFilter implements CardFilter{
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
+
+public class CodeFilter implements CardFilter {
     private String searchCode= "";
     public CodeFilter(){
         this.searchCode = searchCode;

@@ -1,6 +1,9 @@
-package edu.augustana;
+package edu.augustana.filters;
 
-public class DifficultyFilter implements CardFilter{
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
+
+public class DifficultyFilter implements CardFilter {
     private char searchDifficulty;
     public DifficultyFilter(char searchDifficulty){
         this.searchDifficulty = searchDifficulty;

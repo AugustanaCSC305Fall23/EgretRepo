@@ -1,6 +1,9 @@
-package edu.augustana;
+package edu.augustana.filters;
 
-public class CategoryFilter implements CardFilter{
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
+
+public class CategoryFilter implements CardFilter {
     private String desiredCategory;
     public CategoryFilter(String desiredCategory){
         this.desiredCategory = desiredCategory;

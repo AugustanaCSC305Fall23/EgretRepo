@@ -1,6 +1,9 @@
-package edu.augustana;
+package edu.augustana.filters;
 
-public class EventFilter implements CardFilter{
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
+
+public class EventFilter implements CardFilter {
     private String desiredEvent;
     public EventFilter(String desiredEvent){
         this.desiredEvent = desiredEvent;

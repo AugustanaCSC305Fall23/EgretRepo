@@ -1,4 +1,7 @@
-package edu.augustana;
+package edu.augustana.filters;
+
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
 
 public class GenderFilter implements CardFilter {
     private String desiredGender = " ";

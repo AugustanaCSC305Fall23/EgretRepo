@@ -17,6 +17,7 @@ public class CardDatabase {
     CardDatabase(){};
 
     public void addCardsFromCSV() throws IOException, CsvValidationException {
+        //reads through the CSV file, skipping the headers in the first line.
         CSVReader reader = new CSVReaderBuilder(new FileReader("DEMO1.csv")).withSkipLines(1).build();
         String [] nextLine;
         while ((nextLine = reader.readNext()) != null) {

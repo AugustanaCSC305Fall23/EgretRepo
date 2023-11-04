@@ -41,7 +41,7 @@ public class Card {
                 ", keywords=" + keywords +
                 '}';
     }
-
+    //Uses the cardData from a line of the CSV
     public Card(String [] cardData) {
         this.code = cardData[0];
         this.event = cardData[1];

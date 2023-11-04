@@ -1,6 +1,9 @@
-package edu.augustana;
+package edu.augustana.filters;
 
-public class TitleFilter implements CardFilter{
+import edu.augustana.Card;
+import edu.augustana.filters.CardFilter;
+
+public class TitleFilter implements CardFilter {
     private String searchTitle = " ";
 
     public TitleFilter(String searchTitle){

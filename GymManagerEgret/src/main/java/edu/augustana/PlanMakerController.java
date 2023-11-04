@@ -31,8 +31,6 @@ public class PlanMakerController {
     @FXML
     private ResourceBundle resources;
 
-
-
     @FXML
     private URL location;
 
@@ -120,21 +118,7 @@ public class PlanMakerController {
         label.setVisible(true);
         textArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
-
-        //Loops through every card, turns them into an imageView, and then displays them.
-        cardFlowPane.setPadding(new Insets(5,5,5,5));
-        for(Card card : allCards) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
-            cardFlowPane.getChildren().add(newCardView);
-            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
-
-
-        }
+        initializeCardDisplay();
 
 
         }
@@ -152,7 +136,20 @@ public class PlanMakerController {
         imageAlert.showAndWait();
     }
 
-
+    private void initializeCardDisplay() throws FileNotFoundException {
+        //Loops through every card, turns them into an imageView, and then displays them.
+        cardFlowPane.setPadding(new Insets(5,5,5,5));
+        for(Card card : allCards) {
+            ImageView newCardView = new ImageView();
+            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            newCardView.setImage(cardImage);
+            newCardView.setFitHeight(150);
+            newCardView.setFitWidth(200);
+            newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
+            cardFlowPane.getChildren().add(newCardView);
+            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
+        }
+    }
 
 
     @FXML

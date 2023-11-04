@@ -45,13 +45,7 @@ public class App extends Application {
 
     public static void main(String[] args) throws CsvValidationException, IOException {
         database.addCardsFromCSV();
-        /*filter.filterFloor();*/
         database.printCards();
-        //flowController.initializeCards(allCards);
-        //System.out.println("@../../../../../DEMO1ImagePack/" + CardDatabase.allCards.get(1).getImage());
-        //Image cardImage = new Image("../../../../../DEMO1ImagePack/" + CardDatabase.allCards.get(1).getImage());
-        //Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/2.png"));
-        //System.out.println(cardImage);
         launch();
     }
 
