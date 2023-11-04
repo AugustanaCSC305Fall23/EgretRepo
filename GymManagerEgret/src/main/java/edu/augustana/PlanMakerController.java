@@ -147,11 +147,6 @@ public class PlanMakerController {
         }
 
     }
-    @FXML
-    public void applyCategoryFilter() {
-        String selectedCategory = categoryChoiceBox.getValue();
-        CategoryFilter categoryFilter = new CategoryFilter(selectedCategory);
-    }
 
 
 }
