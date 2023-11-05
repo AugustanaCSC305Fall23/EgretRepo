@@ -13,4 +13,9 @@ public class CategoryFilter implements CardFilter {
     public boolean matches(Card candidateCard) {
         return candidateCard.getCategory().equals(desiredCategory);
     }
+
+    @Override
+    public String toString() {
+        return desiredCategory;
+    }
 }

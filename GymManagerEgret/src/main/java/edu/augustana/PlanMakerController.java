@@ -7,27 +7,22 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
+import edu.augustana.filters.*;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.stage.Stage.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
 
@@ -72,7 +67,7 @@ public class PlanMakerController {
     @FXML
     private HBox displayLesson;
 
-    private ArrayList<Card> allCards = CardDatabase.allCards;
+    private ArrayList<Card> filteredCards = CardDatabase.allCards;
 
     @FXML
     private FlowPane cardImages;
@@ -168,7 +163,7 @@ public class PlanMakerController {
         category.add(" ");
         equipment.add(" ");
         event.add(" ");
-        for(Card card : allCards){
+        for(Card card : filteredCards){
             for(String item : card.getEquipment()){
                 if(!equipment.contains(item)){
                     equipment.add(item);
@@ -183,17 +178,17 @@ public class PlanMakerController {
                 category.add(card.getCategory());
             }
         }
-        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(categoryChoiceBox.getSelectionModel().getSelectedItem()));
+        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new CategoryFilter(categoryChoiceBox.getSelectionModel().getSelectedItem())));
         categoryChoiceBox.getItems().addAll(category);
-        equipmentChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(equipmentChoiceBox.getSelectionModel().getSelectedItem()));
+        equipmentChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new EquipmentFilter(equipmentChoiceBox.getSelectionModel().getSelectedItem())));
         equipmentChoiceBox.getItems().addAll(equipment);
-        eventChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(eventChoiceBox.getSelectionModel().getSelectedItem()));
+        eventChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new EventFilter(eventChoiceBox.getSelectionModel().getSelectedItem())));
         eventChoiceBox.getItems().addAll(event);
     }
     private void initializeCardDisplay() throws FileNotFoundException {
         //Loops through every card, turns them into an imageView, and then displays them.
         cardFlowPane.setPadding(new Insets(5,5,5,5));
-        for(Card card : allCards) {
+        for(Card card : filteredCards) {
             ImageView newCardView = new ImageView();
             Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
             newCardView.setImage(cardImage);
@@ -226,7 +221,6 @@ public class PlanMakerController {
             label.setVisible(true);
             edit.setDisable(false);
         }
-
     }
 
 
