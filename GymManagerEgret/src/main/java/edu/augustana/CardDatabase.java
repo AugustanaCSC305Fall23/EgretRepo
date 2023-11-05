@@ -4,16 +4,22 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.util.ArrayList;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
+import edu.augustana.filters.CardFilter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 
 public class CardDatabase {
 
     public static ArrayList<Card> allCards = new ArrayList<>();
-    public static ArrayList<Card> filteredCards = allCards;
+    //public static ArrayList<Card> filteredCards = allCards;
+    public static ObservableList<CardFilter> activeFilters = FXCollections.observableArrayList();
     CardDatabase(){};
 
     public void addCardsFromCSV() throws IOException, CsvValidationException {
@@ -32,7 +38,7 @@ public class CardDatabase {
     };
 
     public void printCards(){
-        System.out.println(filteredCards);
+        System.out.println(allCards);
     }
 
     public static ArrayList<Card> getAllCards() {

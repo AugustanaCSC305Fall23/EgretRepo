@@ -22,9 +22,9 @@ public class Card {
 
     private final ArrayList<String> level;
 
-    private final ArrayList<String> equipment;
+    private final ArrayList<String> equipment = new ArrayList<>();
 
-    private final ArrayList<String> keywords;
+    private final ArrayList<String> keywords = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -52,8 +52,18 @@ public class Card {
         this.gender = cardData[6];
         this.modelSex = cardData[7];
         this.level = new ArrayList<>(Arrays.asList(cardData[8].split(" ")));
-        this.equipment = new ArrayList<>(Arrays.asList(cardData[9].split(",")));
-        this.keywords = new ArrayList<>(Arrays.asList(cardData[10].split(",")));;
+        ArrayList<String> equipment = new ArrayList<>(Arrays.asList(cardData[9].split(",")));
+        for (String item : equipment){
+            item = item.trim();
+            item = item.toLowerCase();
+            this.equipment.add(item);
+        }
+        ArrayList<String> keywords = new ArrayList<>(Arrays.asList(cardData[10].split(",")));
+        for (String word : keywords){
+            word = word.trim();
+            word = word.toLowerCase();
+            this.keywords.add(word);
+        }
     }
 
     public String getCode() {

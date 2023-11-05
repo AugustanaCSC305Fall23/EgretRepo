@@ -167,7 +167,13 @@ public class PlanMakerController {
         equipment.add(" ");
         event.add(" ");
         for(Card card : allCards){
-            equipment.addAll(card.getEquipment());
+            for(String item : card.getEquipment()){
+                if(!equipment.contains(item)){
+                    equipment.add(item);
+                }
+            }
+
+
             if(!event.contains(card.getEvent())) {
                 event.add(card.getEvent());
             }
