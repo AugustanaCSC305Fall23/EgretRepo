@@ -49,6 +49,9 @@ public class CardDatabase {
         filteredCards.removeIf(card -> !"Floor".equals(card.getEvent()));
     }*/
 
+    public void addFilter(CardFilter filter){
+        activeFilters.add(filter);
+    }
 
 
 

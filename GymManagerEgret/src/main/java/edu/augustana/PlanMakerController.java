@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -181,13 +183,13 @@ public class PlanMakerController {
                 category.add(card.getCategory());
             }
         }
-
-
+        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(categoryChoiceBox.getSelectionModel().getSelectedItem()));
         categoryChoiceBox.getItems().addAll(category);
+        equipmentChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(equipmentChoiceBox.getSelectionModel().getSelectedItem()));
         equipmentChoiceBox.getItems().addAll(equipment);
+        eventChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> System.out.println(eventChoiceBox.getSelectionModel().getSelectedItem()));
         eventChoiceBox.getItems().addAll(event);
     }
-
     private void initializeCardDisplay() throws FileNotFoundException {
         //Loops through every card, turns them into an imageView, and then displays them.
         cardFlowPane.setPadding(new Insets(5,5,5,5));
