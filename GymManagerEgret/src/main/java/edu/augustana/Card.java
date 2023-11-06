@@ -46,7 +46,7 @@ public class Card {
         this.code = cardData[0];
         this.event = cardData[1];
         this.category = cardData[2];
-        this.title = cardData[3];
+        this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
         this.image = cardData[5];
         this.gender = cardData[6];

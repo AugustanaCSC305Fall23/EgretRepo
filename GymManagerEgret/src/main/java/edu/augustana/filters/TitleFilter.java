@@ -11,6 +11,6 @@ public class TitleFilter implements CardFilter {
     }
 
     public boolean matches(Card candidateCard){
-        return candidateCard.getTitle().equals(searchTitle);
+        return candidateCard.getTitle().contains(searchTitle);
     }
 }

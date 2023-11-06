@@ -1,16 +1,15 @@
 package edu.augustana.filters;
 
 import edu.augustana.Card;
-import edu.augustana.filters.CardFilter;
 
 public class CodeFilter implements CardFilter {
     private String searchCode= "";
-    public CodeFilter(){
+    public CodeFilter(String searchCode){
         this.searchCode = searchCode;
     }
 
     public boolean matches(Card candidateCard){
-        return candidateCard.getCode().equals(searchCode);
+        return candidateCard.getCode().contains(searchCode);
     }
 
 }

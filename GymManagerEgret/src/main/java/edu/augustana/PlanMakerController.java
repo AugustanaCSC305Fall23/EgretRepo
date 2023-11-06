@@ -38,7 +38,8 @@ public class PlanMakerController {
     @FXML
     private Button edit;
 
-
+    @FXML
+    private TextField codeSearchBox;
 
     @FXML
     private Button home;
@@ -50,7 +51,7 @@ public class PlanMakerController {
     private TextArea textArea;
 
     @FXML
-    private TextField textField;
+    private TextField titleSearchBox;
 
     @FXML
     private Button clearButton;
@@ -278,6 +279,29 @@ public class PlanMakerController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void searchCode() throws FileNotFoundException {
+        System.out.println(codeSearchBox.getText());
+        CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toLowerCase()));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void searchTitle() throws FileNotFoundException {
+        System.out.println(titleSearchBox.getText());
+        CardDatabase.addFilter(new TitleFilter(titleSearchBox.getText().toLowerCase()));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     @FXML
