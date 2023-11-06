@@ -251,6 +251,20 @@ public class PlanMakerController {
         edit.setDisable(true);
     }
     @FXML
+    private void inputBasic() {resolveDifficultyButtons("B");}
+    @FXML
+    private void inputAdvanceBasic() {resolveDifficultyButtons("AB");}
+    @FXML
+    private void inputIntermediate() {resolveDifficultyButtons("I");}
+    private void resolveDifficultyButtons(String level) {
+        CardDatabase.addFilter(new DifficultyFilter(level));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
     private void inputMale() throws FileNotFoundException {resolveGenderButtons("M");}
     @FXML
     private void inputFemale() throws FileNotFoundException {resolveGenderButtons("F");}

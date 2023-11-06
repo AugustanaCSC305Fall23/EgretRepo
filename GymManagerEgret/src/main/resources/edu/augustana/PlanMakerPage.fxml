@@ -70,17 +70,17 @@
                               <HBox fx:id="difficultyHbox" layoutY="64.0">
                                  <children>
                                     <Label text="Difficulty" textFill="#216065" />
-                                    <Button mnemonicParsing="false" text="Easy" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputBasic" text="B" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Medium" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" text="AB" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Difficult" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" text="I" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
