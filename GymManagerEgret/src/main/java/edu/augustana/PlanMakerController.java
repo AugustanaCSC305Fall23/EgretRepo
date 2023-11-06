@@ -68,7 +68,7 @@ public class PlanMakerController {
     private String enteredTitle;
 
     @FXML
-    private HBox displayLesson;
+    private TilePane displayLesson;
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
 
@@ -116,8 +116,8 @@ public class PlanMakerController {
         imageAlert.setTitle("Add Card");
 
         ImageView popupImageView = new ImageView(image);
-        popupImageView.setFitWidth(400);
-        popupImageView.setFitHeight(300);
+        popupImageView.setFitWidth(1650/3);
+        popupImageView.setFitHeight(1275/3);
 
         VBox contentVBox = new VBox(popupImageView);
         contentVBox.setAlignment(Pos.CENTER);
@@ -135,8 +135,8 @@ public class PlanMakerController {
                 String cardID = image.toString();
                 if (!addedCardIDs.contains(cardID)) {
                     ImageView cardImageView = new ImageView(image);
-                    cardImageView.setFitWidth(200);
-                    cardImageView.setFitHeight(150);
+                    cardImageView.setFitWidth(1650/6.5);
+                    cardImageView.setFitHeight(1275/6.5);
                     displayLesson.getChildren().add(cardImageView);
 
                     // Add the card ID to the set of added card IDs

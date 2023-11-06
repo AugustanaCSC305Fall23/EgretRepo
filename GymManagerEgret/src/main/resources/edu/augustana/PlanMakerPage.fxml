@@ -17,7 +17,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
@@ -151,10 +153,16 @@
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>
+                     <font>
+                        <Font name="Verdana" size="30.0" />
+                     </font>
                   </Label>
                </children>
             </StackPane>
-            <HBox fx:id="displayLesson" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" />
+            <TilePane fx:id="displayLesson" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" vgap="10">
+
+            </TilePane>
+
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
                   <Button mnemonicParsing="false" text="Print" textFill="#216065" />
