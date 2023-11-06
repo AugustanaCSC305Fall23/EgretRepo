@@ -57,7 +57,6 @@ public class App extends Application {
             System.err.println("Can't find FXML file " + fxmlFileName);
             ex.printStackTrace();
         }
-
     }
     public static void switchToLibraryView() {
         switchToView("LibraryPage.fxml");

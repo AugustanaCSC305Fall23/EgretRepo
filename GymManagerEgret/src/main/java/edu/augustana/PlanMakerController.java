@@ -164,9 +164,9 @@ public class PlanMakerController {
         ArrayList<String> category = new ArrayList<>();
         ArrayList<String> equipment = new ArrayList<>();
         ArrayList<String> event = new ArrayList<>();
-        category.add(" ");
-        equipment.add(" ");
-        event.add(" ");
+        category.add("ALL");
+        equipment.add("ALL");
+        event.add("ALL");
         for(Card card : allCards){
             for(String item : card.getEquipment()){
                 if(!equipment.contains(item)){
@@ -230,8 +230,9 @@ public class PlanMakerController {
 
     @FXML
     private void resetFilters() throws FileNotFoundException {
-        System.out.println("clear");
-        System.out.println(allCards);
+        categoryChoiceBox.setValue("ALL");
+        eventChoiceBox.setValue("ALL");
+        equipmentChoiceBox.setValue("ALL");
         CardDatabase.clearFilters();
         setCardDisplay(allCards);
     }

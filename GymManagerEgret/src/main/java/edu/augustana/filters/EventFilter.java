@@ -9,6 +9,10 @@ public class EventFilter implements CardFilter {
         this.desiredEvent = desiredEvent;
     }
     public boolean matches(Card candidateCard){
-        return candidateCard.getEvent().equals(desiredEvent);
+        if(desiredEvent.equals("ALL")){
+            return true;
+        }else {
+            return candidateCard.getEvent().equals(desiredEvent);
+        }
     }
 }
