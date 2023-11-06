@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import edu.augustana.filters.*;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -53,6 +52,9 @@ public class PlanMakerController {
     @FXML
     private TextField textField;
 
+    @FXML
+    private Button clearButton;
+
 
     @FXML
     private FlowPane cardFlowPane;
@@ -67,7 +69,7 @@ public class PlanMakerController {
     @FXML
     private HBox displayLesson;
 
-    private ArrayList<Card> filteredCards = CardDatabase.allCards;
+    private final ArrayList<Card> allCards = CardDatabase.allCards;
 
     @FXML
     private FlowPane cardImages;
@@ -102,6 +104,7 @@ public class PlanMakerController {
         initializeCardDisplay();
         //category filter
         initializeComboBoxes();
+        //filterCardDisplay(filteredCards);
 
     }
 
@@ -163,7 +166,7 @@ public class PlanMakerController {
         category.add(" ");
         equipment.add(" ");
         event.add(" ");
-        for(Card card : filteredCards){
+        for(Card card : allCards){
             for(String item : card.getEquipment()){
                 if(!equipment.contains(item)){
                     equipment.add(item);
@@ -178,29 +181,67 @@ public class PlanMakerController {
                 category.add(card.getCategory());
             }
         }
-        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new CategoryFilter(categoryChoiceBox.getSelectionModel().getSelectedItem())));
+        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> { CardDatabase.addFilter(new CategoryFilter(categoryChoiceBox.getSelectionModel().getSelectedItem()));
+            try {
+                setCardDisplay(CardDatabase.filterCards());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         categoryChoiceBox.getItems().addAll(category);
-        equipmentChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new EquipmentFilter(equipmentChoiceBox.getSelectionModel().getSelectedItem())));
+        equipmentChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> { CardDatabase.addFilter(new EquipmentFilter(equipmentChoiceBox.getSelectionModel().getSelectedItem()));
+            try {
+                setCardDisplay(CardDatabase.filterCards());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         equipmentChoiceBox.getItems().addAll(equipment);
-        eventChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> CardDatabase.addFilter(new EventFilter(eventChoiceBox.getSelectionModel().getSelectedItem())));
+        eventChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> { CardDatabase.addFilter(new EventFilter(eventChoiceBox.getSelectionModel().getSelectedItem()));
+            try {
+                setCardDisplay(CardDatabase.filterCards());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         eventChoiceBox.getItems().addAll(event);
     }
     private void initializeCardDisplay() throws FileNotFoundException {
         //Loops through every card, turns them into an imageView, and then displays them.
         cardFlowPane.setPadding(new Insets(5,5,5,5));
-        for(Card card : filteredCards) {
+        for(Card card : allCards) {
             ImageView newCardView = new ImageView();
             Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
+            //for debugging// newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
             cardFlowPane.getChildren().add(newCardView);
             newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
         }
     }
 
+    public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
+        cardFlowPane.getChildren().clear();
+        for(Card card : cardSelection) {
+            ImageView newCardView = new ImageView();
+            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            newCardView.setImage(cardImage);
+            newCardView.setFitHeight(150);
+            newCardView.setFitWidth(200);
+            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
+            cardFlowPane.getChildren().add(newCardView);
+            System.out.println(card);
+        }
+    }
 
+    @FXML
+    private void resetFilters() throws FileNotFoundException {
+        System.out.println("clear");
+        System.out.println(allCards);
+        CardDatabase.clearFilters();
+        setCardDisplay(allCards);
+    }
     @FXML
     void onEditButtonClick() {
         label.setVisible(false);

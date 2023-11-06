@@ -55,8 +55,12 @@ public class CardDatabase {
         filterCards();
     }
 
-    public static void filterCards(){
-        ArrayList<Card> filteredCards = allCards;
+    public static void clearFilters(){
+        activeFilters.clear();
+    }
+
+    public static ArrayList<Card> filterCards(){
+        ArrayList<Card> filteredCards = new ArrayList<>(allCards);
         ArrayList<Card> currentCards = new ArrayList<>();
         for (CardFilter filter : activeFilters){
             for (Card card : filteredCards){
@@ -72,14 +76,15 @@ public class CardDatabase {
         for (Card card : filteredCards){
             System.out.print(card.getCode());
         }
-        //System.out.println(filteredCards);
+        return filteredCards;
+
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        addCardsFromCSV();
+       /* addCardsFromCSV();
         addFilter(new EventFilter("Beam"));
         System.out.println();
-        addFilter(new CategoryFilter("Beam"));
+        addFilter(new CategoryFilter("Beam"));*/
     }
 
 
