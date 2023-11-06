@@ -210,17 +210,9 @@ public class PlanMakerController {
     private void initializeCardDisplay() throws FileNotFoundException {
         //Loops through every card, turns them into an imageView, and then displays them.
         cardFlowPane.setPadding(new Insets(5,5,5,5));
-        for(Card card : allCards) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            //for debugging// newCardView.setOnMouseClicked(evt -> System.out.print(card.getCode()));
-            cardFlowPane.getChildren().add(newCardView);
-            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
-        }
+        setCardDisplay(allCards);
     }
+
 
     public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
         cardFlowPane.getChildren().clear();
@@ -283,7 +275,7 @@ public class PlanMakerController {
     @FXML
     public void searchCode() throws FileNotFoundException {
         System.out.println(codeSearchBox.getText());
-        CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toLowerCase()));
+        CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toUpperCase()));
         try {
             setCardDisplay(CardDatabase.filterCards());
         } catch (FileNotFoundException e) {
