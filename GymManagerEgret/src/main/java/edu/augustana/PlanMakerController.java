@@ -250,6 +250,20 @@ public class PlanMakerController {
         textArea.requestFocus();
         edit.setDisable(true);
     }
+    @FXML
+    private void inputMale() throws FileNotFoundException {resolveGenderButtons("M");}
+    @FXML
+    private void inputFemale() throws FileNotFoundException {resolveGenderButtons("F");}
+    @FXML
+    private void inputNeutral() throws FileNotFoundException {resolveGenderButtons("N");}
+    private void resolveGenderButtons(String gender) throws FileNotFoundException {
+        CardDatabase.addFilter(new GenderFilter(gender));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @FXML

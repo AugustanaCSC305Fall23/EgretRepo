@@ -45,17 +45,17 @@
                               <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                                    <Button mnemonicParsing="false" text="M" textFill="#216065">
+                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" text="M" textFill="#216065">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="F" textFill="#216065">
+                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" text="F" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="N" textFill="#216065">
+                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" text="N" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
