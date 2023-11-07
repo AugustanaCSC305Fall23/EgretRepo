@@ -9,6 +9,10 @@ public class EquipmentFilter implements CardFilter {
         this.desiredEquipment = desiredEquipment;
     }
     public boolean matches(Card candidateCard){
-        return candidateCard.getEquipment().equals(desiredEquipment);
+        if(desiredEquipment.equals("ALL")){
+            return true;
+        }else {
+            return candidateCard.getEquipment().contains(desiredEquipment);
+        }
     }
 }

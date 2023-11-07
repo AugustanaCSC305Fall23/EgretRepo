@@ -113,11 +113,11 @@ public class PlanMakerController {
     }
 
 
-    private void showImagePopup(Image image) {
+    private void showImagePopup(Image image, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
-        imageAlert.setTitle("Add Card");
+        imageAlert.setTitle("View Card");
 
         ImageView popupImageView = new ImageView(image);
         popupImageView.setFitWidth(1650/3);
@@ -129,10 +129,13 @@ public class PlanMakerController {
 
         imageAlert.getDialogPane().setContent(contentVBox);
         imageAlert.setGraphic(null);
-
         ButtonType addCardButtonType = new ButtonType("Add Card");
-
-        imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
+        ButtonType removeCardButtonType = new ButtonType("Remove Card");
+        if(addOrRemove) {
+            imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
+        }else{
+            imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
+        }
 
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
@@ -143,6 +146,8 @@ public class PlanMakerController {
                     cardImageView.setFitHeight(1275/6.5);
                     lessonCards.add(cardImageView);
                     displayLesson.getChildren().add(cardImageView);
+                    cardImageView.setOnMouseClicked(event -> showImagePopup(image, false));
+                    // Add the card ID to the set of added card IDs
                     addedCardIDs.add(cardID);
                 }else{
                     Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
@@ -152,8 +157,12 @@ public class PlanMakerController {
                     alreadyAddedAlert.initOwner(App.primaryStage);
                     alreadyAddedAlert.showAndWait();
                 }
+            } else {
+                addedCardIDs.remove(image.toString());
+                System.out.println(addedCardIDs);
             }
-            return null;
+
+            return buttonType;
         });
 
         imageAlert.showAndWait();
@@ -165,9 +174,9 @@ public class PlanMakerController {
         ArrayList<String> category = new ArrayList<>();
         ArrayList<String> equipment = new ArrayList<>();
         ArrayList<String> event = new ArrayList<>();
-        category.add(" ");
-        equipment.add(" ");
-        event.add(" ");
+        category.add("ALL");
+        equipment.add("ALL");
+        event.add("ALL");
         for(Card card : allCards){
             for(String item : card.getEquipment()){
                 if(!equipment.contains(item)){
@@ -223,16 +232,17 @@ public class PlanMakerController {
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage));
+            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage, true));
             cardFlowPane.getChildren().add(newCardView);
-            System.out.println(card);
+            //System.out.println(card);
         }
     }
 
     @FXML
     private void resetFilters() throws FileNotFoundException {
-        System.out.println("clear");
-        System.out.println(allCards);
+        categoryChoiceBox.setValue("ALL");
+        eventChoiceBox.setValue("ALL");
+        equipmentChoiceBox.setValue("ALL");
         CardDatabase.clearFilters();
         setCardDisplay(allCards);
     }

@@ -36,11 +36,10 @@
                               <HBox fx:id="eventHbox" layoutY="137.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label text="Event" textFill="#216065" />
-                                    <ChoiceBox fx:id="eventChoiceBox" prefWidth="150.0">
+                                    <ChoiceBox fx:id="eventChoiceBox" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
-
                                     </ChoiceBox>
                                  </children>
                               </HBox>
@@ -92,7 +91,7 @@
                               <HBox fx:id="equipmentHbox" layoutY="104.0">
                                  <children>
                                     <Label text="Equipment" textFill="#216065" />
-                                    <ChoiceBox fx:id="equipmentChoiceBox" prefWidth="150.0">
+                                    <ChoiceBox fx:id="equipmentChoiceBox" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -102,7 +101,7 @@
                               <HBox fx:id="categoryHbox" layoutY="177.0">
                                  <children>
                                     <Label text="Category" textFill="#216065" />
-                                    <ChoiceBox fx:id="categoryChoiceBox" prefWidth="150.0">
+                                    <ChoiceBox fx:id="categoryChoiceBox" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
