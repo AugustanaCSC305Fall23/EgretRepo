@@ -23,6 +23,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
+import javafx.print.PrinterJob;
+import javafx.print.PrintQuality;
+import javafx.print.PageLayout;
+import javafx.scene.transform.Scale;
 
 
 public class PlanMakerController {
@@ -33,7 +37,8 @@ public class PlanMakerController {
     @FXML
     private URL location;
 
-
+    @FXML
+    private Button print;
     @FXML
     private Button edit;
 
@@ -108,6 +113,7 @@ public class PlanMakerController {
         //category filter
         initializeComboBoxes();
         //filterCardDisplay(filteredCards);
+        print.setOnAction(event ->printContent(displayLesson));
 
 
     }
@@ -148,6 +154,7 @@ public class PlanMakerController {
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
                 if (!lessonCards.contains(image)) {
+
                     ImageView cardImageView = new ImageView(image);
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
@@ -172,6 +179,19 @@ public class PlanMakerController {
             return buttonType;
         });
     }
+
+    private void printContent(TilePane nodeToPrint) {
+        System.out.println("printContent called: " + nodeToPrint);
+        PrinterJob job = PrinterJob.createPrinterJob();
+        System.out.println("Job=" + job);
+        if (job != null && job.showPrintDialog(nodeToPrint.getScene().getWindow())){
+            boolean success = job.printPage(nodeToPrint);
+            if (success) {
+                job.endJob();
+            }
+        }
+    }
+
 
     private void initializeComboBoxes(){
         ArrayList<String> category = new ArrayList<>();
