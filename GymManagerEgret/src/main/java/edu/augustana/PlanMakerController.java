@@ -83,7 +83,7 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
 
-    private ArrayList<ImageView> lessonCards = new ArrayList<>();
+    private ArrayList<Image> lessonCards = new ArrayList<>();
 
 
     private Set<String> addedCardIDs = new HashSet<>();
@@ -131,24 +131,29 @@ public class PlanMakerController {
         imageAlert.setGraphic(null);
         ButtonType addCardButtonType = new ButtonType("Add Card");
         ButtonType removeCardButtonType = new ButtonType("Remove Card");
+
         if(addOrRemove) {
             imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
         }else{
             imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
         }
 
+        addOrDeleteCards(image, imageAlert, addCardButtonType);
+        imageAlert.showAndWait();
+
+
+    }
+
+    private void addOrDeleteCards(Image image, Alert imageAlert, ButtonType addCardButtonType){
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
-                String cardID = image.toString();
-                if (!addedCardIDs.contains(cardID)) {
+                if (!lessonCards.contains(image)) {
                     ImageView cardImageView = new ImageView(image);
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
-                    lessonCards.add(cardImageView);
+                    lessonCards.add(image);
                     displayLesson.getChildren().add(cardImageView);
                     cardImageView.setOnMouseClicked(event -> showImagePopup(image, false));
-                    // Add the card ID to the set of added card IDs
-                    addedCardIDs.add(cardID);
                 }else{
                     Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
                     alreadyAddedAlert.setHeaderText(null);
@@ -158,16 +163,14 @@ public class PlanMakerController {
                     alreadyAddedAlert.showAndWait();
                 }
             } else {
-                addedCardIDs.remove(image.toString());
-                System.out.println(addedCardIDs);
+                lessonCards.remove(image);
+                displayLesson.getChildren().remove(cardImageView);
+                // addedCardIDs.remove(image.toString());
+               // System.out.println(addedCardIDs);
+                System.out.println(lessonCards.toString());
             }
-
             return buttonType;
         });
-
-        imageAlert.showAndWait();
-
-
     }
 
     private void initializeComboBoxes(){
