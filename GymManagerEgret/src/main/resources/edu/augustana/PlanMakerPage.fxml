@@ -166,6 +166,8 @@
                <buttons>
                   <Button fx:id="print" mnemonicParsing="false" text="Print" textFill="#216065" />
                   <Button mnemonicParsing="false" text="Save" textFill="#216065" />
+                  <Button mnemonicParsing="false" text="Print" textFill="#216065" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#completeLessonPlan" text="Save" textFill="#216065" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
                </buttons>
                <VBox.margin>
