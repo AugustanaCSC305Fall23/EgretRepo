@@ -73,9 +73,7 @@ public class CardDatabase {
             currentCards.clear();
 
         }
-        for (Card card : filteredCards){
-            System.out.print(card.getCode());
-        }
+        //System.out.print(card.getCode());
         return filteredCards;
 
     }
