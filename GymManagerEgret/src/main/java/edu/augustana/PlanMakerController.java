@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
-
 import edu.augustana.filters.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -84,6 +83,9 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
 
+    private ArrayList<ImageView> lessonCards = new ArrayList<>();
+
+
     private Set<String> addedCardIDs = new HashSet<>();
 
     public PlanMakerController() {
@@ -107,7 +109,9 @@ public class PlanMakerController {
         initializeComboBoxes();
         //filterCardDisplay(filteredCards);
 
+
     }
+
 
     private void showImagePopup(Image image) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
@@ -137,9 +141,8 @@ public class PlanMakerController {
                     ImageView cardImageView = new ImageView(image);
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
+                    lessonCards.add(cardImageView);
                     displayLesson.getChildren().add(cardImageView);
-
-                    // Add the card ID to the set of added card IDs
                     addedCardIDs.add(cardID);
                 }else{
                     Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
@@ -153,9 +156,7 @@ public class PlanMakerController {
             return null;
         });
 
-
         imageAlert.showAndWait();
-
 
 
     }
@@ -293,7 +294,6 @@ public class PlanMakerController {
             throw new RuntimeException(e);
         }
     }
-
 
 
     @FXML
