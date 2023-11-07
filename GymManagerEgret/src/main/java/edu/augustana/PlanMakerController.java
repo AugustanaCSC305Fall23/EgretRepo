@@ -328,25 +328,27 @@ public class PlanMakerController {
 
 
 
-    @FXML
-    private void completeLessonPlan() {
-        // Assuming that lessonCards contains the selected cards
-        LessonPlan current = Course.currentLessonPlan;
-        for (ImageView cardImageView : lessonCards) {
-            // Create a new ImageView for each card
-            ImageView libraryCardImageView = new ImageView(cardImageView.getImage());
+           @FXML
+          private void completeLessonPlan() {
 
-            // Add the ImageView to the libraryFlowPane in your library view
-            displayLesson.getChildren().add(libraryCardImageView);
-            //current.addCard();
-        }
-
-        // After adding the cards to the library view, you can switch to the library view
-        App.switchToLibraryView();
+           }
+//        // Assuming that lessonCards contains the selected cards
+//        LessonPlan current = Course.currentLessonPlan;
+//        //for (ImageView cardImageView : lessonCards) {
+//            // Create a new ImageView for each card
+//            ImageView libraryCardImageView = new ImageView(cardImageView.getImage());
+//
+//            // Add the ImageView to the libraryFlowPane in your library view
+//            displayLesson.getChildren().add(libraryCardImageView);
+//            //current.addCard();
+//        }
+//
+//        // After adding the cards to the library view, you can switch to the library view
+//        App.switchToLibraryView();
     }
 
 
 
 
 
-    }
+
