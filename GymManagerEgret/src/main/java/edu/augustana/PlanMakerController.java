@@ -1,14 +1,16 @@
 package edu.augustana;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
+
 import edu.augustana.filters.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -45,6 +47,9 @@ public class PlanMakerController {
 
     @FXML
     private Label label;
+
+    private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
+
 
     @FXML
     private TextArea textArea;
@@ -319,4 +324,26 @@ public class PlanMakerController {
     }
 
 
-}
+
+    @FXML
+    private void completeLessonPlan() {
+        // Assuming that lessonCards contains the selected cards
+        LessonPlan current = Course.currentLessonPlan;
+        for (ImageView cardImageView : lessonCards) {
+            // Create a new ImageView for each card
+            ImageView libraryCardImageView = new ImageView(cardImageView.getImage());
+
+            // Add the ImageView to the libraryFlowPane in your library view
+            displayLesson.getChildren().add(libraryCardImageView);
+            //current.addCard();
+        }
+
+        // After adding the cards to the library view, you can switch to the library view
+        App.switchToLibraryView();
+    }
+
+
+
+
+
+    }

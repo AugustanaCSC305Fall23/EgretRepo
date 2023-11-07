@@ -1,7 +1,10 @@
 package edu.augustana;
 
 import java.io.IOException;
+
+
 import javafx.fxml.FXML;
+
 
 public class LibraryController {
 
@@ -15,8 +18,8 @@ public class LibraryController {
         App.switchToCourseLibraryView();
     }
 
-    @FXML
-    void initialize() {
+
+    public void initialize() {
 
     }
 
