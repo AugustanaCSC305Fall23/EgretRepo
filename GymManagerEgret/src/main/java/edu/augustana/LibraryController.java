@@ -4,9 +4,13 @@ import java.io.IOException;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 
 
 public class LibraryController {
+
+    @FXML
+    private ListView<String> lessonList;
 
     @FXML
     private void switchToSchedule() throws IOException {
@@ -15,12 +19,14 @@ public class LibraryController {
 
     @FXML
     void connectToCourseLibraryPage() {
-        App.switchToCourseLibraryView();
+        //change back later
+        App.switchToHomePageView();
     }
 
 
     public void initialize() {
-
+//        String lessonTitle = Course.currentLessonPlan.getTitle();
+//        lessonList.getItems().add(lessonTitle);
     }
 
 

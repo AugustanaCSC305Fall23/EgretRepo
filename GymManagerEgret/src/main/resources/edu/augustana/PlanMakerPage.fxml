@@ -164,8 +164,9 @@
 
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
+                  <Button mnemonicParsing="false" onAction="#loadAction" text="Load" textFill="#216065" />
                   <Button mnemonicParsing="false" text="Print" textFill="#216065" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#completeLessonPlan" text="Save" textFill="#216065" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" text="Save" textFill="#216065" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
                </buttons>
                <VBox.margin>

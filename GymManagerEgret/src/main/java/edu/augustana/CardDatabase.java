@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
@@ -18,6 +20,7 @@ import javafx.scene.control.Label;
 public class CardDatabase {
 
     public static ArrayList<Card> allCards = new ArrayList<>();
+    private static HashMap<String, Card> uniqueIdToCardMap = new HashMap<>();
     //public static ArrayList<Card> filteredCards = allCards;
     public static ObservableList<CardFilter> activeFilters = FXCollections.observableArrayList();
     CardDatabase(){};
@@ -33,9 +36,14 @@ public class CardDatabase {
             addCard(card);
         }
     }
-    public static void addCard(Card card){
+    private static void addCard(Card card){
         allCards.add(card);
+        uniqueIdToCardMap.put(card.getUniqueId(),card);
     };
+
+    public static Card getCardByUniqueId(String id){
+        return uniqueIdToCardMap.get(id);
+    }
 
     public void printCards(){
         System.out.println(allCards);

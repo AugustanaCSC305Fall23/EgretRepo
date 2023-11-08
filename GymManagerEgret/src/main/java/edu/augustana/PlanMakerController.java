@@ -8,9 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -25,6 +23,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 
 public class PlanMakerController {
@@ -78,6 +78,8 @@ public class PlanMakerController {
 
     @FXML
     private FlowPane cardImages;
+    @FXML
+    private Button saveButton;
 
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
@@ -88,10 +90,11 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
 
-    private ArrayList<Image> lessonCards = new ArrayList<>();
 
 
     private Set<String> addedCardIDs = new HashSet<>();
+
+    private static PlanMakerController instance;
 
     public PlanMakerController() {
     }
@@ -114,11 +117,12 @@ public class PlanMakerController {
         initializeComboBoxes();
         //filterCardDisplay(filteredCards);
 
-
+        //needs to be changed
+        App.currentLessonPlan = new LessonPlan(label.getText());
     }
 
 
-    private void showImagePopup(Image image, boolean addOrRemove) {
+    private void showImagePopup(Card card, Image image, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
@@ -143,22 +147,33 @@ public class PlanMakerController {
             imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
         }
 
-        addOrDeleteCards(image, imageAlert, addCardButtonType);
+        addOrDeleteCards(card, image, imageAlert, addCardButtonType);
         imageAlert.showAndWait();
 
 
     }
 
-    private void addOrDeleteCards(Image image, Alert imageAlert, ButtonType addCardButtonType){
+
+    private void addOrDeleteCards(Card card,Image image, Alert imageAlert, ButtonType addCardButtonType){
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
-                if (!lessonCards.contains(image)) {
-                    ImageView cardImageView = new ImageView(image);
+
+                if (!App.currentLessonPlan.containsCard(card)) {
+                    ImageView cardImageView = new ImageView(card.getImage());
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
-                    lessonCards.add(image);
                     displayLesson.getChildren().add(cardImageView);
-                    cardImageView.setOnMouseClicked(event -> showImagePopup(image, false));
+                    cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
+                    App.currentLessonPlan.addCard(card);
+                    //Add to LessonPlan code here
+                  // currentLessonOnPlan.addCard(card);
+
+          //          currentLessonOnPlan.addCard(card);
+          //          System.out.println("Current Lesson: "+currentLessonOnPlan.toString());
+
+            //        App.currentLessonPlan.addCard(card);
+
+
                 }else{
                     Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
                     alreadyAddedAlert.setHeaderText(null);
@@ -168,11 +183,13 @@ public class PlanMakerController {
                     alreadyAddedAlert.showAndWait();
                 }
             } else {
-                lessonCards.remove(image);
+                App.currentLessonPlan.removeCard(card);
                 displayLesson.getChildren().remove(cardImageView);
                 // addedCardIDs.remove(image.toString());
                // System.out.println(addedCardIDs);
-                System.out.println(lessonCards.toString());
+                //System.out.println(lessonCardImages.toString());
+               // currentLessonOnPlan.removeCard(card);
+               // App.currentLessonPlan.removeCard(card);
             }
             return buttonType;
         });
@@ -236,11 +253,11 @@ public class PlanMakerController {
         cardFlowPane.getChildren().clear();
         for(Card card : cardSelection) {
             ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            Image cardImage = card.getImage();
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage, true));
+            newCardView.setOnMouseClicked(event -> showImagePopup(card,cardImage, true));
             cardFlowPane.getChildren().add(newCardView);
             //System.out.println(card);
         }
@@ -327,25 +344,61 @@ public class PlanMakerController {
     }
 
 
-
            @FXML
-          private void completeLessonPlan() {
+          private void saveAsAction(ActionEvent event) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle(App.currentLessonPlan.getTitle());
+            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Logs(*.courselog)","*.courselog");
+            fileChooser.getExtensionFilters().add(filter);
+            Window mainWindow = displayLesson.getScene().getWindow();
+            File chosenFile = fileChooser.showSaveDialog(mainWindow);
+            saveCurrentLessonPlanToFile(chosenFile);
 
            }
-//        // Assuming that lessonCards contains the selected cards
-//        LessonPlan current = Course.currentLessonPlan;
-//        //for (ImageView cardImageView : lessonCards) {
-//            // Create a new ImageView for each card
-//            ImageView libraryCardImageView = new ImageView(cardImageView.getImage());
-//
-//            // Add the ImageView to the libraryFlowPane in your library view
-//            displayLesson.getChildren().add(libraryCardImageView);
-//            //current.addCard();
-//        }
-//
-//        // After adding the cards to the library view, you can switch to the library view
-//        App.switchToLibraryView();
+
+    private void saveCurrentLessonPlanToFile(File chosenFile) {
+        if (chosenFile != null) {
+            try {
+                App.saveCurrentLessonPlanToFile(chosenFile);
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Error saving lesson plan file: " + chosenFile).show();
+            }
+        }
     }
+
+
+@FXML
+private void loadAction(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("New File");
+    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselog)", "*.courselog");
+    fileChooser.getExtensionFilters().add(filter);
+    Window mainWindow = displayLesson.getScene().getWindow();
+    File chosenFile = fileChooser.showOpenDialog(mainWindow);
+    if (chosenFile != null) {
+        try {
+            App.loadCurrentLessonPlanFromFile(chosenFile);
+            displayLesson.getChildren().clear();
+            LessonPlan loadedLesson = App.getCurrentLessonLog();
+           // displayLesson.getChildren().addAll(loadedLesson.get());
+            // make an imageview for each card, and add it to the displayLesson TilePane
+
+            //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
+            for(Card card: loadedLesson.getCopyOfLessonCards()){
+                ImageView cardImageView = new ImageView(card.getImage());
+                cardImageView.setFitWidth(1650/6.5);
+                cardImageView.setFitHeight(1275/6.5);
+                displayLesson.getChildren().add(cardImageView);
+            }
+
+        } catch (IOException ex) {
+            new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
+        }
+    }
+}
+
+
+}
 
 
 
