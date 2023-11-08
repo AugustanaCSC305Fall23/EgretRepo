@@ -174,14 +174,35 @@ public class PlanMakerController {
             } else {
                 ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
                 lessonCards.remove(card);
+
+                try {
+                    updateLessonDisplay(lessonCards);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
                 //displayLesson.getChildren();
-                // addedCardIDs.remove(image.toString());
-                System.out.println(lessonCards.toString());
+                //addedCardIDs.remove(image.toString());
+                System.out.println(lessonCards);
             }
             return buttonType;
         });
 
     }
+
+    public void updateLessonDisplay(ArrayList<Card> lessonCards) throws FileNotFoundException {
+        displayLesson.getChildren().clear();
+        for (Card card : lessonCards) {
+            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            ImageView cardImageView = new ImageView(cardImage);
+            cardImageView.setFitWidth(1650 / 6.5);
+            cardImageView.setFitHeight(1275 / 6.5);
+            displayLesson.getChildren().add(cardImageView);
+            cardImageView.setOnMouseClicked(event -> showImagePopup(card, cardImage, false));
+            //System.out.println(lessonCards.toString());
+        }
+    }
+
 
 
     private void printOptions(){
@@ -205,6 +226,26 @@ public class PlanMakerController {
         });
         imageAlert.showAndWait();
 
+    }
+
+    private void initializeCardDisplay() throws FileNotFoundException {
+        //Loops through every card, turns them into an imageView, and then displays them.
+        cardFlowPane.setPadding(new Insets(5,5,5,5));
+        setCardDisplay(allCards);
+    }
+
+    public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
+        cardFlowPane.getChildren().clear();
+        for(Card card : cardSelection) {
+            ImageView newCardView = new ImageView();
+            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            newCardView.setImage(cardImage);
+            newCardView.setFitHeight(150);
+            newCardView.setFitWidth(200);
+            newCardView.setOnMouseClicked(event -> showImagePopup(card, cardImage, true));
+            cardFlowPane.getChildren().add(newCardView);
+            //System.out.println(card);
+        }
     }
     private void printContent(TilePane nodeToPrint) {
         System.out.println("printContent called: " + nodeToPrint);
@@ -275,25 +316,7 @@ public class PlanMakerController {
         });
         eventChoiceBox.getItems().addAll(event);
     }
-    private void initializeCardDisplay() throws FileNotFoundException {
-        //Loops through every card, turns them into an imageView, and then displays them.
-        cardFlowPane.setPadding(new Insets(5,5,5,5));
-        setCardDisplay(allCards);
-    }
 
-    public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
-        cardFlowPane.getChildren().clear();
-        for(Card card : cardSelection) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(event -> showImagePopup(card, cardImage, true));
-            cardFlowPane.getChildren().add(newCardView);
-            //System.out.println(card);
-        }
-    }
 
     @FXML
     void onEditButtonClick() {
