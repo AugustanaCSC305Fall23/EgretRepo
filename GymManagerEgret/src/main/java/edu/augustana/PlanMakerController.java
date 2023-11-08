@@ -343,6 +343,8 @@ public class PlanMakerController {
     private void inputAdvanceBasic() {resolveDifficultyButtons("AB");}
     @FXML
     private void inputIntermediate() {resolveDifficultyButtons("I");}
+    @FXML
+    private void inputALLDifficulty() {resolveDifficultyButtons("ALL");}
     private void resolveDifficultyButtons(String level) {
         CardDatabase.addFilter(new DifficultyFilter(level));
         try {
@@ -352,12 +354,14 @@ public class PlanMakerController {
         }
     }
     @FXML
-    private void inputMale() throws FileNotFoundException {resolveGenderButtons("M");}
+    private void inputMale() {resolveGenderButtons("M");}
     @FXML
-    private void inputFemale() throws FileNotFoundException {resolveGenderButtons("F");}
+    private void inputFemale() {resolveGenderButtons("F");}
     @FXML
-    private void inputNeutral() throws FileNotFoundException {resolveGenderButtons("N");}
-    private void resolveGenderButtons(String gender) throws FileNotFoundException {
+    private void inputNeutral() {resolveGenderButtons("N");}
+    @FXML
+    private void inputALLGender() {resolveGenderButtons("ALL");}
+    private void resolveGenderButtons(String gender) {
         CardDatabase.addFilter(new GenderFilter(gender));
         try {
             setCardDisplay(CardDatabase.filterCards());

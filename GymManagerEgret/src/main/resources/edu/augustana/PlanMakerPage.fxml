@@ -43,7 +43,7 @@
                                     </ChoiceBox>
                                  </children>
                               </HBox>
-                              <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                              <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
                                     <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" text="M" textFill="#216065">
@@ -61,6 +61,11 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
+                                    <Button mnemonicParsing="false" onAction="#inputALLGender" text="ALL" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
                               </HBox>
                               <HBox fx:id="clearHbox" layoutY="217.0">
@@ -68,7 +73,7 @@
                                     <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" text="Clear" textFill="#216065" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="difficultyHbox" layoutY="64.0">
+                              <HBox fx:id="difficultyHbox" layoutY="64.0" prefHeight="26.0" prefWidth="204.0">
                                  <children>
                                     <Label text="Difficulty" textFill="#216065" />
                                     <Button mnemonicParsing="false" onAction="#inputBasic" text="B" textFill="#216065">
@@ -82,6 +87,11 @@
                                        </HBox.margin>
                                     </Button>
                                     <Button mnemonicParsing="false" onAction="#inputIntermediate" text="I" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" text="ALL" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>

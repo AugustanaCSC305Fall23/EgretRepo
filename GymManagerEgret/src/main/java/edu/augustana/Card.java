@@ -20,6 +20,8 @@ public class Card {
 
     private final String modelSex;
 
+    private boolean favoriteStatus;
+
     private final ArrayList<String> level = new ArrayList<>();
 
     private final ArrayList<String> equipment = new ArrayList<>();
@@ -51,6 +53,7 @@ public class Card {
         this.image = cardData[5];
         this.gender = cardData[6];
         this.modelSex = cardData[7];
+        this.favoriteStatus = false;
         ArrayList<String> level = new ArrayList<>(Arrays.asList(cardData[8].split(" ")));
         for (String category : level){
             category = category.trim();

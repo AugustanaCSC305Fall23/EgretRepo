@@ -10,6 +10,12 @@ public class DifficultyFilter implements CardFilter {
     }
 
     public boolean matches(Card candidateCard){
-        return candidateCard.getLevel().contains(searchDifficulty);
+        if(searchDifficulty.equals("ALL")) {
+            return true;
+        } else if (candidateCard.getLevel().contains("ALL")) {
+            return true;
+        }else{
+            return candidateCard.getLevel().contains(searchDifficulty);
+        }
     }
 }
