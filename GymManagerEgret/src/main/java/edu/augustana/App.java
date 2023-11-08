@@ -29,6 +29,7 @@ public class App extends Application {
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
     }
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("HomePage"), 800, 650);
@@ -49,7 +50,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        database.addCardsFromCSV();
+        CardDatabase.addCardsFromCSV("DEMO1.csv");
+        CardDatabase.addCardsFromCSV("DEMO2.csv");
         database.printCards();
         launch();
     }
@@ -63,6 +65,7 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
+
     public static void switchToLibraryView() {
         switchToView("LibraryPage.fxml");
     }
@@ -79,38 +82,34 @@ public class App extends Application {
         //change back later
         switchToView("LibraryPage.fxml");
     }
-    public static LessonPlan getCurrentLessonLog(){
+
+    public static LessonPlan getCurrentLessonLog() {
         return currentLessonPlan;
     }
 
-    public static File getCurrentLessonFile(){
+    public static File getCurrentLessonFile() {
         return currentLessonPlanFile;
     }
-//    public static void loadCurrentMovieLogFromFile(File movieLogFile) throws IOException {
-//        currentMovieLog = MovieLog.loadFromFile(movieLogFile);
-//        currentMovieLogFile = movieLogFile;
-//    }
-//    public static void saveCurrentMovieLogToFile(File chosenFile) throws IOException {
-//        currentMovieLog.saveToFile(chosenFile);
-//        currentMovieLogFile = chosenFile;
-//    }
+
 
     public static void saveCurrentLessonPlanToFile(File fileToSaveTo) throws IOException {
         // after this, File will contain the data from the LessonPlan object
         currentLessonPlan.saveToFile(fileToSaveTo);
-        currentLessonPlanFile= fileToSaveTo;
-
-
-        }
-
-    
-    public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
-        currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
-        currentLessonPlanFile =   fileToLoadFrom;
+        currentLessonPlanFile = fileToSaveTo;
 
 
     }
 
 
+    public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
+        currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
+        currentLessonPlanFile = fileToLoadFrom;
 
+
+    }
+
+
+    public static void switchToPrintCardsView() {
+        switchToView("PrintCardsPage.fxml");
+    }
 }

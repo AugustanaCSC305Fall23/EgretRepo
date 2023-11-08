@@ -24,6 +24,8 @@ public class Card {
 
     private final String modelSex;
 
+    private boolean favoriteStatus;
+
     private final ArrayList<String> level = new ArrayList<>();
 
     private final ArrayList<String> equipment = new ArrayList<>();
@@ -53,9 +55,10 @@ public class Card {
         this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
-        this.image = new Image(new FileInputStream("DEMO1ImagePack/" + imageFileName));
+        this.image = new Image(new FileInputStream("CardPhotos/" + pack +"Images/" + imageFileName));
         this.gender = cardData[6];
         this.modelSex = cardData[7];
+        this.favoriteStatus = false;
         ArrayList<String> level = new ArrayList<>(Arrays.asList(cardData[8].split(" ")));
         for (String category : level){
             category = category.trim();

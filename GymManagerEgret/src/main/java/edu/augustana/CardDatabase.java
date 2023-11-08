@@ -25,9 +25,9 @@ public class CardDatabase {
     public static ObservableList<CardFilter> activeFilters = FXCollections.observableArrayList();
     CardDatabase(){};
 
-    public static void addCardsFromCSV() throws IOException, CsvValidationException {
+    public static void addCardsFromCSV(String fileName) throws IOException, CsvValidationException {
         //reads through the CSV file, skipping the headers in the first line.
-        CSVReader reader = new CSVReaderBuilder(new FileReader("DEMO1.csv")).withSkipLines(1).build();
+        CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withSkipLines(1).build();
         String [] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line

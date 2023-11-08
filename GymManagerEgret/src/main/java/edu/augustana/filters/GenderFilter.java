@@ -10,6 +10,10 @@ public class GenderFilter implements CardFilter {
     }
 
     public boolean matches(Card candidateCard){
-        return candidateCard.getGender().equals(desiredGender);
+        if(desiredGender.equals("ALL")) {
+            return true;
+        } else{
+            return candidateCard.getGender().equals(desiredGender);
+        }
     };
 }

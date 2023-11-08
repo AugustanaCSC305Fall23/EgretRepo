@@ -43,7 +43,7 @@
                                     </ChoiceBox>
                                  </children>
                               </HBox>
-                              <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                              <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
                                     <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" text="M" textFill="#216065">
@@ -61,6 +61,11 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
+                                    <Button mnemonicParsing="false" onAction="#inputALLGender" text="ALL" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
                               </HBox>
                               <HBox fx:id="clearHbox" layoutY="217.0">
@@ -68,7 +73,7 @@
                                     <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" text="Clear" textFill="#216065" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="difficultyHbox" layoutY="64.0">
+                              <HBox fx:id="difficultyHbox" layoutY="64.0" prefHeight="26.0" prefWidth="204.0">
                                  <children>
                                     <Label text="Difficulty" textFill="#216065" />
                                     <Button mnemonicParsing="false" onAction="#inputBasic" text="B" textFill="#216065">
@@ -82,6 +87,11 @@
                                        </HBox.margin>
                                     </Button>
                                     <Button mnemonicParsing="false" onAction="#inputIntermediate" text="I" textFill="#216065">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" text="ALL" textFill="#216065">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -143,12 +153,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextArea fx:id="textArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
+                  <TextArea fx:id="lessonTitletextArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                      <StackPane.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Label fx:id="label" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+                  <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>
@@ -165,8 +175,9 @@
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
                   <Button mnemonicParsing="false" onAction="#loadAction" text="Load" textFill="#216065" />
-                  <Button mnemonicParsing="false" text="Print" textFill="#216065" />
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" text="Save" textFill="#216065" />
+                  <Button fx:id="printDemo" mnemonicParsing="false" text="Print" textFill="#216065" />
+                  <Button fx:id="print" mnemonicParsing="false" text="Print Options" textFill="#216065" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
                </buttons>
                <VBox.margin>

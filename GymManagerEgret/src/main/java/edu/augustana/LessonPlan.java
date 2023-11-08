@@ -1,21 +1,31 @@
 package edu.augustana;
 
+
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 public class LessonPlan {
     private ArrayList<String> userChosenCardIDs;
 
+
     private String title;
+
 
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();
     }
+
+    public static PlanMakerController getInstance() {
+        return null;
+    }
+
 
     public ArrayList<Card> getCopyOfLessonCards() {
         ArrayList<Card> cardList = new ArrayList<>();
@@ -26,13 +36,17 @@ public class LessonPlan {
     }
 
 
+
+
     public void addCard(Card card){
         userChosenCardIDs.add(card.getUniqueId());
     }
 
+
     public void removeCard(Card card){
         userChosenCardIDs.remove(card.getUniqueId());
     }
+
 
     public boolean containsCard(Card card){
         return userChosenCardIDs.contains(card.getUniqueId());
@@ -41,16 +55,17 @@ public class LessonPlan {
         return title;
     }
 
+
     public void setTitle(String title) {
         this.title = title;
     }
-
 
 
     public static LessonPlan loadFromFile(File logFile)throws IOException{
         FileReader reader = new FileReader(logFile);
         Gson gson = new Gson();
         return gson.fromJson(reader,LessonPlan.class);
+
 
     }
 
@@ -65,8 +80,3 @@ public class LessonPlan {
 
 
 }
-
-
-
-
-
