@@ -193,7 +193,7 @@ public class PlanMakerController {
     public void updateLessonDisplay(ArrayList<Card> lessonCards) throws FileNotFoundException {
         displayLesson.getChildren().clear();
         for (Card card : lessonCards) {
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            Image cardImage = new Image(new FileInputStream("CardPhotos/" + card.getPack() +"Images/" + card.getImage()));
             ImageView cardImageView = new ImageView(cardImage);
             cardImageView.setFitWidth(1650 / 6.5);
             cardImageView.setFitHeight(1275 / 6.5);
@@ -238,7 +238,7 @@ public class PlanMakerController {
         cardFlowPane.getChildren().clear();
         for(Card card : cardSelection) {
             ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            Image cardImage = new Image(new FileInputStream("CardPhotos/" + card.getPack() +"Images/" + card.getImage()));
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);

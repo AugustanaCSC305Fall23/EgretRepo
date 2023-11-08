@@ -44,7 +44,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        database.addCardsFromCSV();
+        CardDatabase.addCardsFromCSV("DEMO1.csv");
+        CardDatabase.addCardsFromCSV("DEMO2.csv");
         database.printCards();
         launch();
     }
