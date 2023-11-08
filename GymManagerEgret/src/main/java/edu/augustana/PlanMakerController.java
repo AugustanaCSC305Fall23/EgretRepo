@@ -1,16 +1,13 @@
 package edu.augustana;
+
 import java.io.*;
 import java.net.URL;
 import java.util.*;
-
 import edu.augustana.filters.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -26,9 +23,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
 import javafx.print.PrinterJob;
-import javafx.print.PrintQuality;
-import javafx.print.PageLayout;
-import javafx.scene.transform.Scale;
 
 
 public class PlanMakerController {
@@ -42,6 +36,9 @@ public class PlanMakerController {
     @FXML
     private Button print;
     @FXML
+    private Button printDemo;
+
+    @FXML
     private Button edit;
 
     @FXML
@@ -51,13 +48,12 @@ public class PlanMakerController {
     private Button home;
 
     @FXML
-    private Label label;
+    private Label lessonTitle;
 
     private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
 
-
     @FXML
-    private TextArea textArea;
+    private TextArea lessonTitletextArea;
 
     @FXML
     private TextField titleSearchBox;
@@ -93,10 +89,8 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
 
-    private ArrayList<Image> lessonCards = new ArrayList<>();
 
-
-    private Set<String> addedCardIDs = new HashSet<>();
+    private static PlanMakerController instance;
 
     public PlanMakerController() {
     }
@@ -111,20 +105,21 @@ public class PlanMakerController {
     void initialize() throws FileNotFoundException {
 
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
-        label.setVisible(true);
-        textArea.setVisible(false);
+        lessonTitle.setVisible(true);
+        lessonTitletextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         initializeCardDisplay();
         //category filter
         initializeComboBoxes();
         //filterCardDisplay(filteredCards);
-        print.setOnAction(event ->printContent(displayLesson));
 
+        print.setOnAction(event ->printOptions());
+        printDemo.setOnAction(event -> printContent(displayLesson));
 
     }
 
 
-    private void showImagePopup(Image image, boolean addOrRemove) {
+    private void showImagePopup(Card card, Image image, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
@@ -149,23 +144,24 @@ public class PlanMakerController {
             imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
         }
 
-        addOrDeleteCards(image, imageAlert, addCardButtonType);
+        addOrDeleteCards(card, image, imageAlert, addCardButtonType);
         imageAlert.showAndWait();
-
 
     }
 
-    private void addOrDeleteCards(Image image, Alert imageAlert, ButtonType addCardButtonType){
+    private void addOrDeleteCards(Card card, Image image, Alert imageAlert, ButtonType addCardButtonType){
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
-                if (!lessonCards.contains(image)) {
-
+                ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
+                if (!lessonCards.contains(card)) {
                     ImageView cardImageView = new ImageView(image);
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
-                    lessonCards.add(image);
+                    lessonCards.add(card);
                     displayLesson.getChildren().add(cardImageView);
-                    cardImageView.setOnMouseClicked(event -> showImagePopup(image, false));
+                    cardImageView.setOnMouseClicked(event -> showImagePopup(card, image, false));
+                    System.out.println(lessonCards.toString());
+
                 }else{
                     Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
                     alreadyAddedAlert.setHeaderText(null);
@@ -173,18 +169,43 @@ public class PlanMakerController {
                     alreadyAddedAlert.setContentText("Already added image");
                     alreadyAddedAlert.initOwner(App.primaryStage);
                     alreadyAddedAlert.showAndWait();
+
                 }
             } else {
-                lessonCards.remove(image);
-                displayLesson.getChildren().remove(cardImageView);
+                ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
+                lessonCards.remove(card);
+                //displayLesson.getChildren();
                 // addedCardIDs.remove(image.toString());
-               // System.out.println(addedCardIDs);
                 System.out.println(lessonCards.toString());
             }
             return buttonType;
         });
+
     }
 
+
+    private void printOptions(){
+        Alert imageAlert = new Alert(AlertType.INFORMATION);
+        imageAlert.initOwner(App.primaryStage);
+        imageAlert.setHeaderText(null);
+        imageAlert.setTitle("Print options");
+
+        ButtonType printCards = new ButtonType("Print Cards");
+        ButtonType printCardTitles = new ButtonType("Print Card Titles");
+        ButtonType printCardsEquipment = new ButtonType("Print Cards with Equipment");
+
+        imageAlert.setGraphic(null);
+        imageAlert.getButtonTypes().setAll(printCards, printCardTitles, printCardsEquipment, ButtonType.CANCEL);
+
+        imageAlert.setResultConverter(buttonType -> {
+            if (buttonType == printCards) {
+                App.switchToPrintCardsView(); // Call the method to switch to the "Print Cards" view.
+            }
+            return buttonType;
+        });
+        imageAlert.showAndWait();
+
+    }
     private void printContent(TilePane nodeToPrint) {
         System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
@@ -196,7 +217,16 @@ public class PlanMakerController {
             }
         }
     }
+    public ArrayList<Card> getLessonCards() {
+        return LessonPlan.getInstance().getLessonCards();
+    }
 
+    public static PlanMakerController getInstance() {
+        if (instance == null) {
+            instance = new PlanMakerController();
+        }
+        return instance;
+    }
 
     private void initializeComboBoxes(){
         ArrayList<String> category = new ArrayList<>();
@@ -251,7 +281,6 @@ public class PlanMakerController {
         setCardDisplay(allCards);
     }
 
-
     public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
         cardFlowPane.getChildren().clear();
         for(Card card : cardSelection) {
@@ -260,27 +289,30 @@ public class PlanMakerController {
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(event -> showImagePopup(cardImage, true));
+            newCardView.setOnMouseClicked(event -> showImagePopup(card, cardImage, true));
             cardFlowPane.getChildren().add(newCardView);
             //System.out.println(card);
         }
     }
 
     @FXML
-    private void resetFilters() throws FileNotFoundException {
-        categoryChoiceBox.setValue("ALL");
-        eventChoiceBox.setValue("ALL");
-        equipmentChoiceBox.setValue("ALL");
-        CardDatabase.clearFilters();
-        setCardDisplay(allCards);
+    void onEditButtonClick() {
+        lessonTitle.setVisible(false);
+        lessonTitletextArea.setVisible(true);
+        lessonTitletextArea.setText(lessonTitle.getText());
+        lessonTitletextArea.requestFocus();
+        edit.setDisable(true);
     }
     @FXML
-    void onEditButtonClick() {
-        label.setVisible(false);
-        textArea.setVisible(true);
-        textArea.setText(label.getText());
-        textArea.requestFocus();
-        edit.setDisable(true);
+    void onEnterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String editedText = lessonTitletextArea.getText();
+            lessonTitle.setText(editedText);
+            enteredTitle = editedText;
+            lessonTitletextArea.setVisible(false);
+            lessonTitle.setVisible(true);
+            edit.setDisable(false);
+        }
     }
     @FXML
     private void inputBasic() {resolveDifficultyButtons("B");}
@@ -332,26 +364,21 @@ public class PlanMakerController {
             throw new RuntimeException(e);
         }
     }
-
-
     @FXML
-    void onEnterPressed(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            String editedText = textArea.getText();
-            label.setText(editedText);
-            enteredTitle = editedText;
-            textArea.setVisible(false);
-            label.setVisible(true);
-            edit.setDisable(false);
-        }
+    private void resetFilters() throws FileNotFoundException {
+        categoryChoiceBox.setValue("ALL");
+        eventChoiceBox.setValue("ALL");
+        equipmentChoiceBox.setValue("ALL");
+        CardDatabase.clearFilters();
+        setCardDisplay(allCards);
     }
-
 
 
            @FXML
           private void completeLessonPlan() {
 
            }
+
 //        // Assuming that lessonCards contains the selected cards
 //        LessonPlan current = Course.currentLessonPlan;
 //        //for (ImageView cardImageView : lessonCards) {

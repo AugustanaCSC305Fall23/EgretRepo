@@ -143,12 +143,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextArea fx:id="textArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
+                  <TextArea fx:id="lessonTitletextArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                      <StackPane.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Label fx:id="label" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+                  <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>
@@ -164,9 +164,8 @@
 
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
-                  <Button fx:id="print" mnemonicParsing="false" text="Print" textFill="#216065" />
-                  <Button mnemonicParsing="false" text="Save" textFill="#216065" />
-                  <Button mnemonicParsing="false" text="Print" textFill="#216065" />
+                  <Button fx:id="printDemo" mnemonicParsing="false" text="Print" textFill="#216065" />
+                  <Button fx:id="print" mnemonicParsing="false" text="Print Options" textFill="#216065" />
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#completeLessonPlan" text="Save" textFill="#216065" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
                </buttons>
