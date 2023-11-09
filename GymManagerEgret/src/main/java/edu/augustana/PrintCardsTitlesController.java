@@ -35,7 +35,7 @@ public class PrintCardsTitlesController {
     @FXML
     void initialize() throws FileNotFoundException {
         displayLesson.setOrientation(Orientation.VERTICAL);
-        displayLesson.setAlignment(Pos.CENTER);
+        //displayLesson.setAlignment(Pos.CENTER);
 
         back.setOnAction(event -> connectToPlanMakerPage());
         lessonTitle.setText(App.currentLessonPlan.getTitle());
