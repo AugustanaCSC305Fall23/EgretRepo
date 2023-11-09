@@ -128,7 +128,7 @@
                <children>
                   <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" />
+                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" vgap="10" hgap="10"/>
                      </content>
                   </ScrollPane>
                </children>
