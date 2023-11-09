@@ -25,13 +25,12 @@ public class PrintCardsController {
     @FXML
     void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
-        PlanMakerController controller = PlanMakerController.getInstance();
-        ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
-
-        System.out.println(lessonCards.toString());
-        for (Card card : lessonCards) {
+//        LessonPlan lessonPlan = new LessonPlan();
+//        ArrayList<Card> lessonCards = lessonPlan.getCopyOfLessonCards();
+//        System.out.println(lessonCards.toString());
+        for (Card card : App.currentLessonPlan.getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
+            Image cardImage = card.getImage();
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);

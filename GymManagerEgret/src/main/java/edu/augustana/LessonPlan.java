@@ -4,28 +4,21 @@ package edu.augustana;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
 public class LessonPlan {
     private ArrayList<String> userChosenCardIDs;
-
-
     private String title;
 
+    public LessonPlan(){
 
+    }
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();
     }
-
-    public static PlanMakerController getInstance() {
-        return null;
-    }
-
 
     public ArrayList<Card> getCopyOfLessonCards() {
         ArrayList<Card> cardList = new ArrayList<>();
@@ -34,8 +27,6 @@ public class LessonPlan {
         }
         return cardList;
     }
-
-
 
 
     public void addCard(Card card){

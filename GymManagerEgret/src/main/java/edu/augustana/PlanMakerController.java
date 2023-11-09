@@ -97,8 +97,6 @@ public class PlanMakerController {
     private ChoiceBox<String> equipmentChoiceBox;
 
 
-    private static PlanMakerController instance;
-
     public PlanMakerController() {
     }
 
@@ -291,12 +289,7 @@ public class PlanMakerController {
         return App.currentLessonPlan.getCopyOfLessonCards();
     }
 
-    public static PlanMakerController getInstance() {
-        if (instance == null) {
-            instance = new PlanMakerController();
-        }
-        return instance;
-    }
+
 
     private void initializeComboBoxes(){
         ArrayList<String> category = new ArrayList<>();
