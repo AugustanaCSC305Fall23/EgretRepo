@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.print.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -25,8 +26,6 @@ import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import javafx.print.PrinterJob;
-
 
 
 public class PlanMakerController {
@@ -244,7 +243,6 @@ public class PlanMakerController {
     }
 
 
-
     private void printOptions(){
         System.out.println(App.currentLessonPlan.getTitle());
         Alert imageAlert = new Alert(AlertType.INFORMATION);
@@ -296,13 +294,20 @@ public class PlanMakerController {
         System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
         System.out.println("Job=" + job);
-        if (job != null && job.showPrintDialog(nodeToPrint.getScene().getWindow())){
-            boolean success = job.printPage(nodeToPrint);
-            if (success) {
-                job.endJob();
+
+        if (job != null) {
+            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+            job.getJobSettings().setPageLayout(pageLayout);
+
+            if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
+                boolean success = job.printPage(nodeToPrint);
+                if (success) {
+                    job.endJob();
+                }
             }
         }
     }
+
     public ArrayList<Card> getLessonCards() {
         return App.currentLessonPlan.getCopyOfLessonCards();
     }
