@@ -357,6 +357,8 @@ public class PlanMakerController {
             lessonTitle.setText(editedText);
             enteredTitle = editedText;
             lessonTitletextArea.setVisible(false);
+            //remove
+            App.currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
             edit.setDisable(false);
         }
@@ -461,6 +463,7 @@ private void loadAction(ActionEvent event) {
         try {
             App.loadCurrentLessonPlanFromFile(chosenFile);
             displayLesson.getChildren().clear();
+            lessonTitle.setText(App.currentLessonPlan.getTitle());
             LessonPlan loadedLesson = App.getCurrentLessonLog();
            // displayLesson.getChildren().addAll(loadedLesson.get());
             // make an imageview for each card, and add it to the displayLesson TilePane
