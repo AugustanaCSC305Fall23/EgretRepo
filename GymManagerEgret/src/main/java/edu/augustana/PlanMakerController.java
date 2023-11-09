@@ -456,7 +456,7 @@ public class PlanMakerController {
 
 
 @FXML
-private void loadAction(ActionEvent event) {
+private void loadAction() {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("New File");
     FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselog)", "*.courselog");
@@ -474,9 +474,11 @@ private void loadAction(ActionEvent event) {
 
             //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
             for(Card card: loadedLesson.getCopyOfLessonCards()){
+                //Image cardImage = new Image(new FileInputStream("CardPhotos/" + card.getPack() +"Images/" + card.getImage()));
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/6.5);
                 cardImageView.setFitHeight(1275/6.5);
+                cardImageView.setOnMouseClicked(event -> showImagePopup(card,card.getImage(),false));
                 displayLesson.getChildren().add(cardImageView);
             }
 
