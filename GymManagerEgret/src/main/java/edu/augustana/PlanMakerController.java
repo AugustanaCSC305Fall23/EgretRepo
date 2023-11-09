@@ -41,6 +41,9 @@ public class PlanMakerController {
     private Button print;
     @FXML
     private Button printDemo;
+    @FXML
+    private ImageView homeIcon;
+  //  private Image homeIconImage = new Image("file:CardPhotos/Icons/home_icon.png");
 
     @FXML
     private Button edit;
@@ -109,6 +112,7 @@ public class PlanMakerController {
     @FXML
     void initialize() throws FileNotFoundException {
 
+
         BorderPane.setAlignment(home, Pos.TOP_LEFT);
         lessonTitle.setVisible(true);
         lessonTitletextArea.setVisible(false);
@@ -120,7 +124,7 @@ public class PlanMakerController {
 
         //needs to be changed
         App.currentLessonPlan = new LessonPlan(lessonTitle.getText());
-
+        homeIcon.setImage(App.homeIcon());
         print.setOnAction(event ->printOptions());
         printDemo.setOnAction(event -> printContent(displayLesson));
 
@@ -241,15 +245,18 @@ public class PlanMakerController {
         imageAlert.setTitle("Print options");
 
         ButtonType printCards = new ButtonType("Print Cards");
-        ButtonType printCardTitles = new ButtonType("Print Card Titles");
+        ButtonType printCardsTitles = new ButtonType("Print Cards Titles");
         ButtonType printCardsEquipment = new ButtonType("Print Cards with Equipment");
 
         imageAlert.setGraphic(null);
-        imageAlert.getButtonTypes().setAll(printCards, printCardTitles, printCardsEquipment, ButtonType.CANCEL);
+        imageAlert.getButtonTypes().setAll(printCards, printCardsTitles, printCardsEquipment, ButtonType.CANCEL);
 
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == printCards) {
-                App.switchToPrintCardsView(); // Call the method to switch to the "Print Cards" view.
+                App.switchToPrintCardsView();
+            }
+            if (buttonType == printCardsTitles){
+                App.switchToPrintCardsTitles();
             }
             return buttonType;
         });

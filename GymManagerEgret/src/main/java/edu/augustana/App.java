@@ -19,8 +19,8 @@ public class App extends Application {
 
     //1 lesson plan
     public static LessonPlan currentLessonPlan;
-    public static File currentLessonPlanFile = null;
 
+    public static File currentLessonPlanFile = null;
     private static Scene scene;
 
     public static final CardDatabase database = new CardDatabase();
@@ -82,6 +82,10 @@ public class App extends Application {
         //change back later
         switchToView("LibraryPage.fxml");
     }
+    public static Image homeIcon(){
+        Image homeIconImage = new Image("file:CardPhotos/Icons/home_icon.png");
+        return homeIconImage;
+    }
 
     public static LessonPlan getCurrentLessonLog() {
         return currentLessonPlan;
@@ -111,5 +115,8 @@ public class App extends Application {
 
     public static void switchToPrintCardsView() {
         switchToView("PrintCardsPage.fxml");
+    }
+    public static void switchToPrintCardsTitles(){
+        switchToView("PrintCardsTitles.fxml");
     }
 }
