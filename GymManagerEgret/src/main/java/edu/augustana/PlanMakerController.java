@@ -148,6 +148,7 @@ public class PlanMakerController {
         imageAlert.setGraphic(null);
         ButtonType addCardButtonType = new ButtonType("Add Card");
         ButtonType removeCardButtonType = new ButtonType("Remove Card");
+        ButtonType chosenButtonType;
 
         if(addOrRemove) {
             imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
@@ -155,13 +156,13 @@ public class PlanMakerController {
             imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
         }
 
-        addOrDeleteCards(card, image, imageAlert, addCardButtonType);
+        addOrDeleteCards(card, image, imageAlert, addCardButtonType, removeCardButtonType);
         imageAlert.showAndWait();
 
     }
 
 
-    private void addOrDeleteCards(Card card,Image image, Alert imageAlert, ButtonType addCardButtonType){
+    private void addOrDeleteCards(Card card,Image image, Alert imageAlert, ButtonType addCardButtonType, ButtonType removeCardButtonType){
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == addCardButtonType) {
 
@@ -204,7 +205,7 @@ public class PlanMakerController {
                     alreadyAddedAlert.showAndWait();
 
                 }
-            } else {
+            } else if (buttonType == removeCardButtonType){
 
                 App.currentLessonPlan.removeCard(card);
                 //displayLesson.getChildren().remove(cardImageView);
