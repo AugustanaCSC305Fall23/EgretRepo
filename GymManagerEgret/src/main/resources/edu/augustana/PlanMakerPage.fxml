@@ -23,20 +23,20 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="650.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="650.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="titleSearchBox" onKeyTyped="#searchTitle" prefWidth="650.0" promptText="Search Title" />
             <Accordion prefWidth="650.0">
                <panes>
                   <TitledPane animated="false" text="Filters" textFill="#216065">
                      <content>
-                        <AnchorPane>
+                        <AnchorPane style="-fx-background-color: white;">
                            <children>
-                              <TextField fx:id="codeSearchBox" layoutX="-6.0" onKeyTyped="#searchCode" promptText="Search Code" />
-                              <HBox fx:id="eventHbox" layoutY="137.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                              <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" style="-fx-border-color: teal;" />
+                              <HBox fx:id="eventHbox" layoutY="149.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label text="Event" textFill="#216065" />
-                                    <ChoiceBox fx:id="eventChoiceBox" prefWidth="150.0" value="ALL">
+                                    <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -46,72 +46,72 @@
                               <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" text="M" textFill="#216065">
+                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" style="-fx-border-color: teal;" text="M">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" text="F" textFill="#216065">
+                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" style="-fx-border-color: teal;" text="F">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" text="N" textFill="#216065">
+                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" style="-fx-border-color: teal;" text="N">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLGender" text="ALL" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" style="-fx-border-color: teal;" text="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
                               </HBox>
-                              <HBox fx:id="clearHbox" layoutY="217.0">
+                              <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="48.0">
                                  <children>
-                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" text="Clear" textFill="#216065" />
+                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" style="-fx-border-color: teal;" text="Clear" />
                                  </children>
                               </HBox>
-                              <HBox fx:id="difficultyHbox" layoutY="64.0" prefHeight="26.0" prefWidth="204.0">
+                              <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
                                  <children>
-                                    <Label text="Difficulty" textFill="#216065" />
-                                    <Button mnemonicParsing="false" onAction="#inputBasic" text="B" textFill="#216065">
+                                    <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#216065" />
+                                    <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" style="-fx-border-color: teal;" text="B">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" text="AB" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" style="-fx-border-color: teal;" text="AB">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" text="I" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" style="-fx-border-color: teal;" text="I">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" text="ALL" textFill="#216065">
+                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: teal;" text="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
                               </HBox>
-                              <HBox fx:id="equipmentHbox" layoutY="104.0">
+                              <HBox fx:id="equipmentHbox" layoutY="109.0">
                                  <children>
                                     <Label text="Equipment" textFill="#216065" />
-                                    <ChoiceBox fx:id="equipmentChoiceBox" prefWidth="150.0" value="ALL">
+                                    <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </ChoiceBox>
                                  </children>
                               </HBox>
-                              <HBox fx:id="categoryHbox" layoutY="177.0">
+                              <HBox fx:id="categoryHbox" layoutX="4.0" layoutY="189.0">
                                  <children>
                                     <Label text="Category" textFill="#216065" />
-                                    <ChoiceBox fx:id="categoryChoiceBox" prefWidth="150.0" value="ALL">
+                                    <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -174,11 +174,11 @@
 
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
                <buttons>
-                  <Button mnemonicParsing="false" onAction="#loadAction" text="Load" textFill="#216065" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" text="Save" textFill="#216065" />
-                  <Button fx:id="printDemo" mnemonicParsing="false" text="Print" textFill="#216065" />
-                  <Button fx:id="print" mnemonicParsing="false" text="Print Options" textFill="#216065" />
-                  <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065" />
+                  <Button mnemonicParsing="false" onAction="#loadAction" style="-fx-border-color: teal;" text="Load" textFill="#216065" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" style="-fx-border-color: teal;" text="Save" textFill="#216065" />
+                  <Button fx:id="printDemo" mnemonicParsing="false" style="-fx-border-color: teal;" text="Print" textFill="#216065" />
+                  <Button fx:id="print" mnemonicParsing="false" style="-fx-border-color: teal;" text="Print Options" textFill="#216065" />
+                  <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" style="-fx-border-color: teal;" text="Edit" textFill="#216065" />
                </buttons>
                <VBox.margin>
                   <Insets bottom="5.0" right="10.0" />
