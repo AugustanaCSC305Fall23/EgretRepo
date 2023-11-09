@@ -1,13 +1,12 @@
 package edu.augustana;
 
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 public class LessonPlan {
     private static LessonPlan instance;
     private ArrayList<Card> lessonCards = new ArrayList<>();
+
+    private static String title;
 
     private LessonPlan() {
     }
@@ -18,22 +17,22 @@ public class LessonPlan {
         }
         return instance;
     }
-
     public ArrayList<Card> getLessonCards() {
         return lessonCards;
     }
 
-    public void setLessonCards(ArrayList<Card> cards) {
-        lessonCards = cards;
+
+    public LessonPlan(String title){
+        this.title = title;
     }
-//    private ArrayList<Card> cards;
-//
-//    private String title;
-//
-//    public LessonPlan(String title){
-//        this.title = title;
-//    }
-//
+    public String getTitle(){
+        return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+
+    }
     public void addCard(Card card){
         lessonCards.add(card);
     }

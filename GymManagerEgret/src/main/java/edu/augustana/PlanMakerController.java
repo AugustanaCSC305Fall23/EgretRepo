@@ -174,9 +174,7 @@ public class PlanMakerController {
             } else {
                 ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
                 lessonCards.remove(card);
-                //displayLesson.getChildren();
-                // addedCardIDs.remove(image.toString());
-                System.out.println(lessonCards.toString());
+
             }
             return buttonType;
         });
