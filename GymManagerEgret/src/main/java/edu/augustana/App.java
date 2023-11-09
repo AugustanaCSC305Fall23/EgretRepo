@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -15,6 +16,10 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
+
+    //1 lesson plan
+    public static LessonPlan currentLessonPlan;
+    public static File currentLessonPlanFile = null;
 
     private static Scene scene;
 
@@ -24,6 +29,7 @@ public class App extends Application {
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
     }
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("HomePage"), 800, 650);
@@ -44,7 +50,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        database.addCardsFromCSV();
+        CardDatabase.addCardsFromCSV("DEMO1.csv");
+        CardDatabase.addCardsFromCSV("DEMO2.csv");
         database.printCards();
         launch();
     }
@@ -58,6 +65,7 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
+
     public static void switchToLibraryView() {
         switchToView("LibraryPage.fxml");
     }
@@ -71,8 +79,36 @@ public class App extends Application {
     }
 
     public static void switchToCourseLibraryView() {
-        switchToView("CourseLibraryPage.fxml");
+        //change back later
+        switchToView("LibraryPage.fxml");
     }
+
+    public static LessonPlan getCurrentLessonLog() {
+        return currentLessonPlan;
+    }
+
+    public static File getCurrentLessonFile() {
+        return currentLessonPlanFile;
+    }
+
+
+    public static void saveCurrentLessonPlanToFile(File fileToSaveTo) throws IOException {
+        // after this, File will contain the data from the LessonPlan object
+        currentLessonPlan.saveToFile(fileToSaveTo);
+        currentLessonPlanFile = fileToSaveTo;
+
+
+    }
+
+
+    public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
+        currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
+        currentLessonPlanFile = fileToLoadFrom;
+
+
+    }
+
+
     public static void switchToPrintCardsView() {
         switchToView("PrintCardsPage.fxml");
     }

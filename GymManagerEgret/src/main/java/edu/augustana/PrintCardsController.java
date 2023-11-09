@@ -27,9 +27,19 @@ public class PrintCardsController {
 
     @FXML
     void initialize() throws FileNotFoundException {
-        initializeCardDisplay();
-        print.setOnAction(event -> printContent(printCardsDisplay));
         back.setOnAction(event -> connectToPlanMakerPage());
+        lessonTitle.setText(App.currentLessonPlan.getTitle());
+
+        for (Card card : App.currentLessonPlan.getCopyOfLessonCards()) {
+            ImageView newCardView = new ImageView();
+            Image cardImage = card.getImage();
+            newCardView.setImage(cardImage);
+            newCardView.setFitHeight(150);
+            newCardView.setFitWidth(200);
+            displayLesson.getChildren().add(newCardView);
+        }
+        print.setOnAction(event -> printContent(printCardsDisplay));
+
 
 
     }
@@ -37,19 +47,6 @@ public class PrintCardsController {
     @FXML
     void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
-    }
-
-    private void initializeCardDisplay() throws FileNotFoundException {
-        ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
-
-        for (Card card : lessonCards) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = new Image(new FileInputStream("DEMO1ImagePack/" + card.getImage()));
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            displayLesson.getChildren().add(newCardView);
-        }
     }
 
     private void printContent(VBox nodeToPrint) {

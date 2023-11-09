@@ -1,8 +1,11 @@
 package edu.augustana;
 
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Card {
     private final String code;
@@ -14,11 +17,14 @@ public class Card {
 
     private final String pack;
 
-    private final String image;
+    private final String imageFileName;
+    private final Image image;
 
     private final String gender;
 
     private final String modelSex;
+
+    private boolean favoriteStatus;
 
     private final ArrayList<String> level = new ArrayList<>();
 
@@ -33,7 +39,7 @@ public class Card {
                 ", event='" + event + '\'' +
                 ", category='" + category + '\'' +
                 ", title='" + title + '\'' +
-                ", image='" + image + '\'' +
+                ", image='" + imageFileName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", modelSex='" + modelSex + '\'' +
                 ", level='" + level + '\'' +
@@ -42,15 +48,17 @@ public class Card {
                 '}';
     }
     //Uses the cardData from a line of the CSV
-    public Card(String [] cardData) {
+    public Card(String [] cardData) throws FileNotFoundException {
         this.code = cardData[0];
         this.event = cardData[1];
         this.category = cardData[2];
         this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
-        this.image = cardData[5];
+        this.imageFileName = cardData[5];
+        this.image = new Image(new FileInputStream("CardPhotos/" + pack +"Images/" + imageFileName));
         this.gender = cardData[6];
         this.modelSex = cardData[7];
+        this.favoriteStatus = false;
         ArrayList<String> level = new ArrayList<>(Arrays.asList(cardData[8].split(" ")));
         for (String category : level){
             category = category.trim();
@@ -90,8 +98,12 @@ public class Card {
         return pack;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public String getUniqueId(){
+        return pack+"/"+ imageFileName;
     }
 
     public String getGender() {
@@ -115,6 +127,8 @@ public class Card {
     }
 
 
+    public Image getImage() {
+        return image;
 
-
+    }
 }

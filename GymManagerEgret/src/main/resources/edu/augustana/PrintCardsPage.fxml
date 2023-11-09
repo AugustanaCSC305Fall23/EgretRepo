@@ -12,7 +12,7 @@
    <center>
       <VBox fx:id="printCardsDisplay" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-             <Label fx:id="label" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+             <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                <font>
                   <Font size="38.0" />
                </font>
