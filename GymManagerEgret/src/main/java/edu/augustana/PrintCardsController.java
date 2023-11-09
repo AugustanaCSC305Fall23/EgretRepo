@@ -35,6 +35,7 @@ public class PrintCardsController {
         back.setOnAction(event -> connectToPlanMakerPage());
         lessonTitle.setText(App.currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
+        displayLesson.setPrefColumns(3);
         for (Card card : App.currentLessonPlan.getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
             Image cardImage = card.getImage();
@@ -43,6 +44,7 @@ public class PrintCardsController {
             newCardView.setFitWidth(200);
             displayLesson.getChildren().add(newCardView);
         }
+
         print.setOnAction(event -> printContent(printCardsDisplay));
 
 
@@ -58,7 +60,7 @@ public class PrintCardsController {
         App.switchToHomePageView();
     }
 
-    private void printContent(VBox nodeToPrint) {
+    private void printContent(Node nodeToPrint) {
         System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
         System.out.println("Job=" + job);
@@ -66,10 +68,6 @@ public class PrintCardsController {
         if (job != null) {
             PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
             job.getJobSettings().setPageLayout(pageLayout);
-
-            // Adjust the width and height of the TilePane to fit the landscape page
-            nodeToPrint.setPrefWidth(pageLayout.getPrintableWidth());
-            nodeToPrint.setPrefHeight(pageLayout.getPrintableHeight());
 
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
                 boolean success = job.printPage(nodeToPrint);

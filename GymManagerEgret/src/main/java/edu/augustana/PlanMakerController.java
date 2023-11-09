@@ -39,8 +39,7 @@ public class PlanMakerController {
 
     @FXML
     private Button print;
-    @FXML
-    private Button printDemo;
+
     @FXML
     private ImageView homeIcon;
   //  private Image homeIconImage = new Image("file:CardPhotos/Icons/home_icon.png");
@@ -119,6 +118,7 @@ public class PlanMakerController {
         lessonTitle.setVisible(true);
         lessonTitletextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
+        edit.setOnAction(event -> onDoubleClick());
         initializeCardDisplay();
         //category filter
         initializeComboBoxes();
@@ -128,7 +128,7 @@ public class PlanMakerController {
         App.currentLessonPlan = new LessonPlan(lessonTitle.getText());
         homeIcon.setImage(App.homeIcon());
         print.setOnAction(event ->printOptions());
-        printDemo.setOnAction(event -> printContent(displayLesson));
+
 
 
     }
@@ -294,23 +294,7 @@ public class PlanMakerController {
         }
     }
 
-    private void printContent(TilePane nodeToPrint) {
-        System.out.println("printContent called: " + nodeToPrint);
-        PrinterJob job = PrinterJob.createPrinterJob();
-        System.out.println("Job=" + job);
 
-        if (job != null) {
-            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
-            job.getJobSettings().setPageLayout(pageLayout);
-
-            if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
-                boolean success = job.printPage(nodeToPrint);
-                if (success) {
-                    job.endJob();
-                }
-            }
-        }
-    }
 
     public ArrayList<Card> getLessonCards() {
         return App.currentLessonPlan.getCopyOfLessonCards();
@@ -371,6 +355,15 @@ public class PlanMakerController {
 
     @FXML
     void onEditButtonClick() {
+        lessonTitle.setVisible(false);
+        lessonTitletextArea.setVisible(true);
+        lessonTitletextArea.setText(lessonTitle.getText());
+        lessonTitletextArea.requestFocus();
+        edit.setDisable(true);
+    }
+
+    @FXML
+    void onDoubleClick() {
         lessonTitle.setVisible(false);
         lessonTitletextArea.setVisible(true);
         lessonTitletextArea.setText(lessonTitle.getText());

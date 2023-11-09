@@ -158,7 +158,7 @@
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+                  <Label fx:id="lessonTitle" alignment="CENTER" onMouseClicked="#onDoubleClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>
@@ -176,7 +176,6 @@
                <buttons>
                   <Button mnemonicParsing="false" onAction="#loadAction" style="-fx-border-color: teal;" text="Load" textFill="#216065" />
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" style="-fx-border-color: teal;" text="Save" textFill="#216065" />
-                  <Button fx:id="printDemo" mnemonicParsing="false" style="-fx-border-color: teal;" text="Print" textFill="#216065" />
                   <Button fx:id="print" mnemonicParsing="false" style="-fx-border-color: teal;" text="Print Options" textFill="#216065" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" style="-fx-border-color: teal;" text="Edit" textFill="#216065" />
                </buttons>

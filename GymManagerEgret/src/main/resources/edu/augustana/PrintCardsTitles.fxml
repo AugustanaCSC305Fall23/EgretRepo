@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsTitlesController">
     <center>
-        <VBox fx:id="printCardsDisplay" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="printCardsDisplay" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                     <font>

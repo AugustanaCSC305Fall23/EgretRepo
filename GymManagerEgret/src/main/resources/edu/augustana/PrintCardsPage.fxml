@@ -13,14 +13,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsController">
    <center>
-      <VBox fx:id="printCardsDisplay" prefHeight="210.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="printCardsDisplay" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
              <Label fx:id="lessonTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                <font>
                   <Font size="38.0" />
                </font>
             </Label>
-            <TilePane fx:id="displayLesson" prefHeight="745.0" prefWidth="1500.0" />
+            <TilePane fx:id="displayLesson" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="684.0" prefRows="3" prefWidth="998.0" vgap="10" />
          </children>
       </VBox>
    </center>
@@ -46,4 +46,7 @@
          </graphic>
       </Button>
    </top>
+   <right>
+      <VBox prefHeight="731.0" prefWidth="621.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
