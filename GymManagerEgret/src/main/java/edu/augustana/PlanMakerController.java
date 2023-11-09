@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
@@ -175,7 +176,8 @@ public class PlanMakerController {
                     cardImageView.setFitWidth(1650/6.5);
                     cardImageView.setFitHeight(1275/6.5);
                     displayLesson.getChildren().add(cardImageView);
-                    cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
+                    setMouseEvent(cardImageView, card, false);
+                    //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
                     App.currentLessonPlan.addCard(card);
                     //Add to LessonPlan code here
                   // currentLessonOnPlan.addCard(card);
@@ -238,7 +240,8 @@ public class PlanMakerController {
             cardImageView.setFitWidth(1650 / 6.5);
             cardImageView.setFitHeight(1275 / 6.5);
             displayLesson.getChildren().add(cardImageView);
-            cardImageView.setOnMouseClicked(event -> showImagePopup(card, card.getImage(), false));
+            setMouseEvent(cardImageView, card, false);
+            //cardImageView.setOnMouseClicked(event -> showImagePopup(card, card.getImage(), false));
             //System.out.println(lessonCards.toString());
         }
     }
@@ -286,7 +289,8 @@ public class PlanMakerController {
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            newCardView.setOnMouseClicked(event -> showImagePopup(card,cardImage, true));
+            setMouseEvent(newCardView, card, true);
+            //newCardView.setOnMouseClicked(event -> showImagePopup(card,cardImage, true));
             cardFlowPane.getChildren().add(newCardView);
             //System.out.println(card);
         }
@@ -469,6 +473,41 @@ public class PlanMakerController {
             }
         }
     }
+    private void setMouseEvent(ImageView cardPane, Card card, boolean addOrRemove){
+        cardPane.setOnMouseClicked(event -> {
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
+                showImagePopup(card,card.getImage(),addOrRemove);
+            }else if(event.getButton().equals(MouseButton.SECONDARY)){
+                if(addOrRemove){
+                    if (!App.currentLessonPlan.containsCard(card)) {
+                        ImageView cardImageView = new ImageView(card.getImage());
+                        cardImageView.setFitWidth(1650/6.5);
+                        cardImageView.setFitHeight(1275/6.5);
+                        displayLesson.getChildren().add(cardImageView);
+                        setMouseEvent(cardImageView, card, false);
+                        App.currentLessonPlan.addCard(card);
+
+                    }else{
+                        Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+                        alreadyAddedAlert.setHeaderText(null);
+                        alreadyAddedAlert.setTitle("Add Card");
+                        alreadyAddedAlert.setContentText("Already added image");
+                        alreadyAddedAlert.initOwner(App.primaryStage);
+                        alreadyAddedAlert.showAndWait();
+
+                    }
+                } else{
+                    App.currentLessonPlan.removeCard(card);
+                    //displayLesson.getChildren().remove(cardImageView);
+                    try {
+                        updateLessonDisplay(App.currentLessonPlan.getCopyOfLessonCards());
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+    }
 
 
 @FXML
@@ -493,7 +532,8 @@ private void loadAction() {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/6.5);
                 cardImageView.setFitHeight(1275/6.5);
-                cardImageView.setOnMouseClicked(event -> showImagePopup(card,card.getImage(),false));
+                setMouseEvent(cardImageView, card, false);
+                //cardImageView.setOnMouseClicked(event -> showImagePopup(card,card.getImage(),false));
                 displayLesson.getChildren().add(cardImageView);
             }
             savedStatus = true;
