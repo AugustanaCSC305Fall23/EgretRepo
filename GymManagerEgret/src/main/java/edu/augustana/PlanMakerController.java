@@ -96,6 +96,8 @@ public class PlanMakerController {
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
 
+    private boolean savedStatus = false;
+
 
     public PlanMakerController() {
     }
@@ -205,7 +207,12 @@ public class PlanMakerController {
             } else {
 
                 App.currentLessonPlan.removeCard(card);
-                displayLesson.getChildren().remove(cardImageView);
+                //displayLesson.getChildren().remove(cardImageView);
+                try {
+                    updateLessonDisplay(App.currentLessonPlan.getCopyOfLessonCards());
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
                 // addedCardIDs.remove(image.toString());
                // System.out.println(addedCardIDs);
                 //System.out.println(lessonCardImages.toString());
@@ -448,6 +455,7 @@ public class PlanMakerController {
         if (chosenFile != null) {
             try {
                 App.saveCurrentLessonPlanToFile(chosenFile);
+                savedStatus = true;
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR, "Error saving lesson plan file: " + chosenFile).show();
             }
@@ -474,13 +482,13 @@ private void loadAction() {
 
             //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
             for(Card card: loadedLesson.getCopyOfLessonCards()){
-                //Image cardImage = new Image(new FileInputStream("CardPhotos/" + card.getPack() +"Images/" + card.getImage()));
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/6.5);
                 cardImageView.setFitHeight(1275/6.5);
                 cardImageView.setOnMouseClicked(event -> showImagePopup(card,card.getImage(),false));
                 displayLesson.getChildren().add(cardImageView);
             }
+            savedStatus = true;
 
         } catch (IOException ex) {
             new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
