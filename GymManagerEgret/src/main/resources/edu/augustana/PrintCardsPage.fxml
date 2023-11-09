@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
@@ -9,9 +10,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="printCardsDisplay" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-             <Label fx:id="label" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+             <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
                <font>
                   <Font size="38.0" />
                </font>
@@ -21,6 +22,11 @@
       </VBox>
    </center>
    <bottom>
-      <Button fx:id="back" mnemonicParsing="false" text="Back" textFill="#216065" BorderPane.alignment="CENTER" />
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button fx:id="print" mnemonicParsing="false" text="Print" />
+            <Button fx:id="back" mnemonicParsing="false" text="Back" />
+        </buttons>
+      </ButtonBar>
    </bottom>
 </BorderPane>

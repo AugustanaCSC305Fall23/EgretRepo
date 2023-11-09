@@ -203,6 +203,7 @@ public class PlanMakerController {
 
                 }
             } else {
+
                 App.currentLessonPlan.removeCard(card);
                 displayLesson.getChildren().remove(cardImageView);
                 // addedCardIDs.remove(image.toString());
@@ -210,6 +211,7 @@ public class PlanMakerController {
                 //System.out.println(lessonCardImages.toString());
                // currentLessonOnPlan.removeCard(card);
                // App.currentLessonPlan.removeCard(card);
+
             }
             return buttonType;
         });
@@ -232,6 +234,7 @@ public class PlanMakerController {
 
 
     private void printOptions(){
+        System.out.println(App.currentLessonPlan.getTitle());
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
@@ -361,6 +364,7 @@ public class PlanMakerController {
             App.currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
             edit.setDisable(false);
+            App.currentLessonPlan.setTitle(editedText);
         }
     }
     @FXML
