@@ -30,12 +30,7 @@ import javafx.stage.Window;
 
 
 public class PlanMakerController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    
 
     @FXML
     private Button print;
@@ -65,17 +60,7 @@ public class PlanMakerController {
     private TextField titleSearchBox;
 
     @FXML
-    private Button clearButton;
-
-
-
-    @FXML
     private FlowPane cardFlowPane;
-
-    @FXML
-    private ScrollPane cardScrollPane;
-    @FXML
-    private ImageView cardImageView;
 
     private String enteredTitle;
 
@@ -84,10 +69,6 @@ public class PlanMakerController {
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
 
-    @FXML
-    private FlowPane cardImages;
-    @FXML
-    private Button saveButton;
 
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
@@ -119,12 +100,9 @@ public class PlanMakerController {
         lessonTitletextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         edit.setOnAction(event -> onDoubleClick());
-        initializeCardDisplay();
-        //category filter
+        setCardDisplay(allCards);
         initializeComboBoxes();
-        //filterCardDisplay(filteredCards);
 
-        //needs to be changed
         App.currentLessonPlan = new LessonPlan(lessonTitle.getText());
         homeIcon.setImage(App.homeIcon());
         print.setOnAction(event ->printOptions());
@@ -134,13 +112,13 @@ public class PlanMakerController {
     }
 
 
-    private void showImagePopup(Card card, Image image, boolean addOrRemove) {
+    private void showImagePopup(Card card, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("View Card");
 
-        ImageView popupImageView = new ImageView(image);
+        ImageView popupImageView = new ImageView(card.getImage());
         popupImageView.setFitWidth(1650/3);
         popupImageView.setFitHeight(1275/3);
 
@@ -150,85 +128,75 @@ public class PlanMakerController {
 
         imageAlert.getDialogPane().setContent(contentVBox);
         imageAlert.setGraphic(null);
-        ButtonType addCardButtonType = new ButtonType("Add Card");
-        ButtonType removeCardButtonType = new ButtonType("Remove Card");
-        ButtonType chosenButtonType;
-
-        if(addOrRemove) {
-            imageAlert.getButtonTypes().setAll(addCardButtonType, ButtonType.CANCEL);
-        }else{
-            imageAlert.getButtonTypes().setAll(removeCardButtonType, ButtonType.CANCEL);
+        String placeButtonText;
+        if(addOrRemove){
+            placeButtonText = "Add Card";
+        } else {
+            placeButtonText = "Remove Card";
         }
+        ButtonType placeCardButtonType = new ButtonType(placeButtonText);
+        imageAlert.getButtonTypes().setAll(placeCardButtonType, ButtonType.CANCEL);
 
-        addOrDeleteCards(card, image, imageAlert, addCardButtonType, removeCardButtonType);
-        imageAlert.showAndWait();
-
-    }
-
-
-    private void addOrDeleteCards(Card card,Image image, Alert imageAlert, ButtonType addCardButtonType, ButtonType removeCardButtonType){
         imageAlert.setResultConverter(buttonType -> {
-            if (buttonType == addCardButtonType) {
-
-                if (!App.currentLessonPlan.containsCard(card)) {
-                    ImageView cardImageView = new ImageView(card.getImage());
-                    cardImageView.setFitWidth(1650/6.5);
-                    cardImageView.setFitHeight(1275/6.5);
-                    displayLesson.getChildren().add(cardImageView);
-                    setMouseEvent(cardImageView, card, false);
-                    //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
-                    App.currentLessonPlan.addCard(card);
-                    //Add to LessonPlan code here
-                  // currentLessonOnPlan.addCard(card);
-
-          //          currentLessonOnPlan.addCard(card);
-          //          System.out.println("Current Lesson: "+currentLessonOnPlan.toString());
-
-            //        App.currentLessonPlan.addCard(card);
-
-//=======
-//    private void addOrDeleteCards(Card card, Image image, Alert imageAlert, ButtonType addCardButtonType){
-//        imageAlert.setResultConverter(buttonType -> {
-//            if (buttonType == addCardButtonType) {
-//                ArrayList<Card> lessonCards = LessonPlan.getInstance().getLessonCards();
-//                if (!lessonCards.contains(card)) {
-//                    ImageView cardImageView = new ImageView(image);
-//                    cardImageView.setFitWidth(1650/6.5);
-//                    cardImageView.setFitHeight(1275/6.5);
-//                    lessonCards.add(card);
-//                    displayLesson.getChildren().add(cardImageView);
-//                    cardImageView.setOnMouseClicked(event -> showImagePopup(card, image, false));
-//                    System.out.println(lessonCards.toString());
-//>>>>>>> 965bdcb7ff336d43ff6b921a228a3f7697683c08
-
-                }else{
-                    Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
-                    alreadyAddedAlert.setHeaderText(null);
-                    alreadyAddedAlert.setTitle("Add Card");
-                    alreadyAddedAlert.setContentText("Already added image");
-                    alreadyAddedAlert.initOwner(App.primaryStage);
-                    alreadyAddedAlert.showAndWait();
-
+            if (buttonType == placeCardButtonType) {
+                if(addOrRemove){
+                    imageAlert.close();
+                    addCardToPlan(card);
+                } else {
+                    imageAlert.close();
+                    removeCardFromPlan(card);
                 }
-            } else if (buttonType == removeCardButtonType){
-
-                App.currentLessonPlan.removeCard(card);
-                //displayLesson.getChildren().remove(cardImageView);
-                try {
-                    updateLessonDisplay(App.currentLessonPlan.getCopyOfLessonCards());
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                // addedCardIDs.remove(image.toString());
-               // System.out.println(addedCardIDs);
-                //System.out.println(lessonCardImages.toString());
-               // currentLessonOnPlan.removeCard(card);
-               // App.currentLessonPlan.removeCard(card);
-
             }
             return buttonType;
         });
+        imageAlert.show();
 
+    }
+    private void setMouseEvent(ImageView cardPane, Card card, boolean addOrRemove){
+        cardPane.setOnMouseClicked(event -> {
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
+                showImagePopup(card,addOrRemove);
+            }else if(event.getButton().equals(MouseButton.SECONDARY)){
+                if(addOrRemove){
+                    addCardToPlan(card);
+                } else{
+                    removeCardFromPlan(card);
+                }
+            }
+        });
+    }
+    private void addCardToPlan(Card card){
+        if (!App.currentLessonPlan.containsCard(card)) {
+            ImageView cardImageView = new ImageView(card.getImage());
+            cardImageView.setFitWidth(1650/6.5);
+            cardImageView.setFitHeight(1275/6.5);
+            displayLesson.getChildren().add(cardImageView);
+            setMouseEvent(cardImageView, card, false);
+            App.currentLessonPlan.addCard(card);
+        }else{
+            System.out.println("cardExists");
+            Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+            System.out.println(1);
+            alreadyAddedAlert.setHeaderText(null);
+            System.out.println(2);
+            alreadyAddedAlert.setTitle("Add Card");
+            System.out.println(3);
+            alreadyAddedAlert.setContentText("Already added image");
+            System.out.println(4);
+            alreadyAddedAlert.initOwner(App.primaryStage);
+            System.out.println(5);
+            alreadyAddedAlert.showAndWait();
+            System.out.println(6);
+        }
+    }
+
+    private void removeCardFromPlan(Card card){
+        App.currentLessonPlan.removeCard(card);
+        try {
+            updateLessonDisplay(App.currentLessonPlan.getCopyOfLessonCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void updateLessonDisplay(ArrayList<Card> lessonCards) throws FileNotFoundException {
@@ -240,8 +208,6 @@ public class PlanMakerController {
             cardImageView.setFitHeight(1275 / 6.5);
             displayLesson.getChildren().add(cardImageView);
             setMouseEvent(cardImageView, card, false);
-            //cardImageView.setOnMouseClicked(event -> showImagePopup(card, card.getImage(), false));
-            //System.out.println(lessonCards.toString());
         }
     }
 
@@ -273,12 +239,6 @@ public class PlanMakerController {
 
     }
 
-    private void initializeCardDisplay() throws FileNotFoundException {
-        //Loops through every card, turns them into an imageView, and then displays them.
-        cardFlowPane.setPadding(new Insets(5,5,5,5));
-        setCardDisplay(allCards);
-    }
-
     public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
         cardFlowPane.getChildren().clear();
         for(Card card : cardSelection) {
@@ -288,9 +248,8 @@ public class PlanMakerController {
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
             setMouseEvent(newCardView, card, true);
-            //newCardView.setOnMouseClicked(event -> showImagePopup(card,cardImage, true));
             cardFlowPane.getChildren().add(newCardView);
-            //System.out.println(card);
+
         }
     }
 
@@ -471,41 +430,7 @@ public class PlanMakerController {
             }
         }
     }
-    private void setMouseEvent(ImageView cardPane, Card card, boolean addOrRemove){
-        cardPane.setOnMouseClicked(event -> {
-            if(event.getButton().equals(MouseButton.PRIMARY)) {
-                showImagePopup(card,card.getImage(),addOrRemove);
-            }else if(event.getButton().equals(MouseButton.SECONDARY)){
-                if(addOrRemove){
-                    if (!App.currentLessonPlan.containsCard(card)) {
-                        ImageView cardImageView = new ImageView(card.getImage());
-                        cardImageView.setFitWidth(1650/6.5);
-                        cardImageView.setFitHeight(1275/6.5);
-                        displayLesson.getChildren().add(cardImageView);
-                        setMouseEvent(cardImageView, card, false);
-                        App.currentLessonPlan.addCard(card);
 
-                    }else{
-                        Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
-                        alreadyAddedAlert.setHeaderText(null);
-                        alreadyAddedAlert.setTitle("Add Card");
-                        alreadyAddedAlert.setContentText("Already added image");
-                        alreadyAddedAlert.initOwner(App.primaryStage);
-                        alreadyAddedAlert.showAndWait();
-
-                    }
-                } else{
-                    App.currentLessonPlan.removeCard(card);
-                    //displayLesson.getChildren().remove(cardImageView);
-                    try {
-                        updateLessonDisplay(App.currentLessonPlan.getCopyOfLessonCards());
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        });
-    }
 
 
 @FXML
@@ -522,16 +447,12 @@ private void loadAction() {
             displayLesson.getChildren().clear();
             lessonTitle.setText(App.currentLessonPlan.getTitle());
             LessonPlan loadedLesson = App.getCurrentLessonLog();
-           // displayLesson.getChildren().addAll(loadedLesson.get());
-            // make an imageview for each card, and add it to the displayLesson TilePane
 
-            //cardImageView.setOnMouseClicked(event -> showImagePopup( card,image,false));
             for(Card card: loadedLesson.getCopyOfLessonCards()){
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/6.5);
                 cardImageView.setFitHeight(1275/6.5);
                 setMouseEvent(cardImageView, card, false);
-                //cardImageView.setOnMouseClicked(event -> showImagePopup(card,card.getImage(),false));
                 displayLesson.getChildren().add(cardImageView);
             }
             savedStatus = true;
