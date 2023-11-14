@@ -126,6 +126,12 @@ public class Card {
         return keywords;
     }
 
+    public boolean getFavoriteStatus() { return favoriteStatus;}
+
+    public void toggleFavorite(){
+        favoriteStatus = !favoriteStatus;
+    }
+
 
     public Image getImage() {
         return image;
