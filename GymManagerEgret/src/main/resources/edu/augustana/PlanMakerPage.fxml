@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
@@ -68,9 +69,17 @@
                                     </Button>
                                  </children>
                               </HBox>
-                              <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="48.0">
+                              <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="182.0">
                                  <children>
-                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" style="-fx-border-color: teal;" text="Clear" />
+                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="27.0" prefWidth="45.0" style="-fx-border-color: teal;" text="Clear">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin></Button>
+                                    <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" onMouseClicked="#searchFavorites" text="Favorites">
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </ToggleSwitch>
                                  </children>
                               </HBox>
                               <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
@@ -128,7 +137,7 @@
                <children>
                   <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" vgap="10" hgap="10"/>
+                        <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" vgap="10" />
                      </content>
                   </ScrollPane>
                </children>
@@ -168,7 +177,7 @@
                   </Label>
                </children>
             </StackPane>
-            <TilePane fx:id="displayLesson" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" vgap="10">
+            <TilePane fx:id="displayLesson" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#searchFavorites" prefHeight="1510.0" prefWidth="1860.0" vgap="10">
 
             </TilePane>
 

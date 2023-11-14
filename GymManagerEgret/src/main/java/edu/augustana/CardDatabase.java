@@ -63,6 +63,11 @@ public class CardDatabase {
         filterCards();
     }
 
+    public static void removeFilterType(CardFilter filter){
+        activeFilters.removeIf(currentFilter -> currentFilter.getClass().equals(filter.getClass()));
+        filterCards();
+    }
+
     public static void clearFilters(){
         activeFilters.clear();
     }

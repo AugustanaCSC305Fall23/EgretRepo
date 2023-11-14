@@ -27,10 +27,11 @@ import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import org.controlsfx.control.ToggleSwitch;
 
 
 public class PlanMakerController {
-    
+
 
     @FXML
     private Button print;
@@ -78,6 +79,9 @@ public class PlanMakerController {
 
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
+
+    @FXML
+    private ToggleSwitch favoriteSwitch;
 
     private boolean savedStatus = false;
 
@@ -134,8 +138,15 @@ public class PlanMakerController {
         } else {
             placeButtonText = "Remove Card";
         }
+        String favoriteButtonText;
+        if (card.getFavoriteStatus()){
+            favoriteButtonText = "Remove from Favorites";
+        } else {
+            favoriteButtonText = "Add to Favorites";
+        }
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
-        imageAlert.getButtonTypes().setAll(placeCardButtonType, ButtonType.CANCEL);
+        ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
+        imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, ButtonType.CANCEL);
 
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == placeCardButtonType) {
@@ -146,6 +157,9 @@ public class PlanMakerController {
                     imageAlert.close();
                     removeCardFromPlan(card);
                 }
+            } else if(buttonType == toggleFavoriteButton){
+                card.toggleFavorite();
+                System.out.println(card.getFavoriteStatus());
             }
             return buttonType;
         });
@@ -176,17 +190,12 @@ public class PlanMakerController {
         }else{
             System.out.println("cardExists");
             Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
-            System.out.println(1);
             alreadyAddedAlert.setHeaderText(null);
-            System.out.println(2);
             alreadyAddedAlert.setTitle("Add Card");
-            System.out.println(3);
             alreadyAddedAlert.setContentText("Already added image");
-            System.out.println(4);
             alreadyAddedAlert.initOwner(App.primaryStage);
-            System.out.println(5);
             alreadyAddedAlert.showAndWait();
-            System.out.println(6);
+
         }
     }
 
@@ -375,10 +384,22 @@ public class PlanMakerController {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    private void searchFavorites() {
+        if (favoriteSwitch.isSelected()){
+            CardDatabase.addFilter(new FavoriteFilter());
+        } else {
+            CardDatabase.removeFilterType(new FavoriteFilter());
+        }
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
-    public void searchCode() throws FileNotFoundException {
-        System.out.println(codeSearchBox.getText());
+    public void searchCode() {
         CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toUpperCase()));
         try {
             setCardDisplay(CardDatabase.filterCards());
@@ -388,7 +409,7 @@ public class PlanMakerController {
     }
 
     @FXML
-    public void searchTitle() throws FileNotFoundException {
+    public void searchTitle() {
         System.out.println(titleSearchBox.getText());
         CardDatabase.addFilter(new TitleFilter(titleSearchBox.getText().toLowerCase()));
         try {
