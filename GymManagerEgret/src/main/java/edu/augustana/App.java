@@ -82,8 +82,9 @@ public class App extends Application {
         //change back later
         switchToView("LibraryPage.fxml");
     }
+
     public static Image homeIcon(){
-        Image homeIconImage = new Image("file:CardPhotos/Icons/home_icon.png");
+        Image homeIconImage = new Image("file:CardPhotos/Icons/white_house.png");
         return homeIconImage;
     }
 
@@ -118,5 +119,8 @@ public class App extends Application {
     }
     public static void switchToPrintCardsTitles(){
         switchToView("PrintCardsTitles.fxml");
+    }
+    public static void switchToPrintCardsEquipment(){
+        switchToView("PrintCardsEquipmentPage.fxml");
     }
 }

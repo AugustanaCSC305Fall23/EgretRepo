@@ -36,9 +36,7 @@ public class PlanMakerController {
     @FXML
     private Button print;
 
-    @FXML
-    private ImageView homeIcon;
-  //  private Image homeIconImage = new Image("file:CardPhotos/Icons/home_icon.png");
+
 
     @FXML
     private Button edit;
@@ -46,8 +44,7 @@ public class PlanMakerController {
     @FXML
     private TextField codeSearchBox;
 
-    @FXML
-    private Button home;
+
 
     @FXML
     private Label lessonTitle;
@@ -69,6 +66,12 @@ public class PlanMakerController {
     private TilePane displayLesson;
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
+    @FXML
+    private FlowPane cardImages;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private ImageView home;
 
 
     @FXML
@@ -98,8 +101,7 @@ public class PlanMakerController {
     @FXML
     void initialize() throws FileNotFoundException {
 
-
-        BorderPane.setAlignment(home, Pos.TOP_LEFT);
+        home.setImage(App.homeIcon());
         lessonTitle.setVisible(true);
         lessonTitletextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
@@ -108,7 +110,6 @@ public class PlanMakerController {
         initializeComboBoxes();
 
         App.currentLessonPlan = new LessonPlan(lessonTitle.getText());
-        homeIcon.setImage(App.homeIcon());
         print.setOnAction(event ->printOptions());
 
 
@@ -241,6 +242,9 @@ public class PlanMakerController {
             }
             if (buttonType == printCardsTitles){
                 App.switchToPrintCardsTitles();
+            }
+            if (buttonType == printCardsEquipment){
+                App.switchToPrintCardsEquipment();
             }
             return buttonType;
         });
