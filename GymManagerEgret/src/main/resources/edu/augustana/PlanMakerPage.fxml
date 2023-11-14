@@ -21,22 +21,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="650.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="titleSearchBox" onKeyTyped="#searchTitle" prefWidth="650.0" promptText="Search Title" />
-            <Accordion prefWidth="650.0">
+            <TextField fx:id="titleSearchBox" onKeyTyped="#searchTitle" prefWidth="650.0" promptText="Search Title" styleClass="cardBackground" stylesheets="@style.css" />
+            <Accordion prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
                <panes>
-                  <TitledPane animated="false" text="Filters" textFill="#216065">
+                  <TitledPane animated="false" styleClass="lessonBackground" stylesheets="@style.css" text="Filters" textFill="#216065">
                      <content>
-                        <AnchorPane style="-fx-background-color: white;">
+                        <AnchorPane styleClass="filter" stylesheets="@style.css">
                            <children>
                               <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" style="-fx-border-color: teal;" />
                               <HBox fx:id="eventHbox" layoutY="149.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                  <children>
                                     <Label text="Event" textFill="#216065" />
-                                    <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
+                                    <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -46,22 +46,22 @@
                               <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" style="-fx-border-color: teal;" text="M">
+                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" text="M">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" style="-fx-border-color: teal;" text="F">
+                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" text="F">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" style="-fx-border-color: teal;" text="N">
+                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" text="N">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" style="-fx-border-color: teal;" text="ALL">
+                                    <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" text="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -70,28 +70,28 @@
                               </HBox>
                               <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="48.0">
                                  <children>
-                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" style="-fx-border-color: teal;" text="Clear" />
+                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" text="Clear" />
                                  </children>
                               </HBox>
                               <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#216065" />
-                                    <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" style="-fx-border-color: teal;" text="B">
+                                    <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" text="B">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" style="-fx-border-color: teal;" text="AB">
+                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" text="AB">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" style="-fx-border-color: teal;" text="I">
+                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" text="I">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: teal;" text="ALL">
+                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" text="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -101,7 +101,7 @@
                               <HBox fx:id="equipmentHbox" layoutY="109.0">
                                  <children>
                                     <Label text="Equipment" textFill="#216065" />
-                                    <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
+                                    <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -111,7 +111,7 @@
                               <HBox fx:id="categoryHbox" layoutX="4.0" layoutY="189.0">
                                  <children>
                                     <Label text="Category" textFill="#216065" />
-                                    <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" style="-fx-border-color: teal;" value="ALL">
+                                    <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -124,63 +124,86 @@
                   </TitledPane>
                </panes>
             </Accordion>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="850.0" prefWidth="650.0">
+            <AnchorPane fx:id="cardAnchorPane" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
                <children>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" vbarPolicy="ALWAYS">
+                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cardFlowPane" prefHeight="850.0" prefWidth="650.0" vgap="10" hgap="10"/>
+                        <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" styleClass="cardBackground" stylesheets="@style.css" vgap="10" />
                      </content>
                   </ScrollPane>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </AnchorPane>
          </children>
       </VBox>
    </left>
    <center>
-      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="1200.0" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="490.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="50.0">
+            <StackPane prefHeight="68.0" prefWidth="850.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
                <children>
-                  <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" textFill="#216065" StackPane.alignment="TOP_RIGHT">
+                  <ImageView fx:id="home" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#connectToHomePage" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+                     <image>
+                        <Image url="@../../../../../../CardPhotos/Icons/white_house.png" />
+                     </image>
                      <StackPane.margin>
-                        <Insets right="10.0" />
+                        <Insets right="10.0" top="5.0" />
                      </StackPane.margin>
-                     <graphic>
-                        <ImageView fx:id="homeIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../CardPhotos/Icons/home_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  </ImageView>
                   <TextArea fx:id="lessonTitletextArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                      <StackPane.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Label fx:id="lessonTitle" alignment="CENTER" onMouseClicked="#onDoubleClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
+                  <Label fx:id="lessonTitle" alignment="CENTER" onMouseClicked="#onDoubleClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="WHITE">
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>
                      <font>
-                        <Font name="Verdana" size="30.0" />
+                        <Font name="Arial" size="30.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <TilePane fx:id="displayLesson" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1510.0" prefWidth="1860.0" vgap="10">
+            <AnchorPane prefHeight="770.0" prefWidth="720.0" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <ScrollPane layoutX="53.0" layoutY="32.0" prefHeight="770.0" prefWidth="720.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <content>
+                        <TilePane fx:id="displayLesson" alignment="CENTER" hgap="10" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="770.0" prefWidth="720.0" styleClass="filter" stylesheets="@style.css" vgap="10">
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding></TilePane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
 
-            </TilePane>
-
-            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="1850.0">
+            <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1850.0" VBox.vgrow="NEVER">
                <buttons>
-                  <Button mnemonicParsing="false" onAction="#loadAction" style="-fx-border-color: teal;" text="Load" textFill="#216065" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" style="-fx-border-color: teal;" text="Save" textFill="#216065" />
-                  <Button fx:id="print" mnemonicParsing="false" style="-fx-border-color: teal;" text="Print Options" textFill="#216065" />
-                  <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" style="-fx-border-color: teal;" text="Edit" textFill="#216065" />
+                  <Button mnemonicParsing="false" onAction="#loadAction" text="Load" textFill="#216065">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Button>
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" prefHeight="33.0" prefWidth="111.0" text="Save" textFill="#216065">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Button>
+                  <Button fx:id="print" mnemonicParsing="false" text="Print" textFill="#216065">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Button>
+                  <Button fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Edit" textFill="#216065">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Button>
                </buttons>
                <VBox.margin>
-                  <Insets bottom="5.0" right="10.0" />
+                  <Insets bottom="10.0" right="10.0" />
                </VBox.margin>
             </ButtonBar>
          </children>

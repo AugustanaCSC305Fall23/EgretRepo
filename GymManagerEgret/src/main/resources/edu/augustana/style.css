@@ -1,0 +1,30 @@
+.lessonTitleBackground{
+    -fx-background-color: #2E4052;
+  /*  -fx-font-family: "Gilda Display", Gilda Display;*/
+
+}
+
+
+.lessonBackground{
+    -fx-background-color: #d1cfe2;
+}
+
+.cardBackground{
+    -fx-background-color: #FBF7F4;
+}
+.filter{
+    -fx-background-color: #abbcd6;
+
+}
+
+.button{
+    -fx-background-color: #abbcd6;
+    -fx-background-radius: 50;
+}
+
+.homeBackground{
+    -fx-background-image: url("file:CardPhotos/Icons/white_house.png");
+    -fx-background-size:cover;
+
+}
+
