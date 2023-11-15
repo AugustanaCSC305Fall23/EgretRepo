@@ -88,6 +88,11 @@ public class App extends Application {
         return homeIconImage;
     }
 
+    public static Image backgroundImage(){
+        Image backgroungImg = new Image("file:CardPhotos/Pictures/img.jpg");
+        return backgroungImg;
+    }
+
     public static LessonPlan getCurrentLessonLog() {
         return currentLessonPlan;
     }
