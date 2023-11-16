@@ -172,6 +172,11 @@ public class PlanMakerController {
                     favoritesManager.saveToFavorites(card.getCode());
                 }
                 card.toggleFavorite();
+                try {
+                    setCardDisplay(CardDatabase.filterCards());
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
 
 
             }
@@ -442,6 +447,7 @@ public class PlanMakerController {
         equipmentChoiceBox.setValue("ALL");
         CardDatabase.clearFilters();
         setCardDisplay(allCards);
+        favoriteSwitch.setSelected(false);
     }
 
 
