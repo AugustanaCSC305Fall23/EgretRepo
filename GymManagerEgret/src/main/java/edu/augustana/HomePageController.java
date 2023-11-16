@@ -32,7 +32,7 @@ public class HomePageController {
 
     @FXML
     void connectToCourseLibrary(ActionEvent event) {
-        App.switchToCourseLibraryView();
+        App.switchToLibraryView();
     }
 
     @FXML

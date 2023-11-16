@@ -66,10 +66,6 @@ public class App extends Application {
         }
     }
 
-    public static void switchToLibraryView() {
-        switchToView("LibraryPage.fxml");
-    }
-
     public static void switchToPlanMakerView() {
         switchToView("PlanMakerPage.fxml");
     }
@@ -78,7 +74,7 @@ public class App extends Application {
         switchToView("HomePage.fxml");
     }
 
-    public static void switchToCourseLibraryView() {
+    public static void switchToLibraryView() {
         //change back later
         switchToView("LibraryPage.fxml");
     }

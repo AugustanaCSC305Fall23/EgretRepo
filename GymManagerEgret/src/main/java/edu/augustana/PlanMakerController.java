@@ -436,14 +436,12 @@ public class PlanMakerController {
       private void saveAsAction(ActionEvent event) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle(App.currentLessonPlan.getTitle());
-            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Logs(*.courselog)","*.courselog");
+            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.courselessonplan)","*.courselessonplan");
             fileChooser.getExtensionFilters().add(filter);
             Window mainWindow = displayLesson.getScene().getWindow();
             File chosenFile = fileChooser.showSaveDialog(mainWindow);
             saveCurrentLessonPlanToFile(chosenFile);
-
            }
-
 
     private void saveCurrentLessonPlanToFile(File chosenFile) {
         if (chosenFile != null) {
@@ -455,7 +453,6 @@ public class PlanMakerController {
             }
         }
     }
-
 
 
 @FXML
@@ -490,9 +487,5 @@ private void loadAction() {
 
 
 }
-
-
-
-
 
 
