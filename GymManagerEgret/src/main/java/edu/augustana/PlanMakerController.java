@@ -68,8 +68,11 @@ public class PlanMakerController {
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     @FXML
     private FlowPane cardImages;
+
+
     @FXML
-    private Button saveButton;
+    private MenuItem saveButton;
+
     @FXML
     private ImageView home;
 
@@ -82,6 +85,7 @@ public class PlanMakerController {
 
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
+
 
     @FXML
     private ToggleSwitch favoriteSwitch;
@@ -459,7 +463,7 @@ public class PlanMakerController {
 private void loadAction() {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("New File");
-    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselog)", "*.courselog");
+    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselessonplan)", "*.courselessonplan");
     fileChooser.getExtensionFilters().add(filter);
     Window mainWindow = displayLesson.getScene().getWindow();
     File chosenFile = fileChooser.showOpenDialog(mainWindow);
