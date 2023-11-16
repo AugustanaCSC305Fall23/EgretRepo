@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -20,8 +22,8 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <?import org.controlsfx.control.ToggleSwitch?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
@@ -198,10 +200,6 @@
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></Button>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" prefHeight="33.0" prefWidth="111.0" text="Save" textFill="#216065">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font></Button>
                   <Button fx:id="print" mnemonicParsing="false" text="Print" textFill="#216065">
                      <font>
                         <Font name="System Bold" size="17.0" />
@@ -210,6 +208,16 @@
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></Button>
+                  <MenuButton mnemonicParsing="false" styleClass="button" stylesheets="@style.css" text="Save" textFill="#216065">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Save" />
+                      <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" text="SaveAs" />
+                        <MenuItem mnemonicParsing="false" text="Save Here" />
+                    </items>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </MenuButton>
                </buttons>
                <VBox.margin>
                   <Insets bottom="10.0" right="10.0" />

@@ -68,8 +68,11 @@ public class PlanMakerController {
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     @FXML
     private FlowPane cardImages;
+
+
     @FXML
-    private Button saveButton;
+    private MenuItem saveButton;
+
     @FXML
     private ImageView home;
 
@@ -82,6 +85,7 @@ public class PlanMakerController {
 
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
+
 
     @FXML
     private ToggleSwitch favoriteSwitch;
@@ -445,14 +449,12 @@ public class PlanMakerController {
       private void saveAsAction(ActionEvent event) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle(App.currentLessonPlan.getTitle());
-            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Logs(*.courselog)","*.courselog");
+            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.courselessonplan)","*.courselessonplan");
             fileChooser.getExtensionFilters().add(filter);
             Window mainWindow = displayLesson.getScene().getWindow();
             File chosenFile = fileChooser.showSaveDialog(mainWindow);
             saveCurrentLessonPlanToFile(chosenFile);
-
            }
-
 
     private void saveCurrentLessonPlanToFile(File chosenFile) {
         if (chosenFile != null) {
@@ -466,12 +468,11 @@ public class PlanMakerController {
     }
 
 
-
 @FXML
 private void loadAction() {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("New File");
-    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselog)", "*.courselog");
+    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselessonplan)", "*.courselessonplan");
     fileChooser.getExtensionFilters().add(filter);
     Window mainWindow = displayLesson.getScene().getWindow();
     File chosenFile = fileChooser.showOpenDialog(mainWindow);
@@ -499,9 +500,5 @@ private void loadAction() {
 
 
 }
-
-
-
-
 
 

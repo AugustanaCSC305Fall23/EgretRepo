@@ -7,6 +7,7 @@ import edu.augustana.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
@@ -25,11 +26,13 @@ public class HomePageController {
 
     @FXML
     private Button planMaker;
+    @FXML
+    private ImageView backgroundImg;
 
 
     @FXML
     void connectToCourseLibrary(ActionEvent event) {
-        App.switchToCourseLibraryView();
+        App.switchToLibraryView();
     }
 
     @FXML
@@ -39,7 +42,7 @@ public class HomePageController {
 
     @FXML
     void initialize() {
-
+        backgroundImg.setImage(App.backgroundImage());
     }
 
 }

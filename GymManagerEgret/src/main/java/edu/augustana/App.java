@@ -68,10 +68,6 @@ public class App extends Application {
         }
     }
 
-    public static void switchToLibraryView() {
-        switchToView("LibraryPage.fxml");
-    }
-
     public static void switchToPlanMakerView() {
         switchToView("PlanMakerPage.fxml");
     }
@@ -80,7 +76,7 @@ public class App extends Application {
         switchToView("HomePage.fxml");
     }
 
-    public static void switchToCourseLibraryView() {
+    public static void switchToLibraryView() {
         //change back later
         switchToView("LibraryPage.fxml");
     }
@@ -88,6 +84,11 @@ public class App extends Application {
     public static Image homeIcon(){
         Image homeIconImage = new Image("file:CardPhotos/Icons/white_house.png");
         return homeIconImage;
+    }
+
+    public static Image backgroundImage(){
+        Image backgroungImg = new Image("file:CardPhotos/Pictures/img.jpg");
+        return backgroungImg;
     }
 
     public static LessonPlan getCurrentLessonLog() {
