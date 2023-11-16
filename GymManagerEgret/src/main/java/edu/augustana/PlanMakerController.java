@@ -88,6 +88,8 @@ public class PlanMakerController {
 
     private boolean savedStatus = false;
 
+    FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
+
 
     public PlanMakerController() {
     }
@@ -159,8 +161,15 @@ public class PlanMakerController {
                     removeCardFromPlan(card);
                 }
             } else if(buttonType == toggleFavoriteButton){
+                if(card.getFavoriteStatus()){
+                    favoritesManager.removeFromFavorites(card.getCode());
+
+                } else {
+                    favoritesManager.saveToFavorites(card.getCode());
+                }
                 card.toggleFavorite();
-                System.out.println(card.getFavoriteStatus());
+
+
             }
             return buttonType;
         });

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * JavaFX App
@@ -50,11 +51,12 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        CardDatabase.addCardsFromCSV("DEMO1.csv");
-        CardDatabase.addCardsFromCSV("DEMO2.csv");
+        CardDatabase.addCardsFromCSV();
         database.printCards();
         launch();
     }
+
+
 
     private static void switchToView(String fxmlFileName) {
         try {
