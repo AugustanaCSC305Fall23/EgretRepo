@@ -29,10 +29,10 @@ import org.controlsfx.control.ToggleSwitch;
 
 public class PlanMakerController {
     @FXML
-    private Button print;
+    private MenuItem print;
 
     @FXML
-    private Button edit;
+    private MenuItem edit;
 
     @FXML
     private TextField codeSearchBox;
@@ -57,15 +57,7 @@ public class PlanMakerController {
     private TilePane displayLesson;
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
-//    @FXML
-//    private FlowPane cardImages;
-//
-//
-//    @FXML
-//    private MenuItem saveAsButton;
-//
-//    @FXML
-//    private MenuItem saveButton;
+
 
     @FXML
     private ImageView home;

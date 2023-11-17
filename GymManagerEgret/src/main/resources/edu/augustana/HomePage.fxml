@@ -16,17 +16,17 @@
                <image>
                   <Image url="@../../../../../GymManagerAssets/cardPhotos/Pictures/img.jpg" />
                </image></ImageView>
-            <Label alignment="CENTER" layoutX="63.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="367.0" text="Gym  Manager Egret" textFill="#216065" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
+            <Label alignment="CENTER" layoutX="2.0" layoutY="6.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="1496.0" text="Gym  Manager Egret" textFill="#216065" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="6.0">
                <font>
                   <Font name="Georgia Bold" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="planMaker" alignment="CENTER" layoutX="579.0" layoutY="277.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="822.0" AnchorPane.leftAnchor="579.0" AnchorPane.rightAnchor="541.0">
+            <Button fx:id="planMaker" alignment="CENTER" layoutX="562.0" layoutY="277.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="822.0" AnchorPane.leftAnchor="562.0" AnchorPane.rightAnchor="558.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="lessonLibrary" layoutX="580.0" layoutY="498.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="601.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="540.0">
+            <Button fx:id="lessonLibrary" layoutX="558.0" layoutY="498.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="601.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="562.0">
                <font>
                   <Font size="18.0" />
                </font>
