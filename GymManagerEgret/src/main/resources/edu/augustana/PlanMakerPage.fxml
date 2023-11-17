@@ -160,7 +160,7 @@
                         <Insets right="10.0" top="5.0" />
                      </StackPane.margin>
                      <image>
-                        <Image url="@../../../../../../CardPhotos/Icons/white_house.png" />
+                        <Image url="@../../../../../GymManagerAssets/cardPhotos/Icons/white_house.png" />
                      </image>
                   </ImageView>
                   <TextArea fx:id="lessonTitletextArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
