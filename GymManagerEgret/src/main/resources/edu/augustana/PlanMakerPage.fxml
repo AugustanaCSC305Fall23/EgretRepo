@@ -210,8 +210,8 @@
                      </font></Button>
                   <MenuButton mnemonicParsing="false" styleClass="button" stylesheets="@style.css" text="Save" textFill="#216065">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Save" />
-                      <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveAsAction" text="SaveAs" />
+                      <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                      <MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsAction" text="SaveAs" />
                         <MenuItem mnemonicParsing="false" text="Save Here" />
                     </items>
                      <font>

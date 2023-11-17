@@ -71,6 +71,9 @@ public class PlanMakerController {
 
 
     @FXML
+    private MenuItem saveAsButton;
+
+    @FXML
     private MenuItem saveButton;
 
     @FXML
@@ -433,6 +436,23 @@ public class PlanMakerController {
         equipmentChoiceBox.setValue("ALL");
         CardDatabase.clearFilters();
         setCardDisplay(allCards);
+    }
+    //Goes to save button
+    @FXML
+    private void saveAction(ActionEvent event) {
+//        if (App.getCurrentLessonFile() == null) {
+//            saveAsAction(event);
+//        } else {
+//           saveCurrentLessonPlanToFile(App.getCurrentLessonFile());
+//        }
+            if(App.getCurrentLessonFile() == null){
+                Alert saveAlert = new Alert(AlertType.INFORMATION, "It will not create a new file with current lesson. "
+                        + " It will only save to the existing lesson. See the HELP button.");
+                saveAlert.initOwner(App.primaryStage);
+                saveAlert.show();
+            }else{
+                saveCurrentLessonPlanToFile(App.getCurrentLessonFile());
+        }
     }
 
 

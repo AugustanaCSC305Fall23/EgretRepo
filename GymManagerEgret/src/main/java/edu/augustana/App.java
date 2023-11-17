@@ -102,8 +102,6 @@ public class App extends Application {
         // after this, File will contain the data from the LessonPlan object
         currentLessonPlan.saveToFile(fileToSaveTo);
         currentLessonPlanFile = fileToSaveTo;
-
-
     }
 
 
