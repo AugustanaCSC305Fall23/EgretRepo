@@ -9,16 +9,13 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    //1 lesson plan
     public static LessonPlan currentLessonPlan;
 
     public static File currentLessonPlanFile = null;
@@ -39,10 +36,6 @@ public class App extends Application {
         primaryStage.show();
         primaryStage.setFullScreen(true);
 
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -77,24 +70,34 @@ public class App extends Application {
     }
 
     public static void switchToLibraryView() {
-        //change back later
         switchToView("LibraryPage.fxml");
     }
 
+    public static void switchToPrintCardsView() {
+        switchToView("PrintCardsPage.fxml");
+    }
+
+    public static void switchToPrintCardsTitles(){
+        switchToView("PrintCardsTitles.fxml");
+    }
+
+    public static void switchToPrintCardsEquipment(){
+        switchToView("PrintCardsEquipmentPage.fxml");
+    }
+
     public static Image homeIcon(){
-        Image homeIconImage = new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Icons/white_house.png");
-        return homeIconImage;
+        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Icons/white_house.png");
     }
 
     public static Image backgroundImage(){
         return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Pictures/img.jpg");
     }
 
-    public static LessonPlan getCurrentLessonLog() {
+    public static LessonPlan getCurrentLessonPlan() {
         return currentLessonPlan;
     }
 
-    public static File getCurrentLessonFile() {
+    public static File getCurrentLessonPlanFile() {
         return currentLessonPlanFile;
     }
 
@@ -109,18 +112,5 @@ public class App extends Application {
     public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
         currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
         currentLessonPlanFile = fileToLoadFrom;
-
-
-    }
-
-
-    public static void switchToPrintCardsView() {
-        switchToView("PrintCardsPage.fxml");
-    }
-    public static void switchToPrintCardsTitles(){
-        switchToView("PrintCardsTitles.fxml");
-    }
-    public static void switchToPrintCardsEquipment(){
-        switchToView("PrintCardsEquipmentPage.fxml");
     }
 }

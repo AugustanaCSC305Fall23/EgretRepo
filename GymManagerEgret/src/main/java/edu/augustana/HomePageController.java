@@ -12,28 +12,16 @@ import javafx.scene.image.ImageView;
 public class HomePageController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button lessonLibrary;
-
-    @FXML
-    private Button planMaker;
-
-    @FXML
     private ImageView imageBackground;
 
 
     @FXML
-    void connectToCourseLibrary(ActionEvent event) {
+    void connectToCourseLibrary() {
         App.switchToLibraryView();
     }
 
     @FXML
-    void connectToPlanMaker(ActionEvent event) {
+    void connectToPlanMaker() {
         App.switchToPlanMakerView();
     }
 

@@ -12,14 +12,11 @@ public class LessonPlan {
     private String title;
 
     public LessonPlan() {
-
     }
-
 
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();
-
     }
 
     public ArrayList<Card> getCopyOfLessonCards() {
@@ -34,31 +31,25 @@ public class LessonPlan {
         userChosenCardIDs.add(card.getUniqueId());
     }
 
-
     public void removeCard(Card card){
         userChosenCardIDs.remove(card.getUniqueId());
     }
 
-
     public boolean containsCard(Card card){
         return userChosenCardIDs.contains(card.getUniqueId());
     }
+
     public String getTitle() {
         return title;
     }
-
-
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public static LessonPlan loadFromFile(File logFile)throws IOException{
         FileReader reader = new FileReader(logFile);
         Gson gson = new Gson();
         return gson.fromJson(reader,LessonPlan.class);
-
-
     }
 
     public void saveToFile(File logFile) throws IOException{
@@ -68,7 +59,4 @@ public class LessonPlan {
         writer.println(serializedLessonPlanText);
         writer.close();
     }
-
-
-
 }

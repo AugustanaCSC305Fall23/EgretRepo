@@ -196,7 +196,7 @@
 
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="1850.0" VBox.vgrow="NEVER">
                <buttons>
-                  <Button mnemonicParsing="false" onAction="#loadAction" text="Load" textFill="#216065">
+                  <Button mnemonicParsing="false" onAction="#loadMenuAction" text="Load" textFill="#216065">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></Button>
@@ -210,8 +210,8 @@
                      </font></Button>
                   <MenuButton mnemonicParsing="false" styleClass="button" stylesheets="@style.css" text="Save" textFill="#216065">
                     <items>
-                      <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveAction" text="Save" />
-                      <MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsAction" text="SaveAs" />
+                      <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveMenuAction" text="Save" />
+                      <MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsMenuAction" text="SaveAs" />
                         <MenuItem mnemonicParsing="false" text="Save Here" />
                     </items>
                      <font>

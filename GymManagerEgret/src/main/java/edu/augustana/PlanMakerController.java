@@ -1,15 +1,12 @@
 package edu.augustana;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
 import edu.augustana.filters.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.print.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -31,20 +28,14 @@ import org.controlsfx.control.ToggleSwitch;
 
 
 public class PlanMakerController {
-
-
     @FXML
     private Button print;
-
-
 
     @FXML
     private Button edit;
 
     @FXML
     private TextField codeSearchBox;
-
-
 
     @FXML
     private Label lessonTitle;
@@ -66,15 +57,15 @@ public class PlanMakerController {
     private TilePane displayLesson;
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
-    @FXML
-    private FlowPane cardImages;
-
-
-    @FXML
-    private MenuItem saveAsButton;
-
-    @FXML
-    private MenuItem saveButton;
+//    @FXML
+//    private FlowPane cardImages;
+//
+//
+//    @FXML
+//    private MenuItem saveAsButton;
+//
+//    @FXML
+//    private MenuItem saveButton;
 
     @FXML
     private ImageView home;
@@ -97,10 +88,8 @@ public class PlanMakerController {
 
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
 
-
     public PlanMakerController() {
     }
-
 
     @FXML
     void connectToHomePage() {
@@ -109,20 +98,18 @@ public class PlanMakerController {
 
     @FXML
     void initialize() throws FileNotFoundException {
-
         home.setImage(App.homeIcon());
+        //title
         lessonTitle.setVisible(true);
         lessonTitletextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         edit.setOnAction(event -> onDoubleClick());
         setCardDisplay(allCards);
         initializeComboBoxes();
-
+        //for getting user entered Title
         App.currentLessonPlan = new LessonPlan(lessonTitle.getText());
+        //print
         print.setOnAction(event ->printOptions());
-
-
-
     }
 
 
@@ -180,13 +167,10 @@ public class PlanMakerController {
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
-
-
             }
             return buttonType;
         });
         imageAlert.show();
-
     }
     private void setMouseEvent(ImageView cardPane, Card card, boolean addOrRemove){
         cardPane.setOnMouseClicked(event -> {
@@ -217,7 +201,6 @@ public class PlanMakerController {
             alreadyAddedAlert.setContentText("Already added image");
             alreadyAddedAlert.initOwner(App.primaryStage);
             alreadyAddedAlert.showAndWait();
-
         }
     }
 
@@ -241,7 +224,6 @@ public class PlanMakerController {
             setMouseEvent(cardImageView, card, false);
         }
     }
-
 
     private void printOptions(){
         System.out.println(App.currentLessonPlan.getTitle());
@@ -270,7 +252,6 @@ public class PlanMakerController {
             return buttonType;
         });
         imageAlert.showAndWait();
-
     }
 
     public void setCardDisplay(ArrayList<Card> cardSelection) throws FileNotFoundException {
@@ -287,14 +268,6 @@ public class PlanMakerController {
         }
     }
 
-
-
-    public ArrayList<Card> getLessonCards() {
-        return App.currentLessonPlan.getCopyOfLessonCards();
-    }
-
-
-
     private void initializeComboBoxes(){
         ArrayList<String> category = new ArrayList<>();
         ArrayList<String> equipment = new ArrayList<>();
@@ -308,8 +281,6 @@ public class PlanMakerController {
                     equipment.add(item);
                 }
             }
-
-
             if(!event.contains(card.getEvent())) {
                 event.add(card.getEvent());
             }
@@ -342,9 +313,6 @@ public class PlanMakerController {
         });
         eventChoiceBox.getItems().addAll(event);
     }
-
-
-
 
     @FXML
     void onEditButtonClick() {
@@ -452,27 +420,21 @@ public class PlanMakerController {
         setCardDisplay(allCards);
         favoriteSwitch.setSelected(false);
     }
-    //Goes to save button
+
+    //Saving the lesson Plan
     @FXML
-    private void saveAction(ActionEvent event) {
-//        if (App.getCurrentLessonFile() == null) {
-//            saveAsAction(event);
-//        } else {
-//           saveCurrentLessonPlanToFile(App.getCurrentLessonFile());
-//        }
-            if(App.getCurrentLessonFile() == null){
+    private void saveMenuAction(ActionEvent event) {
+            if(App.getCurrentLessonPlanFile() == null){
                 Alert saveAlert = new Alert(AlertType.INFORMATION, "It will not create a new file with current lesson. "
-                        + " It will only save to the existing lesson. See the HELP button.");
+                        + " It will only save to the existing lesson. Click Save As instead.");
                 saveAlert.initOwner(App.primaryStage);
                 saveAlert.show();
             }else{
-                saveCurrentLessonPlanToFile(App.getCurrentLessonFile());
+                saveCurrentLessonPlanToFile(App.getCurrentLessonPlanFile());
         }
     }
-
-
       @FXML
-      private void saveAsAction(ActionEvent event) {
+      private void saveAsMenuAction(ActionEvent event) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle(App.currentLessonPlan.getTitle());
             FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.courselessonplan)","*.courselessonplan");
@@ -493,9 +455,9 @@ public class PlanMakerController {
         }
     }
 
-
+//Loading to the lesson
 @FXML
-private void loadAction() {
+private void loadMenuAction() {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("New File");
     FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselessonplan)", "*.courselessonplan");
@@ -507,7 +469,7 @@ private void loadAction() {
             App.loadCurrentLessonPlanFromFile(chosenFile);
             displayLesson.getChildren().clear();
             lessonTitle.setText(App.currentLessonPlan.getTitle());
-            LessonPlan loadedLesson = App.getCurrentLessonLog();
+            LessonPlan loadedLesson = App.getCurrentLessonPlan();
 
             for(Card card: loadedLesson.getCopyOfLessonCards()){
                 ImageView cardImageView = new ImageView(card.getImage());
@@ -523,7 +485,6 @@ private void loadAction() {
         }
     }
 }
-
 
 }
 
