@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
@@ -25,16 +26,20 @@ public class CardDatabase {
     public static ObservableList<CardFilter> activeFilters = FXCollections.observableArrayList();
     CardDatabase(){};
 
-    public static void addCardsFromCSV(String fileName) throws IOException, CsvValidationException {
+    public static void addCardsFromCSV() throws IOException, CsvValidationException {
         //reads through the CSV file, skipping the headers in the first line.
-        CSVReader reader = new CSVReaderBuilder(new FileReader(fileName)).withSkipLines(1).build();
-        String [] nextLine;
-        while ((nextLine = reader.readNext()) != null) {
-            // nextLine[] is an array of values from the line
-            Card card = new Card(nextLine);
-            System.out.println(card);
-            addCard(card);
-        }
+        File spreadsheetFile = new File("GymManagerEgret/GymManagerAssets/cardSpreadsheets");
+            for(File filename : spreadsheetFile.listFiles()) {
+                System.out.println(filename);
+                CSVReader reader = new CSVReaderBuilder(new FileReader(filename)).withSkipLines(1).build();
+                String[] nextLine;
+                while ((nextLine = reader.readNext()) != null) {
+                    // nextLine[] is an array of values from the line
+                    Card card = new Card(nextLine);
+                    System.out.println(card);
+                    addCard(card);
+                }
+            }
     }
     private static void addCard(Card card){
         allCards.add(card);

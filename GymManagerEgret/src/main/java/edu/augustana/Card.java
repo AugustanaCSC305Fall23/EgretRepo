@@ -26,6 +26,10 @@ public class Card {
 
     private boolean favoriteStatus;
 
+    private static FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
+
+    private final ArrayList<String> initialFavoritesList = favoritesManager.getFavorites();
+
     private final ArrayList<String> level = new ArrayList<>();
 
     private final ArrayList<String> equipment = new ArrayList<>();
@@ -55,7 +59,8 @@ public class Card {
         this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
-        this.image = new Image(new FileInputStream("CardPhotos/" + pack +"Images/" + imageFileName));
+        System.out.println("GymManagerEgret/GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName);
+        this.image = new Image(new FileInputStream("GymManagerEgret/GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName));
         this.gender = cardData[6];
         this.modelSex = cardData[7];
         this.favoriteStatus = false;
@@ -75,6 +80,9 @@ public class Card {
             word = word.trim();
             word = word.toLowerCase();
             this.keywords.add(word);
+        }
+        if(initialFavoritesList.contains(code)){
+            favoriteStatus = true;
         }
     }
 
