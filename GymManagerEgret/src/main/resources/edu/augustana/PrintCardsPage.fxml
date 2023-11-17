@@ -40,7 +40,7 @@
          <graphic>
             <ImageView fx:id="homeIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../GymManagerAssets/cardPhotos/Icons/home_icon.png" />
+                  <Image url="@../../../../../../CardPhotos/Icons/home_icon.png" />
                </image>
             </ImageView>
          </graphic>

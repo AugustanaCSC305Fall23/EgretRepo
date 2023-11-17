@@ -82,13 +82,12 @@ public class App extends Application {
     }
 
     public static Image homeIcon(){
-        Image homeIconImage = new Image("file:CardPhotos/Icons/white_house.png");
+        Image homeIconImage = new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Icons/white_house.png");
         return homeIconImage;
     }
 
     public static Image backgroundImage(){
-        Image backgroungImg = new Image("file:CardPhotos/Pictures/img.jpg");
-        return backgroungImg;
+        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Pictures/img.jpg");
     }
 
     public static LessonPlan getCurrentLessonLog() {

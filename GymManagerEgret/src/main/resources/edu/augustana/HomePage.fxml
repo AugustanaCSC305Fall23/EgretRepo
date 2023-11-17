@@ -12,22 +12,21 @@
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="backgroundImg" layoutX="-4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="imageBackground" layoutX="-4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../../../../../CardPhotos/Pictures/img.jpg" />
-               </image>
-            </ImageView>
+                  <Image url="@../../../../../GymManagerAssets/cardPhotos/Pictures/img.jpg" />
+               </image></ImageView>
             <Label alignment="CENTER" layoutX="63.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="367.0" text="Gym  Manager Egret" textFill="#216065" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="Georgia Bold" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="planMaker" alignment="CENTER" layoutX="236.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="800.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="560.0">
+            <Button fx:id="planMaker" alignment="CENTER" layoutX="579.0" layoutY="277.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="822.0" AnchorPane.leftAnchor="579.0" AnchorPane.rightAnchor="541.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="lessonLibrary" layoutX="240.0" layoutY="319.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Course Library" textFill="#216065" AnchorPane.bottomAnchor="600.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="560.0">
+            <Button fx:id="lessonLibrary" layoutX="580.0" layoutY="498.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="601.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="540.0">
                <font>
                   <Font size="18.0" />
                </font>

@@ -3,14 +3,10 @@ package edu.augustana;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import edu.augustana.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.StackPane;
-
 
 
 public class HomePageController {
@@ -26,8 +22,9 @@ public class HomePageController {
 
     @FXML
     private Button planMaker;
+
     @FXML
-    private ImageView backgroundImg;
+    private ImageView imageBackground;
 
 
     @FXML
@@ -42,7 +39,7 @@ public class HomePageController {
 
     @FXML
     void initialize() {
-        backgroundImg.setImage(App.backgroundImage());
+        imageBackground.setImage(App.backgroundImage());
     }
 
 }
