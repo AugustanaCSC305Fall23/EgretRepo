@@ -5,12 +5,16 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 
 
 public class LibraryController {
 
     @FXML
     private ListView<String> lessonList;
+
+    @FXML
+    private ImageView home;
 
     @FXML
     private void switchToSchedule() throws IOException {
@@ -25,8 +29,7 @@ public class LibraryController {
 
 
     public void initialize() {
-//        String lessonTitle = Course.currentLessonPlan.getTitle();
-//        lessonList.getItems().add(lessonTitle);
+        home.setImage(App.homeIcon());
     }
 
 
