@@ -447,6 +447,16 @@ public class PlanMakerController {
         }
     }
 
+    @FXML
+    private void showToolTips(){
+        Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+        alreadyAddedAlert.setHeaderText(null);
+        alreadyAddedAlert.setTitle("Tool Tips");
+        alreadyAddedAlert.setContentText("Left click for card options." + "\n" + "Right click to immediately add or remove cards.");
+        alreadyAddedAlert.initOwner(App.primaryStage);
+        alreadyAddedAlert.showAndWait();
+    }
+
 //Loading to the lesson
 @FXML
 private void loadMenuAction() {
