@@ -46,17 +46,22 @@ public class LessonPlan {
         this.title = title;
     }
 
-    public static LessonPlan loadFromFile(File logFile)throws IOException{
-        FileReader reader = new FileReader(logFile);
-        Gson gson = new Gson();
-        return gson.fromJson(reader,LessonPlan.class);
+    @Override
+    public String toString() {
+        return title + " " + userChosenCardIDs;
     }
 
-    public void saveToFile(File logFile) throws IOException{
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String serializedLessonPlanText = gson.toJson(this);
-        PrintWriter writer = new PrintWriter(new FileWriter(logFile));
-        writer.println(serializedLessonPlanText);
-        writer.close();
-    }
+    //    public static LessonPlan loadFromFile(File logFile)throws IOException{
+//        FileReader reader = new FileReader(logFile);
+//        Gson gson = new Gson();
+//        return gson.fromJson(reader,LessonPlan.class);
+//    }
+//
+//    public void saveToFile(File logFile) throws IOException{
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        String serializedLessonPlanText = gson.toJson(this);
+//        PrintWriter writer = new PrintWriter(new FileWriter(logFile));
+//        writer.println(serializedLessonPlanText);
+//        writer.close();
+//    }
 }

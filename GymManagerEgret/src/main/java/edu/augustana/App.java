@@ -16,9 +16,9 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    public static LessonPlan currentLessonPlan;
+    private static Course currentCourse = new Course();
 
-    public static File currentLessonPlanFile = null;
+    private static File currentCourseFile = null;
     private static Scene scene;
 
     public static final CardDatabase database = new CardDatabase();
@@ -93,24 +93,24 @@ public class App extends Application {
         return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Pictures/img.jpg");
     }
 
-    public static LessonPlan getCurrentLessonPlan() {
-        return currentLessonPlan;
+    public static Course getCurrentCourse() {
+        return currentCourse;
     }
 
-    public static File getCurrentLessonPlanFile() {
-        return currentLessonPlanFile;
+    public static File getCurrentCourseFile() {
+        return currentCourseFile;
     }
 
 
-    public static void saveCurrentLessonPlanToFile(File fileToSaveTo) throws IOException {
+    public static void saveCurrentCourseToFile(File fileToSaveTo) throws IOException {
         // after this, File will contain the data from the LessonPlan object
-        currentLessonPlan.saveToFile(fileToSaveTo);
-        currentLessonPlanFile = fileToSaveTo;
+        currentCourse.saveToFile(fileToSaveTo);
+        currentCourseFile = fileToSaveTo;
     }
 
 
-    public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
-        currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
-        currentLessonPlanFile = fileToLoadFrom;
+    public static void loadCurrentCourseFromFile(File fileToLoadFrom) throws IOException {
+        currentCourse = Course.loadFromFile(fileToLoadFrom);
+        currentCourseFile = fileToLoadFrom;
     }
 }
