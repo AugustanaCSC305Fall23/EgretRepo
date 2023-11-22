@@ -12,14 +12,11 @@ public class LessonPlan {
     private String title;
 
     public LessonPlan() {
-
     }
-
 
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();
-
     }
 
     public ArrayList<Card> getCopyOfLessonCards() {
@@ -34,41 +31,37 @@ public class LessonPlan {
         userChosenCardIDs.add(card.getUniqueId());
     }
 
-
     public void removeCard(Card card){
         userChosenCardIDs.remove(card.getUniqueId());
     }
 
-
     public boolean containsCard(Card card){
         return userChosenCardIDs.contains(card.getUniqueId());
     }
+
     public String getTitle() {
         return title;
     }
-
-
     public void setTitle(String title) {
         this.title = title;
     }
 
-
-    public static LessonPlan loadFromFile(File logFile)throws IOException{
-        FileReader reader = new FileReader(logFile);
-        Gson gson = new Gson();
-        return gson.fromJson(reader,LessonPlan.class);
-
-
+    @Override
+    public String toString() {
+        return title + " " + userChosenCardIDs;
     }
 
-    public void saveToFile(File logFile) throws IOException{
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String serializedLessonPlanText = gson.toJson(this);
-        PrintWriter writer = new PrintWriter(new FileWriter(logFile));
-        writer.println(serializedLessonPlanText);
-        writer.close();
-    }
-
-
-
+    //    public static LessonPlan loadFromFile(File logFile)throws IOException{
+//        FileReader reader = new FileReader(logFile);
+//        Gson gson = new Gson();
+//        return gson.fromJson(reader,LessonPlan.class);
+//    }
+//
+//    public void saveToFile(File logFile) throws IOException{
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        String serializedLessonPlanText = gson.toJson(this);
+//        PrintWriter writer = new PrintWriter(new FileWriter(logFile));
+//        writer.println(serializedLessonPlanText);
+//        writer.close();
+//    }
 }

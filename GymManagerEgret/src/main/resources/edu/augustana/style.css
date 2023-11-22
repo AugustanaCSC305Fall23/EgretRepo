@@ -28,3 +28,8 @@
 
 }
 
+.choice-box .label {
+     -fx-text-fill: #216065;
+     -fx-font-size: 17px;
+}
+

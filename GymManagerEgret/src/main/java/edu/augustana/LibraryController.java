@@ -1,32 +1,35 @@
 package edu.augustana;
 
-import java.io.IOException;
-
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 
 
 public class LibraryController {
 
     @FXML
-    private ListView<String> lessonList;
+    private ImageView home;
 
     @FXML
-    private void switchToSchedule() throws IOException {
-        App.setRoot("LessonViewPage");
-    }
+    private ListView<LessonPlan> lessonList;
+
+ //   @FXML
+//    private void switchToSchedule() throws IOException {
+//        App.setRoot("LessonViewPage");
+//    }
 
     @FXML
-    void connectToCourseLibraryPage() {
-        //change back later
+    void connectToHomePage() {
         App.switchToHomePageView();
     }
 
 
     public void initialize() {
-//        String lessonTitle = Course.currentLessonPlan.getTitle();
-//        lessonList.getItems().add(lessonTitle);
+        home.setImage(App.homeIcon());
+        lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
+
+
     }
 
 

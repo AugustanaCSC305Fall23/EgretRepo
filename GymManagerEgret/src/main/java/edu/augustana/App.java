@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -16,10 +15,9 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    //1 lesson plan
-    public static LessonPlan currentLessonPlan;
+    private static Course currentCourse = new Course();
 
-    public static File currentLessonPlanFile = null;
+    private static File currentCourseFile = null;
     private static Scene scene;
 
     public static final CardDatabase database = new CardDatabase();
@@ -39,21 +37,18 @@ public class App extends Application {
 
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
-        CardDatabase.addCardsFromCSV("DEMO1.csv");
-        CardDatabase.addCardsFromCSV("DEMO2.csv");
+        CardDatabase.addCardsFromCSV();
         database.printCards();
         launch();
     }
+
+
 
     private static void switchToView(String fxmlFileName) {
         try {
@@ -65,10 +60,6 @@ public class App extends Application {
         }
     }
 
-    public static void switchToLibraryView() {
-        switchToView("LibraryPage.fxml");
-    }
-
     public static void switchToPlanMakerView() {
         switchToView("PlanMakerPage.fxml");
     }
@@ -77,49 +68,48 @@ public class App extends Application {
         switchToView("HomePage.fxml");
     }
 
-    public static void switchToCourseLibraryView() {
-        //change back later
+    public static void switchToLibraryView() {
         switchToView("LibraryPage.fxml");
     }
-
-    public static Image homeIcon(){
-        Image homeIconImage = new Image("file:CardPhotos/Icons/white_house.png");
-        return homeIconImage;
-    }
-
-    public static LessonPlan getCurrentLessonLog() {
-        return currentLessonPlan;
-    }
-
-    public static File getCurrentLessonFile() {
-        return currentLessonPlanFile;
-    }
-
-
-    public static void saveCurrentLessonPlanToFile(File fileToSaveTo) throws IOException {
-        // after this, File will contain the data from the LessonPlan object
-        currentLessonPlan.saveToFile(fileToSaveTo);
-        currentLessonPlanFile = fileToSaveTo;
-
-
-    }
-
-
-    public static void loadCurrentLessonPlanFromFile(File fileToLoadFrom) throws IOException {
-        currentLessonPlan = LessonPlan.loadFromFile(fileToLoadFrom);
-        currentLessonPlanFile = fileToLoadFrom;
-
-
-    }
-
 
     public static void switchToPrintCardsView() {
         switchToView("PrintCardsPage.fxml");
     }
+
     public static void switchToPrintCardsTitles(){
         switchToView("PrintCardsTitles.fxml");
     }
+
     public static void switchToPrintCardsEquipment(){
         switchToView("PrintCardsEquipmentPage.fxml");
+    }
+
+    public static Image homeIcon(){
+        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Icons/white_house.png");
+    }
+
+    public static Image backgroundImage(){
+        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Pictures/img.jpg");
+    }
+
+    public static Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public static File getCurrentCourseFile() {
+        return currentCourseFile;
+    }
+
+
+    public static void saveCurrentCourseToFile(File fileToSaveTo) throws IOException {
+        // after this, File will contain the data from the LessonPlan object
+        currentCourse.saveToFile(fileToSaveTo);
+        currentCourseFile = fileToSaveTo;
+    }
+
+
+    public static void loadCurrentCourseFromFile(File fileToLoadFrom) throws IOException {
+        currentCourse = Course.loadFromFile(fileToLoadFrom);
+        currentCourseFile = fileToLoadFrom;
     }
 }

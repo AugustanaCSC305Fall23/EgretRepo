@@ -3,19 +3,14 @@ package edu.augustana;
 
         import javafx.fxml.FXML;
         import javafx.geometry.Orientation;
-        import javafx.geometry.Pos;
         import javafx.print.*;
-        import javafx.scene.Node;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
-        import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
         import javafx.scene.layout.TilePane;
         import javafx.scene.layout.VBox;
 
-        import java.io.FileInputStream;
         import java.io.FileNotFoundException;
-        import java.util.ArrayList;
 
 public class PrintCardsTitlesController {
     @FXML
@@ -39,9 +34,11 @@ public class PrintCardsTitlesController {
         //displayLesson.setAlignment(Pos.CENTER);
 
         back.setOnAction(event -> connectToPlanMakerPage());
-        lessonTitle.setText(App.currentLessonPlan.getTitle());
+
+        LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+        lessonTitle.setText(currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
-        for (Card card : App.currentLessonPlan.getCopyOfLessonCards()) {
+        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             String cardName = new String();
             cardName = card.getTitle();
             Label title = new Label();
