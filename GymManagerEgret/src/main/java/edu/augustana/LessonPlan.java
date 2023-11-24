@@ -22,10 +22,8 @@ public class LessonPlan {
     public ArrayList<Card> getCopyOfLessonCards() {
         ArrayList<Card> cardList = new ArrayList<>();
         for(String id: userChosenCardIDs){
-            cardList.add(CardDatabase.getCardByUniqueId(id));
-        }
-        return cardList;
-    }
+            cardList.add(CardDatabase.getCardByUniqueId(id));}
+        return cardList;}
 
     public void addCard(Card card){
         userChosenCardIDs.add(card.getUniqueId());
@@ -51,17 +49,4 @@ public class LessonPlan {
         return title + " " + userChosenCardIDs;
     }
 
-    //    public static LessonPlan loadFromFile(File logFile)throws IOException{
-//        FileReader reader = new FileReader(logFile);
-//        Gson gson = new Gson();
-//        return gson.fromJson(reader,LessonPlan.class);
-//    }
-//
-//    public void saveToFile(File logFile) throws IOException{
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        String serializedLessonPlanText = gson.toJson(this);
-//        PrintWriter writer = new PrintWriter(new FileWriter(logFile));
-//        writer.println(serializedLessonPlanText);
-//        writer.close();
-//    }
 }

@@ -17,12 +17,14 @@ public class Course {
         //testing
         this.lessonPlans.add(new LessonPlan("Untitled 2"));
         this.lessonPlans.add(new LessonPlan("Untitled 3"));
+        this.lessonPlans.add(new LessonPlan("Untitled 4"));
+        this.lessonPlans.add(new LessonPlan("Untitled 5"));
 
         this.currentEditingIndex = 0;
     }
 
-    public void addLessonPlan(LessonPlan lessonPlan){
-        lessonPlans.add(lessonPlan);
+    public void addLessonPlan(LessonPlan currentLessonPlan){
+        lessonPlans.add(currentLessonPlan);
     }
 
     public int getCurrentEditingIndex(){
@@ -54,6 +56,4 @@ public class Course {
         writer.println(serializedLessonPlanText);
         writer.close();
     }
-
-
 }

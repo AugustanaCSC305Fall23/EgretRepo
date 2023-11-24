@@ -28,9 +28,6 @@ public class LibraryController {
     public void initialize() {
         home.setImage(App.homeIcon());
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
-
-
     }
-
 
 }

@@ -46,13 +46,14 @@ public class PlanMakerController {
     private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
 
     @FXML
-    private TextArea lessonTitletextArea;
+    private TextArea lessonTitleTextArea;
 
     @FXML
     private TextField titleSearchBox;
 
     @FXML
     private FlowPane cardFlowPane;
+
 
     private String enteredTitle;
 
@@ -71,7 +72,6 @@ public class PlanMakerController {
 
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
-
 
     @FXML
     private ToggleSwitch favoriteSwitch;
@@ -94,15 +94,22 @@ public class PlanMakerController {
         home.setImage(App.homeIcon());
         //title
         lessonTitle.setVisible(true);
-        lessonTitletextArea.setVisible(false);
+        lessonTitleTextArea.setVisible(false);
         edit.setOnAction(event -> onEditButtonClick());
         edit.setOnAction(event -> onDoubleClick());
         setCardDisplay(allCards);
         initializeComboBoxes();
-        //for getting user entered Title
-        lessonTitle.setText(App.getCurrentCourse().getCurrentLessonPlan().getTitle());
-        //App.currentCoursePlan.addLessonPlan(new LessonPlan(lessonTitle.getText()));
-        //print
+        if(!currentLessonPlan.getCopyOfLessonCards().isEmpty()){
+            lessonTitle.setText(currentLessonPlan.getTitle());
+            for(Card card: currentLessonPlan.getCopyOfLessonCards()){
+                ImageView cardImageView = new ImageView(card.getImage());
+                cardImageView.setFitWidth(1650/6.5);
+                cardImageView.setFitHeight(1275/6.5);
+                setMouseEvent(cardImageView, card, false);
+                displayLesson.getChildren().add(cardImageView);
+            }
+        }
+        currentLessonPlan.setTitle(lessonTitle.getText());
         print.setOnAction(event ->printOptions());
     }
 
@@ -312,27 +319,27 @@ public class PlanMakerController {
     @FXML
     void onEditButtonClick() {
         lessonTitle.setVisible(false);
-        lessonTitletextArea.setVisible(true);
-        lessonTitletextArea.setText(lessonTitle.getText());
-        lessonTitletextArea.requestFocus();
+        lessonTitleTextArea.setVisible(true);
+        lessonTitleTextArea.setText(lessonTitle.getText());
+        lessonTitleTextArea.requestFocus();
         edit.setDisable(true);
     }
 
     @FXML
     void onDoubleClick() {
         lessonTitle.setVisible(false);
-        lessonTitletextArea.setVisible(true);
-        lessonTitletextArea.setText(lessonTitle.getText());
-        lessonTitletextArea.requestFocus();
+        lessonTitleTextArea.setVisible(true);
+        lessonTitleTextArea.setText(lessonTitle.getText());
+        lessonTitleTextArea.requestFocus();
         edit.setDisable(true);
     }
     @FXML
     void onEnterPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            String editedText = lessonTitletextArea.getText();
+            String editedText = lessonTitleTextArea.getText();
             lessonTitle.setText(editedText);
             enteredTitle = editedText;
-            lessonTitletextArea.setVisible(false);
+            lessonTitleTextArea.setVisible(false);
             //remove
             currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
