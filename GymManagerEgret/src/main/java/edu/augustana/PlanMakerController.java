@@ -103,8 +103,8 @@ public class PlanMakerController {
             lessonTitle.setText(currentLessonPlan.getTitle());
             for(Card card: currentLessonPlan.getCopyOfLessonCards()){
                 ImageView cardImageView = new ImageView(card.getImage());
-                cardImageView.setFitWidth(1650/6.5);
-                cardImageView.setFitHeight(1275/6.5);
+                cardImageView.setFitWidth(1650/7);
+                cardImageView.setFitHeight(1275/7);
                 setMouseEvent(cardImageView, card, false);
                 displayLesson.getChildren().add(cardImageView);
             }
@@ -484,8 +484,8 @@ public class PlanMakerController {
 
                 for(Card card: loadedLesson.getCopyOfLessonCards()){
                     ImageView cardImageView = new ImageView(card.getImage());
-                    cardImageView.setFitWidth(1650/6.5);
-                    cardImageView.setFitHeight(1275/6.5);
+                    cardImageView.setFitWidth(1650/7);
+                    cardImageView.setFitHeight(1275/7);
                     setMouseEvent(cardImageView, card, false);
                     displayLesson.getChildren().add(cardImageView);
                 }
