@@ -19,8 +19,6 @@ public class PrintCardsEquipmentController {
     TilePane displayLesson;
     @FXML
     private Button back;
-    //    @FXML
-//    private Button home;
     @FXML
     private ImageView homeIcon;
     @FXML
