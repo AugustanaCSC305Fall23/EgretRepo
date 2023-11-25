@@ -499,9 +499,12 @@ public class PlanMakerController {
         }
     }
     @FXML
-    private void newMenuAction() {
+    private void newMenuAction() throws FileNotFoundException {
+        //new button
         App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
         App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+        lessonTitle.setText("Add Lesson Title");
+        displayLesson.getChildren().clear();
 
     }
 
