@@ -168,7 +168,7 @@
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Label fx:id="lessonTitle" alignment="CENTER" onMouseClicked="#onDoubleClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="WHITE">
+                  <Label fx:id="lessonTitle" alignment="CENTER" onMouseClicked="#onTitleClick" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="WHITE">
                      <StackPane.margin>
                         <Insets top="10.0" />
                      </StackPane.margin>

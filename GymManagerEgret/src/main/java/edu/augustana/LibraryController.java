@@ -11,7 +11,6 @@ public class LibraryController {
     @FXML
     private ImageView home;
 
-    @FXML
     private ListView<LessonPlan> lessonList;
 
  //   @FXML

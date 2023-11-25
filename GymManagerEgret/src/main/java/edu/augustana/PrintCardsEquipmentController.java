@@ -28,22 +28,15 @@ public class PrintCardsEquipmentController {
 
     @FXML
     void initialize() throws FileNotFoundException {
-        LessonPlan currentLessonPlan = new LessonPlan();
         back.setOnAction(event -> connectToPlanMakerPage());
-        lessonTitle.setText(currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
-        displayLesson.setPrefColumns(3);
-        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = card.getImage();
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            displayLesson.getChildren().add(newCardView);
-        }
 
+        LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+
+        lessonTitle.setText(currentLessonPlan.getTitle());
+        //displayLesson.setPrefColumns(3);
+        currentLessonPlan.displayCards(150,200,displayLesson);
         print.setOnAction(event -> printContent(printCardsDisplay));
-
 
 
     }
@@ -58,9 +51,7 @@ public class PrintCardsEquipmentController {
     }
 
     private void printContent(Node nodeToPrint) {
-        System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
-        System.out.println("Job=" + job);
 
         if (job != null) {
             PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);

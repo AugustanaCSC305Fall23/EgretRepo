@@ -19,7 +19,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button fx:id="print" mnemonicParsing="false" text="Print" />
-            <Button fx:id="back" mnemonicParsing="false" text="Back" />
+            <Button fx:id="back" mnemonicParsing="false" onAction="#connectToPlanMakerPage" text="Back" />
         </buttons>
       </ButtonBar>
    </bottom>

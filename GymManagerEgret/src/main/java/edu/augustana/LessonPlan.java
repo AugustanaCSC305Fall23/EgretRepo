@@ -5,6 +5,10 @@ import java.io.*;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
 
 
 public class LessonPlan {
@@ -43,6 +47,17 @@ public class LessonPlan {
     public void setTitle(String title) {
         this.title = title;
     }
+    public void displayCards(int width, int height, TilePane tile){
+        for (Card card : getCopyOfLessonCards()) {
+            ImageView newCardView = new ImageView();
+            Image cardImage = card.getImage();
+            newCardView.setImage(cardImage);
+            newCardView.setFitHeight(height);
+            newCardView.setFitWidth(height);
+            tile.getChildren().add(newCardView);
+        }
+    }
+
 
     @Override
     public String toString() {

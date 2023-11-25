@@ -31,17 +31,13 @@ public class PrintCardsController {
     @FXML
     void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
-        LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-        lessonTitle.setText(currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
-        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = card.getImage();
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(150);
-            newCardView.setFitWidth(200);
-            displayLesson.getChildren().add(newCardView);
-        }
+
+        LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+
+        lessonTitle.setText(currentLessonPlan.getTitle());
+
+        currentLessonPlan.displayCards(150,200,displayLesson);
 
         print.setOnAction(event -> printContent(printCardsDisplay));
 

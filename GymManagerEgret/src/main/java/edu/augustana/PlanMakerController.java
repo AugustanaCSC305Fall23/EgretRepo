@@ -30,7 +30,9 @@ public class PlanMakerController {
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     private LessonPlan currentLessonPlan;
-
+    private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
+    private String enteredTitle;
+    private boolean savedStatus = false;
     @FXML
     private MenuItem print;
 
@@ -42,8 +44,6 @@ public class PlanMakerController {
 
     @FXML
     private Label lessonTitle;
-
-    private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
 
     @FXML
     private TextArea lessonTitleTextArea;
@@ -57,14 +57,11 @@ public class PlanMakerController {
     @FXML
     private MenuItem newButton;
 
-    private String enteredTitle;
-
     @FXML
     private TilePane displayLesson;
 
     @FXML
     private ImageView home;
-
 
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
@@ -77,8 +74,6 @@ public class PlanMakerController {
 
     @FXML
     private ToggleSwitch favoriteSwitch;
-
-    private boolean savedStatus = false;
 
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
 
@@ -94,11 +89,12 @@ public class PlanMakerController {
     @FXML
     void initialize() throws FileNotFoundException {
         home.setImage(App.homeIcon());
-        //title
         lessonTitle.setVisible(true);
         lessonTitleTextArea.setVisible(false);
-        edit.setOnAction(event -> onEditButtonClick());
-        edit.setOnAction(event -> onDoubleClick());
+        edit.setOnAction(event -> {
+            onEditButtonClick();
+            onTitleClick();
+        });
         setCardDisplay(allCards);
         initializeComboBoxes();
         if(!currentLessonPlan.getCopyOfLessonCards().isEmpty()){
@@ -198,10 +194,9 @@ public class PlanMakerController {
             setMouseEvent(cardImageView, card, false);
             currentLessonPlan.addCard(card);
         }else{
-            System.out.println("cardExists");
             Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
             alreadyAddedAlert.setHeaderText(null);
-            alreadyAddedAlert.setTitle("Add Card");
+            alreadyAddedAlert.setTitle(null);
             alreadyAddedAlert.setContentText("Already added image");
             alreadyAddedAlert.initOwner(App.primaryStage);
             alreadyAddedAlert.showAndWait();
@@ -230,7 +225,6 @@ public class PlanMakerController {
     }
 
     private void printOptions(){
-        System.out.println(currentLessonPlan.getTitle());
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
@@ -328,7 +322,7 @@ public class PlanMakerController {
     }
 
     @FXML
-    void onDoubleClick() {
+    void onTitleClick() {
         lessonTitle.setVisible(false);
         lessonTitleTextArea.setVisible(true);
         lessonTitleTextArea.setText(lessonTitle.getText());
@@ -342,7 +336,6 @@ public class PlanMakerController {
             lessonTitle.setText(editedText);
             enteredTitle = editedText;
             lessonTitleTextArea.setVisible(false);
-            //remove
             currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
             edit.setDisable(false);
