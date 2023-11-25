@@ -39,8 +39,7 @@ public class PrintCardsTitlesController {
         lessonTitle.setText(currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
-            String cardName = new String();
-            cardName = card.getTitle();
+            String cardName = card.getTitle();
             Label title = new Label();
             title.setText(cardName);
             title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #216065;");

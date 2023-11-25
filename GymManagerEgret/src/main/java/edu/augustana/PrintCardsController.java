@@ -19,8 +19,6 @@ public class PrintCardsController {
     TilePane displayLesson;
     @FXML
     private Button back;
-//    @FXML
-//    private Button home;
     @FXML
     private ImageView homeIcon;
     @FXML
@@ -28,14 +26,15 @@ public class PrintCardsController {
     @FXML
     private Label lessonTitle;
 
+    private static final int CARDS_PER_PAGE = 9;
+
     @FXML
     void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
         LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
         lessonTitle.setText(currentLessonPlan.getTitle());
         homeIcon.setImage(App.homeIcon());
-        displayLesson.setPrefColumns(3);
-        for (Card card :currentLessonPlan.getCopyOfLessonCards()) {
+        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
             Image cardImage = card.getImage();
             newCardView.setImage(cardImage);
@@ -46,16 +45,15 @@ public class PrintCardsController {
 
         print.setOnAction(event -> printContent(printCardsDisplay));
 
-
-
     }
 
     @FXML
     void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
     }
+
     @FXML
-    void connectToHomePage(){
+    void connectToHomePage() {
         App.switchToHomePageView();
     }
 
@@ -69,13 +67,51 @@ public class PrintCardsController {
             job.getJobSettings().setPageLayout(pageLayout);
 
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
-                boolean success = job.printPage(nodeToPrint);
-                if (success) {
-                    job.endJob();
+                int cardIndex = 0;
+
+                while (cardIndex < displayLesson.getChildren().size()) {
+                    boolean success = job.printPage(createPage(nodeToPrint, cardIndex, job.getPrinter().getDefaultPageLayout().getPrintableHeight()));
+                    System.out.println("Print success: " + success);
+
+                    if (success) {
+                        cardIndex += CARDS_PER_PAGE;
+                    } else {
+                        break;
+                    }
                 }
+
+                job.endJob();
             }
         }
     }
 
+    private Node createPage(Node nodeToPrint, int startIndex, double printableHeight) {
+        VBox page = new VBox();
+
+        if (startIndex < displayLesson.getChildren().size()) {
+            Label titleLabel = new Label(lessonTitle.getText());
+           // titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+            page.getChildren().add(titleLabel);
+            TilePane tilePane = createTilePane(nodeToPrint, startIndex, printableHeight - titleLabel.getHeight());
+            page.getChildren().add(tilePane);
+        }
+
+        return page;
+    }
+
+    private TilePane createTilePane(Node nodeToPrint, int startIndex, double printableHeight) {
+        TilePane tilePane = new TilePane();
+        tilePane.setPrefColumns(3);
+        tilePane.setPrefRows(3);
+
+        int endIndex = Math.min(startIndex + CARDS_PER_PAGE, displayLesson.getChildren().size());
+        tilePane.getChildren().addAll(displayLesson.getChildren().subList(startIndex, endIndex));
+
+        if (tilePane.getHeight() > printableHeight) {
+            tilePane.setPrefRows(tilePane.getChildren().size() / 3);
+        }
+
+        return tilePane;
+    }
 
 }

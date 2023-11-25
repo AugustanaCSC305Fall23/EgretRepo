@@ -4,26 +4,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsTitlesController">
-    <center>
-        <VBox fx:id="printCardsDisplay" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="#216065">
-                    <font>
-                        <Font size="38.0" />
-                    </font>
-                </Label>
-                <TilePane fx:id="displayLesson" prefHeight="745.0" prefWidth="1500.0" />
-            </children>
-        </VBox>
-    </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonTitleBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsTitlesController">
     <bottom>
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
@@ -33,17 +24,42 @@
         </ButtonBar>
     </bottom>
     <top>
-        <Button fx:id="home" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#connectToHomePage" BorderPane.alignment="TOP_RIGHT">
+        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#connectToHomePage" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_RIGHT">
             <BorderPane.margin>
-                <Insets right="10.0" />
+                <Insets right="10.0" top="10.0" />
             </BorderPane.margin>
-            <graphic>
-                <ImageView fx:id="homeIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../../../CardPhotos/Icons/home_icon.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+        </ImageView>
     </top>
+    <center>
+        <VBox fx:id="printCardsDisplay" alignment="CENTER" prefHeight="845.0" prefWidth="853.0" BorderPane.alignment="CENTER">
+            <children>
+                <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
+                    <children>
+                        <TextArea fx:id="lessonTitleTextArea" prefHeight="20.0" prefWidth="50.0" visible="false" />
+                        <Label fx:id="lessonTitle" alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Add Lesson Name" textFill="WHITE">
+                            <font>
+                                <Font name="Arial" size="30.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </StackPane>
+                <AnchorPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="1350.0" VBox.vgrow="NEVER">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <children>
+                        <ScrollPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <content>
+                                <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="1350.0" styleClass="filter" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
+                                    <padding>
+                                        <Insets left="5.0" top="10.0" />
+                                    </padding>
+                                </TilePane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </center>
 </BorderPane>
