@@ -13,13 +13,7 @@ public class Course {
 
     public Course(){
         this.lessonPlans = new ArrayList<>();
-        this.lessonPlans.add(new LessonPlan("Untitled 1"));
-        //testing
-        this.lessonPlans.add(new LessonPlan("Untitled 2"));
-        this.lessonPlans.add(new LessonPlan("Untitled 3"));
-        this.lessonPlans.add(new LessonPlan("Untitled 4"));
-        this.lessonPlans.add(new LessonPlan("Untitled 5"));
-
+        this.lessonPlans.add(new LessonPlan("Untitled"));
         this.currentEditingIndex = 0;
     }
 
@@ -27,9 +21,14 @@ public class Course {
         lessonPlans.add(currentLessonPlan);
     }
 
-    public int getCurrentEditingIndex(){
-        return currentEditingIndex;
+//    public int getCurrentEditingIndex(){
+//        return currentEditingIndex;
+//    }
+
+    public void setCurrentEditingIndex(int index){
+        currentEditingIndex= index;
     }
+
 
     public LessonPlan getCurrentLessonPlan(){
         return lessonPlans.get(currentEditingIndex);

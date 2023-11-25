@@ -54,6 +54,8 @@ public class PlanMakerController {
     @FXML
     private FlowPane cardFlowPane;
 
+    @FXML
+    private MenuItem newButton;
 
     private String enteredTitle;
 
@@ -438,7 +440,7 @@ public class PlanMakerController {
     private void saveAsMenuAction(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(currentLessonPlan.getTitle());
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.courselessonplan)","*.courselessonplan");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.coursePlan)","*.coursePlan");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = displayLesson.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
@@ -471,7 +473,7 @@ public class PlanMakerController {
     private void loadMenuAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("New File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.courselessonplan)", "*.courselessonplan");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.coursePlan)", "*.coursePlan");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = displayLesson.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
@@ -495,6 +497,12 @@ public class PlanMakerController {
                 new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
             }
         }
+    }
+    @FXML
+    private void newMenuAction() {
+        App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
+        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+
     }
 
 }

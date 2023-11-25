@@ -29,5 +29,10 @@ public class LibraryController {
         home.setImage(App.homeIcon());
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
     }
-
 }
+
+
+//<MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveMenuAction" text="Save" />
+//<MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsMenuAction" text="Save As" />
+// <MenuItem mnemonicParsing="false" onAction="#loadMenuAction" text="Open" />
+//<MenuItem mnemonicParsing="false" onAction="#shareMenuAction" text="Share" />
