@@ -85,11 +85,11 @@ public class App extends Application {
     }
 
     public static Image homeIcon(){
-        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Icons/white_house.png");
+        return new Image("file:GymManagerAssets/cardPhotos/Icons/white_house.png");
     }
 
     public static Image backgroundImage(){
-        return new Image("file:GymManagerEgret/GymManagerAssets/cardPhotos/Pictures/img.jpg");
+        return new Image("file:GymManagerAssets/cardPhotos/Pictures/img.jpg");
     }
 
     public static Course getCurrentCourse() {

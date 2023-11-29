@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FavoritesManager {
 
-    final static File favorites = new File("GymManagerEgret/GymManagerAssets/favorites.txt");
+    final static File favorites = new File("GymManagerAssets/favorites.txt");
     static ArrayList<String> favoritesList = new ArrayList<>();
 
     static FavoritesManager favoritesManager = new FavoritesManager();
