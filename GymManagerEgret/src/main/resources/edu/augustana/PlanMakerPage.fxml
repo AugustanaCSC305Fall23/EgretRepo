@@ -226,6 +226,7 @@
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#showToolTips" text="Tool Tips" />
+                  <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
                </items>
             </Menu>
          </menus>

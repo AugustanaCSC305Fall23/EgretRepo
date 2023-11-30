@@ -514,4 +514,16 @@ public class PlanMakerController {
 
     }
 
+    @FXML
+    private void showAbout() {
+        Alert aboutAlert = new Alert(AlertType.INFORMATION);
+        aboutAlert.setHeaderText("Credits");
+        aboutAlert.setTitle("About");
+        aboutAlert.setContentText("Product Designer: " + "\n" + "   Samantha Keehn" + "\n"
+                + "Developers: " + "\n" +"  Riva Kansakar" + "\n" +"  Drake Misfeldt" + "\n" +"  Stuti Shrestha" + "\n"
+                + "Project Supervisor: " + "\n" + " Forrest Stonedahl");
+        aboutAlert.initOwner(App.primaryStage);
+        aboutAlert.showAndWait();
+    }
+
 }
