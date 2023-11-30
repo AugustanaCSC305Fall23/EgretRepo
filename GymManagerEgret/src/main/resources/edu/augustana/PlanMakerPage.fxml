@@ -28,7 +28,7 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="titleSearchBox" onKeyTyped="#searchTitle" prefWidth="650.0" promptText="Search Title" styleClass="cardBackground" stylesheets="@style.css" />
+            <TextField fx:id="superSearchBox" onKeyTyped="#searchSuper" prefWidth="650.0" promptText="Search" styleClass="cardBackground" stylesheets="@style.css" />
             <Accordion prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
                <panes>
                   <TitledPane animated="false" styleClass="lessonBackground" stylesheets="@style.css" text="Filters" textFill="#216065">
@@ -129,6 +129,7 @@
                                     </ChoiceBox>
                                  </children>
                               </HBox>
+                              <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" style="-fx-border-color: teal;" />
                            </children>
                         </AnchorPane>
                      </content>

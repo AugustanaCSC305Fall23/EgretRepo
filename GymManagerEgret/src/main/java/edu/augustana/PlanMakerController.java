@@ -52,6 +52,9 @@ public class PlanMakerController {
     private TextField titleSearchBox;
 
     @FXML
+    private TextField superSearchBox;
+
+    @FXML
     private FlowPane cardFlowPane;
 
     @FXML
@@ -380,6 +383,16 @@ public class PlanMakerController {
         } else {
             CardDatabase.removeFilterType(new FavoriteFilter());
         }
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void searchSuper(){
+        CardDatabase.addFilter(new TextFilter(superSearchBox.getText().toLowerCase()));
         try {
             setCardDisplay(CardDatabase.filterCards());
         } catch (FileNotFoundException e) {
