@@ -1,11 +1,8 @@
 package edu.augustana;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -15,7 +12,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.filters.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 
 
 public class CardDatabase {
@@ -28,19 +24,31 @@ public class CardDatabase {
 
     public static void addCardsFromCSV() throws IOException, CsvValidationException {
         //reads through the CSV file, skipping the headers in the first line.
-        File spreadsheetFile = new File("GymManagerAssets/cardSpreadsheets");
-            for(File filename : spreadsheetFile.listFiles()) {
-                System.out.println(filename);
-                CSVReader reader = new CSVReaderBuilder(new FileReader(filename)).withSkipLines(1).build();
-                String[] nextLine;
-                while ((nextLine = reader.readNext()) != null) {
-                    // nextLine[] is an array of values from the line
-                    Card card = new Card(nextLine);
-                    System.out.println(card);
-                    addCard(card);
-                }
+        ArrayList<File> CSVList = retrieveCSVFiles();
+        //File spreadsheetFile = new File("GymManagerAssets/cardSpreadsheets");
+        for(File filename : CSVList) {
+            System.out.println(filename);
+            CSVReader reader = new CSVReaderBuilder(new FileReader(filename)).withSkipLines(1).build();
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                Card card = new Card(nextLine);
+                System.out.println(card);
+                addCard(card);
             }
+        }
     }
+
+    private static ArrayList<File> retrieveCSVFiles(){
+        File cardPacks = new File("GymManagerAssets/cardPacks");
+        ArrayList<File> csvFiles = new ArrayList<>();
+        for(File f: Objects.requireNonNull(cardPacks.listFiles())) {
+            File[] matchingFiles = f.listFiles((dir, name) -> name.endsWith("csv"));
+            assert matchingFiles != null;
+            csvFiles.addAll(Arrays.asList(matchingFiles));
+        }
+        return csvFiles;
+    }
+
     private static void addCard(Card card){
         allCards.add(card);
         uniqueIdToCardMap.put(card.getUniqueId(),card);
@@ -97,6 +105,10 @@ public class CardDatabase {
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {
+        for (File file : retrieveCSVFiles()){
+            System.out.println(file.toString());
+        }
+
        /* addCardsFromCSV();
         addFilter(new EventFilter("Beam"));
         System.out.println();
