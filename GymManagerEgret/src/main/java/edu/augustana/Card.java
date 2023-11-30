@@ -59,8 +59,8 @@ public class Card {
         this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
-        System.out.println("GymManagerEgret/GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName);
-        this.image = new Image(new FileInputStream("GymManagerEgret/GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName));
+        System.out.println("GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName);
+        this.image = new Image(new FileInputStream("GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName));
         this.gender = cardData[6];
         this.modelSex = cardData[7];
         this.favoriteStatus = false;

@@ -28,7 +28,7 @@ public class CardDatabase {
 
     public static void addCardsFromCSV() throws IOException, CsvValidationException {
         //reads through the CSV file, skipping the headers in the first line.
-        File spreadsheetFile = new File("GymManagerEgret/GymManagerAssets/cardSpreadsheets");
+        File spreadsheetFile = new File("GymManagerAssets/cardSpreadsheets");
             for(File filename : spreadsheetFile.listFiles()) {
                 System.out.println(filename);
                 CSVReader reader = new CSVReaderBuilder(new FileReader(filename)).withSkipLines(1).build();
