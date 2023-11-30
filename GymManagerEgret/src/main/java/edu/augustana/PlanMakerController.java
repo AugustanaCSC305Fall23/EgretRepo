@@ -118,7 +118,7 @@ public class PlanMakerController {
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("View Card");
 
-        ImageView popupImageView = new ImageView(card.getImage());
+        ImageView popupImageView = new ImageView(card.getZoomedImage());
         popupImageView.setFitWidth(1650/3);
         popupImageView.setFitHeight(1275/3);
 

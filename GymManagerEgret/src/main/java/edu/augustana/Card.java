@@ -59,8 +59,8 @@ public class Card {
         this.title = cardData[3].toLowerCase();
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
-        System.out.println("GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName);
-        this.image = new Image(new FileInputStream("GymManagerAssets/cardPhotos/" + pack +"Images/" + imageFileName));
+        System.out.println("GymManagerAssets/cardPacks/" + pack + "/thumbs/" + generateThumbnail());
+        this.image = new Image(new FileInputStream("GymManagerAssets/cardPacks/" + pack +"/thumbs/" + generateThumbnail()));
         this.gender = cardData[6];
         this.modelSex = cardData[7];
         this.favoriteStatus = false;
@@ -84,6 +84,10 @@ public class Card {
         if(initialFavoritesList.contains(code)){
             favoriteStatus = true;
         }
+    }
+
+    private String generateThumbnail(){
+        return imageFileName.replace(".png",".jpg");
     }
 
     public String getCode() {
@@ -140,9 +144,14 @@ public class Card {
         favoriteStatus = !favoriteStatus;
     }
 
+    public Image getImage() {return image;}
 
-    public Image getImage() {
-        return image;
-
+    public Image getZoomedImage(){
+        System.out.println("GymManagerAssets/cardPacks/" + pack +"/" + imageFileName);
+        try {
+            return new Image(new FileInputStream("GymManagerAssets/cardPacks/" + pack +"/" + imageFileName));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
