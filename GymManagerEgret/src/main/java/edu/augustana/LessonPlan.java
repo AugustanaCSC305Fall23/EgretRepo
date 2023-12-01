@@ -47,13 +47,13 @@ public class LessonPlan {
     public void setTitle(String title) {
         this.title = title;
     }
-    public void displayCards(int width, int height, TilePane tile){
+    public void displayCards(double width, double height, TilePane tile){
         for (Card card : getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
-            Image cardImage = card.getImage();
+            Image cardImage = card.getZoomedImage();
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(height);
-            newCardView.setFitWidth(height);
+            newCardView.setFitWidth(width);
             tile.getChildren().add(newCardView);
         }
     }

@@ -1,6 +1,8 @@
 package edu.augustana;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -23,6 +25,7 @@ public class PrintCardsController {
     private ImageView homeIcon;
     @FXML
     private Button print;
+    private LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     @FXML
     private Label lessonTitle;
 
@@ -33,24 +36,12 @@ public class PrintCardsController {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
-        LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-
         lessonTitle.setText(currentLessonPlan.getTitle());
 
-        currentLessonPlan.displayCards(150,200,displayLesson);
+        currentLessonPlan.displayCards(1650/8, 1275/8,displayLesson);
 
         print.setOnAction(event -> printContent(printCardsDisplay));
 
-    }
-
-    @FXML
-    void connectToPlanMakerPage() {
-        App.switchToPlanMakerView();
-    }
-
-    @FXML
-    void connectToHomePage() {
-        App.switchToHomePageView();
     }
 
     private void printContent(Node nodeToPrint) {
@@ -66,11 +57,14 @@ public class PrintCardsController {
                 int cardIndex = 0;
 
                 while (cardIndex < displayLesson.getChildren().size()) {
-                    boolean success = job.printPage(createPage(nodeToPrint, cardIndex, job.getPrinter().getDefaultPageLayout().getPrintableHeight()));
+                    System.out.println("Display lesson get children"+displayLesson.getChildren().size());
+                    int endIndex = Math.min(cardIndex + CARDS_PER_PAGE, displayLesson.getChildren().size());
+                    boolean success = job.printPage(createPage(nodeToPrint, cardIndex, endIndex, job.getPrinter().getDefaultPageLayout().getPrintableHeight()));
                     System.out.println("Print success: " + success);
 
                     if (success) {
                         cardIndex += CARDS_PER_PAGE;
+
                     } else {
                         break;
                     }
@@ -81,33 +75,50 @@ public class PrintCardsController {
         }
     }
 
-    private Node createPage(Node nodeToPrint, int startIndex, double printableHeight) {
+    private Node createPage(Node nodeToPrint, int startIndex, int endIndex, double printableHeight) {
         VBox page = new VBox();
+        page.setAlignment(Pos.CENTER);
+        page.setSpacing(0);
 
         if (startIndex < displayLesson.getChildren().size()) {
             Label titleLabel = new Label(lessonTitle.getText());
-           // titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+            titleLabel.setPadding(new Insets(0));
+            titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
             page.getChildren().add(titleLabel);
-            TilePane tilePane = createTilePane(nodeToPrint, startIndex, printableHeight - titleLabel.getHeight());
+
+            // Check and set padding and margin for TilePane
+            TilePane tilePane = createTilePane(nodeToPrint, startIndex, endIndex, printableHeight - titleLabel.getHeight());
+            tilePane.setPadding(new Insets(0));
+            tilePane.setMargin(titleLabel, new Insets(0));
+
             page.getChildren().add(tilePane);
         }
 
         return page;
     }
 
-    private TilePane createTilePane(Node nodeToPrint, int startIndex, double printableHeight) {
+    private TilePane createTilePane(Node nodeToPrint, int startIndex, int endIndex, double printableHeight) {
         TilePane tilePane = new TilePane();
+        tilePane.setTileAlignment(Pos.CENTER);
         tilePane.setPrefColumns(3);
         tilePane.setPrefRows(3);
-
-        int endIndex = Math.min(startIndex + CARDS_PER_PAGE, displayLesson.getChildren().size());
         tilePane.getChildren().addAll(displayLesson.getChildren().subList(startIndex, endIndex));
 
-        if (tilePane.getHeight() > printableHeight) {
-            tilePane.setPrefRows(tilePane.getChildren().size() / 3);
-        }
+//        if (tilePane.getHeight() > printableHeight) {
+//            tilePane.setPrefRows(tilePane.getChildren().size() / 3);
+//        }
 
         return tilePane;
     }
+    @FXML
+    void connectToPlanMakerPage() {
+        App.switchToPlanMakerView();
+    }
+
+    @FXML
+    void connectToHomePage() {
+        App.switchToHomePageView();
+    }
+
 
 }
