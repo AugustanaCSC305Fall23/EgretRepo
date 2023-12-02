@@ -7,12 +7,18 @@ import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PrintCardsController {
     @FXML
@@ -29,6 +35,12 @@ public class PrintCardsController {
     @FXML
     private Label lessonTitle;
 
+    @FXML
+    private TabPane pagesTabPane;
+
+
+    private List<VBox> pageVBoxes = new ArrayList<>();
+
     private static final int CARDS_PER_PAGE = 9;
 
     @FXML
@@ -41,6 +53,54 @@ public class PrintCardsController {
         currentLessonPlan.displayCards(1650/8, 1275/8,displayLesson);
 
         print.setOnAction(event -> printContent(printCardsDisplay));
+
+        addCardsToPageTabs();
+    }
+
+    private void addCardsToPageTabs() {
+        Set<String> eventNames = new HashSet<>();
+        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
+            eventNames.add(card.getEvent());
+        }
+        pagesTabPane.getTabs().clear();
+        int pageNum = 1;
+        for (String eventName : eventNames) {
+            VBox pageVBox = new VBox();
+            pageVBoxes.add(pageVBox);
+            Tab tab = new Tab("Page " + pageNum + ": " +eventName);
+            tab.setContent(pageVBox);
+            pagesTabPane.getTabs().add(tab);
+            pageVBox.getChildren().add(new Label(eventName));
+            TilePane tilePane = new TilePane();
+            pageVBox.getChildren().add(tilePane);
+            pageNum++;
+
+            for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
+                if (card.getEvent().equals(eventName)) {
+                    ImageView newCardView = new ImageView();
+                    Image cardImage = card.getZoomedImage();
+                    newCardView.setImage(cardImage);
+                    newCardView.setFitHeight(200);
+                    newCardView.setFitWidth(200);
+                    tilePane.getChildren().add(newCardView);
+                }
+            }
+        }
+
+//        int cardNum = displayLesson.getChildren().size();
+//        while (!(cardNum==0)){
+//            int tabNum = 1;
+//            String tabName = "page"+ tabNum;
+//            Tab tabName = new Tab();
+//
+//            if (cardNum>9){
+//                cardNum-= 9;
+//            }else{
+//                cardNum-= cardNum;
+//            }
+//            tabNum++;
+//
+//        }
 
     }
 

@@ -27,7 +27,11 @@ public class LessonPlan {
         ArrayList<Card> cardList = new ArrayList<>();
         for(String id: userChosenCardIDs){
             cardList.add(CardDatabase.getCardByUniqueId(id));}
-        return cardList;}
+        return cardList;
+    }
+//    public Map<String, List<Card>> getCardsByEvent() {
+//
+//    }
 
     public void addCard(Card card){
         userChosenCardIDs.add(card.getUniqueId());
