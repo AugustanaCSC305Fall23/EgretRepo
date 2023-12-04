@@ -15,9 +15,6 @@ public class LessonPlan {
     private ArrayList<String> userChosenCardIDs;
     private String title;
 
-    public LessonPlan() {
-    }
-
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();

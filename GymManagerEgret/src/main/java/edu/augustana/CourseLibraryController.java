@@ -41,20 +41,24 @@ public class CourseLibraryController {
 
     @FXML
     private void addLessonPlan() throws IOException {
-        LessonPlan newLessonPlan = new LessonPlan();
+        LessonPlan newLessonPlan = new LessonPlan("Untitled");
         App.switchToEditLessonPlan(newLessonPlan, true);
     }
 
 
     @FXML
     private void deleteLessonPlan(ActionEvent event) {
-        // Get the selected game from the ListView
+        if(App.getCurrentCourse().getLessonPlans().size()>1){
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
         if(selectedLessonPlan != null){
             lessonList.getItems().remove(selectedLessonPlan);
             App.getCurrentCourse().removeLessonPlan(selectedLessonPlan);
         } else {
             new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!").show();
+        }}else{
+            Alert alert = new Alert(Alert.AlertType.WARNING, "There needs to be alteast a lesson in course!");
+            alert.initOwner(App.primaryStage);
+            alert.showAndWait();
         }
     }
 
@@ -62,6 +66,7 @@ public class CourseLibraryController {
     void duplicateLessonPlan() {
         // Get the selected food item
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
+
         if (selectedLessonPlan != null) {
             LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
             App.getCurrentCourse().addLessonPlan(newLessonPlan);
@@ -82,6 +87,7 @@ public class CourseLibraryController {
                 if (response == ButtonType.OK) {
                     lessonList.getItems().clear();
                     App.getCurrentCourse().clearAllLessonPlans();
+                    lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
                 }
             });
         } else {

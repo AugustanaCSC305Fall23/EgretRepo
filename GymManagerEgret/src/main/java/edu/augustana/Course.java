@@ -24,7 +24,11 @@ public class Course {
 
 
     public void clearAllLessonPlans() {
+
         lessonPlans.clear();
+        lessonPlans.add(new LessonPlan("Untitled"));
+        currentEditingIndex =0;
+
     }
 
 
