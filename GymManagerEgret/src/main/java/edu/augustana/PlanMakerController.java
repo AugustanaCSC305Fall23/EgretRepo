@@ -30,7 +30,6 @@ public class PlanMakerController {
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     private LessonPlan currentLessonPlan;
-    private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
     private String enteredTitle;
     private boolean savedStatus = false;
 
@@ -54,9 +53,6 @@ public class PlanMakerController {
 
     @FXML
     private FlowPane cardFlowPane;
-
-    @FXML
-    private MenuItem newButton;
 
     @FXML
     private TilePane displayLesson;
@@ -521,7 +517,4 @@ public class PlanMakerController {
 
         }
     }
-
-
-
 }

@@ -101,13 +101,11 @@ public class App extends Application {
         return currentCourseFile;
     }
 
-
     public static void saveCurrentCourseToFile(File fileToSaveTo) throws IOException {
         // after this, File will contain the data from the LessonPlan object
         currentCourse.saveToFile(fileToSaveTo);
         currentCourseFile = fileToSaveTo;
     }
-
 
     public static void loadCurrentCourseFromFile(File fileToLoadFrom) throws IOException {
         currentCourse = Course.loadFromFile(fileToLoadFrom);
@@ -125,8 +123,4 @@ public class App extends Application {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
 }

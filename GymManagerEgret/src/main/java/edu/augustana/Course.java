@@ -23,10 +23,6 @@ public class Course {
     }
 
 
-//    public void setCurrentEditingIndex(int index){
-//        currentEditingIndex= index;
-//    }
-
     public void clearAllLessonPlans() {
         lessonPlans.clear();
     }

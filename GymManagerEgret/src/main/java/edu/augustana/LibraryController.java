@@ -30,12 +30,6 @@ public class LibraryController {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
 
- //   @FXML
-//    private void switchToSchedule() throws IOException {
-//        App.setRoot("LessonViewPage");
-//    }
-
-
     @FXML
     void connectToHomePage() {
         App.switchToHomePageView();
@@ -71,12 +65,12 @@ public class LibraryController {
         // Get the selected food item
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
         if (selectedLessonPlan != null) {
-            App.getCurrentCourse().addLessonPlan(selectedLessonPlan);
-            lessonList.getItems().add(selectedLessonPlan);
+            LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
+            App.getCurrentCourse().addLessonPlan(newLessonPlan);
+            lessonList.getItems().add(newLessonPlan);
         } else {
             new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!").show();
         }
-
     }
 
     @FXML
@@ -175,7 +169,3 @@ public class LibraryController {
 }
 
 
-//<MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveMenuAction" text="Save" />
-//<MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsMenuAction" text="Save As" />
-// <MenuItem mnemonicParsing="false" onAction="#loadMenuAction" text="Open" />
-//<MenuItem mnemonicParsing="false" onAction="#shareMenuAction" text="Share" />

@@ -14,7 +14,6 @@ public class HomePageController {
     @FXML
     private ImageView imageBackground;
 
-
     @FXML
     void connectToCourseLibrary() {
         App.switchToLibraryView();
@@ -29,8 +28,4 @@ public class HomePageController {
     void initialize() {
         imageBackground.setImage(App.backgroundImage());
     }
-
 }
-
-
-

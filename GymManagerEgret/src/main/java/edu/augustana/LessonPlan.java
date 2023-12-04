@@ -23,6 +23,11 @@ public class LessonPlan {
         this.userChosenCardIDs = new ArrayList<>();
     }
 
+    public LessonPlan(LessonPlan original) {
+        this.title = original.title;
+        this.userChosenCardIDs = new ArrayList<>(original.userChosenCardIDs);
+    }
+
     public ArrayList<Card> getCopyOfLessonCards() {
         ArrayList<Card> cardList = new ArrayList<>();
         for(String id: userChosenCardIDs){
@@ -58,7 +63,6 @@ public class LessonPlan {
             tile.getChildren().add(newCardView);
         }
     }
-
 
     @Override
     public String toString() {
