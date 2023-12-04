@@ -33,6 +33,7 @@ public class PlanMakerController {
     private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
     private String enteredTitle;
     private boolean savedStatus = false;
+
     @FXML
     private MenuItem print;
 
@@ -493,12 +494,24 @@ public class PlanMakerController {
     }
     @FXML
     private void newMenuAction() throws FileNotFoundException {
-        //new button
-        App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
         App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
         lessonTitle.setText("Add Lesson Title");
         displayLesson.getChildren().clear();
-
+        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
+
+    void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
+        this.currentLessonPlan = lessonPlan;
+        if(addingNew){
+            App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
+            App.getCurrentCourse().addLessonPlan(lessonPlan);
+            lessonTitle.setText("Add Lesson Title");
+            displayLesson.getChildren().clear();
+        }else{
+            App.getCurrentCourse().getLessonPlans().getClass();
+        }
+    }
+
+
 
 }

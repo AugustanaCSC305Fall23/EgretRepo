@@ -2,6 +2,7 @@ package edu.augustana;
 
 import com.opencsv.exceptions.CsvValidationException;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -112,4 +113,20 @@ public class App extends Application {
         currentCourse = Course.loadFromFile(fileToLoadFrom);
         currentCourseFile = fileToLoadFrom;
     }
+
+    public static void switchToEditLessonPlan(LessonPlan lessonPlanToEdit, boolean addingNew) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("PlanMakerPage.fxml"));
+            Parent root = fxmlLoader.load();
+            PlanMakerController controller = fxmlLoader.getController();
+            controller.setEditLessonPlan(lessonPlanToEdit, addingNew);
+            scene.setRoot(root);
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
 }

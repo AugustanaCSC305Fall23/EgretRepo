@@ -47,6 +47,7 @@ public class LessonPlan {
     public void setTitle(String title) {
         this.title = title;
     }
+
     public void displayCards(int width, int height, TilePane tile){
         for (Card card : getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
