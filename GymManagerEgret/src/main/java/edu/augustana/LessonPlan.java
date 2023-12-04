@@ -51,10 +51,10 @@ public class LessonPlan {
     public void displayCards(int width, int height, TilePane tile){
         for (Card card : getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
-            Image cardImage = card.getImage();
+            Image cardImage = card.getZoomedImage();
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(height);
-            newCardView.setFitWidth(height);
+            newCardView.setFitWidth(width);
             tile.getChildren().add(newCardView);
         }
     }
