@@ -101,71 +101,60 @@ public class LibraryController {
         }
     }
 
+    @FXML
+    private void menuActionOpen(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Course Library");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.courseLib)", "*.courseLib");
+        fileChooser.getExtensionFilters().add(filter);
+        Window mainWindow = lessonList.getScene().getWindow();
+        File chosenFile = fileChooser.showOpenDialog(mainWindow);
+        if (chosenFile != null) {
+            try {
+                App.loadCurrentCourseFromFile(chosenFile);
+                lessonList.getItems().clear();
+                Course loadedCourse = App.getCurrentCourse();
+                lessonList.getItems().addAll(loadedCourse.getLessonPlans());
+            } catch (IOException ex) {
+                new Alert(Alert.AlertType.ERROR, "Error loading course library file: " + chosenFile).show();
+            }
+        }
+    }
+
+    @FXML
+    private void menuActionSave(ActionEvent event) {
+        if (App.getCurrentCourseFile() == null) {
+            Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will not create a new file with current lesson. "
+                    + " It will only save to the existing lesson. Click Save As instead.");
+            saveAlert.initOwner(App.primaryStage);
+            saveAlert.show();
+        } else {
+            saveCurrentMovieLogToFile(App.getCurrentCourseFile());
+        }
+    }
+
+    @FXML
+    private void menuActionSaveAs(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Course Library");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.courseLib)", "*.courseLib");
+        fileChooser.getExtensionFilters().add(filter);
+        Window mainWindow = lessonList.getScene().getWindow();
+        File chosenFile = fileChooser.showSaveDialog(mainWindow);
+        saveCurrentMovieLogToFile(chosenFile);
+    }
+
+    private void saveCurrentMovieLogToFile(File chosenFile) {
+        if (chosenFile != null) {
+            try {
+                App.saveCurrentCourseToFile(chosenFile);
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Error saving movie course library file: " + chosenFile).show();
+            }
+        }
+    }
 
 
-
-
-
-//    @FXML
-//    private void saveMenuAction(ActionEvent event) {
-//        if(App.getCurrentCourseFile() == null){
-//            Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will not create a new file with current lesson. "
-//                    + " It will only save to the existing lesson. Click Save As instead.");
-//            saveAlert.initOwner(App.primaryStage);
-//            saveAlert.show();
-//        }else{
-//            saveCurrentLessonPlanToFile(App.getCurrentCourseFile());
-//        }
-//    }
-//    @FXML
-//    private void saveAsMenuAction(ActionEvent event) {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle(currentLessonPlan.getTitle());
-//        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.coursePlan)","*.coursePlan");
-//        fileChooser.getExtensionFilters().add(filter);
-//        Window mainWindow = displayLesson.getScene().getWindow();
-//        File chosenFile = fileChooser.showSaveDialog(mainWindow);
-//        saveCurrentLessonPlanToFile(chosenFile);
-//    }
-//
-//    private void saveCurrentLessonPlanToFile(File chosenFile) {
-//        if (chosenFile != null) {
-//            try {
-//                App.saveCurrentCourseToFile(chosenFile);
-//            } catch (IOException e) {
-//                new Alert(Alert.AlertType.ERROR, "Error saving lesson plan file: " + chosenFile).show();
-//            }
-//        }
-//    }
-//    @FXML
-//    private void loadMenuAction() {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("New File");
-//        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.coursePlan)", "*.coursePlan");
-//        fileChooser.getExtensionFilters().add(filter);
-//        Window mainWindow = displayLesson.getScene().getWindow();
-//        File chosenFile = fileChooser.showOpenDialog(mainWindow);
-//        if (chosenFile != null) {
-//            try {
-//                App.loadCurrentCourseFromFile(chosenFile);
-//                displayLesson.getChildren().clear();
-//                LessonPlan loadedLesson = App.getCurrentCourse().getCurrentLessonPlan();
-//                lessonTitle.setText(loadedLesson.getTitle());
-//
-//                for(Card card: loadedLesson.getCopyOfLessonCards()){
-//                    ImageView cardImageView = new ImageView(card.getImage());
-//                    cardImageView.setFitWidth(1650/7);
-//                    cardImageView.setFitHeight(1275/7);
-//                    setMouseEvent(cardImageView, card, false);
-//                    displayLesson.getChildren().add(cardImageView);
-//                }
-//                savedStatus = true;
-//
-//            } catch (IOException ex) {
-//                new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
-//            }
-//        }
-//    }
 }
 
 
