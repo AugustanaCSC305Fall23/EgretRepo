@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -45,15 +46,11 @@ public class LibraryController {
     }
 
     @FXML
-    private void actionAddNewLessonPlan() throws IOException {
+    private void addLessonPlan() throws IOException {
         LessonPlan newLessonPlan = new LessonPlan();
         App.switchToEditLessonPlan(newLessonPlan, true);
     }
 
-    @FXML
-    private void actionEditExistingLessonPlan() throws IOException {
-        App.switchToEditLessonPlan(currentLessonPlan, false);
-    }
 
     @FXML
     private void deleteLessonPlan(ActionEvent event) {
@@ -63,9 +60,24 @@ public class LibraryController {
             lessonList.getItems().remove(selectedLessonPlan);
             App.getCurrentCourse().removeLessonPlan(selectedLessonPlan);
         } else {
-            new Alert(Alert.AlertType.WARNING, "Select a game to delete first!").show();
+            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!").show();
         }
     }
+
+    @FXML
+    void duplicateLessonPlan() {
+        // Get the selected food item
+        LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
+        if (selectedLessonPlan != null) {
+            App.getCurrentCourse().addLessonPlan(selectedLessonPlan);
+            lessonList.getItems().add(selectedLessonPlan);
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!").show();
+        }
+
+    }
+
+
 
 
 //    @FXML

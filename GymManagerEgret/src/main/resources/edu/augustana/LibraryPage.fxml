@@ -31,13 +31,12 @@
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                         <MenuItem mnemonicParsing="false" text="Load" />
-                        <MenuItem mnemonicParsing="false" text="Share" />
                         <MenuItem fx:id="saveButton1" mnemonicParsing="false" text="Save" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Edit">
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#actionAddNewLessonPlan" text="Add Lesson " />
+                        <MenuItem mnemonicParsing="false" onAction="#addLessonPlan" text="Add Lesson " />
                         <MenuItem mnemonicParsing="false" text="Remove All" />
                      </items>
                   </Menu>
@@ -72,7 +71,7 @@
       <ButtonBar prefHeight="38.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button mnemonicParsing="false" text="Open" />
-            <Button mnemonicParsing="false" text="Duplicate" />
+            <Button mnemonicParsing="false" onAction="#duplicateLessonPlan" text="Duplicate" />
             <Button mnemonicParsing="false" onAction="#deleteLessonPlan" text="Delete" />
         </buttons>
       </ButtonBar>

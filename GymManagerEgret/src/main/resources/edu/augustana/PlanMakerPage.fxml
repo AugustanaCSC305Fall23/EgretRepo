@@ -209,7 +209,6 @@
                   <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveMenuAction" text="Save" />
                   <MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsMenuAction" text="Save As" />
                   <MenuItem mnemonicParsing="false" onAction="#loadMenuAction" text="Load" />
-                  <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#newMenuAction" text="New" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">

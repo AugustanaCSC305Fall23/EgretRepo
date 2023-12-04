@@ -492,23 +492,21 @@ public class PlanMakerController {
             }
         }
     }
-    @FXML
-    private void newMenuAction() throws FileNotFoundException {
-        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
-        lessonTitle.setText("Add Lesson Title");
-        displayLesson.getChildren().clear();
-        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-    }
+//    @FXML
+//    private void newMenuAction() throws FileNotFoundException {
+//        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+//        lessonTitle.setText("Add Lesson Title");
+//        displayLesson.getChildren().clear();
+//        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+//    }
 
     void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
         this.currentLessonPlan = lessonPlan;
         if(addingNew){
-            App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
-            App.getCurrentCourse().addLessonPlan(lessonPlan);
+            App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
             lessonTitle.setText("Add Lesson Title");
             displayLesson.getChildren().clear();
-        }else{
-            App.getCurrentCourse().getLessonPlans().getClass();
+            currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
         }
     }
 
