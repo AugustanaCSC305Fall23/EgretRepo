@@ -4,6 +4,7 @@ package edu.augustana;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -76,6 +77,25 @@ public class LibraryController {
         }
 
     }
+
+    @FXML
+    private void removeAllLessonPlans(ActionEvent event) {
+        if (!lessonList.getItems().isEmpty()) {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lesson plans?");
+            confirmation.initOwner(App.primaryStage);
+            confirmation.setHeaderText(null);
+
+            confirmation.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    lessonList.getItems().clear();
+                    App.getCurrentCourse().clearAllLessonPlans();
+                }
+            });
+        } else {
+            new Alert(Alert.AlertType.WARNING, "There are no lesson plans to remove!").show();
+        }
+    }
+
 
 
 
