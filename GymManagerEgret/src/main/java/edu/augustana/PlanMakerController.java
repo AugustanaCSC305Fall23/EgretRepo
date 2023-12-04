@@ -31,7 +31,6 @@ public class PlanMakerController {
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     private LessonPlan currentLessonPlan;
     private String enteredTitle;
-    private boolean savedStatus = false;
 
     @FXML
     private MenuItem print;
@@ -414,39 +413,6 @@ public class PlanMakerController {
         favoriteSwitch.setSelected(false);
     }
 
-    //Saving the lesson Plan
-    @FXML
-    private void saveMenuAction(ActionEvent event) {
-        if(App.getCurrentCourseFile() == null){
-            Alert saveAlert = new Alert(AlertType.INFORMATION, "It will not create a new file with current lesson. "
-                    + " It will only save to the existing lesson. Click Save As instead.");
-            saveAlert.initOwner(App.primaryStage);
-            saveAlert.show();
-        }else{
-            saveCurrentLessonPlanToFile(App.getCurrentCourseFile());
-        }
-    }
-    @FXML
-    private void saveAsMenuAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(currentLessonPlan.getTitle());
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.coursePlan)","*.coursePlan");
-        fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = displayLesson.getScene().getWindow();
-        File chosenFile = fileChooser.showSaveDialog(mainWindow);
-        saveCurrentLessonPlanToFile(chosenFile);
-    }
-
-    private void saveCurrentLessonPlanToFile(File chosenFile) {
-        if (chosenFile != null) {
-            try {
-                App.saveCurrentCourseToFile(chosenFile);
-                savedStatus = true;
-            } catch (IOException e) {
-                new Alert(Alert.AlertType.ERROR, "Error saving lesson plan file: " + chosenFile).show();
-            }
-        }
-    }
 
     @FXML
     private void showToolTips(){
@@ -457,44 +423,6 @@ public class PlanMakerController {
         alreadyAddedAlert.initOwner(App.primaryStage);
         alreadyAddedAlert.showAndWait();
     }
-
-    //Loading to the lesson
-    @FXML
-    private void loadMenuAction() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("New File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.coursePlan)", "*.coursePlan");
-        fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = displayLesson.getScene().getWindow();
-        File chosenFile = fileChooser.showOpenDialog(mainWindow);
-        if (chosenFile != null) {
-            try {
-                App.loadCurrentCourseFromFile(chosenFile);
-                displayLesson.getChildren().clear();
-                LessonPlan loadedLesson = App.getCurrentCourse().getCurrentLessonPlan();
-                lessonTitle.setText(loadedLesson.getTitle());
-
-                for(Card card: loadedLesson.getCopyOfLessonCards()){
-                    ImageView cardImageView = new ImageView(card.getImage());
-                    cardImageView.setFitWidth(1650/7);
-                    cardImageView.setFitHeight(1275/7);
-                    setMouseEvent(cardImageView, card, false);
-                    displayLesson.getChildren().add(cardImageView);
-                }
-                savedStatus = true;
-
-            } catch (IOException ex) {
-                new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
-            }
-        }
-    }
-//    @FXML
-//    private void newMenuAction() throws FileNotFoundException {
-//        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
-//        lessonTitle.setText("Add Lesson Title");
-//        displayLesson.getChildren().clear();
-//        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-//    }
 
     void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
         this.currentLessonPlan = lessonPlan;
