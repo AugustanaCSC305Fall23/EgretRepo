@@ -70,7 +70,7 @@ public class App extends Application {
     }
 
     public static void switchToLibraryView() {
-        switchToView("LibraryPage.fxml");
+        switchToView("CourseLibaryPage.fxml");
     }
 
     public static void switchToPrintCardsView() {

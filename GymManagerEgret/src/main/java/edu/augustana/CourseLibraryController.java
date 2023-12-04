@@ -11,12 +11,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
-public class LibraryController {
+public class CourseLibraryController {
 
     @FXML
     private ImageView home;
@@ -26,7 +24,7 @@ public class LibraryController {
 
     private final LessonPlan currentLessonPlan;
 
-    public LibraryController() {
+    public CourseLibraryController() {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
 
