@@ -424,7 +424,7 @@ public class PlanMakerController {
         alreadyAddedAlert.showAndWait();
     }
 
-    void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
+   public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
         this.currentLessonPlan = lessonPlan;
         if(addingNew){
             App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
@@ -445,4 +445,9 @@ public class PlanMakerController {
 
         }
     }
+    @FXML
+    private void connectToCoursePage(){
+        App.switchToLibraryView();
+    }
+
 }
