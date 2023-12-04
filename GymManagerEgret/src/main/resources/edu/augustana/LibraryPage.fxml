@@ -70,7 +70,7 @@
    <bottom>
       <ButtonBar prefHeight="38.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" text="Open" />
+          <Button mnemonicParsing="false" onAction="#openLessonPlan" text="Open" />
             <Button mnemonicParsing="false" onAction="#duplicateLessonPlan" text="Duplicate" />
             <Button mnemonicParsing="false" onAction="#deleteLessonPlan" text="Delete" />
         </buttons>

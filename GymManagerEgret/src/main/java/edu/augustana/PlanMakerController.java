@@ -507,6 +507,18 @@ public class PlanMakerController {
             lessonTitle.setText("Add Lesson Title");
             displayLesson.getChildren().clear();
             currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+        }else{
+            currentLessonPlan = lessonPlan;
+            lessonTitle.setText(lessonPlan.getTitle());
+            displayLesson.getChildren().clear();
+            for(Card card: currentLessonPlan.getCopyOfLessonCards()){
+                ImageView cardImageView = new ImageView(card.getImage());
+                cardImageView.setFitWidth(1650/7);
+                cardImageView.setFitHeight(1275/7);
+                setMouseEvent(cardImageView, card, false);
+                displayLesson.getChildren().add(cardImageView);
+            }
+
         }
     }
 

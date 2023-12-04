@@ -13,6 +13,7 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class LibraryController {
@@ -95,6 +96,17 @@ public class LibraryController {
             new Alert(Alert.AlertType.WARNING, "There are no lesson plans to remove!").show();
         }
     }
+
+    @FXML
+    private void openLessonPlan(ActionEvent event) throws IOException {
+        LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
+        if (selectedLessonPlan != null) {
+            App.switchToEditLessonPlan(selectedLessonPlan, false);
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to open first!").show();
+        }
+    }
+
 
 
 
