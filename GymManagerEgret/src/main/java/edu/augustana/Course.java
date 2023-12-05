@@ -19,14 +19,16 @@ public class Course {
 
     public void addLessonPlan(LessonPlan currentLessonPlan){
         lessonPlans.add(currentLessonPlan);
+        currentEditingIndex = this.currentEditingIndex+1;
     }
 
-//    public int getCurrentEditingIndex(){
-//        return currentEditingIndex;
-//    }
 
-    public void setCurrentEditingIndex(int index){
-        currentEditingIndex= index;
+    public void clearAllLessonPlans() {
+
+        lessonPlans.clear();
+        lessonPlans.add(new LessonPlan("Untitled"));
+        currentEditingIndex =0;
+
     }
 
 
@@ -34,8 +36,10 @@ public class Course {
         return lessonPlans.get(currentEditingIndex);
     }
 
+
     public void removeLessonPlan(LessonPlan lessonPlan){
         lessonPlans.remove(lessonPlan);
+        currentEditingIndex = currentEditingIndex-1;
     }
 
     public ArrayList<LessonPlan> getLessonPlans() {

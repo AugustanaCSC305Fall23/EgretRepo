@@ -15,12 +15,14 @@ public class LessonPlan {
     private ArrayList<String> userChosenCardIDs;
     private String title;
 
-    public LessonPlan() {
-    }
-
     public LessonPlan(String title){
         this.title = title;
         this.userChosenCardIDs = new ArrayList<>();
+    }
+
+    public LessonPlan(LessonPlan original) {
+        this.title = original.title;
+        this.userChosenCardIDs = new ArrayList<>(original.userChosenCardIDs);
     }
 
     public ArrayList<Card> getCopyOfLessonCards() {
@@ -51,7 +53,8 @@ public class LessonPlan {
     public void setTitle(String title) {
         this.title = title;
     }
-    public void displayCards(double width, double height, TilePane tile){
+
+    public void displayCards(int width, int height, TilePane tile){
         for (Card card : getCopyOfLessonCards()) {
             ImageView newCardView = new ImageView();
             Image cardImage = card.getZoomedImage();
@@ -61,7 +64,6 @@ public class LessonPlan {
             tile.getChildren().add(newCardView);
         }
     }
-
 
     @Override
     public String toString() {

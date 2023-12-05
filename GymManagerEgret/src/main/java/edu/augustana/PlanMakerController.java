@@ -32,9 +32,8 @@ public class PlanMakerController {
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
     private LessonPlan currentLessonPlan;
-    private ObservableList<String> selectedImageReferences = FXCollections.observableArrayList();
     private String enteredTitle;
-    private boolean savedStatus = false;
+
     @FXML
     private MenuItem print;
     @FXML
@@ -46,11 +45,22 @@ public class PlanMakerController {
     @FXML
     private TextArea lessonTitleTextArea;
     @FXML
+<<<<<<< HEAD
     private TextField titleSearchBox;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
     private MenuItem newButton;
+=======
+    private TextField superSearchBox;
+
+    @FXML
+    private TextField titleSearchBox;
+
+    @FXML
+    private FlowPane cardFlowPane;
+
+>>>>>>> 23ba4754aa21e06673b8997a2fba7d493e40da2e
     @FXML
     private TilePane displayLesson;
     @FXML
@@ -411,6 +421,16 @@ public class PlanMakerController {
     }
 
     @FXML
+    public void searchSuper(){
+        CardDatabase.addFilter(new TextFilter(superSearchBox.getText().toLowerCase()));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     public void searchCode() {
         CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toUpperCase()));
         try {
@@ -440,39 +460,6 @@ public class PlanMakerController {
         favoriteSwitch.setSelected(false);
     }
 
-    //Saving the lesson Plan
-    @FXML
-    private void saveMenuAction(ActionEvent event) {
-        if(App.getCurrentCourseFile() == null){
-            Alert saveAlert = new Alert(AlertType.INFORMATION, "It will not create a new file with current lesson. "
-                    + " It will only save to the existing lesson. Click Save As instead.");
-            saveAlert.initOwner(App.primaryStage);
-            saveAlert.show();
-        }else{
-            saveCurrentLessonPlanToFile(App.getCurrentCourseFile());
-        }
-    }
-    @FXML
-    private void saveAsMenuAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(currentLessonPlan.getTitle());
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Lesson Plan(*.coursePlan)","*.coursePlan");
-        fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = displayLesson.getScene().getWindow();
-        File chosenFile = fileChooser.showSaveDialog(mainWindow);
-        saveCurrentLessonPlanToFile(chosenFile);
-    }
-
-    private void saveCurrentLessonPlanToFile(File chosenFile) {
-        if (chosenFile != null) {
-            try {
-                App.saveCurrentCourseToFile(chosenFile);
-                savedStatus = true;
-            } catch (IOException e) {
-                new Alert(Alert.AlertType.ERROR, "Error saving lesson plan file: " + chosenFile).show();
-            }
-        }
-    }
 
     @FXML
     private void showToolTips(){
@@ -484,44 +471,42 @@ public class PlanMakerController {
         alreadyAddedAlert.showAndWait();
     }
 
-    //Loading to the lesson
-    @FXML
-    private void loadMenuAction() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("New File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Logs (*.coursePlan)", "*.coursePlan");
-        fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = displayLesson.getScene().getWindow();
-        File chosenFile = fileChooser.showOpenDialog(mainWindow);
-        if (chosenFile != null) {
-            try {
-                App.loadCurrentCourseFromFile(chosenFile);
-                displayLesson.getChildren().clear();
-                LessonPlan loadedLesson = App.getCurrentCourse().getCurrentLessonPlan();
-                lessonTitle.setText(loadedLesson.getTitle());
-
-                for(Card card: loadedLesson.getCopyOfLessonCards()){
-                    ImageView cardImageView = new ImageView(card.getImage());
-                    cardImageView.setFitWidth(1650/7);
-                    cardImageView.setFitHeight(1275/7);
-                    setMouseEvent(cardImageView, card, false);
-                    displayLesson.getChildren().add(cardImageView);
-                }
-                savedStatus = true;
-
-            } catch (IOException ex) {
-                new Alert(Alert.AlertType.ERROR, "Error loading movie log file: " + chosenFile).show();
+   public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
+        this.currentLessonPlan = lessonPlan;
+        if(addingNew){
+            App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+            lessonTitle.setText("Add Lesson Title");
+            displayLesson.getChildren().clear();
+            currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+        }else{
+            currentLessonPlan = lessonPlan;
+            lessonTitle.setText(lessonPlan.getTitle());
+            displayLesson.getChildren().clear();
+            for(Card card: currentLessonPlan.getCopyOfLessonCards()){
+                ImageView cardImageView = new ImageView(card.getImage());
+                cardImageView.setFitWidth(1650/7);
+                cardImageView.setFitHeight(1275/7);
+                setMouseEvent(cardImageView, card, false);
+                displayLesson.getChildren().add(cardImageView);
             }
+
         }
     }
     @FXML
-    private void newMenuAction() throws FileNotFoundException {
-        //new button
-        App.getCurrentCourse().setCurrentEditingIndex(App.getCurrentCourse().getLessonPlans().size());
-        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
-        lessonTitle.setText("Add Lesson Title");
-        displayLesson.getChildren().clear();
+    private void connectToCoursePage(){
+        App.switchToLibraryView();
+    }
 
+    @FXML
+    private void showAbout() {
+        Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        aboutAlert.setHeaderText("Credits");
+        aboutAlert.setTitle("About");
+        aboutAlert.setContentText("Product Designer: " + "\n" + "   Samantha Keehn" + "\n"
+                + "Developers: " + "\n" +"  Riva Kansakar" + "\n" +"  Drake Misfeldt" + "\n" +"  Stuti Shrestha" + "\n"
+                + "Project Supervisor: " + "\n" + " Forrest Stonedahl");
+        aboutAlert.initOwner(App.primaryStage);
+        aboutAlert.showAndWait();
     }
 
 }

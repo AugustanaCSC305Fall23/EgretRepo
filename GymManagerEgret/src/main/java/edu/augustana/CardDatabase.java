@@ -41,6 +41,7 @@ public class CardDatabase {
     private static ArrayList<File> retrieveCSVFiles(){
         File cardPacks = new File("GymManagerAssets/cardPacks");
         ArrayList<File> csvFiles = new ArrayList<>();
+        System.out.println(Arrays.toString(cardPacks.listFiles()));
         for(File f: Objects.requireNonNull(cardPacks.listFiles())) {
             File[] matchingFiles = f.listFiles((dir, name) -> name.endsWith("csv"));
             assert matchingFiles != null;
