@@ -27,6 +27,7 @@ public class HomePageController {
 
     @FXML
     void initialize() {
+
         imageBackground.setImage(App.backgroundImage());
     }
 
