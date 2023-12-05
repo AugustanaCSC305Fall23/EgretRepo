@@ -207,20 +207,13 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#saveMenuAction" text="Save" />
-                  <MenuItem fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsMenuAction" text="Save As" />
-                  <MenuItem mnemonicParsing="false" onAction="#loadMenuAction" text="Load" />
-                  <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#newMenuAction" text="New" />
+                  <MenuItem fx:id="print" mnemonicParsing="false" onAction="#showToolTips" text="Print" />
+                  <MenuItem mnemonicParsing="false" onAction="#connectToCoursePage" text="Open Library" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                <items>
                   <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Rename Title" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Print">
-               <items>
-                  <MenuItem fx:id="print" mnemonicParsing="false" onAction="#showToolTips" text="Print" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
