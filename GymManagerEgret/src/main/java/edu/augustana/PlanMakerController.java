@@ -48,6 +48,9 @@ public class PlanMakerController {
     private TextArea lessonTitleTextArea;
 
     @FXML
+    private TextField superSearchBox;
+
+    @FXML
     private TextField titleSearchBox;
 
     @FXML
@@ -384,6 +387,16 @@ public class PlanMakerController {
     }
 
     @FXML
+    public void searchSuper(){
+        CardDatabase.addFilter(new TextFilter(superSearchBox.getText().toLowerCase()));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     public void searchCode() {
         CardDatabase.addFilter(new CodeFilter(codeSearchBox.getText().toUpperCase()));
         try {
@@ -448,6 +461,18 @@ public class PlanMakerController {
     @FXML
     private void connectToCoursePage(){
         App.switchToLibraryView();
+    }
+
+    @FXML
+    private void showAbout() {
+        Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        aboutAlert.setHeaderText("Credits");
+        aboutAlert.setTitle("About");
+        aboutAlert.setContentText("Product Designer: " + "\n" + "   Samantha Keehn" + "\n"
+                + "Developers: " + "\n" +"  Riva Kansakar" + "\n" +"  Drake Misfeldt" + "\n" +"  Stuti Shrestha" + "\n"
+                + "Project Supervisor: " + "\n" + " Forrest Stonedahl");
+        aboutAlert.initOwner(App.primaryStage);
+        aboutAlert.showAndWait();
     }
 
 }
