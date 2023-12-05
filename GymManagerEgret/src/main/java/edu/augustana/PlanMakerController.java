@@ -45,22 +45,11 @@ public class PlanMakerController {
     @FXML
     private TextArea lessonTitleTextArea;
     @FXML
-<<<<<<< HEAD
     private TextField titleSearchBox;
     @FXML
     private FlowPane cardFlowPane;
     @FXML
-    private MenuItem newButton;
-=======
     private TextField superSearchBox;
-
-    @FXML
-    private TextField titleSearchBox;
-
-    @FXML
-    private FlowPane cardFlowPane;
-
->>>>>>> 23ba4754aa21e06673b8997a2fba7d493e40da2e
     @FXML
     private TilePane displayLesson;
     @FXML
