@@ -50,7 +50,7 @@
             </MenuBar>
             <StackPane prefHeight="67.0" prefWidth="800.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
                <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" text="Course Library" textFill="WHITE" StackPane.alignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="TOP" text="Lessons in Course" textFill="WHITE" StackPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
