@@ -1,19 +1,19 @@
 
 package edu.augustana;
 
-        import javafx.fxml.FXML;
-        import javafx.geometry.Insets;
-        import javafx.geometry.Orientation;
-        import javafx.geometry.Pos;
-        import javafx.print.*;
-        import javafx.scene.Node;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.image.ImageView;
-        import javafx.scene.layout.TilePane;
-        import javafx.scene.layout.VBox;
+    import javafx.fxml.FXML;
+    import javafx.geometry.Insets;
+    import javafx.geometry.Orientation;
+    import javafx.geometry.Pos;
+    import javafx.print.*;
+    import javafx.scene.Node;
+    import javafx.scene.control.Button;
+    import javafx.scene.control.Label;
+    import javafx.scene.image.ImageView;
+    import javafx.scene.layout.TilePane;
+    import javafx.scene.layout.VBox;
 
-        import java.io.FileNotFoundException;
+    import java.io.FileNotFoundException;
 
 public class PrintCardsTitlesController {
     @FXML
@@ -26,28 +26,35 @@ public class PrintCardsTitlesController {
     private ImageView homeIcon;
     @FXML
     private Button print;
-    @FXML
-    private Label lessonTitle;
     private LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
 
 
     @FXML
     void initialize() throws FileNotFoundException {
-        displayLesson.setOrientation(Orientation.VERTICAL);
         back.setOnAction(event -> connectToPlanMakerPage());
-
         homeIcon.setImage(App.homeIcon());
+
+        addCardTitlesToPageTabs();
+
+        print.setOnAction(event -> printContent(displayLesson));
+
+        displayLesson.setOrientation(Orientation.VERTICAL);
+
+    }
+
+    private void addCardTitlesToPageTabs() {
+        String lessonTitleStr = currentLessonPlan.getTitle();
+        Label lessonTitle = new Label("Lesson Title: "+lessonTitleStr);
+        lessonTitle.setStyle("-fx-font-size: 25px; -fx-font-weight: bold; -fx-font: Arial; ");
+        displayLesson.getChildren().add(lessonTitle);
+
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             String cardName = card.getTitle();
             Label title = new Label();
             title.setText(cardName);
-            title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #216065; ");
+            title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
             displayLesson.getChildren().add(title);
         }
-        print.setOnAction(event -> printContent(printCardsDisplay));
-
-
-
     }
 
     private void printContent(Node nodeToPrint) {
@@ -56,44 +63,18 @@ public class PrintCardsTitlesController {
         System.out.println("Job=" + job);
 
         if (job != null) {
-            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL);
             job.getJobSettings().setPageLayout(pageLayout);
 
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
 
                 System.out.println("Display lesson get children"+displayLesson.getChildren().size());
-                boolean success = job.printPage(createPage(nodeToPrint));
+                boolean success = job.printPage(displayLesson);
                 System.out.println("Print success: " + success);
 
                 job.endJob();
             }
         }
-    }
-
-    private Node createPage(Node nodeToPrint) {
-        VBox page = new VBox();
-        page.setAlignment(Pos.TOP_CENTER);
-        page.setSpacing(0);
-
-
-        Label titleLabel = new Label(lessonTitle.getText());
-        titleLabel.setStyle("-fx-font-size: 30px; -fx-font-weight: bold;-fx-font: Arial;");
-        page.getChildren().add(titleLabel);
-
-        TilePane tilePane = new TilePane();
-        tilePane.setOrientation(Orientation.VERTICAL);
-        tilePane.setPrefHeight(800);
-        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
-            String cardName = card.getTitle();
-            Label title = new Label();
-            title.setText(cardName);
-            tilePane.getChildren().add(title);
-        }
-        tilePane.setTileAlignment(Pos.TOP_LEFT);
-
-        page.getChildren().add(tilePane);
-
-        return page;
     }
 
     @FXML
@@ -104,8 +85,5 @@ public class PrintCardsTitlesController {
     void connectToHomePage(){
         App.switchToHomePageView();
     }
-
-
-
 
 }

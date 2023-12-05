@@ -33,12 +33,7 @@ public class PrintCardsController {
     private Button print;
     private LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     @FXML
-    private Label lessonTitle;
-
-    @FXML
     private TabPane pagesTabPane;
-
-
     private List<VBox> pageVBoxes = new ArrayList<>();
 
     @FXML
@@ -46,60 +41,55 @@ public class PrintCardsController {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
- //       lessonTitle.setText(currentLessonPlan.getTitle());
-
-  //      currentLessonPlan.displayCards(1650/8, 1275/8,displayLesson);
+        addCardsToPageTabs();
 
         print.setOnAction(event -> printContent(printCardsDisplay));
 
-        addCardsToPageTabs();
     }
 
     private void addCardsToPageTabs() {
         Set<String> eventNames = new HashSet<>();
+        String lessonTitleStr = "Lesson Title: "+ currentLessonPlan.getTitle();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             eventNames.add(card.getEvent());
         }
         pagesTabPane.getTabs().clear();
         int pageNum = 1;
-        for (String eventName : eventNames) {
+        for (String eventNameStr : eventNames) {
             VBox pageVBox = new VBox();
             pageVBoxes.add(pageVBox);
-            Tab tab = new Tab("Page " + pageNum + ": " +eventName);
+            Tab tab = new Tab("Page " + pageNum + ": " +eventNameStr);
             tab.setContent(pageVBox);
             pagesTabPane.getTabs().add(tab);
-            pageVBox.getChildren().add(new Label(eventName));
-            pageVBox.setAlignment(Pos.TOP_LEFT);
+            Label lessonTitle = new Label(lessonTitleStr);
+        //    lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
+            pageVBox.getChildren().add(lessonTitle);
+            Label eventName = new Label("Event Name: " +eventNameStr);
+         //   eventName.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
+            pageVBox.getChildren().add(eventName);
             TilePane tilePane = new TilePane();
-            pageVBox.getChildren().add(tilePane);
+            tilePane.setPrefColumns(3);
+            tilePane.setPrefRows(3);
             pageNum++;
 
             for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
-                if (card.getEvent().equals(eventName)) {
+                if (card.getEvent().equals(eventNameStr)) {
                     ImageView newCardView = new ImageView();
                     Image cardImage = card.getZoomedImage();
                     newCardView.setImage(cardImage);
-                    newCardView.setFitWidth(1650/8);
-                    newCardView.setFitHeight(1275/8);
+                    newCardView.setFitWidth(1650/6.8);
+                    newCardView.setFitHeight(1275/7.4);
                     tilePane.getChildren().add(newCardView);
                 }
             }
-        }
+            tilePane.setVgap(12);
+            tilePane.setHgap(12);
 
-//        int cardNum = displayLesson.getChildren().size();
-//        while (!(cardNum==0)){
-//            int tabNum = 1;
-//            String tabName = "page"+ tabNum;
-//            Tab tabName = new Tab();
-//
-//            if (cardNum>9){
-//                cardNum-= 9;
-//            }else{
-//                cardNum-= cardNum;
-//            }
-//            tabNum++;
-//
-//        }
+            pageVBox.setAlignment(Pos.TOP_CENTER);
+            tilePane.setAlignment(Pos.TOP_CENTER);
+            pageVBox.getChildren().add(tilePane);
+
+        }
 
     }
 
@@ -110,14 +100,13 @@ public class PrintCardsController {
         System.out.println("Job=" + job);
 
         if (job != null) {
-            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL);
             job.getJobSettings().setPageLayout(pageLayout);
 
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
                 int tabNum = 1;
 
                 for (Tab tab : pagesTabPane.getTabs()) {
-                    // Print each tab content
                     boolean success = job.printPage(tab.getContent());
                     System.out.println("Print success for Tab " + tabNum + ": " + success);
 
@@ -134,41 +123,6 @@ public class PrintCardsController {
     }
 
 
-//    private Node createPage(Node nodeToPrint, int startIndex, int endIndex, double printableHeight) {
-//        VBox page = new VBox();
-//        page.setAlignment(Pos.CENTER);
-//        page.setSpacing(0);
-//
-//        if (startIndex < displayLesson.getChildren().size()) {
-//            Label titleLabel = new Label(lessonTitle.getText());
-//            titleLabel.setPadding(new Insets(0));
-//            titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-//            page.getChildren().add(titleLabel);
-//
-//            // Check and set padding and margin for TilePane
-//            TilePane tilePane = createTilePane(nodeToPrint, startIndex, endIndex, printableHeight - titleLabel.getHeight());
-//            tilePane.setPadding(new Insets(0));
-//            tilePane.setMargin(titleLabel, new Insets(0));
-//
-//            page.getChildren().add(tilePane);
-//        }
-//
-//        return page;
-//    }
-//
-//    private TilePane createTilePane(Node nodeToPrint, int startIndex, int endIndex, double printableHeight) {
-//        TilePane tilePane = new TilePane();
-//        tilePane.setTileAlignment(Pos.CENTER);
-//        tilePane.setPrefColumns(3);
-//        tilePane.setPrefRows(3);
-//        tilePane.getChildren().addAll(displayLesson.getChildren().subList(startIndex, endIndex));
-//
-////        if (tilePane.getHeight() > printableHeight) {
-////            tilePane.setPrefRows(tilePane.getChildren().size() / 3);
-////        }
-//
-//        return tilePane;
-//    }
     @FXML
     void connectToPlanMakerPage() {
         App.switchToPlanMakerView();

@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -35,43 +37,30 @@ public class PlanMakerController {
     private boolean savedStatus = false;
     @FXML
     private MenuItem print;
-
     @FXML
     private MenuItem edit;
-
     @FXML
     private TextField codeSearchBox;
-
     @FXML
     private Label lessonTitle;
-
     @FXML
     private TextArea lessonTitleTextArea;
-
     @FXML
     private TextField titleSearchBox;
-
     @FXML
     private FlowPane cardFlowPane;
-
     @FXML
     private MenuItem newButton;
-
     @FXML
     private TilePane displayLesson;
-
     @FXML
     private ImageView home;
-
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
-
     @FXML
     private ChoiceBox<String> eventChoiceBox;
-
     @FXML
     private ChoiceBox<String> equipmentChoiceBox;
-
     @FXML
     private ToggleSwitch favoriteSwitch;
 
@@ -142,7 +131,8 @@ public class PlanMakerController {
         }
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
-        imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, ButtonType.CANCEL);
+        ButtonType printCard = new ButtonType("Print Card");
+        imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, ButtonType.CANCEL);
 
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == placeCardButtonType) {
@@ -153,7 +143,10 @@ public class PlanMakerController {
                     imageAlert.close();
                     removeCardFromPlan(card);
                 }
-            } else if(buttonType == toggleFavoriteButton){
+            } if (buttonType==printCard){
+                printContent(card.getZoomedImage());
+
+            }else if(buttonType == toggleFavoriteButton){
                 if(card.getFavoriteStatus()){
                     favoritesManager.removeFromFavorites(card.getCode());
 
@@ -184,6 +177,35 @@ public class PlanMakerController {
             }
         });
     }
+    private void printContent(Image image) {
+        System.out.println("printContent called: " + image);
+        PrinterJob job = PrinterJob.createPrinterJob();
+        System.out.println("Job=" + job);
+
+        if (job != null) {
+            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL);
+            job.getJobSettings().setPageLayout(pageLayout);
+
+            VBox cardVBox = new VBox();
+            cardVBox.setAlignment(Pos.CENTER);
+
+            ImageView cardImageView = new ImageView(image);
+            cardImageView.setFitWidth(1650/2.5);
+            cardImageView.setFitHeight(1275/2.5);
+            cardVBox.getChildren().add(cardImageView);
+
+            boolean showDialog = job.showPrintDialog(App.primaryStage);
+
+            if (showDialog) {
+                boolean success = job.printPage(cardVBox);
+                System.out.println("Print success: " + success);
+                job.endJob();
+            } else {
+                job.cancelJob();
+            }
+        }
+    }
+
     private void addCardToPlan(Card card){
         if (!currentLessonPlan.containsCard(card)) {
             ImageView cardImageView = new ImageView(card.getImage());
@@ -225,6 +247,7 @@ public class PlanMakerController {
     }
 
     private void printOptions(){
+
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);

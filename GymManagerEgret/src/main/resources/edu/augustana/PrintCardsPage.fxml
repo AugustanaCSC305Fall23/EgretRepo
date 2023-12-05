@@ -29,13 +29,13 @@
    <center>
       <VBox fx:id="printCardsDisplay" alignment="CENTER" prefHeight="845.0" prefWidth="853.0" BorderPane.alignment="CENTER">
          <children>
-            <TabPane fx:id="pagesTabPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="630.0" prefWidth="891.0" styleClass="tabPaneBackground" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="pagesTabPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Page 1">
                      <content>
                         <BorderPane prefHeight="420.0" prefWidth="558.0">
                            <center>
-                              <TilePane fx:id="displayLesson" prefHeight="420.0" prefWidth="558.0" BorderPane.alignment="CENTER" />
+                              <TilePane fx:id="displayLesson" alignment="TOP_CENTER" hgap="10.0" prefColumns="3" prefHeight="420.0" prefRows="3" prefTileWidth="1.0" prefWidth="558.0" tileAlignment="TOP_CENTER" vgap="10.0" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </content>
