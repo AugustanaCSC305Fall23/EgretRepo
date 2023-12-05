@@ -90,7 +90,7 @@ public class App extends Application {
     }
 
     public static Image backgroundImage(){
-        return new Image("file:GymManagerAssets/cardPhotos/Pictures/img.jpg");
+        return new Image("file:GymManagerAssets/cardPhotos/Pictures/BGPic.JPG");
     }
 
     public static Course getCurrentCourse() {
