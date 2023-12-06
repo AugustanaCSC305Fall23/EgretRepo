@@ -75,7 +75,7 @@
                                     </HBox>
                                     <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="182.0">
                                        <children>
-                                          <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="27.0" prefWidth="45.0" style="-fx-border-color: teal;" text="Clear">
+                                          <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="28.0" prefWidth="76.0" style="-fx-border-color: teal;" text="Clear">
                                              <HBox.margin>
                                                 <Insets left="10.0" right="10.0" />
                                              </HBox.margin>
