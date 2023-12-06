@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -24,6 +25,8 @@ public class CourseViewController {
 
     private final LessonPlan currentLessonPlan;
 
+    private CourseUndoRedoHandler undoRedoHandler;
+
     public CourseViewController() {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
@@ -36,6 +39,7 @@ public class CourseViewController {
 
     public void initialize() {
         home.setImage(App.homeIcon());
+        undoRedoHandler = new CourseUndoRedoHandler(this);
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
     }
 
@@ -43,6 +47,7 @@ public class CourseViewController {
     private void addLessonPlan() throws IOException {
         LessonPlan newLessonPlan = new LessonPlan("Untitled");
         App.switchToEditLessonPlan(newLessonPlan, true);
+        undoRedoHandler.saveState();
     }
 
 
@@ -53,6 +58,7 @@ public class CourseViewController {
         if(selectedLessonPlan != null){
             lessonList.getItems().remove(selectedLessonPlan);
             App.getCurrentCourse().removeLessonPlan(selectedLessonPlan);
+            undoRedoHandler.saveState();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!");
             alert.initOwner(App.primaryStage);
@@ -70,6 +76,7 @@ public class CourseViewController {
             LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
             App.getCurrentCourse().addLessonPlan(newLessonPlan);
             lessonList.getItems().add(newLessonPlan);
+            undoRedoHandler.saveState();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!");
             alert.initOwner(App.primaryStage);
@@ -91,6 +98,7 @@ public class CourseViewController {
                     lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
                 }
             });
+            undoRedoHandler.saveState();
         } else {
             new Alert(Alert.AlertType.WARNING, "There are no lesson plans to remove!").show();
         }
@@ -121,6 +129,7 @@ public class CourseViewController {
                 lessonList.getItems().clear();
                 Course loadedCourse = App.getCurrentCourse();
                 lessonList.getItems().addAll(loadedCourse.getLessonPlans());
+                undoRedoHandler.saveState();
             } catch (IOException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading course file: " + chosenFile);
                 alert.initOwner(App.primaryStage);
@@ -132,18 +141,19 @@ public class CourseViewController {
     @FXML
     private void menuActionSave(ActionEvent event) {
         if (App.getCurrentCourseFile() == null) {
-            Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will just save to the " +
+            /*Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will just save to the " +
                     "current lesson rather than creating a new file with the current lesson. " +
                     "Instead, click Save As.\n");
             saveAlert.initOwner(App.primaryStage);
-            saveAlert.show();
+            saveAlert.show();*/
+            menuActionSaveAs();
         } else {
             savecurrentCoursetofile(App.getCurrentCourseFile());
         }
     }
 
     @FXML
-    private void menuActionSaveAs(ActionEvent event) {
+    private void menuActionSaveAs() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Course");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course (*.course)", "*.course");
@@ -174,6 +184,34 @@ public class CourseViewController {
                 "Click a lesson Plan and click 'delete' to delete the lesson plan.");
         alreadyAddedAlert.initOwner(App.primaryStage);
         alreadyAddedAlert.showAndWait();
+    }
+
+    @FXML
+    private void onEditMenuUndo() {undoRedoHandler.undo();}
+    @FXML
+    private void onEditMenuRedo() {undoRedoHandler.redo();}
+
+    public CourseViewController.State createMemento() {
+        return new CourseViewController.State();
+    }
+
+    public void restoreState(CourseViewController.State planMakerState) {
+        lessonList.getItems().clear();
+        planMakerState.restore();
+        lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
+    }
+
+    public class State {
+        Course course;
+
+        public State() {
+            course = (Course) App.getCurrentCourse().clone();
+        }
+
+        public void restore() {
+            App.setCurrentCourse((Course) course.clone());
+        }
+
     }
 }
 

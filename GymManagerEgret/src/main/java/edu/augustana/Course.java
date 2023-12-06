@@ -60,7 +60,9 @@ public class Course implements Cloneable{
     public Course clone() {
         try {
             Course clone = (Course) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            clone.lessonPlans = new ArrayList<LessonPlan>();
+            clone.lessonPlans.addAll(lessonPlans);
+            clone.currentEditingIndex = currentEditingIndex;
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
