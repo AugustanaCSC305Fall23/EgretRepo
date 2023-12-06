@@ -25,7 +25,9 @@ import org.controlsfx.control.ToggleSwitch;
 public class PlanMakerController {
 
     private final ArrayList<Card> allCards = CardDatabase.allCards;
-    private LessonPlan currentLessonPlan;
+    private static LessonPlan currentLessonPlan;
+
+    private LessonPlanUndoRedoHandler undoRedoHandler;
     private String enteredTitle;
 
     @FXML
@@ -57,7 +59,10 @@ public class PlanMakerController {
     @FXML
     private ToggleSwitch favoriteSwitch;
 
+
+
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
+
 
     public PlanMakerController() {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
@@ -90,6 +95,7 @@ public class PlanMakerController {
             }
         }
         currentLessonPlan.setTitle(lessonTitle.getText());
+        undoRedoHandler = new LessonPlanUndoRedoHandler(this);
         print.setOnAction(event ->printOptions());
     }
 
@@ -208,6 +214,7 @@ public class PlanMakerController {
             displayLesson.getChildren().add(cardImageView);
             setMouseEvent(cardImageView, card, false);
             currentLessonPlan.addCard(card);
+            undoRedoHandler.saveState();
         }else{
             Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
             alreadyAddedAlert.setHeaderText(null);
@@ -220,16 +227,17 @@ public class PlanMakerController {
 
     private void removeCardFromPlan(Card card){
         currentLessonPlan.removeCard(card);
+        undoRedoHandler.saveState();
         try {
-            updateLessonDisplay(currentLessonPlan.getCopyOfLessonCards());
+            updateLessonDisplay();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void updateLessonDisplay(ArrayList<Card> lessonCards) throws FileNotFoundException {
+    public void updateLessonDisplay() throws FileNotFoundException {
         displayLesson.getChildren().clear();
-        for (Card card : lessonCards) {
+        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             System.out.println(card);
             ImageView cardImageView = new ImageView(card.getImage());
             cardImageView.setFitWidth(1650 /7);
@@ -491,6 +499,37 @@ public class PlanMakerController {
                 "Right click to immediately add or remove cards.");
         alreadyAddedAlert.initOwner(App.primaryStage);
         alreadyAddedAlert.showAndWait();
+    }
+
+    @FXML
+    private void onEditMenuUndo() throws FileNotFoundException {undoRedoHandler.undo(); updateLessonDisplay();}
+    @FXML
+    private void onEditMenuRedo() throws FileNotFoundException {undoRedoHandler.redo(); updateLessonDisplay();}
+
+    public State createMemento() {
+        return new State();
+    }
+
+    public void restoreState(State planMakerState) {
+        planMakerState.restore();
+        //repaint();
+    }
+
+    public class State {
+        LessonPlan lesson;
+
+        public State() {
+            lesson = (LessonPlan) PlanMakerController.currentLessonPlan.clone();
+        }
+
+        public void restore() {
+            PlanMakerController.currentLessonPlan = (LessonPlan) lesson.clone();
+        }
+
+        @Override
+        public String toString() {
+            return currentLessonPlan.toString();
+        }
     }
 
 }

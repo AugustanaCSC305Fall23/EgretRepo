@@ -214,6 +214,8 @@
             <Menu mnemonicParsing="false" text="Edit">
                <items>
                   <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Rename Title" />
+                  <MenuItem fx:id="edit1" mnemonicParsing="false" onAction="#onEditMenuUndo" text="Undo" />
+                  <MenuItem mnemonicParsing="false" onAction="#onEditMenuRedo" text="Redo" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">

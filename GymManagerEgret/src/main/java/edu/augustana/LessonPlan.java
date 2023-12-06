@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
 
-public class LessonPlan {
+public class LessonPlan implements Cloneable{
     private ArrayList<String> userChosenCardIDs;
     private String title;
 
@@ -56,4 +56,16 @@ public class LessonPlan {
         return title + " " + userChosenCardIDs;
     }
 
+    @Override
+    public LessonPlan clone() {
+        try {
+            LessonPlan clone = (LessonPlan) super.clone();
+            clone.title = title;
+            clone.userChosenCardIDs = new ArrayList<String>();
+            clone.userChosenCardIDs.addAll(userChosenCardIDs);
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }
