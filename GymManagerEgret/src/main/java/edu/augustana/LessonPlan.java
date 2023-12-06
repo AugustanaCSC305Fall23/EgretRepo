@@ -31,9 +31,6 @@ public class LessonPlan {
             cardList.add(CardDatabase.getCardByUniqueId(id));}
         return cardList;
     }
-//    public Map<String, List<Card>> getCardsByEvent() {
-//
-//    }
 
     public void addCard(Card card){
         userChosenCardIDs.add(card.getUniqueId());
@@ -52,17 +49,6 @@ public class LessonPlan {
     }
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void displayCards(int width, int height, TilePane tile){
-        for (Card card : getCopyOfLessonCards()) {
-            ImageView newCardView = new ImageView();
-            Image cardImage = card.getZoomedImage();
-            newCardView.setImage(cardImage);
-            newCardView.setFitHeight(height);
-            newCardView.setFitWidth(width);
-            tile.getChildren().add(newCardView);
-        }
     }
 
     @Override

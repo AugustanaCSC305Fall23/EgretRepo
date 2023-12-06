@@ -3,12 +3,8 @@ package edu.augustana;
 import java.io.*;
 import java.util.*;
 import edu.augustana.filters.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.print.*;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.geometry.Pos;
@@ -23,8 +19,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
-import javafx.stage.FileChooser;
-import javafx.stage.Window;
 import org.controlsfx.control.ToggleSwitch;
 
 
@@ -287,6 +281,31 @@ public class PlanMakerController {
 
         }
     }
+    public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
+        this.currentLessonPlan = lessonPlan;
+        if(addingNew){
+            App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+            lessonTitle.setText("Add Lesson Title");
+            displayLesson.getChildren().clear();
+            currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+        }else{
+            currentLessonPlan = lessonPlan;
+            lessonTitle.setText(lessonPlan.getTitle());
+            displayLesson.getChildren().clear();
+            for(Card card: currentLessonPlan.getCopyOfLessonCards()){
+                ImageView cardImageView = new ImageView(card.getImage());
+                cardImageView.setFitWidth(1650/7);
+                cardImageView.setFitHeight(1275/7);
+                setMouseEvent(cardImageView, card, false);
+                displayLesson.getChildren().add(cardImageView);
+            }
+
+        }
+    }
+    @FXML
+    private void connectToCoursePage(){
+        App.switchCourseView();
+    }
 
     private void initializeComboBoxes(){
         ArrayList<String> category = new ArrayList<>();
@@ -429,16 +448,7 @@ public class PlanMakerController {
         }
     }
 
-    @FXML
-    public void searchTitle() {
-        System.out.println(titleSearchBox.getText());
-        CardDatabase.addFilter(new TitleFilter(titleSearchBox.getText().toLowerCase()));
-        try {
-            setCardDisplay(CardDatabase.filterCards());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     @FXML
     private void resetFilters() throws FileNotFoundException {
         categoryChoiceBox.setValue("ALL");
@@ -449,41 +459,15 @@ public class PlanMakerController {
         favoriteSwitch.setSelected(false);
     }
 
-
     @FXML
-    private void showToolTips(){
-        Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
-        alreadyAddedAlert.setHeaderText(null);
-        alreadyAddedAlert.setTitle("Tool Tips");
-        alreadyAddedAlert.setContentText("Left click for card options." + "\n" + "Right click to immediately add or remove cards.");
-        alreadyAddedAlert.initOwner(App.primaryStage);
-        alreadyAddedAlert.showAndWait();
-    }
-
-   public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
-        this.currentLessonPlan = lessonPlan;
-        if(addingNew){
-            App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
-            lessonTitle.setText("Add Lesson Title");
-            displayLesson.getChildren().clear();
-            currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-        }else{
-            currentLessonPlan = lessonPlan;
-            lessonTitle.setText(lessonPlan.getTitle());
-            displayLesson.getChildren().clear();
-            for(Card card: currentLessonPlan.getCopyOfLessonCards()){
-                ImageView cardImageView = new ImageView(card.getImage());
-                cardImageView.setFitWidth(1650/7);
-                cardImageView.setFitHeight(1275/7);
-                setMouseEvent(cardImageView, card, false);
-                displayLesson.getChildren().add(cardImageView);
-            }
-
+    public void searchTitle() {
+        System.out.println(titleSearchBox.getText());
+        CardDatabase.addFilter(new TitleFilter(titleSearchBox.getText().toLowerCase()));
+        try {
+            setCardDisplay(CardDatabase.filterCards());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
-    }
-    @FXML
-    private void connectToCoursePage(){
-        App.switchToLibraryView();
     }
 
     @FXML
@@ -496,6 +480,17 @@ public class PlanMakerController {
                 + "Project Supervisor: " + "\n" + " Forrest Stonedahl");
         aboutAlert.initOwner(App.primaryStage);
         aboutAlert.showAndWait();
+    }
+
+    @FXML
+    private void showToolTips(){
+        Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+        alreadyAddedAlert.setHeaderText(null);
+        alreadyAddedAlert.setTitle("Tool Tips");
+        alreadyAddedAlert.setContentText("Left click for card options." + "\n" +
+                "Right click to immediately add or remove cards.");
+        alreadyAddedAlert.initOwner(App.primaryStage);
+        alreadyAddedAlert.showAndWait();
     }
 
 }

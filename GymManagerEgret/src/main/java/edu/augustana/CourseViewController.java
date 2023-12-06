@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class CourseLibraryController {
+public class CourseViewController {
 
     @FXML
     private ImageView home;
@@ -24,7 +24,7 @@ public class CourseLibraryController {
 
     private final LessonPlan currentLessonPlan;
 
-    public CourseLibraryController() {
+    public CourseViewController() {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
 
@@ -54,7 +54,8 @@ public class CourseLibraryController {
             lessonList.getItems().remove(selectedLessonPlan);
             App.getCurrentCourse().removeLessonPlan(selectedLessonPlan);
         } else {
-            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!").show();
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!");
+            alert.initOwner(App.primaryStage);
         }}else{
             Alert alert = new Alert(Alert.AlertType.WARNING, "There needs to be alteast a lesson in course!");
             alert.initOwner(App.primaryStage);
@@ -64,15 +65,15 @@ public class CourseLibraryController {
 
     @FXML
     void duplicateLessonPlan() {
-        // Get the selected food item
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
-
         if (selectedLessonPlan != null) {
             LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
             App.getCurrentCourse().addLessonPlan(newLessonPlan);
             lessonList.getItems().add(newLessonPlan);
         } else {
-            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!").show();
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!");
+            alert.initOwner(App.primaryStage);
+            alert.showAndWait();
         }
     }
 
@@ -101,15 +102,16 @@ public class CourseLibraryController {
         if (selectedLessonPlan != null) {
             App.switchToEditLessonPlan(selectedLessonPlan, false);
         } else {
-            new Alert(Alert.AlertType.WARNING, "Select a lesson plan to open first!").show();
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to open first!");
+            alert.initOwner(App.primaryStage);
+            alert.showAndWait();
         }
     }
-
     @FXML
-    private void menuActionOpen(ActionEvent event) {
+    private void menuActionLoad(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Course Library");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.courseLib)", "*.courseLib");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.course)", "*.course");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonList.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
@@ -120,7 +122,9 @@ public class CourseLibraryController {
                 Course loadedCourse = App.getCurrentCourse();
                 lessonList.getItems().addAll(loadedCourse.getLessonPlans());
             } catch (IOException ex) {
-                new Alert(Alert.AlertType.ERROR, "Error loading course library file: " + chosenFile).show();
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading course file: " + chosenFile);
+                alert.initOwner(App.primaryStage);
+                alert.showAndWait();
             }
         }
     }
@@ -128,37 +132,49 @@ public class CourseLibraryController {
     @FXML
     private void menuActionSave(ActionEvent event) {
         if (App.getCurrentCourseFile() == null) {
-            Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will not create a new file with current lesson. "
-                    + " It will only save to the existing lesson. Click Save As instead.");
+            Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will just save to the " +
+                    "current lesson rather than creating a new file with the current lesson. " +
+                    "Instead, click Save As.\n");
             saveAlert.initOwner(App.primaryStage);
             saveAlert.show();
         } else {
-            saveCurrentMovieLogToFile(App.getCurrentCourseFile());
+            savecurrentCoursetofile(App.getCurrentCourseFile());
         }
     }
 
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Course Library");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.courseLib)", "*.courseLib");
+        fileChooser.setTitle("Save Course");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course (*.course)", "*.course");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonList.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
-        saveCurrentMovieLogToFile(chosenFile);
+        savecurrentCoursetofile(chosenFile);
     }
 
-    private void saveCurrentMovieLogToFile(File chosenFile) {
+    private void savecurrentCoursetofile(File chosenFile) {
         if (chosenFile != null) {
             try {
                 App.saveCurrentCourseToFile(chosenFile);
             } catch (IOException e) {
-                new Alert(Alert.AlertType.ERROR, "Error saving movie course library file: " + chosenFile).show();
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error saving course file: " + chosenFile);
+                alert.initOwner(App.primaryStage);
+                alert.showAndWait();
             }
         }
     }
-
-
+    @FXML
+    private void showToolTips(){
+        Alert alreadyAddedAlert = new Alert(Alert.AlertType.INFORMATION);
+        alreadyAddedAlert.setHeaderText(null);
+        alreadyAddedAlert.setTitle("Tool Tips");
+        alreadyAddedAlert.setContentText("Click a lesson Plan and click 'open' to open the lesson plan" + "\n" +
+                "Click a lesson Plan and click 'duplicate' to duplicate the lesson plan."+ "\n" +
+                "Click a lesson Plan and click 'delete' to delete the lesson plan.");
+        alreadyAddedAlert.initOwner(App.primaryStage);
+        alreadyAddedAlert.showAndWait();
+    }
 }
 
 

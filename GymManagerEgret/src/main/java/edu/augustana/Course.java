@@ -24,18 +24,14 @@ public class Course {
 
 
     public void clearAllLessonPlans() {
-
         lessonPlans.clear();
         lessonPlans.add(new LessonPlan("Untitled"));
         currentEditingIndex =0;
-
     }
-
 
     public LessonPlan getCurrentLessonPlan(){
         return lessonPlans.get(currentEditingIndex);
     }
-
 
     public void removeLessonPlan(LessonPlan lessonPlan){
         lessonPlans.remove(lessonPlan);
