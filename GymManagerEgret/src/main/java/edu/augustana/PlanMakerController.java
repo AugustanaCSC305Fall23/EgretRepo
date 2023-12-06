@@ -232,8 +232,8 @@ public class PlanMakerController {
         for (Card card : lessonCards) {
             System.out.println(card);
             ImageView cardImageView = new ImageView(card.getImage());
-            cardImageView.setFitWidth(1650 / 6.5);
-            cardImageView.setFitHeight(1275 / 6.5);
+            cardImageView.setFitWidth(1650 /7);
+            cardImageView.setFitHeight(1275 /7);
             displayLesson.getChildren().add(cardImageView);
             setMouseEvent(cardImageView, card, false);
         }
