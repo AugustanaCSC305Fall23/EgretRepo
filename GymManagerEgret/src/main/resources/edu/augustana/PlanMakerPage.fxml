@@ -26,130 +26,130 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="490.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="superSearchBox" onKeyTyped="#searchSuper" prefWidth="650.0" promptText="Search" styleClass="cardBackground" stylesheets="@style.css" />
-            <Accordion prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
-               <panes>
-                  <TitledPane animated="false" styleClass="lessonBackground" stylesheets="@style.css" text="Filters" textFill="#216065">
-                     <content>
-                        <AnchorPane styleClass="filter" stylesheets="@style.css">
-                           <children>
-                              <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" style="-fx-border-color: teal;" />
-                              <HBox fx:id="eventHbox" layoutY="149.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                 <children>
-                                    <Label text="Event" textFill="#216065" />
-                                    <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </ChoiceBox>
-                                 </children>
-                              </HBox>
-                              <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                                    <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" text="M">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" text="F">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" text="N">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" text="ALL">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="182.0">
-                                 <children>
-                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="27.0" prefWidth="45.0" style="-fx-border-color: teal;" text="Clear">
-                                       <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
-                                       </HBox.margin></Button>
-                                    <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" onMouseClicked="#searchFavorites" text="Favorites">
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </ToggleSwitch>
-                                 </children>
-                              </HBox>
-                              <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#216065" />
-                                    <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" text="B">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" text="AB">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" text="I">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" text="ALL">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox fx:id="equipmentHbox" layoutY="109.0">
-                                 <children>
-                                    <Label text="Equipment" textFill="#216065" />
-                                    <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </ChoiceBox>
-                                 </children>
-                              </HBox>
-                              <HBox fx:id="categoryHbox" layoutX="4.0" layoutY="189.0">
-                                 <children>
-                                    <Label text="Category" textFill="#216065" />
-                                    <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </ChoiceBox>
-                                 </children>
-                              </HBox>
-                              <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" style="-fx-border-color: teal;" />
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
-               </panes>
-            </Accordion>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <VBox BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" vbarPolicy="ALWAYS">
-                     <content>
-                        <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" styleClass="cardBackground" stylesheets="@style.css" vgap="10" />
-                     </content>
-                  </ScrollPane>
+                  <TextField fx:id="superSearchBox" onKeyTyped="#searchSuper" prefWidth="650.0" promptText="Search" styleClass="cardBackground" stylesheets="@style.css" />
+                  <Accordion prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
+                     <panes>
+                        <TitledPane animated="false" styleClass="lessonBackground" stylesheets="@style.css" text="Filters" textFill="#216065">
+                           <content>
+                              <AnchorPane styleClass="filter" stylesheets="@style.css">
+                                 <children>
+                                    <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" style="-fx-border-color: teal;" />
+                                    <HBox fx:id="eventHbox" layoutY="149.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                       <children>
+                                          <Label text="Event" textFill="#216065" />
+                                          <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
+                                          <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" text="M">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" text="F">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" text="N">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" text="ALL">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="182.0">
+                                       <children>
+                                          <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="27.0" prefWidth="45.0" style="-fx-border-color: teal;" text="Clear">
+                                             <HBox.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" onMouseClicked="#searchFavorites" text="Favorites">
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </ToggleSwitch>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#216065" />
+                                          <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" text="B">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" text="AB">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" text="I">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" text="ALL">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="equipmentHbox" layoutY="109.0">
+                                       <children>
+                                          <Label text="Equipment" textFill="#216065" />
+                                          <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="categoryHbox" layoutX="4.0" layoutY="189.0">
+                                       <children>
+                                          <Label text="Category" textFill="#216065" />
+                                          <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                       </children>
+                                    </HBox>
+                                    <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" style="-fx-border-color: teal;" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </AnchorPane>
-         </children>
-      </VBox>
+            </VBox>
+         </top>
+         <center>
+            <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+               <content>
+                  <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" styleClass="cardBackground" stylesheets="@style.css" vgap="10" />
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
    </left>
    <center>
       <VBox maxHeight="1200.0" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="490.0" BorderPane.alignment="TOP_LEFT">
