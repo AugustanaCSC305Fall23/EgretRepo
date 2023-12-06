@@ -7,10 +7,10 @@ public class TitleFilter implements CardFilter {
     private String searchTitle = " ";
 
     public TitleFilter(String searchTitle){
-        this.searchTitle = searchTitle;
+        this.searchTitle = searchTitle.toLowerCase();
     }
 
     public boolean matches(Card candidateCard){
-        return candidateCard.getTitle().contains(searchTitle);
+        return candidateCard.getTitle().toLowerCase().contains(searchTitle);
     }
 }

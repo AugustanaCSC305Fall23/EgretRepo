@@ -56,7 +56,7 @@ public class Card {
         this.code = cardData[0];
         this.event = cardData[1];
         this.category = cardData[2];
-        this.title = cardData[3].toLowerCase();
+        this.title = cardData[3];
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
         System.out.println("GymManagerAssets/cardPacks/" + pack + "/thumbs/" + generateThumbnail());

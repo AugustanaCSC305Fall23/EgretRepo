@@ -91,7 +91,7 @@ public class PrintCardsEquipmentController {
                         equipmentLabel.setText("Equipment: " + card.getEquipment().toString());
                     }
 
-                    equipmentLabel.setMaxWidth(1650/8.5);
+                    equipmentLabel.setMaxWidth(1650/9);
                     equipmentLabel.setWrapText(true);
                     equipmentLabel.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-font: Arial; ");
 
