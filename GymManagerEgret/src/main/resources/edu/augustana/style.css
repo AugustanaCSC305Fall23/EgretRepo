@@ -1,9 +1,7 @@
 .lessonTitleBackground{
     -fx-background-color: #2E4052;
-  /*  -fx-font-family: "Gilda Display", Gilda Display;*/
 
 }
-
 
 .pageBackground{
     -fx-background-color: #FFFFFF;
@@ -46,9 +44,6 @@
     -fx-background-color: #FBF7F4;
 }
 
-.homeFont{
-    -fx-font-family: 'Barlow Condensed', sans-serif;;
-}
 
 .homeButt{
     -fx-background-color:#F0F5FA;

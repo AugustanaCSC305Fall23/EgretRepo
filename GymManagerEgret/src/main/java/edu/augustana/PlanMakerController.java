@@ -307,8 +307,16 @@ public class PlanMakerController {
                 setMouseEvent(cardImageView, card, false);
                 displayLesson.getChildren().add(cardImageView);
             }
-
         }
+    }
+
+    @FXML
+    private void newMenuAction() {
+        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+        lessonTitle.setText("Add Lesson Title");
+        displayLesson.getChildren().clear();
+        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+
     }
     @FXML
     private void connectToCoursePage(){

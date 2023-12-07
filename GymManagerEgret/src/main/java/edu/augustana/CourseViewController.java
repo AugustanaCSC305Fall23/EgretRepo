@@ -141,11 +141,6 @@ public class CourseViewController {
     @FXML
     private void menuActionSave(ActionEvent event) {
         if (App.getCurrentCourseFile() == null) {
-            /*Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will just save to the " +
-                    "current lesson rather than creating a new file with the current lesson. " +
-                    "Instead, click Save As.\n");
-            saveAlert.initOwner(App.primaryStage);
-            saveAlert.show();*/
             menuActionSaveAs();
         } else {
             savecurrentCoursetofile(App.getCurrentCourseFile());
