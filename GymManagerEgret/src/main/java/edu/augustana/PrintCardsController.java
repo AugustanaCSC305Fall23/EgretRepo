@@ -78,7 +78,7 @@ public class PrintCardsController {
                     ImageView newCardView = new ImageView();
                     Image cardImage = card.getZoomedImage();
                     newCardView.setImage(cardImage);
-                    newCardView.setFitWidth(1650/6.8);
+                    newCardView.setFitWidth(1650/7.4);
                     newCardView.setFitHeight(1275/7.4);
                     tilePane.getChildren().add(newCardView);
                 }
