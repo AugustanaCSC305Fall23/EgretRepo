@@ -1,9 +1,11 @@
 package edu.augustana;
 
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -147,7 +149,7 @@ public class CourseViewController {
     }
 
     @FXML
-    private void menuActionSave(ActionEvent event) {
+    private void menuActionSave() {
         if (App.getCurrentCourseFile() == null) {
             menuActionSaveAs();
         } else {
@@ -177,6 +179,7 @@ public class CourseViewController {
             }
         }
     }
+
     @FXML
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -203,6 +206,27 @@ public class CourseViewController {
         planMakerState.restore();
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
     }
+    @FXML
+    private void exitPlatform() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit without saving?");
+        confirmation.initOwner(App.primaryStage);
+        confirmation.setHeaderText(null);
+
+        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        confirmation.getButtonTypes().setAll(yesButton, noButton);
+
+        confirmation.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                Platform.exit();
+            } else {
+                menuActionSave();
+            }
+        });
+    }
+
+
 
     public class State {
         Course course;

@@ -257,6 +257,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#newMenuAction" text="New Lesson" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="edit1" mnemonicParsing="false" onAction="#onEditMenuUndo" text="Undo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onEditMenuRedo" text="Redo" />
                </items>
             </Menu>

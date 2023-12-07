@@ -72,9 +72,8 @@ public class PlanMakerController {
         App.switchToHomePageView();
     }
     @FXML
-    void exitPlatform (){
+    private void exitPlatform (){
         Platform.exit();
-
     }
 
     /**
