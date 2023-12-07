@@ -3,6 +3,7 @@ package edu.augustana;
 import java.io.*;
 import java.util.*;
 import edu.augustana.filters.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.print.*;
 import javafx.scene.control.Alert;
@@ -71,6 +72,11 @@ public class PlanMakerController {
     @FXML
     void connectToHomePage() {
         App.switchToHomePageView();
+    }
+    @FXML
+    void exitPlatform (){
+        Platform.exit();
+
     }
 
     @FXML
@@ -234,6 +240,7 @@ public class PlanMakerController {
             throw new RuntimeException(e);
         }
     }
+
 
     public void updateLessonDisplay() throws FileNotFoundException {
         displayLesson.getChildren().clear();

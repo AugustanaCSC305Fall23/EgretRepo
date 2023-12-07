@@ -17,7 +17,7 @@
 
 .button{
     -fx-background-color: #abbcd6;
-    -fx-background-radius: 5;
+    -fx-background-radius: 8;
 }
 
 .homeBackground{
@@ -47,6 +47,11 @@
 
 .homeButt{
     -fx-background-color:#F0F5FA;
+    -fx-
+
+}
+.homeButt:hover {
+    -fx-background-color: #CFD7DE
 }
 
 
