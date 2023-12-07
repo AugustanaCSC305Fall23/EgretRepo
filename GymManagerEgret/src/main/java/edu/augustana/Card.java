@@ -69,10 +69,9 @@ public class Card {
             category = category.trim();
             this.level.add(category);
         }
-        ArrayList<String> equipment = new ArrayList<>(Arrays.asList(cardData[9].split(",")));
+        ArrayList<String> equipment = new ArrayList<>(Arrays.asList(cardData[9].split("[/,]")));
         for (String item : equipment){
             item = item.trim();
-            item = item.toLowerCase();
             this.equipment.add(item);
         }
         ArrayList<String> keywords = new ArrayList<>(Arrays.asList(cardData[10].split(",")));
