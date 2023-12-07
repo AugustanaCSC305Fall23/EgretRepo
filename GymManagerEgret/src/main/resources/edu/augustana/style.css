@@ -13,7 +13,7 @@
     -fx-background-color: #FBF7F4;
 }
 .filter{
-    -fx-background-color: #abbcd6;
+    -fx-background-color: #CFD7DE;
 
 }
 
@@ -29,7 +29,17 @@
 }
 
 .choice-box .label {
-     -fx-text-fill: #216065;
-     -fx-font-size: 17px;
+     -fx-text-fill: #003D76;
+     -fx-font-size: 12px;
 }
+
+.buttonH:hover {
+    -fx-background-color: #003D76
+}
+
+.fav {
+    -fx-font-family: 'AppleGothic';
+    -fx-text-fill: #003d76;
+}
+
 

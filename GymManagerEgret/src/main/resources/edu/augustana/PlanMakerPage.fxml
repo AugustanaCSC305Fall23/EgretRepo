@@ -24,115 +24,155 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1462.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
       <BorderPane BorderPane.alignment="CENTER">
          <top>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="superSearchBox" onKeyTyped="#searchSuper" prefWidth="650.0" promptText="Search" styleClass="cardBackground" stylesheets="@style.css" />
-                  <Accordion prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
+                  <TextField fx:id="superSearchBox" onKeyTyped="#searchSuper" prefWidth="650.0" promptText="Search" />
+                  <Accordion prefWidth="650.0" styleClass="homeBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
                      <panes>
-                        <TitledPane animated="false" styleClass="lessonBackground" stylesheets="@style.css" text="Filters" textFill="#216065">
+                        <TitledPane animated="false" text="Filters">
                            <content>
                               <AnchorPane styleClass="filter" stylesheets="@style.css">
                                  <children>
-                                    <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" style="-fx-border-color: teal;" />
-                                    <HBox fx:id="eventHbox" layoutY="149.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                    <TextField fx:id="codeSearchBox" onKeyTyped="#searchCode" opacity="0.8" promptText="Search Code" />
+                                    <HBox fx:id="eventHbox" alignment="CENTER" layoutX="2.0" layoutY="137.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                        <children>
-                                          <Label text="Event" textFill="#216065" />
+                                          <Label text="Event" textFill="#003d76">
+                                             <font>
+                                                <Font name="AppleGothic Regular" size="14.0" />
+                                             </font></Label>
                                           <ChoiceBox fx:id="eventChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
                                              <HBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets left="38.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="genderHbox" layoutY="34.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
+                                    <HBox fx:id="genderHbox" alignment="CENTER" layoutX="-5.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#216065" />
-                                          <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" text="M">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" text="F">
+                                          <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#003d76">
+                                             <font>
+                                                <Font name="AppleGothic Regular" size="14.0" />
+                                             </font></Label>
+                                          <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" styleClass="buttonH" text="M" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
-                                          <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" text="N">
+                                          <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" styleClass="buttonH" text="F" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" text="ALL">
+                                          <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" styleClass="buttonH" text="N" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" styleClass="buttonH" text="ALL" textFill="#222222">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="clearHbox" layoutY="232.0" prefHeight="28.0" prefWidth="182.0">
+                                    <HBox fx:id="clearHbox" alignment="CENTER" layoutX="-24.0" layoutY="205.0" prefHeight="28.0" prefWidth="182.0">
                                        <children>
-                                          <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="28.0" prefWidth="76.0" style="-fx-border-color: teal;" text="Clear">
-                                             <HBox.margin>
-                                                <Insets left="10.0" right="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" onMouseClicked="#searchFavorites" text="Favorites">
-                                             <padding>
-                                                <Insets top="5.0" />
-                                             </padding>
+                                          <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" layoutX="-10.0" onMouseClicked="#searchFavorites" prefHeight="25.0" prefWidth="125.0" styleClass="fav" text="Favorites">
+                                             <font>
+                                                <Font name="Chalkboard" size="13.0" />
+                                             </font>
                                           </ToggleSwitch>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="difficultyHbox" layoutY="70.0" prefHeight="28.0" prefWidth="234.0">
+                                    <HBox fx:id="difficultyHbox" alignment="CENTER" layoutX="-3.0" layoutY="65.0" prefHeight="28.0" prefWidth="234.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#216065" />
-                                          <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" text="B">
+                                          <Label prefHeight="17.0" prefWidth="53.0" text="Difficulty" textFill="#003d76">
+                                             <font>
+                                                <Font name="AppleGothic Regular" size="13.5" />
+                                             </font></Label>
+                                          <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" styleClass="buttonH" text="B" textFill="#222222">
                                              <HBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets left="16.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" text="AB">
+                                          <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" styleClass="buttonH" text="AB" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" text="I">
+                                          <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" styleClass="buttonH" text="I" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" text="ALL">
+                                          <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" styleClass="buttonH" text="ALL" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="equipmentHbox" layoutY="109.0">
+                                    <HBox fx:id="equipmentHbox" alignment="CENTER" layoutX="2.0" layoutY="100.0">
                                        <children>
-                                          <Label text="Equipment" textFill="#216065" />
-                                          <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
+                                          <Label text="Equipment" textFill="#003d76">
+                                             <font>
+                                                <Font name="AppleGothic Regular" size="14.0" />
+                                             </font></Label>
+                                          <ChoiceBox fx:id="equipmentChoiceBox" opacity="0.8" prefHeight="20.0" prefWidth="150.0" value="ALL">
                                              <HBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets left="7.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="categoryHbox" layoutX="4.0" layoutY="189.0">
+                                    <HBox fx:id="categoryHbox" alignment="CENTER" layoutX="2.0" layoutY="172.0">
                                        <children>
-                                          <Label text="Category" textFill="#216065" />
+                                          <Label text="Category" textFill="#003d76">
+                                             <font>
+                                                <Font name="AppleGothic Regular" size="14.0" />
+                                             </font>
+                                          </Label>
                                           <ChoiceBox fx:id="categoryChoiceBox" opacity="0.8" prefWidth="150.0" value="ALL">
                                              <HBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets left="17.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
                                        </children>
                                     </HBox>
-                                    <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" style="-fx-border-color: teal;" />
+                                    <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" />
+                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="239.0" mnemonicParsing="false" onAction="#resetFilters" prefHeight="28.0" prefWidth="76.0" styleClass="buttonH" text="Clear" textFill="#222222">
+                                       <font>
+                                          <Font name="Arial Unicode MS" size="11.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -152,7 +192,7 @@
       </BorderPane>
    </left>
    <center>
-      <VBox maxHeight="1200.0" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="490.0" BorderPane.alignment="TOP_LEFT">
+      <VBox alignment="CENTER" maxHeight="1200.0" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="490.0" BorderPane.alignment="TOP_LEFT">
          <children>
             <StackPane alignment="TOP_CENTER" prefHeight="68.0" prefWidth="853.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
                <children>
@@ -181,16 +221,16 @@
             </StackPane>
             <VBox alignment="CENTER" prefHeight="845.0" prefWidth="853.0">
                <children>
-                  <AnchorPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" VBox.vgrow="NEVER">
+                  <AnchorPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" styleClass="cardBackground" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <children>
                         <ScrollPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="740.0" styleClass="filter" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
+                              <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="740.0" styleClass="cardBackground" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
                                  <padding>
-                                    <Insets left="5.0" top="10.0" />
+                                    <Insets left="5.0" />
                                  </padding>
                               </TilePane>
                            </content>
@@ -214,6 +254,8 @@
             <Menu mnemonicParsing="false" text="Edit">
                <items>
                   <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Rename Title" />
+<!--                  <MenuItem fx:id="edit1" mnemonicParsing="false" onAction="#onEditMenuUndo" text="Undo" />-->
+<!--                  <MenuItem mnemonicParsing="false" onAction="#onEditMenuRedo" text="Redo" />-->
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">

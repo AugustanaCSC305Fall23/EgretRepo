@@ -21,12 +21,12 @@
                   <Font name="Georgia Bold" size="53.0" />
                </font>
             </Label>
-            <Button fx:id="planMaker" alignment="CENTER" layoutX="642.0" layoutY="694.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="766.5" AnchorPane.leftAnchor="642.0" AnchorPane.rightAnchor="478.0">
+            <Button fx:id="planMaker" alignment="CENTER" layoutX="583.0" layoutY="691.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="769.5" AnchorPane.leftAnchor="583.0" AnchorPane.rightAnchor="537.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="lessonLibrary" layoutX="633.0" layoutY="886.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="574.5" AnchorPane.leftAnchor="633.0" AnchorPane.rightAnchor="487.0">
+            <Button fx:id="lessonLibrary" layoutX="578.0" layoutY="881.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="579.5" AnchorPane.leftAnchor="578.0" AnchorPane.rightAnchor="542.0">
                <font>
                   <Font size="18.0" />
                </font>
