@@ -108,6 +108,10 @@ public class PlanMakerController {
 
     private void showImagePopup(Card card, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("View Card");
@@ -260,6 +264,10 @@ public class PlanMakerController {
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("Print options");
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         ButtonType printCards = new ButtonType("Print Cards");
         ButtonType printCardsTitles = new ButtonType("Print Cards Titles");

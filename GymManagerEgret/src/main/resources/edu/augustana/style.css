@@ -31,8 +31,8 @@
      -fx-font-size: 12px;
 }
 
-.buttonH:hover {
-    -fx-background-color: #003D76
+.button:hover {
+    -fx-background-color: #CFD7DE
 }
 
 .fav {
