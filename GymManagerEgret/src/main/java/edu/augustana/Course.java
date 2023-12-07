@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Course {
+public class Course implements Cloneable{
 
     private ArrayList<LessonPlan> lessonPlans;
     private int currentEditingIndex;
@@ -54,5 +54,18 @@ public class Course {
         PrintWriter writer = new PrintWriter(new FileWriter(courseFile));
         writer.println(serializedLessonPlanText);
         writer.close();
+    }
+
+    @Override
+    public Course clone() {
+        try {
+            Course clone = (Course) super.clone();
+            clone.lessonPlans = new ArrayList<LessonPlan>();
+            clone.lessonPlans.addAll(lessonPlans);
+            clone.currentEditingIndex = currentEditingIndex;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

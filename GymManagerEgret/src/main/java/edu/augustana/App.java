@@ -89,6 +89,10 @@ public class App extends Application {
         return currentCourse;
     }
 
+    public static void setCurrentCourse(Course currentCourse) {
+        App.currentCourse = currentCourse;
+    }
+
     public static File getCurrentCourseFile() {
         return currentCourseFile;
     }
