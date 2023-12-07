@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1462.0" styleClass="lessonBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1462.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PlanMakerController">
    <left>
       <BorderPane BorderPane.alignment="CENTER">
          <top>
@@ -183,9 +183,9 @@
             </VBox>
          </top>
          <center>
-            <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" styleClass="lessonBackground" stylesheets="@style.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="cardScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="850.0" prefWidth="650.0" stylesheets="@style.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <content>
-                  <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" styleClass="cardBackground" stylesheets="@style.css" vgap="10" />
+                  <FlowPane fx:id="cardFlowPane" hgap="10" prefHeight="850.0" prefWidth="650.0" stylesheets="@style.css" vgap="10" />
                </content>
             </ScrollPane>
          </center>
@@ -194,7 +194,7 @@
    <center>
       <BorderPane BorderPane.alignment="TOP_LEFT">
          <center>
-            <AnchorPane prefHeight="770.0" prefWidth="750.0" styleClass="cardBackground">
+            <AnchorPane prefHeight="770.0" prefWidth="750.0">
                <children>
                   <ScrollPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <content>

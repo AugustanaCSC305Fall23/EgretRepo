@@ -10,7 +10,7 @@
 }
 
 .cardBackground{
-    -fx-background-color: #FBF7F4;
+    -fx-background-color: #E4F1EE;
 }
 .filter{
     -fx-background-color: #CFD7DE;
@@ -40,6 +40,18 @@
 .fav {
     -fx-font-family: 'AppleGothic';
     -fx-text-fill: #003d76;
+}
+
+.libraryBackground{
+    -fx-background-color: #FBF7F4;
+}
+
+.homeFont{
+    -fx-font-family: 'Barlow Condensed', sans-serif;;
+}
+
+.homeButt{
+    -fx-background-color:#F0F5FA;
 }
 
 

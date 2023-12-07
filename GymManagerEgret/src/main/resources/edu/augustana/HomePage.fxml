@@ -12,23 +12,23 @@
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imageBackground" fitHeight="1745.0" fitWidth="1813.0" layoutX="49.0" layoutY="-156.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-121.0">
+            <ImageView fx:id="imageBackground" fitHeight="1745.0" fitWidth="1813.0" layoutX="15.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="-328.0">
                <image>
                   <Image url="@../../../../../GymManagerAssets/cardPhotos/Pictures/BGPic.JPG" />
                </image></ImageView>
-            <Label alignment="CENTER" layoutX="45.0" layoutY="534.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="1496.0" text="Gym  Manager Egret" textFill="#d2fcff" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="-41.0" AnchorPane.topAnchor="534.0">
+            <Label alignment="CENTER" layoutX="64.0" layoutY="656.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="1496.0" text="FlowFlex" textFill="WHITE" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="-60.0" AnchorPane.topAnchor="656.0">
                <font>
-                  <Font name="Georgia Bold" size="53.0" />
+                  <Font name="Phosphate Inline" size="84.0" />
                </font>
             </Label>
-            <Button fx:id="planMaker" alignment="CENTER" layoutX="583.0" layoutY="691.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" text="Plan Maker" textFill="#216065" AnchorPane.bottomAnchor="769.5" AnchorPane.leftAnchor="583.0" AnchorPane.rightAnchor="537.0">
+            <Button fx:id="planMaker" alignment="CENTER" layoutX="594.0" layoutY="920.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToPlanMaker" prefHeight="120.0" prefWidth="300.0" styleClass="homeButt" text="Plan Maker" textFill="#80807e" AnchorPane.bottomAnchor="846.5" AnchorPane.leftAnchor="594.0" AnchorPane.rightAnchor="526.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Gurmukhi MN" size="35.0" />
                </font>
             </Button>
-            <Button fx:id="lessonLibrary" layoutX="578.0" layoutY="881.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" text="Lesson Library" textFill="#216065" AnchorPane.bottomAnchor="579.5" AnchorPane.leftAnchor="578.0" AnchorPane.rightAnchor="542.0">
+            <Button fx:id="lessonLibrary" layoutX="608.0" layoutY="1108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#connectToCourseLibrary" prefHeight="120.0" prefWidth="300.0" styleClass="homeButt" text="Lesson Library" textFill="#80807e" AnchorPane.bottomAnchor="658.5" AnchorPane.leftAnchor="608.0" AnchorPane.rightAnchor="512.0">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Gurmukhi MN" size="35.0" />
                </font>
             </Button>
          </children>
