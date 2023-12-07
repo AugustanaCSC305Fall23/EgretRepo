@@ -13,7 +13,9 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+/**
+ * Controller for the CourseView page
+ */
 
 public class CourseViewController {
 
@@ -31,12 +33,18 @@ public class CourseViewController {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
 
+    /**
+     * Switch from CourseView to HomePage
+     */
     @FXML
-    void connectToHomePage() {
+    public void connectToHomePage() {
         App.switchToHomePageView();
     }
 
-
+    /**
+     * The home icon is set, undoRedo is recreated, and
+     * the lesson in the LessonPlan is shown when the CourseView Page launches.
+     */
     public void initialize() {
         home.setImage(App.homeIcon());
         undoRedoHandler = new CourseUndoRedoHandler(this);
@@ -49,7 +57,6 @@ public class CourseViewController {
         App.switchToEditLessonPlan(newLessonPlan, true);
         undoRedoHandler.saveState();
     }
-
 
     @FXML
     private void deleteLessonPlan(ActionEvent event) {
@@ -70,7 +77,7 @@ public class CourseViewController {
     }
 
     @FXML
-    void duplicateLessonPlan() {
+    private void duplicateLessonPlan() {
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
         if (selectedLessonPlan != null) {
             LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
@@ -115,6 +122,7 @@ public class CourseViewController {
             alert.showAndWait();
         }
     }
+
     @FXML
     private void menuActionLoad(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();

@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * JavaFX App where everything is displayed
  */
 public class App extends Application {
 
@@ -22,10 +22,6 @@ public class App extends Application {
 
     public static final CardDatabase database = new CardDatabase();
     public static Stage primaryStage;
-
-    public static void setPrimaryStage(Stage stage) {
-        primaryStage = stage;
-    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -42,7 +38,6 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-
     private static void switchToView(String fxmlFileName) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxmlFileName));
@@ -52,27 +47,44 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * Switch to PlanMakerPage
+     */
     public static void switchToPlanMakerView() {
         switchToView("PlanMakerPage.fxml");
     }
 
+    /**
+     * Switch to HomePage
+     */
     public static void switchToHomePageView() {
         switchToView("HomePage.fxml");
     }
 
+    /**
+     * Switch to CourseViewPage
+     */
     public static void switchCourseView() {
         switchToView("CourseViewPage.fxml");
     }
 
+    /**
+     * Switch to PrintCardsPage
+     */
     public static void switchToPrintCardsView() {
         switchToView("PrintCardsPage.fxml");
     }
 
+    /**
+     * Switch to PrintCardsTitlesPage
+     */
     public static void switchToPrintCardsTitles(){
-        switchToView("PrintCardsTitles.fxml");
+        switchToView("PrintCardsTitlesPage.fxml");
     }
 
+    /**
+     * Switch to PrintCardsEquipmentPage
+     */
     public static void switchToPrintCardsEquipment(){
         switchToView("PrintCardsEquipmentPage.fxml");
     }
@@ -85,6 +97,9 @@ public class App extends Application {
         return new Image("file:GymManagerAssets/cardPhotos/Pictures/BGPic.JPG");
     }
 
+    /**
+     * @return - CurrentCourse
+     */
     public static Course getCurrentCourse() {
         return currentCourse;
     }
@@ -92,21 +107,29 @@ public class App extends Application {
     public static void setCurrentCourse(Course currentCourse) {
         App.currentCourse = currentCourse;
     }
-
+    /**
+     * @return - Current Course File
+     */
     public static File getCurrentCourseFile() {
         return currentCourseFile;
     }
-
+    /**
+     * Saves the current course
+     */
     public static void saveCurrentCourseToFile(File fileToSaveTo) throws IOException {
         currentCourse.saveToFile(fileToSaveTo);
         currentCourseFile = fileToSaveTo;
     }
-
+    /**
+     * Loads the current course
+     */
     public static void loadCurrentCourseFromFile(File fileToLoadFrom) throws IOException {
         currentCourse = Course.loadFromFile(fileToLoadFrom);
         currentCourseFile = fileToLoadFrom;
     }
-
+    /**
+     * If there is no existing lessonPlan, it makes new one otherwise opens the current lessonPlan
+     */
     public static void switchToEditLessonPlan(LessonPlan lessonPlanToEdit, boolean addingNew) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("PlanMakerPage.fxml"));
