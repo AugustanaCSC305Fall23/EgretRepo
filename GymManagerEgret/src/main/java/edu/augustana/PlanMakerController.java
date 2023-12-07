@@ -128,10 +128,11 @@ public class PlanMakerController {
         } else {
             favoriteButtonText = "Add to Favorites";
         }
+        ButtonType printCard = new ButtonType("Print Card");
+        ButtonType addNotes = new ButtonType("Add Notes");
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
-        ButtonType printCard = new ButtonType("Print Card");
-        imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, ButtonType.CANCEL);
+        imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, addNotes, ButtonType.CANCEL);
 
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == placeCardButtonType) {
@@ -142,9 +143,11 @@ public class PlanMakerController {
                     imageAlert.close();
                     removeCardFromPlan(card);
                 }
-            } if (buttonType==printCard){
-                printContent(card.getZoomedImage());
 
+            }else if(buttonType==printCard) {
+                printContent(card.getZoomedImage());
+            }else if(buttonType==addNotes){
+                addCardNotes(card);
             }else if(buttonType == toggleFavoriteButton){
                 if(card.getFavoriteStatus()){
                     favoritesManager.removeFromFavorites(card.getCode());
@@ -175,6 +178,9 @@ public class PlanMakerController {
                 }
             }
         });
+    }
+    private void addCardNotes(Card card){
+
     }
     private void printContent(Image image) {
         System.out.println("printContent called: " + image);

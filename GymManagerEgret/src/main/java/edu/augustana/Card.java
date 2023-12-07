@@ -36,6 +36,8 @@ public class Card {
 
     private final ArrayList<String> keywords = new ArrayList<>();
 
+    private String cardNotes = "";
+
     @Override
     public String toString() {
         return "Card{" +
@@ -144,6 +146,10 @@ public class Card {
     }
 
     public Image getImage() {return image;}
+
+    public void setCardNotes(String cardNotes) {
+        this.cardNotes = cardNotes;
+    }
 
     public Image getZoomedImage(){
         System.out.println("GymManagerAssets/cardPacks/" + pack +"/" + imageFileName);
