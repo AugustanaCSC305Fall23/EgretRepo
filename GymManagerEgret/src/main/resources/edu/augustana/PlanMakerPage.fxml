@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -198,7 +199,7 @@
                <children>
                   <ScrollPane layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" styleClass="cardBackground" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
+                        <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" layoutY="32.0" prefHeight="770.0" prefWidth="750.0" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
@@ -242,14 +243,19 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="print" mnemonicParsing="false" onAction="#showToolTips" text="Print" />
+                  <MenuItem fx:id="print" mnemonicParsing="false" onAction="#showToolTips" text="Print Preview" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#connectToCoursePage" text="Open Course View" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitPlatform" text="Exit" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                <items>
                   <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#onEditButtonClick" text="Rename Title" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#newMenuAction" text="New Lesson" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="edit1" mnemonicParsing="false" onAction="#onEditMenuUndo" text="Undo" />
                   <MenuItem mnemonicParsing="false" onAction="#onEditMenuRedo" text="Redo" />
                </items>
@@ -257,6 +263,7 @@
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#showToolTips" text="Tool Tips" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
                </items>
             </Menu>

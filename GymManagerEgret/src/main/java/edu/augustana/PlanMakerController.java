@@ -3,6 +3,7 @@ package edu.augustana;
 import java.io.*;
 import java.util.*;
 import edu.augustana.filters.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.print.*;
 import javafx.scene.control.Alert;
@@ -70,6 +71,11 @@ public class PlanMakerController {
     void connectToHomePage() {
         App.switchToHomePageView();
     }
+    @FXML
+    void exitPlatform (){
+        Platform.exit();
+
+    }
 
     /**
      * LessonTitle, undoRedo, and homepage are reset when the PlanMaker is opened.
@@ -104,6 +110,10 @@ public class PlanMakerController {
 
     private void showImagePopup(Card card, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("View Card");
@@ -237,6 +247,7 @@ public class PlanMakerController {
         }
     }
 
+
     public void updateLessonDisplay() throws FileNotFoundException {
         displayLesson.getChildren().clear();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
@@ -255,6 +266,10 @@ public class PlanMakerController {
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("Print options");
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         ButtonType printCards = new ButtonType("Print Cards");
         ButtonType printCardsTitles = new ButtonType("Print Cards Titles");
