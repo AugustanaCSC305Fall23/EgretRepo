@@ -4,6 +4,7 @@ module edu.augustana {
     requires opencsv;
     requires com.google.gson;
     requires org.controlsfx.controls;
+    requires java.prefs;
 
 
     opens edu.augustana to javafx.fxml, com.google.gson;

@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-
+import java.util.prefs.Preferences;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +24,8 @@ public class CourseViewController {
     private ListView<LessonPlan> lessonList;
 
     private final LessonPlan currentLessonPlan;
+    Preferences filePreferences = Preferences.userRoot().node(this.getClass().getName());
+    String preferredFileLocation = "preferredFileLocation";
 
     private CourseUndoRedoHandler undoRedoHandler;
 
@@ -41,6 +43,7 @@ public class CourseViewController {
         home.setImage(App.homeIcon());
         undoRedoHandler = new CourseUndoRedoHandler(this);
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
+        System.out.println(filePreferences.toString());
     }
 
     @FXML
@@ -119,6 +122,7 @@ public class CourseViewController {
     private void menuActionLoad(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Course Library");
+
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course Library (*.course)", "*.course");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonList.getScene().getWindow();
@@ -156,10 +160,16 @@ public class CourseViewController {
     private void menuActionSaveAs() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Course");
+        //filePreferences.put("preferredFileLocation", getUserDirectory());
+        System.out.println(filePreferences.get("preferredFileLocation", ""));
+        fileChooser.setInitialDirectory(new File(filePreferences.get("preferredFileLocation", "")));
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Course (*.course)", "*.course");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonList.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
+        filePreferences.put("preferredFileLocation", chosenFile.getParent());
+        System.out.println(chosenFile);
+        System.out.println(filePreferences.get("preferredFileLocation", ""));
         savecurrentCoursetofile(chosenFile);
     }
 
@@ -173,6 +183,9 @@ public class CourseViewController {
                 alert.showAndWait();
             }
         }
+    }
+    private String getUserDirectory(){
+        return new File(System.getProperty("user.dir")).getAbsolutePath();
     }
     @FXML
     private void showToolTips(){
