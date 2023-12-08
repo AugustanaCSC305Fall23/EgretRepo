@@ -400,10 +400,10 @@ public class PlanMakerController {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/7);
                 cardImageView.setFitHeight(1275/7);
-                Label tipLabel = generateTooltip(cardImageView, true);
-                cardFlowPane.getChildren().add(tipLabel);
+//                Label tipLabel = generateTooltip(cardImageView, true);
+//                cardFlowPane.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
-                setMouseEvent(tipLabel, card, false);
+//                setMouseEvent(tipLabel, card, false);
             }
         }
     }
