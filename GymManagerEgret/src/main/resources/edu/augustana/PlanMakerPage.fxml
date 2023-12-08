@@ -13,6 +13,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,13 +53,13 @@
                                           </ChoiceBox>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="genderHbox" alignment="CENTER" layoutX="-2.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
+                                    <HBox fx:id="genderHbox" alignment="CENTER" layoutX="-5.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="218.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#003d76">
+                                          <Label layoutX="-1.0" prefHeight="17.0" prefWidth="59.0" text="Gender" textFill="#003d76">
                                              <font>
                                                 <Font name="AppleGothic Regular" size="14.0" />
                                              </font></Label>
-                                          <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="M" textFill="#222222">
+                                          <Button fx:id="genderMale" mnemonicParsing="false" onAction="#inputMale" opacity="0.8" styleClass="buttonH" text="M" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -66,7 +67,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="F" textFill="#222222">
+                                          <Button fx:id="genderFemale" mnemonicParsing="false" onAction="#inputFemale" opacity="0.8" styleClass="buttonH" text="F" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -74,7 +75,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="N" textFill="#222222">
+                                          <Button fx:id="genderNeutral" mnemonicParsing="false" onAction="#inputNeutral" opacity="0.8" styleClass="buttonH" text="N" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -82,7 +83,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="ALL" textFill="#222222">
+                                          <Button mnemonicParsing="false" onAction="#inputALLGender" opacity="0.8" styleClass="buttonH" text="ALL" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -92,9 +93,17 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="clearHbox" alignment="CENTER" layoutX="-24.0" layoutY="205.0" prefHeight="28.0" prefWidth="182.0">
+                                    <HBox fx:id="clearHbox" alignment="CENTER" layoutX="6.0" layoutY="205.0" prefHeight="28.0" prefWidth="182.0">
                                        <children>
-                                          <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" layoutX="-10.0" onMouseClicked="#searchFavorites" prefHeight="25.0" prefWidth="125.0" styleClass="fav" text="Favorites" textFill="#003d76">
+                                          <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilters" prefHeight="28.0" prefWidth="76.0" styleClass="buttonH" text="Clear" textFill="#222222">
+                                             <font>
+                                                <Font name="Arial Unicode MS" size="11.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="15.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <ToggleSwitch fx:id="favoriteSwitch" alignment="CENTER" onMouseClicked="#searchFavorites" prefHeight="25.0" prefWidth="125.0" styleClass="fav" text="Favorites" textFill="#003d76">
                                              <font>
                                                 <Font name="Bodoni 72 Book" size="13.0" />
                                              </font>
@@ -107,7 +116,7 @@
                                              <font>
                                                 <Font name="AppleGothic Regular" size="13.5" />
                                              </font></Label>
-                                          <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="B" textFill="#222222">
+                                          <Button mnemonicParsing="false" onAction="#inputBasic" opacity="0.8" styleClass="buttonH" text="B" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="16.0" />
                                              </HBox.margin>
@@ -115,7 +124,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="AB" textFill="#222222">
+                                          <Button mnemonicParsing="false" onAction="#inputAdvanceBasic" opacity="0.8" prefHeight="28.0" prefWidth="38.0" styleClass="buttonH" text="AB" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -123,7 +132,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="I" textFill="#222222">
+                                          <Button mnemonicParsing="false" onAction="#inputIntermediate" opacity="0.8" styleClass="buttonH" text="I" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -131,7 +140,7 @@
                                                 <Font name="Arial Unicode MS" size="11.0" />
                                              </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="ALL" textFill="#222222">
+                                          <Button mnemonicParsing="false" onAction="#inputALLDifficulty" opacity="0.8" prefHeight="28.0" prefWidth="43.0" styleClass="buttonH" text="ALL" textFill="#222222">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
@@ -169,11 +178,6 @@
                                        </children>
                                     </HBox>
                                     <TextField fx:id="titleSearchBox" layoutX="158.0" onKeyTyped="#searchTitle" opacity="0.8" promptText="Search Title" />
-                                    <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="239.0" mnemonicParsing="false" onAction="#resetFilters" prefHeight="28.0" prefWidth="76.0" style="-fx-border-color: #6E92C8; -fx-border-radius: 5;" styleClass="buttonH" text="Clear" textFill="#222222">
-                                       <font>
-                                          <Font name="Arial Unicode MS" size="11.0" />
-                                       </font>
-                                    </Button>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -232,6 +236,12 @@
                      <font>
                         <Font name="Arial" size="30.0" />
                      </font>
+                     <tooltip>
+                        <Tooltip text="Click to edit title">
+                           <font>
+                              <Font size="12.0" />
+                           </font></Tooltip>
+                     </tooltip>
                   </Label>
                </children>
             </StackPane>
@@ -263,7 +273,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#showToolTips" text="Tool Tips" />
+                  <MenuItem mnemonicParsing="false" onAction="#showToolTips" text="Navigate" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
                </items>

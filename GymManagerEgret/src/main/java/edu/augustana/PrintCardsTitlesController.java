@@ -47,7 +47,7 @@ public class PrintCardsTitlesController {
     }
 
     private void addCardTitlesToPageTabs() {
-        //
+
         String lessonTitleStr = currentLessonPlan.getTitle();
         Label lessonTitle = new Label("Lesson Title: "+lessonTitleStr);
         lessonTitle.setMaxHeight(10);
