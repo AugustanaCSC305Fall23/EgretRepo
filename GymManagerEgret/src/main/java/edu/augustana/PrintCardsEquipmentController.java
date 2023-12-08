@@ -79,8 +79,8 @@ public class PrintCardsEquipmentController {
                     ImageView newCardView = new ImageView();
                     Image cardImage = card.getZoomedImage();
                     newCardView.setImage(cardImage);
-                    newCardView.setFitWidth(1650 /8.5);
-                    newCardView.setFitHeight(1275 /8.5);
+                    newCardView.setFitWidth(1650 /7);
+                    newCardView.setFitHeight(1275 /7.8);
 
                     Label equipmentLabel = new Label();
 
