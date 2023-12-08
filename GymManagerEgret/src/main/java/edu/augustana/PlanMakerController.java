@@ -71,9 +71,26 @@ public class PlanMakerController {
     void connectToHomePage() {
         App.switchToHomePageView();
     }
+
+
     @FXML
-    private void exitPlatform (){
-        Platform.exit();
+    private void exitPlatform() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?");
+        confirmation.initOwner(App.primaryStage);
+        confirmation.setHeaderText(null);
+
+        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        confirmation.getButtonTypes().setAll(yesButton, noButton);
+
+        confirmation.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                Platform.exit();
+            } else {
+                confirmation.close();
+            }
+        });
     }
 
     /**
