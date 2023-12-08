@@ -48,26 +48,33 @@ public class PrintCardsController {
     }
 
     private void addCardsToPageTabs() {
+        //Make a set of strings and add all events of th ecards
         Set<String> eventNames = new HashSet<>();
         String lessonTitleStr = "Lesson Title: "+ currentLessonPlan.getTitle();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             eventNames.add(card.getEvent());
         }
+
         pagesTabPane.getTabs().clear();
         int pageNum = 1;
+
         for (String eventNameStr : eventNames) {
             VBox pageVBox = new VBox();
             pageVBoxes.add(pageVBox);
+
+            //Make a new tab for each event in the set and add it to the Vbox
             Tab tab = new Tab("Page " + pageNum + ": " +eventNameStr);
             tab.setContent(pageVBox);
             pagesTabPane.getTabs().add(tab);
+
+            //Add lesson title and event name
             Label lessonTitle = new Label(lessonTitleStr);
             lessonTitle.setMaxHeight(10);
-        //    lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
             pageVBox.getChildren().add(lessonTitle);
             Label eventName = new Label("Event Name: " +eventNameStr);
-         //   eventName.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
             pageVBox.getChildren().add(eventName);
+
+            //Add cards in the lesson in a tilepane
             TilePane tilePane = new TilePane();
             tilePane.setPrefColumns(3);
             tilePane.setPrefRows(3);
@@ -96,26 +103,21 @@ public class PrintCardsController {
 
     @FXML
     void printContent(Node nodeToPrint) {
-        System.out.println("printContent called: " + nodeToPrint);
+        //Create printerjob
         PrinterJob job = PrinterJob.createPrinterJob();
-        System.out.println("Job=" + job);
 
         if (job != null) {
+            //Set page layout
             PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL);
             job.getJobSettings().setPageLayout(pageLayout);
 
+            //Print each tab
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
-                int tabNum = 1;
-
                 for (Tab tab : pagesTabPane.getTabs()) {
                     boolean success = job.printPage(tab.getContent());
-                    System.out.println("Print success for Tab " + tabNum + ": " + success);
-
                     if (!success) {
                         break;
                     }
-
-                    tabNum++;
                 }
 
                 job.endJob();

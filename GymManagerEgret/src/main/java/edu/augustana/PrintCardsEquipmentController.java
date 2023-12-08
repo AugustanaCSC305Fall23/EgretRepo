@@ -63,10 +63,8 @@ public class PrintCardsEquipmentController {
             pagesTabPane.getTabs().add(tab);
             Label lessonTitle = new Label(lessonTitleStr);
             lessonTitle.setMaxHeight(10);
-            // lessonTitle.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-font: Arial; ");
             pageVBox.getChildren().add(lessonTitle);
             Label eventName = new Label("Event Name: " +eventNameStr);
-           // eventName.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-font: Arial; ");
             pageVBox.getChildren().add(eventName);
             TilePane tilePane = new TilePane();
             tilePane.setPrefColumns(3);

@@ -504,6 +504,10 @@ public class PlanMakerController {
     @FXML
     private void showAbout() {
         Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        DialogPane dialogPane = aboutAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         aboutAlert.setHeaderText("Credits");
         aboutAlert.setTitle("About");
         aboutAlert.setContentText("Product Designer: " + "\n" + "   Samantha Keehn" + "\n"
@@ -516,10 +520,14 @@ public class PlanMakerController {
     @FXML
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
         alreadyAddedAlert.setTitle("Tool Tips");
         alreadyAddedAlert.setContentText("Left click for card options." + "\n" +
-                "Right click to immediately add or remove cards.");
+                "Right click to immediately add or remove cards." + "\n" + "Click on the title to rename title");
         alreadyAddedAlert.initOwner(App.primaryStage);
         alreadyAddedAlert.showAndWait();
     }
