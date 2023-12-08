@@ -87,7 +87,7 @@ public class CourseViewController {
             lessonList.getItems().add(newLessonPlan);
             undoRedoHandler.saveState();
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to make a copy!");
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
@@ -96,7 +96,7 @@ public class CourseViewController {
     @FXML
     private void removeAllLessonPlans(ActionEvent event) {
         if (!lessonList.getItems().isEmpty()) {
-            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lesson plans?");
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lessons?");
             confirmation.initOwner(App.primaryStage);
             confirmation.setHeaderText(null);
 
@@ -109,7 +109,7 @@ public class CourseViewController {
             });
             undoRedoHandler.saveState();
         } else {
-            new Alert(Alert.AlertType.WARNING, "There are no lesson plans to remove!").show();
+            new Alert(Alert.AlertType.WARNING, "There are no lesson to remove!").show();
         }
     }
 
@@ -119,7 +119,7 @@ public class CourseViewController {
         if (selectedLessonPlan != null) {
             App.switchToEditLessonPlan(selectedLessonPlan, false);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to open first!");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to open!");
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
