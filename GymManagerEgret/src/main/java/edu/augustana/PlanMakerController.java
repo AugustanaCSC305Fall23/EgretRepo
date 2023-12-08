@@ -204,11 +204,11 @@ public class PlanMakerController {
                 card.setCardNotes(textArea.getText());
                 cardNotesManager.saveCardNotes(card.getCode(), textArea.getText());
                 addNotesAlert.close();
-                showImagePopup(card, addOrRemove);
+                //showImagePopup(card, addOrRemove);
                 System.out.println(card.getCardNotes());
             } else if (buttonType == ButtonType.CANCEL){
                 addNotesAlert.close();
-                showImagePopup(card, addOrRemove);
+                //showImagePopup(card, addOrRemove);
             }
             return buttonType;
         });

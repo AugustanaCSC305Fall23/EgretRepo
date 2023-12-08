@@ -1,14 +1,12 @@
 package edu.augustana;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class CardNotesManager {
 
-    final static File cardNotes = new File("GymManagerAssets/cardNotes.txt");
+    final static File cardNotesFile = new File("GymManagerAssets/cardNotes.txt");
     static HashMap<String, String> cardNotesMap = new HashMap<>();
     static CardNotesManager cardNotesManager = new CardNotesManager();
     private CardNotesManager(){initializeCardNotes();}
@@ -18,11 +16,11 @@ public class CardNotesManager {
     }
     public static void initializeCardNotes(){
         try {
-            if (cardNotes.createNewFile()) {
-                System.out.println("File created: " + cardNotes.getName());
+            if (cardNotesFile.createNewFile()) {
+                System.out.println("File created: " + cardNotesFile.getName());
             } else {
                 System.out.println("Previous cardNotes file exists.");
-                Scanner cardNotesReader = new Scanner(cardNotes);
+                Scanner cardNotesReader = new Scanner(cardNotesFile);
                 while(cardNotesReader.hasNext()) {
                     String[] cardNotesData = cardNotesReader.nextLine().split(",");
                     cardNotesMap.put(cardNotesData[0], cardNotesData[1]);
@@ -41,12 +39,28 @@ public class CardNotesManager {
     public static void saveCardNotes(String cardID, String cardNotesString){
         try {
             if(!cardNotesMap.containsKey(cardID)){
+                FileWriter cardNotesWriter = new FileWriter(cardNotesFile, true);
                 cardNotesMap.put(cardID, cardNotesString);
-                FileWriter cardNotesWriter = new FileWriter(cardNotes, true);
                 cardNotesWriter.append(cardID).append(",").append(cardNotesString).append("\n");
                 cardNotesWriter.close();
                 System.out.println(cardID + " successfully saved to cardNotes");
             } else {
+                String oldContent = "";
+                String oldNote = "";
+                BufferedReader notesReader = new BufferedReader(new FileReader(cardNotesFile));
+                String line =  notesReader.readLine();
+                while (line != null){
+                    if (line.contains(cardID + ",")){
+                        oldNote = line;
+                    }
+                    oldContent = oldContent + line + System.lineSeparator();
+                    line = notesReader.readLine();
+                }
+                String newNote = cardID + "," + cardNotesString;
+                String newContent = oldContent.replaceAll(oldNote, newNote);
+                FileWriter cardNotesWriter = new FileWriter(cardNotesFile, false);
+                cardNotesWriter.write(newContent);
+                cardNotesWriter.close();
                 System.out.println(cardID + " is already saved to cardNotes");
             }
         } catch (IOException e) {
