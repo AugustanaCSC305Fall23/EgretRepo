@@ -117,7 +117,9 @@ public class PlanMakerController {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/7);
                 cardImageView.setFitHeight(1275/7);
-                setMouseEvent(cardImageView, card, false);
+                Label tipLabel = generateTooltip(cardImageView, false);
+                displayLesson.getChildren().add(tipLabel);
+                setMouseEvent(tipLabel, card, false);
                 displayLesson.getChildren().add(cardImageView);
             }
         }
@@ -197,7 +199,7 @@ public class PlanMakerController {
         });
         imageAlert.show();
     }
-    private void setMouseEvent(ImageView cardPane, Card card, boolean addOrRemove){
+    private void setMouseEvent(Label cardPane, Card card, boolean addOrRemove){
         cardPane.setOnMouseClicked(event -> {
             if(event.getButton().equals(MouseButton.PRIMARY)) {
                 showImagePopup(card,addOrRemove);
@@ -270,14 +272,28 @@ public class PlanMakerController {
         }
     }
 
+    private Label generateTooltip(ImageView cardImageView, boolean addOrRemove){
+        Label tipLabel = new Label();
+        tipLabel.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        tipLabel.setGraphic(cardImageView);
+        //tipLabel.setMouseTransparent(true);
+        if (addOrRemove) {
+            tipLabel.setTooltip(new Tooltip("Left click for details." + "\n" + "Right click to add card to plan."));
+        } else {
+            tipLabel.setTooltip(new Tooltip("Left click for details." + "\n" + "Right click to remove card from plan."));
+        }
+        return tipLabel;
+    }
+
     private void addCardToPlan(Card card){
         if (!currentLessonPlan.containsCard(card)) {
             ImageView cardImageView = new ImageView(card.getImage());
             cardImageView.setFitWidth(1650/7);
             cardImageView.setFitHeight(1275/7);
-
+            Label tipLabel = generateTooltip(cardImageView, false);
+            displayLesson.getChildren().add(tipLabel);
             displayLesson.getChildren().add(cardImageView);
-            setMouseEvent(cardImageView, card, false);
+            setMouseEvent(tipLabel, card, false);
             currentLessonPlan.addCard(card);
             undoRedoHandler.saveState();
         }else{
@@ -308,8 +324,10 @@ public class PlanMakerController {
             ImageView cardImageView = new ImageView(card.getImage());
             cardImageView.setFitWidth(1650 /7);
             cardImageView.setFitHeight(1275 /7);
+            Label tipLabel = generateTooltip(cardImageView, false);
+            displayLesson.getChildren().add(tipLabel);
             displayLesson.getChildren().add(cardImageView);
-            setMouseEvent(cardImageView, card, false);
+            setMouseEvent(tipLabel, card, false);
         }
     }
 
@@ -354,8 +372,11 @@ public class PlanMakerController {
             newCardView.setImage(cardImage);
             newCardView.setFitHeight(150);
             newCardView.setFitWidth(200);
-            setMouseEvent(newCardView, card, true);
+            Label tipLabel = generateTooltip(newCardView, true);
             cardFlowPane.getChildren().add(newCardView);
+            cardFlowPane.getChildren().add(tipLabel);
+            setMouseEvent(tipLabel, card, true);
+
 
         }
     }
@@ -379,8 +400,10 @@ public class PlanMakerController {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/7);
                 cardImageView.setFitHeight(1275/7);
-                setMouseEvent(cardImageView, card, false);
+                Label tipLabel = generateTooltip(cardImageView, true);
+                cardFlowPane.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
+                setMouseEvent(tipLabel, card, false);
             }
         }
     }
