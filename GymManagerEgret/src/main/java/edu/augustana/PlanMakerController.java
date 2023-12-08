@@ -60,8 +60,6 @@ public class PlanMakerController {
     @FXML
     private ToggleSwitch favoriteSwitch;
 
-
-
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
 
 
@@ -74,10 +72,13 @@ public class PlanMakerController {
         App.switchToHomePageView();
     }
     @FXML
-    void exitPlatform (){
+    private void exitPlatform (){
         Platform.exit();
-
     }
+
+    /**
+     * LessonTitle, undoRedo, and homepage are reset when the PlanMaker is opened.
+     */
 
     @FXML
     void initialize() throws FileNotFoundException {
@@ -304,6 +305,11 @@ public class PlanMakerController {
 
         }
     }
+    /**
+     * @param - LessonPlan, boolean
+     * Checks the boolean value and makes a new lessonPlan in the course or
+     * opens the lessonPlan if the selected LessonPlan exists
+     */
     public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
         this.currentLessonPlan = lessonPlan;
         if(addingNew){
@@ -324,7 +330,6 @@ public class PlanMakerController {
             }
         }
     }
-
     @FXML
     private void newMenuAction() {
         App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
@@ -333,6 +338,7 @@ public class PlanMakerController {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
 
     }
+
     @FXML
     private void connectToCoursePage(){
         App.switchCourseView();
@@ -394,7 +400,7 @@ public class PlanMakerController {
     }
 
     @FXML
-    void onTitleClick() {
+    public void onTitleClick() {
         lessonTitle.setVisible(false);
         lessonTitleTextArea.setVisible(true);
         lessonTitleTextArea.setText(lessonTitle.getText());
@@ -402,7 +408,7 @@ public class PlanMakerController {
         edit.setDisable(true);
     }
     @FXML
-    void onEnterPressed(KeyEvent event) {
+    public void onEnterPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             String editedText = lessonTitleTextArea.getText();
             lessonTitle.setText(editedText);

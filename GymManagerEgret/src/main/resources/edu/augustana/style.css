@@ -32,7 +32,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #CFD7DE
+    -fx-background-color: #CFD7DE;
 }
 
 .fav {
@@ -47,11 +47,10 @@
 
 .homeButt{
     -fx-background-color:#F0F5FA;
-    -fx-
-
 }
+
 .homeButt:hover {
-    -fx-background-color: #CFD7DE
+    -fx-background-color: #CFD7DE;
 }
 
 
