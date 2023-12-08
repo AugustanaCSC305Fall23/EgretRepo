@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private final String code;
     private final String event;
 
@@ -167,5 +167,47 @@ public class Card {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public int compareTo(Card other) {
+        if (event.compareTo(other.event) < 0){
+            return -1;
+        } else if (code.compareTo(other.event) < 0){
+            return -1;
+        } else if (other.equals(this)){
+            return 0;
+        } else{
+            return 1;
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this){
+            return true;
+        }
+        if (!(obj instanceof Card)){
+            return false;
+        }
+        Card other = (Card) obj;
+        if(event.equals(other.event)){
+            if(code.equals(other.code)){
+                if(category.equals(other.category)){
+                    if(title.equals(other.title)){
+                        if(pack.equals(other.pack)){
+                            if(imageFileName.equals(other.imageFileName)){
+                                if(gender.equals(other.gender)){
+                                    if(modelSex.equals(other.modelSex)){
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -1,10 +1,7 @@
 package edu.augustana;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
@@ -36,6 +33,7 @@ public class CardDatabase {
                 addCard(card);
             }
         }
+        Collections.sort(allCards);
     }
 
     private static ArrayList<File> retrieveCSVFiles(){
