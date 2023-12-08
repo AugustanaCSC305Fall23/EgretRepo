@@ -28,6 +28,8 @@ public class Card {
 
     private static FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
 
+    private static CardNotesManager cardNotesManager = CardNotesManager.getCardNotesManager();
+
     private final ArrayList<String> initialFavoritesList = favoritesManager.getFavorites();
 
     private final ArrayList<String> level = new ArrayList<>();
@@ -84,6 +86,9 @@ public class Card {
         }
         if(initialFavoritesList.contains(code)){
             favoriteStatus = true;
+        }
+        if(cardNotesManager.getCardNotes().containsKey(code)){
+            this.cardNotes = cardNotesManager.getCardNotes().get(code);
         }
     }
 
@@ -146,6 +151,10 @@ public class Card {
     }
 
     public Image getImage() {return image;}
+
+    public String getCardNotes() {
+        return cardNotes;
+    }
 
     public void setCardNotes(String cardNotes) {
         this.cardNotes = cardNotes;

@@ -102,7 +102,6 @@ public class CardDatabase {
         }
         //System.out.print(card.getCode());
         return filteredCards;
-
     }
 
     public static void main(String[] args) throws CsvValidationException, IOException {

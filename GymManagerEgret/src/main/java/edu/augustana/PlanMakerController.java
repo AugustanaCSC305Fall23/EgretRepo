@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
+import javafx.scene.text.TextFlow;
 import org.controlsfx.control.ToggleSwitch;
 
 
@@ -62,6 +63,8 @@ public class PlanMakerController {
 
 
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
+
+    CardNotesManager cardNotesManager = CardNotesManager.getCardNotesManager();
 
 
     public PlanMakerController() {
@@ -147,7 +150,7 @@ public class PlanMakerController {
             }else if(buttonType==printCard) {
                 printContent(card.getZoomedImage());
             }else if(buttonType==addNotes){
-                addCardNotes(card);
+                addCardNotes(card, addOrRemove);
             }else if(buttonType == toggleFavoriteButton){
                 if(card.getFavoriteStatus()){
                     favoritesManager.removeFromFavorites(card.getCode());
@@ -179,8 +182,36 @@ public class PlanMakerController {
             }
         });
     }
-    private void addCardNotes(Card card){
+    private void addCardNotes(Card card, boolean addOrRemove){
+        Alert addNotesAlert = new Alert(AlertType.INFORMATION);
+        addNotesAlert.initOwner(App.primaryStage);
+        addNotesAlert.setHeaderText(null);
+        addNotesAlert.setTitle("Add Notes");
 
+        TextArea textArea = new TextArea();
+        textArea.setText(card.getCardNotes());
+        textArea.selectAll();
+
+        VBox contentVBox = new VBox(textArea);
+        contentVBox.setAlignment(Pos.CENTER);
+        contentVBox.setSpacing(10);
+        addNotesAlert.getDialogPane().setContent(contentVBox);
+        ButtonType addNotes = new ButtonType("Done");
+        addNotesAlert.getButtonTypes().setAll(addNotes, ButtonType.CANCEL);
+        addNotesAlert.show();
+        addNotesAlert.setResultConverter(buttonType -> {
+            if (buttonType == addNotes) {
+                card.setCardNotes(textArea.getText());
+                cardNotesManager.saveCardNotes(card.getCode(), textArea.getText());
+                addNotesAlert.close();
+                showImagePopup(card, addOrRemove);
+                System.out.println(card.getCardNotes());
+            } else if (buttonType == ButtonType.CANCEL){
+                addNotesAlert.close();
+                showImagePopup(card, addOrRemove);
+            }
+            return buttonType;
+        });
     }
     private void printContent(Image image) {
         System.out.println("printContent called: " + image);
