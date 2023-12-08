@@ -3,6 +3,7 @@ package edu.augustana;
 import java.io.*;
 import java.util.*;
 import edu.augustana.filters.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.print.*;
 import javafx.scene.control.Alert;
@@ -60,8 +61,6 @@ public class PlanMakerController {
     @FXML
     private ToggleSwitch favoriteSwitch;
 
-
-
     FavoritesManager favoritesManager = FavoritesManager.getFavoritesManager();
 
     CardNotesManager cardNotesManager = CardNotesManager.getCardNotesManager();
@@ -75,6 +74,31 @@ public class PlanMakerController {
     void connectToHomePage() {
         App.switchToHomePageView();
     }
+
+
+    @FXML
+    private void exitPlatform() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?");
+        confirmation.initOwner(App.primaryStage);
+        confirmation.setHeaderText(null);
+
+        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        confirmation.getButtonTypes().setAll(yesButton, noButton);
+
+        confirmation.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                Platform.exit();
+            } else {
+                confirmation.close();
+            }
+        });
+    }
+
+    /**
+     * LessonTitle, undoRedo, and homepage are reset when the PlanMaker is opened.
+     */
 
     @FXML
     void initialize() throws FileNotFoundException {
@@ -105,6 +129,10 @@ public class PlanMakerController {
 
     private void showImagePopup(Card card, boolean addOrRemove) {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("View Card");
@@ -272,6 +300,7 @@ public class PlanMakerController {
         }
     }
 
+
     public void updateLessonDisplay() throws FileNotFoundException {
         displayLesson.getChildren().clear();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
@@ -290,6 +319,10 @@ public class PlanMakerController {
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
         imageAlert.setTitle("Print options");
+        DialogPane dialogPane = imageAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         ButtonType printCards = new ButtonType("Print Cards");
         ButtonType printCardsTitles = new ButtonType("Print Cards Titles");
@@ -326,6 +359,11 @@ public class PlanMakerController {
 
         }
     }
+    /**
+     * @param - LessonPlan, boolean
+     * Checks the boolean value and makes a new lessonPlan in the course or
+     * opens the lessonPlan if the selected LessonPlan exists
+     */
     public void setEditLessonPlan(LessonPlan lessonPlan, boolean addingNew){
         this.currentLessonPlan = lessonPlan;
         if(addingNew){
@@ -344,9 +382,17 @@ public class PlanMakerController {
                 setMouseEvent(cardImageView, card, false);
                 displayLesson.getChildren().add(cardImageView);
             }
-
         }
     }
+    @FXML
+    private void newMenuAction() {
+        App.getCurrentCourse().addLessonPlan(new LessonPlan("Untitled"));
+        lessonTitle.setText("Add Lesson Title");
+        displayLesson.getChildren().clear();
+        currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+
+    }
+
     @FXML
     private void connectToCoursePage(){
         App.switchCourseView();
@@ -408,7 +454,7 @@ public class PlanMakerController {
     }
 
     @FXML
-    void onTitleClick() {
+    public void onTitleClick() {
         lessonTitle.setVisible(false);
         lessonTitleTextArea.setVisible(true);
         lessonTitleTextArea.setText(lessonTitle.getText());
@@ -416,7 +462,7 @@ public class PlanMakerController {
         edit.setDisable(true);
     }
     @FXML
-    void onEnterPressed(KeyEvent event) {
+    public void onEnterPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             String editedText = lessonTitleTextArea.getText();
             lessonTitle.setText(editedText);
@@ -518,6 +564,10 @@ public class PlanMakerController {
     @FXML
     private void showAbout() {
         Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
+        DialogPane dialogPane = aboutAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         aboutAlert.setHeaderText("Credits");
         aboutAlert.setTitle("About");
         aboutAlert.setContentText("Product Designer: " + "\n" + "   Samantha Keehn" + "\n"
@@ -530,10 +580,14 @@ public class PlanMakerController {
     @FXML
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
+
+        // Apply CSS styling to the DialogPane
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
         alreadyAddedAlert.setTitle("Tool Tips");
         alreadyAddedAlert.setContentText("Left click for card options." + "\n" +
-                "Right click to immediately add or remove cards.");
+                "Right click to immediately add or remove cards." + "\n" + "Click on the title to rename title");
         alreadyAddedAlert.initOwner(App.primaryStage);
         alreadyAddedAlert.showAndWait();
     }

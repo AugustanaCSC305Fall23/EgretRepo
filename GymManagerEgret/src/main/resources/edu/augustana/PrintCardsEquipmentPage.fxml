@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
@@ -14,8 +15,14 @@
     <bottom>
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
-                <Button fx:id="print" mnemonicParsing="false" text="Print" />
-                <Button fx:id="back" mnemonicParsing="false" onAction="#connectToPlanMakerPage" text="Back" />
+                <Button fx:id="print" mnemonicParsing="false" text="Print">
+               <tooltip>
+                  <Tooltip contentDisplay="TOP" text="Print Dialog" />
+               </tooltip></Button>
+                <Button fx:id="back" mnemonicParsing="false" onAction="#connectToPlanMakerPage" text="Back">
+               <tooltip>
+                  <Tooltip contentDisplay="TOP" text="Back to Plan Maker" />
+               </tooltip></Button>
             </buttons>
         </ButtonBar>
     </bottom>

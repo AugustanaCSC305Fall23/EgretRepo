@@ -1,9 +1,11 @@
 package edu.augustana;
 
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -13,7 +15,9 @@ import java.util.prefs.Preferences;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+/**
+ * Controller for the CourseView page
+ */
 
 public class CourseViewController {
 
@@ -34,12 +38,18 @@ public class CourseViewController {
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
     }
 
+    /**
+     * Switch from CourseView to HomePage
+     */
     @FXML
-    void connectToHomePage() {
+    public void connectToHomePage() {
         App.switchToHomePageView();
     }
 
-
+    /**
+     * The home icon is set, undoRedo is recreated, and
+     * the lesson in the LessonPlan is shown when the CourseView Page launches.
+     */
     public void initialize() {
         home.setImage(App.homeIcon());
         undoRedoHandler = new CourseUndoRedoHandler(this);
@@ -53,7 +63,6 @@ public class CourseViewController {
         App.switchToEditLessonPlan(newLessonPlan, true);
         undoRedoHandler.saveState();
     }
-
 
     @FXML
     private void deleteLessonPlan(ActionEvent event) {
@@ -74,7 +83,7 @@ public class CourseViewController {
     }
 
     @FXML
-    void duplicateLessonPlan() {
+    private void duplicateLessonPlan() {
         LessonPlan selectedLessonPlan = lessonList.getSelectionModel().getSelectedItem();
         if (selectedLessonPlan != null) {
             LessonPlan newLessonPlan = new LessonPlan(selectedLessonPlan);
@@ -82,7 +91,7 @@ public class CourseViewController {
             lessonList.getItems().add(newLessonPlan);
             undoRedoHandler.saveState();
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to duplicate first!");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to make a copy!");
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
@@ -91,7 +100,7 @@ public class CourseViewController {
     @FXML
     private void removeAllLessonPlans(ActionEvent event) {
         if (!lessonList.getItems().isEmpty()) {
-            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lesson plans?");
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lessons?");
             confirmation.initOwner(App.primaryStage);
             confirmation.setHeaderText(null);
 
@@ -104,7 +113,7 @@ public class CourseViewController {
             });
             undoRedoHandler.saveState();
         } else {
-            new Alert(Alert.AlertType.WARNING, "There are no lesson plans to remove!").show();
+            new Alert(Alert.AlertType.WARNING, "There are no lesson to remove!").show();
         }
     }
 
@@ -114,11 +123,12 @@ public class CourseViewController {
         if (selectedLessonPlan != null) {
             App.switchToEditLessonPlan(selectedLessonPlan, false);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to open first!");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to open!");
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
     }
+
     @FXML
     private void menuActionLoad(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -145,13 +155,8 @@ public class CourseViewController {
     }
 
     @FXML
-    private void menuActionSave(ActionEvent event) {
+    private void menuActionSave() {
         if (App.getCurrentCourseFile() == null) {
-            /*Alert saveAlert = new Alert(Alert.AlertType.INFORMATION, "It will just save to the " +
-                    "current lesson rather than creating a new file with the current lesson. " +
-                    "Instead, click Save As.\n");
-            saveAlert.initOwner(App.primaryStage);
-            saveAlert.show();*/
             menuActionSaveAs();
         } else {
             savecurrentCoursetofile(App.getCurrentCourseFile());
@@ -185,9 +190,11 @@ public class CourseViewController {
             }
         }
     }
+
     private String getUserDirectory(){
         return new File(System.getProperty("user.dir")).getAbsolutePath();
     }
+
     @FXML
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -214,6 +221,27 @@ public class CourseViewController {
         planMakerState.restore();
         lessonList.getItems().addAll(App.getCurrentCourse().getLessonPlans());
     }
+    @FXML
+    private void exitPlatform() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit without saving?");
+        confirmation.initOwner(App.primaryStage);
+        confirmation.setHeaderText(null);
+
+        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+
+        confirmation.getButtonTypes().setAll(yesButton, noButton);
+
+        confirmation.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                Platform.exit();
+            } else {
+                menuActionSave();
+            }
+        });
+    }
+
+
 
     public class State {
         Course course;

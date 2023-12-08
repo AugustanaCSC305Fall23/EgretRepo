@@ -31,18 +31,23 @@ public class PrintCardsTitlesController {
 
     @FXML
     void initialize() throws FileNotFoundException {
+        //Adding action to buttons
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
+        //Adds card titles in tabs
         addCardTitlesToPageTabs();
 
+        //Prints each tab in separate pages in one pdf
         print.setOnAction(event -> printContent(displayLesson));
 
+        //Sets orientation
         displayLesson.setOrientation(Orientation.VERTICAL);
 
     }
 
     private void addCardTitlesToPageTabs() {
+
         String lessonTitleStr = currentLessonPlan.getTitle();
         Label lessonTitle = new Label("Lesson Title: "+lessonTitleStr);
         lessonTitle.setMaxHeight(10);

@@ -1,16 +1,14 @@
 .lessonTitleBackground{
     -fx-background-color: #2E4052;
-  /*  -fx-font-family: "Gilda Display", Gilda Display;*/
 
 }
-
 
 .pageBackground{
     -fx-background-color: #FFFFFF;
 }
 
 .cardBackground{
-    -fx-background-color: #FBF7F4;
+    -fx-background-color: #E4F1EE;
 }
 .filter{
     -fx-background-color: #CFD7DE;
@@ -19,7 +17,7 @@
 
 .button{
     -fx-background-color: #abbcd6;
-    -fx-background-radius: 5;
+    -fx-background-radius: 8;
 }
 
 .homeBackground{
@@ -33,13 +31,26 @@
      -fx-font-size: 12px;
 }
 
-.buttonH:hover {
-    -fx-background-color: #003D76
+.button:hover {
+    -fx-background-color: #CFD7DE;
 }
 
 .fav {
     -fx-font-family: 'AppleGothic';
     -fx-text-fill: #003d76;
+}
+
+.libraryBackground{
+    -fx-background-color: #FBF7F4;
+}
+
+
+.homeButt{
+    -fx-background-color:#F0F5FA;
+}
+
+.homeButt:hover {
+    -fx-background-color: #CFD7DE;
 }
 
 

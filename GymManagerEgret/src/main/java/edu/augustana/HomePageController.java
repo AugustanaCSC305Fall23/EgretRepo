@@ -19,6 +19,7 @@ public class HomePageController {
         App.switchToPlanMakerView();
     }
 
+
     @FXML
     void initialize() {
 

@@ -1,16 +1,11 @@
 package edu.augustana;
 
-import java.io.*;
-//import java.lang.reflect.Array;
 import java.util.ArrayList;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.TilePane;
 
 
+/**
+ * LessonPlans store all the cards in one lesson
+ */
 public class LessonPlan implements Cloneable{
     private ArrayList<String> userChosenCardIDs;
     private String title;
@@ -25,6 +20,9 @@ public class LessonPlan implements Cloneable{
         this.userChosenCardIDs = new ArrayList<>(original.userChosenCardIDs);
     }
 
+    /**
+     * @return a copy of the cards in the lesson
+     */
     public ArrayList<Card> getCopyOfLessonCards() {
         ArrayList<Card> cardList = new ArrayList<>();
         for(String id: userChosenCardIDs){
@@ -32,13 +30,25 @@ public class LessonPlan implements Cloneable{
         return cardList;
     }
 
+    /**
+     * Add cards to the lesson
+     */
+
     public void addCard(Card card){
         userChosenCardIDs.add(card.getUniqueId());
     }
 
+    /**
+     * Remove cards of the lesson
+     */
+
     public void removeCard(Card card){
         userChosenCardIDs.remove(card.getUniqueId());
     }
+
+    /**
+     * @return if the card is in lesson or not
+     */
 
     public boolean containsCard(Card card){
         return userChosenCardIDs.contains(card.getUniqueId());
