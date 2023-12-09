@@ -4,10 +4,7 @@ package edu.augustana;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -74,9 +71,13 @@ public class CourseViewController {
             undoRedoHandler.saveState();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson plan to delete first!");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alert.initOwner(App.primaryStage);
         }}else{
             Alert alert = new Alert(Alert.AlertType.WARNING, "There needs to be alteast a lesson in course!");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
@@ -92,6 +93,8 @@ public class CourseViewController {
             undoRedoHandler.saveState();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to make a copy!");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
@@ -101,6 +104,8 @@ public class CourseViewController {
     private void removeAllLessonPlans(ActionEvent event) {
         if (!lessonList.getItems().isEmpty()) {
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lessons?");
+            DialogPane dialogPane = confirmation.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             confirmation.initOwner(App.primaryStage);
             confirmation.setHeaderText(null);
 
@@ -113,7 +118,10 @@ public class CourseViewController {
             });
             undoRedoHandler.saveState();
         } else {
-            new Alert(Alert.AlertType.WARNING, "There are no lesson to remove!").show();
+            Alert alert = new Alert(Alert.AlertType.WARNING, "There are no lesson to remove!");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            alert.show();
         }
     }
 
@@ -124,6 +132,8 @@ public class CourseViewController {
             App.switchToEditLessonPlan(selectedLessonPlan, false);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Select a lesson to open!");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alert.initOwner(App.primaryStage);
             alert.showAndWait();
         }
@@ -148,6 +158,8 @@ public class CourseViewController {
                 undoRedoHandler.saveState();
             } catch (IOException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading course file: " + chosenFile);
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
                 alert.initOwner(App.primaryStage);
                 alert.showAndWait();
             }
@@ -185,19 +197,20 @@ public class CourseViewController {
                 App.saveCurrentCourseToFile(chosenFile);
             } catch (IOException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Error saving course file: " + chosenFile);
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
                 alert.initOwner(App.primaryStage);
                 alert.showAndWait();
             }
         }
     }
 
-//    private String getUserDirectory(){
-//        return new File(System.getProperty("user.dir")).getAbsolutePath();
-//    }
 
     @FXML
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(Alert.AlertType.INFORMATION);
+        DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
         alreadyAddedAlert.setTitle("Tool Tips");
         alreadyAddedAlert.setContentText("Click a lesson Plan and click 'open' to open the lesson plan" + "\n" +
@@ -224,6 +237,8 @@ public class CourseViewController {
     @FXML
     private void exitPlatform() {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit without saving?");
+        DialogPane dialogPane = confirmation.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         confirmation.initOwner(App.primaryStage);
         confirmation.setHeaderText(null);
 
