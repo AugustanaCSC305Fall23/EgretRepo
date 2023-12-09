@@ -52,7 +52,7 @@ public class PrintCardsTitlesController {
         String lessonTitleStr = currentLessonPlan.getTitle();
         Label lessonTitle = new Label("Lesson Title: " + lessonTitleStr);
         lessonTitle.setMaxHeight(10);
-        lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font: Arial; ");
+        lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-family: 'Arial';");
         lessonTitleHBox.getChildren().add(lessonTitle);
         vBox.getChildren().add(lessonTitleHBox);
 
@@ -60,7 +60,7 @@ public class PrintCardsTitlesController {
             String cardTitle = card.getTitle();
             Label title = new Label();
             title.setText(cardTitle);
-            title.setStyle("-fx-font-size: 15px; -fx-font-weight: bold; -fx-font: Arial; ");
+            title.setStyle("-fx-font-size: 15px; -fx-font-family: 'Arial';");
 
             // Set the text alignment of the Label to TOP_LEFT
             title.setAlignment(Pos.TOP_LEFT);

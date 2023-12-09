@@ -105,10 +105,7 @@ public class PrintCardsEquipmentController {
 
                     equipmentLabel.setMaxWidth(1650/9);
                     equipmentLabel.setWrapText(true);
-                    equipmentLabel.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-font: Arial; ");
-
-
-
+                    equipmentLabel.setStyle("-fx-font-size: 10px; -fx-font-family: 'Arial';");
 
                     cardVBox.getChildren().add(newCardView);
                     cardVBox.getChildren().add(equipmentLabel);

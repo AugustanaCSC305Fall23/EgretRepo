@@ -14,7 +14,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -226,9 +225,6 @@
                      <StackPane.margin>
                         <Insets right="10.0" top="5.0" />
                      </StackPane.margin>
-                     <image>
-                        <Image url="@../../../../../GymManagerAssets/cardPhotos/Icons/white_house.png" />
-                     </image>
                   </ImageView>
                   <TextArea fx:id="lessonTitleTextArea" onKeyPressed="#onEnterPressed" prefHeight="20.0" prefWidth="50.0" visible="false">
                      <StackPane.margin>
