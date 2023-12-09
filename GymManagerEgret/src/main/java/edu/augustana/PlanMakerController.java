@@ -164,7 +164,6 @@ public class PlanMakerController {
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
         imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, addNotes, ButtonType.CANCEL);
-
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == placeCardButtonType) {
                 if(addOrRemove){
@@ -232,11 +231,9 @@ public class PlanMakerController {
                 card.setCardNotes(textArea.getText());
                 cardNotesManager.saveCardNotes(card.getCode(), textArea.getText());
                 addNotesAlert.close();
-                //showImagePopup(card, addOrRemove);
                 System.out.println(card.getCardNotes());
             } else if (buttonType == ButtonType.CANCEL){
                 addNotesAlert.close();
-                //showImagePopup(card, addOrRemove);
             }
             return buttonType;
         });
@@ -584,8 +581,6 @@ public class PlanMakerController {
     private void showAbout() {
         Alert aboutAlert = new Alert(Alert.AlertType.INFORMATION);
         DialogPane dialogPane = aboutAlert.getDialogPane();
-
-        // Apply CSS styling to the DialogPane
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         aboutAlert.setHeaderText("Credits");
         aboutAlert.setTitle("About");
@@ -600,8 +595,6 @@ public class PlanMakerController {
     private void showToolTips(){
         Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
         DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
-
-        // Apply CSS styling to the DialogPane
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
         alreadyAddedAlert.setTitle("Tool Tips");
