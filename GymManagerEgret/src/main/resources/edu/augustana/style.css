@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Kaushan+Script&display=swap');
 .lessonTitleBackground{
     -fx-background-color: #2E4052;
+
+}
+.kaushan {
+    -fx-font-family: 'Kaushan Script', cursive;
+    -fx-font-size: 100px;
+
+}
+
+.alegreya{
+    -fx-font-family: 'Alegreya', serif;
+    -fx-font-size: 35px;
+
 
 }
 
@@ -20,11 +33,7 @@
     -fx-background-radius: 8;
 }
 
-.homeBackground{
-    -fx-background-image: url("file:CardPhotos/Icons/white_house.png");
-    -fx-background-size:cover;
 
-}
 
 .choice-box .label {
      -fx-text-fill: #003D76;
@@ -51,6 +60,8 @@
 
 .homeButt:hover {
     -fx-background-color: #CFD7DE;
+    -fx-font-size: 35px;
+
 }
 
 

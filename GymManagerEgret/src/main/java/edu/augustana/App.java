@@ -30,10 +30,11 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setFullScreen(true);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    private static Parent loadFXML(String fxml) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
