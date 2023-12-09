@@ -240,7 +240,7 @@ public class CourseViewController {
             if (response == yesButton) {
                 Platform.exit();
             } else {
-                menuActionSave();
+                menuActionSaveAs();
             }
         });
     }
