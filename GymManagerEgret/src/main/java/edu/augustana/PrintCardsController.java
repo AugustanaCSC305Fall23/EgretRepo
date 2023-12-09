@@ -48,7 +48,6 @@ public class PrintCardsController {
     }
 
     private void addCardsToPageTabs() {
-        //Make a set of strings and add all events of th ecards
         Set<String> eventNames = new HashSet<>();
         String lessonTitleStr = "Lesson Title: "+ currentLessonPlan.getTitle();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {

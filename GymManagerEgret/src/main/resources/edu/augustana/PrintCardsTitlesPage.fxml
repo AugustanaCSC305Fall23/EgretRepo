@@ -15,13 +15,13 @@
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
                 <Button fx:id="print" mnemonicParsing="false" text="Print">
-               <tooltip>
-                  <Tooltip contentDisplay="TOP" text="Print Dialog" />
-               </tooltip></Button>
+                    <tooltip>
+                        <Tooltip contentDisplay="TOP" text="Print Dialog" />
+                    </tooltip></Button>
                 <Button fx:id="back" mnemonicParsing="false" text="Back">
-               <tooltip>
-                  <Tooltip contentDisplay="TOP" text="Back to Plan Maker" />
-               </tooltip></Button>
+                    <tooltip>
+                        <Tooltip contentDisplay="TOP" text="Back to Plan Maker" />
+                    </tooltip></Button>
             </buttons>
         </ButtonBar>
     </bottom>
@@ -40,11 +40,11 @@
                         <Insets />
                     </VBox.margin>
                     <children>
-                          <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
-                              <padding>
-                                  <Insets left="5.0" top="10.0" />
-                              </padding>
-                          </TilePane>
+                        <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
+                            <padding>
+                                <Insets left="5.0" top="10.0" />
+                            </padding>
+                        </TilePane>
                     </children>
                 </AnchorPane>
             </children>
