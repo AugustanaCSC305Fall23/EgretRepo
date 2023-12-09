@@ -220,7 +220,9 @@ public class PlanMakerController {
         addNotesAlert.setTitle("Add Notes");
 
         TextArea textArea = new TextArea();
+        textArea.setWrapText(true);
         textArea.setText(card.getCardNotes());
+        System.out.println(card.getCardNotes());
         textArea.selectAll();
 
         VBox contentVBox = new VBox(textArea);
@@ -233,9 +235,10 @@ public class PlanMakerController {
         addNotesAlert.setResultConverter(buttonType -> {
             if (buttonType == addNotes) {
                 card.setCardNotes(textArea.getText());
-                cardNotesManager.saveCardNotes(card.getCode(), textArea.getText());
+                //System.out.println(textArea.getText());
+                cardNotesManager.saveCardNotes(card.getCode(), textArea.getText().replace('(', ' ').replace(')', ' '));
                 addNotesAlert.close();
-                System.out.println(card.getCardNotes());
+                //System.out.println(card.getCardNotes());
             } else if (buttonType == ButtonType.CANCEL){
                 addNotesAlert.close();
             }
