@@ -37,7 +37,7 @@ public class PrintCardsEquipmentController {
     private List<VBox> pageVBoxes = new ArrayList<>();
 
     @FXML
-    void initialize() throws FileNotFoundException {
+    private void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
@@ -112,7 +112,7 @@ public class PrintCardsEquipmentController {
     }
 
     @FXML
-    void printContent(Node nodeToPrint) {
+    private void printContent(Node nodeToPrint) {
         System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
         System.out.println("Job=" + job);
@@ -142,12 +142,12 @@ public class PrintCardsEquipmentController {
 
 
     @FXML
-    void connectToPlanMakerPage() {
+    private void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
     }
 
     @FXML
-    void connectToHomePage() {
+    private void connectToHomePage() {
         App.switchToHomePageView();
     }
 
