@@ -300,7 +300,7 @@ public class PlanMakerController {
             Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
             alreadyAddedAlert.setHeaderText(null);
             alreadyAddedAlert.setTitle(null);
-            alreadyAddedAlert.setContentText("Already added image");
+            alreadyAddedAlert.setContentText("Already added card");
             alreadyAddedAlert.initOwner(App.primaryStage);
             alreadyAddedAlert.showAndWait();
         }
@@ -400,10 +400,10 @@ public class PlanMakerController {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/7);
                 cardImageView.setFitHeight(1275/7);
-//                Label tipLabel = generateTooltip(cardImageView, true);
-//                cardFlowPane.getChildren().add(tipLabel);
+                Label tipLabel = generateTooltip(cardImageView, false);
+                displayLesson.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
-//                setMouseEvent(tipLabel, card, false);
+                setMouseEvent(tipLabel, card, false);
             }
         }
     }
