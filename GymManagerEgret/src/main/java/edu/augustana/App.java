@@ -32,8 +32,6 @@ public class App extends Application {
         primaryStage.setFullScreen(true);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-
-
     }
 
     private static Parent loadFXML(String fxml) throws IOException{
