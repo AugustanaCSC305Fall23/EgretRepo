@@ -2,6 +2,7 @@ package edu.augustana;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.print.*;
 import javafx.scene.Node;
@@ -15,10 +16,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class PrintCardsController {
     @FXML
@@ -95,9 +93,45 @@ public class PrintCardsController {
             pageVBox.setAlignment(Pos.TOP_CENTER);
             tilePane.setAlignment(Pos.TOP_CENTER);
             pageVBox.getChildren().add(tilePane);
-
         }
+        generateCoachNotes(pageNum);
+    }
 
+    void generateCoachNotes(int pageNum){
+        VBox pageVBox = new VBox();
+        pageVBoxes.add(pageVBox);
+
+        //Make a new tab for the coach notes
+        Tab tab = new Tab("Page " + pageNum + ": Coach Notes");
+        tab.setContent(pageVBox);
+        pagesTabPane.getTabs().add(tab);
+
+        Label lessonTitle = new Label(currentLessonPlan.getTitle());
+        lessonTitle.setMaxHeight(10);
+        pageVBox.getChildren().add(lessonTitle);
+
+        TilePane coachNotesTilePane = new TilePane();
+        for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
+            if (!Objects.equals(card.getCardNotes(), "")) {
+                String cardName = card.getTitle();
+                Label title = new Label();
+                title.setText(cardName);
+                title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font: Arial; ");
+                title.setAlignment(Pos.TOP_LEFT);
+                Label notesLabel = new Label();
+                notesLabel.setText(card.getCardNotes());
+                notesLabel.setStyle("-fx-font-size: 14px; -fx-font: Arial; ");
+                coachNotesTilePane.getChildren().add(title);
+                coachNotesTilePane.getChildren().add(notesLabel);
+            }
+        }
+        coachNotesTilePane.setVgap(12);
+        coachNotesTilePane.setHgap(12);
+        coachNotesTilePane.setOrientation(Orientation.VERTICAL);
+        coachNotesTilePane.setAlignment(Pos.TOP_LEFT);
+        coachNotesTilePane.setPrefRows(25);
+        pageVBox.setAlignment(Pos.TOP_CENTER);
+        pageVBox.getChildren().add(coachNotesTilePane);
     }
 
     @FXML
