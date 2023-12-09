@@ -166,7 +166,6 @@ public class PlanMakerController {
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
         imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, addNotes, ButtonType.CANCEL);
-
         imageAlert.setResultConverter(buttonType -> {
             if (buttonType == placeCardButtonType) {
                 if(addOrRemove){
@@ -236,11 +235,9 @@ public class PlanMakerController {
                 card.setCardNotes(textArea.getText());
                 cardNotesManager.saveCardNotes(card.getCode(), textArea.getText());
                 addNotesAlert.close();
-                //showImagePopup(card, addOrRemove);
                 System.out.println(card.getCardNotes());
             } else if (buttonType == ButtonType.CANCEL){
                 addNotesAlert.close();
-                //showImagePopup(card, addOrRemove);
             }
             return buttonType;
         });
@@ -304,7 +301,7 @@ public class PlanMakerController {
             dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alreadyAddedAlert.setHeaderText(null);
             alreadyAddedAlert.setTitle(null);
-            alreadyAddedAlert.setContentText("Already added image");
+            alreadyAddedAlert.setContentText("Already added card");
             alreadyAddedAlert.initOwner(App.primaryStage);
             alreadyAddedAlert.showAndWait();
         }
@@ -402,10 +399,10 @@ public class PlanMakerController {
                 ImageView cardImageView = new ImageView(card.getImage());
                 cardImageView.setFitWidth(1650/7);
                 cardImageView.setFitHeight(1275/7);
-//                Label tipLabel = generateTooltip(cardImageView, true);
-//                cardFlowPane.getChildren().add(tipLabel);
+                Label tipLabel = generateTooltip(cardImageView, false);
+                displayLesson.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
-//                setMouseEvent(tipLabel, card, false);
+                setMouseEvent(tipLabel, card, false);
             }
         }
     }
