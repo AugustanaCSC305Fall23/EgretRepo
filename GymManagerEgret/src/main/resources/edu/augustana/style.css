@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Kaushan+Script&display=swap');
 .lessonTitleBackground{
     -fx-background-color: #2E4052;
+
+}
+.kaushan {
+    -fx-font-family: 'Kaushan Script', cursive;
+}
+
+.alegreya{
+    -fx-font-family: 'Alegreya', serif;
+    -fx-font-size: 35px;
+
 
 }
 
@@ -51,6 +62,8 @@
 
 .homeButt:hover {
     -fx-background-color: #CFD7DE;
+    -fx-font-size: 35px;
+
 }
 
 

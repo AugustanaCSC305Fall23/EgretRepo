@@ -37,7 +37,7 @@ public class PrintCardsController {
     private List<VBox> pageVBoxes = new ArrayList<>();
 
     @FXML
-    void initialize() throws FileNotFoundException {
+    private void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
@@ -48,7 +48,6 @@ public class PrintCardsController {
     }
 
     private void addCardsToPageTabs() {
-        //Make a set of strings and add all events of th ecards
         Set<String> eventNames = new HashSet<>();
         String lessonTitleStr = "Lesson Title: "+ currentLessonPlan.getTitle();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
@@ -102,7 +101,7 @@ public class PrintCardsController {
     }
 
     @FXML
-    void printContent(Node nodeToPrint) {
+    private void printContent(Node nodeToPrint) {
         //Create printerjob
         PrinterJob job = PrinterJob.createPrinterJob();
 
@@ -127,12 +126,12 @@ public class PrintCardsController {
 
 
     @FXML
-    void connectToPlanMakerPage() {
+    private void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
     }
 
     @FXML
-    void connectToHomePage() {
+    private void connectToHomePage() {
         App.switchToHomePageView();
     }
 

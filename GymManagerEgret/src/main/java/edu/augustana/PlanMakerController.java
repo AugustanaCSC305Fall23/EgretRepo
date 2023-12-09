@@ -79,6 +79,8 @@ public class PlanMakerController {
     @FXML
     private void exitPlatform() {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to exit?");
+        DialogPane dialogPane = confirmation.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         confirmation.initOwner(App.primaryStage);
         confirmation.setHeaderText(null);
 
@@ -211,6 +213,8 @@ public class PlanMakerController {
     }
     private void addCardNotes(Card card, boolean addOrRemove){
         Alert addNotesAlert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = addNotesAlert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         addNotesAlert.initOwner(App.primaryStage);
         addNotesAlert.setHeaderText(null);
         addNotesAlert.setTitle("Add Notes");
@@ -293,6 +297,8 @@ public class PlanMakerController {
             undoRedoHandler.saveState();
         }else{
             Alert alreadyAddedAlert = new Alert(AlertType.INFORMATION);
+            DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             alreadyAddedAlert.setHeaderText(null);
             alreadyAddedAlert.setTitle(null);
             alreadyAddedAlert.setContentText("Already added card");
