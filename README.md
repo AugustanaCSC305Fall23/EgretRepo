@@ -69,11 +69,11 @@ This comprehensive interface ensures a user-friendly experience, empowering effi
 
 The Course View presents a comprehensive list of lesson plans, displaying titles and unique IDs. A helpful tooltip guides users: "Click the lesson and press the buttons below."
 
-![Course View](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/CV.png?token=GHSAT0AAAAAACHGJYI24B2QLQOKW2AXWRKUZLVK25Q)
+![Course View](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/CV.png?raw=true)
 
 The File menu bar provides options for importing, saving, and exiting the course.
 
-![File Menu](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/FileMenuCV.png?token=GHSAT0AAAAAACHGJYI3FL3YVVCRN3OTRHBGZLVK3NA)
+![File Menu](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/FileMenuCV.png?raw=true)
 
 Importing a course involves files with a .course extension. Sample examples demonstrate the capability to load saved courses into the application.
 
@@ -81,11 +81,10 @@ Importing a course involves files with a .course extension. Sample examples demo
 
 The Edit Menu provides options to add new lessons, remove all lessons (with an alert for confirmation), undo, and redo.
 
-![Edit Menu](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/EditMenuCV.png?token=GHSAT0AAAAAACHGJYI3D7L7E2CUQNJ66ZQIZLVK3GA)
+![Edit Menu](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/EditMenuCV.png?raw=true)
 
 This interface streamlines the management of lesson plans within the Course View, offering essential functionalities for efficient course organization and manipulation.
 ## 🔗 Links
-[![Presentaion](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)
-[![Github](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
-[![Github](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
-[![Github](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
+[![Github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/stutishrestha21)
+[![Github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rivakk)
+[![Github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Grumbumblior)
