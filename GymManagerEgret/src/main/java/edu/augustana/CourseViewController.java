@@ -99,7 +99,7 @@ public class CourseViewController {
     @FXML
     private void removeAllLessonPlans(ActionEvent event) {
         if (!lessonList.getItems().isEmpty()) {
-            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove all lessons?");
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to proceed with deleting all lessons?");
             DialogPane dialogPane = confirmation.getDialogPane();
             dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             confirmation.initOwner(App.primaryStage);
