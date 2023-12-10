@@ -4,15 +4,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonTitleBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsTitlesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" styleClass="lessonTitleBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrintCardsEquipmentController">
     <bottom>
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
@@ -20,7 +21,7 @@
                     <tooltip>
                         <Tooltip contentDisplay="TOP" text="Print Dialog" />
                     </tooltip></Button>
-                <Button fx:id="back" mnemonicParsing="false" text="Back">
+                <Button fx:id="back" mnemonicParsing="false" onAction="#connectToPlanMakerPage" text="Back">
                     <tooltip>
                         <Tooltip contentDisplay="TOP" text="Back to Plan Maker" />
                     </tooltip></Button>
@@ -37,18 +38,20 @@
     <center>
         <VBox fx:id="printCardsDisplay" alignment="CENTER" prefHeight="845.0" prefWidth="853.0" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane layoutX="30.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" VBox.vgrow="NEVER">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <children>
-                        <TilePane fx:id="displayLesson" alignment="TOP_LEFT" hgap="8.0" layoutX="30.0" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" tileAlignment="TOP_LEFT" vgap="8.0">
-                            <padding>
-                                <Insets left="5.0" top="10.0" />
-                            </padding>
-                        </TilePane>
-                    </children>
-                </AnchorPane>
+                <TabPane fx:id="pagesTabPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="630.0" prefWidth="891.0" styleClass="pageBackground" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Page 1">
+                            <content>
+                                <BorderPane prefHeight="420.0" prefWidth="558.0">
+                                    <center>
+                                        <TilePane fx:id="displayLesson" alignment="TOP_CENTER" hgap="10.0" prefColumns="3" prefHeight="420.0" prefRows="3" prefTileWidth="1.0" prefWidth="558.0" tileAlignment="TOP_CENTER" vgap="10.0" BorderPane.alignment="CENTER" />
+                                    </center>
+                                </BorderPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Page 2" />
+                    </tabs>
+                </TabPane>
             </children>
         </VBox>
     </center>

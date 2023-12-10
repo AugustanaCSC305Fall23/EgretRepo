@@ -22,7 +22,7 @@ public class CardNotesManager {
                 System.out.println("Previous cardNotes file exists.");
                 Scanner cardNotesReader = new Scanner(cardNotesFile);
                 while(cardNotesReader.hasNext()) {
-                    String[] cardNotesData = cardNotesReader.nextLine().split(",");
+                    String[] cardNotesData = cardNotesReader.nextLine().split(",", 2);
                     cardNotesMap.put(cardNotesData[0], cardNotesData[1]);
                 }
             }
@@ -45,23 +45,33 @@ public class CardNotesManager {
                 cardNotesWriter.close();
                 System.out.println(cardID + " successfully saved to cardNotes");
             } else {
+                cardNotesMap.remove(cardID);
+                cardNotesMap.put(cardID, cardNotesString);
                 String oldContent = "";
                 String oldNote = "";
                 BufferedReader notesReader = new BufferedReader(new FileReader(cardNotesFile));
                 String line =  notesReader.readLine();
                 while (line != null){
+                    System.out.println("line is " + line);
                     if (line.contains(cardID + ",")){
                         oldNote = line;
                     }
                     oldContent = oldContent + line + System.lineSeparator();
                     line = notesReader.readLine();
                 }
-                String newNote = cardID + "," + cardNotesString;
+                String newNote = cardID + "," +cardNotesString;
+                /*System.out.println("oldContent: " + oldContent);
+                System.out.println();
+                System.out.println("oldNote: " + oldNote);
+                System.out.println("newNote: " + newNote);
+                System.out.println();*/
                 String newContent = oldContent.replaceAll(oldNote, newNote);
                 FileWriter cardNotesWriter = new FileWriter(cardNotesFile, false);
                 cardNotesWriter.write(newContent);
                 cardNotesWriter.close();
-                System.out.println(cardID + " is already saved to cardNotes");
+                /*System.out.println();
+                System.out.println("newContent" + newContent);*/
+                //System.out.println(cardID + " is already saved to cardNotes");
             }
         } catch (IOException e) {
             System.out.println("A save error occurred for card " + cardID);

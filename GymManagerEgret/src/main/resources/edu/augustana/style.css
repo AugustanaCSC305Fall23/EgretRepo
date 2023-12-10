@@ -5,6 +5,8 @@
 }
 .kaushan {
     -fx-font-family: 'Kaushan Script', cursive;
+    -fx-font-size: 100px;
+
 }
 
 .alegreya{
@@ -31,11 +33,7 @@
     -fx-background-radius: 8;
 }
 
-.homeBackground{
-    -fx-background-image: url("file:CardPhotos/Icons/white_house.png");
-    -fx-background-size:cover;
 
-}
 
 .choice-box .label {
      -fx-text-fill: #003D76;

@@ -1,5 +1,6 @@
 package edu.augustana;
 
+
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,11 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 
 public class PrintCardsEquipmentController {
     @FXML
@@ -36,16 +39,21 @@ public class PrintCardsEquipmentController {
     private TabPane pagesTabPane;
     private List<VBox> pageVBoxes = new ArrayList<>();
 
+
     @FXML
     private void initialize() throws FileNotFoundException {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
+
         addCardsToPageTabs();
+
 
         print.setOnAction(event -> printContent(printCardsDisplay));
 
+
     }
+
 
     private void addCardsToPageTabs() {
         Set<String> eventNames = new HashSet<>();
@@ -71,18 +79,22 @@ public class PrintCardsEquipmentController {
             tilePane.setPrefRows(3);
             pageNum++;
 
+
             for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
                 if (card.getEvent().equals(eventNameStr)) {
                     VBox cardVBox = new VBox();
                     cardVBox.setAlignment(Pos.TOP_LEFT);
 
+
                     ImageView newCardView = new ImageView();
                     Image cardImage = card.getZoomedImage();
                     newCardView.setImage(cardImage);
-                    newCardView.setFitWidth(1650 /7);
-                    newCardView.setFitHeight(1275 /7.8);
+                    newCardView.setFitWidth(1650 /7.25);
+                    newCardView.setFitHeight(1275 /8.05);
+
 
                     Label equipmentLabel = new Label();
+
 
                     if (card.getEquipment().size() > 1) {
                         equipmentLabel.setText("Equipment: " + card.getEquipment().toString());
@@ -90,26 +102,32 @@ public class PrintCardsEquipmentController {
                         equipmentLabel.setText("Equipment: " + card.getEquipment().toString());
                     }
 
+
                     equipmentLabel.setMaxWidth(1650/9);
                     equipmentLabel.setWrapText(true);
-                    equipmentLabel.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-font: Arial; ");
-
+                    equipmentLabel.setStyle("-fx-font-size: 10px; -fx-font-family: 'Arial';");
 
                     cardVBox.getChildren().add(newCardView);
                     cardVBox.getChildren().add(equipmentLabel);
+
 
                     tilePane.getChildren().add(cardVBox);
                 }
             }
 
 
+
+
             pageVBox.setAlignment(Pos.TOP_CENTER);
             tilePane.setAlignment(Pos.TOP_CENTER);
             pageVBox.getChildren().add(tilePane);
 
+
         }
 
+
     }
+
 
     @FXML
     private void printContent(Node nodeToPrint) {
@@ -117,23 +135,29 @@ public class PrintCardsEquipmentController {
         PrinterJob job = PrinterJob.createPrinterJob();
         System.out.println("Job=" + job);
 
+
         if (job != null) {
             PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL_OPPOSITES);
             job.getJobSettings().setPageLayout(pageLayout);
 
+
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
                 int tabNum = 1;
+
 
                 for (Tab tab : pagesTabPane.getTabs()) {
                     boolean success = job.printPage(tab.getContent());
                     System.out.println("Print success for Tab " + tabNum + ": " + success);
 
+
                     if (!success) {
                         break;
                     }
 
+
                     tabNum++;
                 }
+
 
                 job.endJob();
             }
@@ -141,15 +165,20 @@ public class PrintCardsEquipmentController {
     }
 
 
+
+
     @FXML
     private void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
     }
 
+
     @FXML
     private void connectToHomePage() {
         App.switchToHomePageView();
     }
+
+
 
 
 }

@@ -47,7 +47,6 @@
                         </BorderPane>
                      </content>
                 </Tab>
-                <Tab text="Page 2" />
               </tabs>
             </TabPane>
          </children>
