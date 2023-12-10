@@ -73,21 +73,21 @@ public class App extends Application {
      * Switch to PrintCardsPage
      */
     public static void switchToPrintCardsView() {
-        switchToView("PrintCardsPage.fxml");
+        switchToView("CardsPage.fxml");
     }
 
     /**
      * Switch to PrintCardsTitlesPage
      */
     public static void switchToPrintCardsTitles(){
-        switchToView("PrintCardsTitlesPage.fxml");
+        switchToView("CardsTitlesCodesPage.fxml");
     }
 
     /**
      * Switch to PrintCardsEquipmentPage
      */
     public static void switchToPrintCardsEquipment(){
-        switchToView("PrintCardsEquipmentPage.fxml");
+        switchToView("CardsEquipmentsPage.fxml");
     }
 
     public static Image homeIcon(){

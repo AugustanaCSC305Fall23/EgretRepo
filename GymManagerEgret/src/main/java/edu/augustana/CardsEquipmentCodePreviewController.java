@@ -74,8 +74,9 @@ public class CardsEquipmentCodePreviewController {
             Label eventName = new Label("Event Name: " +eventNameStr);
             pageVBox.getChildren().add(eventName);
             TilePane tilePane = new TilePane();
-            tilePane.setPrefColumns(3);
-            tilePane.setPrefRows(3);
+
+            displayLesson.setPrefRows(3);
+            displayLesson.setPrefColumns(3);
             pageNum++;
 
 
@@ -129,9 +130,7 @@ public class CardsEquipmentCodePreviewController {
 
 
     private void printContent(Node nodeToPrint) {
-        System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();
-        System.out.println("Job=" + job);
 
 
         if (job != null) {
@@ -140,20 +139,16 @@ public class CardsEquipmentCodePreviewController {
 
 
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
-                int tabNum = 1;
 
 
                 for (Tab tab : pagesTabPane.getTabs()) {
                     boolean success = job.printPage(tab.getContent());
-                    System.out.println("Print success for Tab " + tabNum + ": " + success);
-
 
                     if (!success) {
                         break;
                     }
 
 
-                    tabNum++;
                 }
 
 

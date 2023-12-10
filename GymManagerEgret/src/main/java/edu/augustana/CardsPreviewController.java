@@ -47,6 +47,8 @@ public class CardsPreviewController {
     private void addCardsToPageTabs() {
         Set<String> eventNames = new HashSet<>();
         String lessonTitleStr = "Lesson Title: "+ currentLessonPlan.getTitle();
+        displayLesson.setPrefColumns(3);
+        displayLesson.setPrefRows(3);
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             eventNames.add(card.getEvent());
         }

@@ -1,5 +1,6 @@
 package edu.augustana;
 
+
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -8,12 +9,16 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
+
 import java.io.FileNotFoundException;
+import java.util.*;
+
 
 public class CardsTitlesPreviewController {
     @FXML
@@ -26,10 +31,10 @@ public class CardsTitlesPreviewController {
     private ImageView homeIcon;
     @FXML
     private Button print;
-
-    private TilePane eventTitleTilePane = new TilePane();
-
     private LessonPlan currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
+    @FXML
+    private TabPane pagesTabPane;
+    private List<VBox> pageVBoxes = new ArrayList<>();
 
 
     @FXML
@@ -37,58 +42,75 @@ public class CardsTitlesPreviewController {
         back.setOnAction(event -> connectToPlanMakerPage());
         homeIcon.setImage(App.homeIcon());
 
-        addCardTitlesToPageTabs();
 
-        eventTitleTilePane.setOrientation(Orientation.VERTICAL);
-        eventTitleTilePane.setAlignment(Pos.TOP_LEFT);
+        addTitlesToPageTabs();
+
 
         print.setOnAction(event -> printContent(printCardsDisplay));
+
 
     }
 
 
+    void addTitlesToPageTabs(){
+        VBox pageVBox = new VBox();
+        pageVBoxes.add(pageVBox);
 
-    private void addCardTitlesToPageTabs() {
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.TOP_LEFT);
-        HBox lessonTitleHBox = new HBox();
-        String lessonTitleStr = currentLessonPlan.getTitle();
-        Label lessonTitle = new Label("Lesson Title: " + lessonTitleStr);
+        //Make a new tab for the coach notes
+        Tab tab = new Tab("Card Titles and Codes");
+        tab.setContent(pageVBox);
+        pagesTabPane.getTabs().add(tab);
+
+        Label lessonTitle = new Label("Lesson Title: " + currentLessonPlan.getTitle());
         lessonTitle.setMaxHeight(10);
         lessonTitle.setStyle("-fx-font-size: 17px; -fx-font-family: 'Arial';");
-        lessonTitleHBox.getChildren().add(lessonTitle);
-        vBox.getChildren().add(lessonTitleHBox);
+        pageVBox.getChildren().add(lessonTitle);
 
+        TilePane tilePane = new TilePane();
         for (Card card : currentLessonPlan.getCopyOfLessonCards()) {
             String cardTitle = card.getTitle() + ", ("+ card.getCode()+")";
             Label title = new Label();
             title.setText(cardTitle);
             title.setStyle("-fx-font-size: 12px; -fx-font-family: 'Arial';");
 
+
             // Set the text alignment of the Label to TOP_LEFT
             title.setAlignment(Pos.TOP_LEFT);
-            eventTitleTilePane.getChildren().add(title);
+            tilePane.getChildren().add(title);
         }
 
-        vBox.getChildren().add(eventTitleTilePane);
-        eventTitleTilePane.setPrefRows(25);
 
-        displayLesson.getChildren().add(vBox);
+        tilePane.setOrientation(Orientation.VERTICAL);
+        tilePane.setAlignment(Pos.TOP_LEFT);
+        tilePane.setPrefRows(35);
+        pageVBox.setAlignment(Pos.TOP_CENTER);
+        pageVBox.getChildren().add(tilePane);
     }
 
 
     private void printContent(Node nodeToPrint) {
-        // Create printer job
         PrinterJob job = PrinterJob.createPrinterJob();
 
+
         if (job != null) {
-            // Set page layout
-            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+            PageLayout pageLayout = job.getPrinter().createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.EQUAL_OPPOSITES);
             job.getJobSettings().setPageLayout(pageLayout);
 
-            // Print each title separately
+
             if (job.showPrintDialog(nodeToPrint.getScene().getWindow())) {
-                boolean success = job.printPage(nodeToPrint);
+
+
+                for (Tab tab : pagesTabPane.getTabs()) {
+                    boolean success = job.printPage(tab.getContent());
+
+
+                    if (!success) {
+                        break;
+                    }
+
+
+                }
+
 
                 job.endJob();
             }
@@ -96,13 +118,20 @@ public class CardsTitlesPreviewController {
     }
 
 
+
+
     @FXML
     private void connectToPlanMakerPage() {
         App.switchToPlanMakerView();
     }
+
+
     @FXML
-    private void connectToHomePage(){
+    private void connectToHomePage() {
         App.switchToHomePageView();
     }
+
+
+
 
 }
