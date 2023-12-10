@@ -2,7 +2,6 @@ package edu.augustana;
 
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.print.*;
 import javafx.scene.Node;
@@ -23,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class PrintCardsEquipmentController {
+public class CardsEquipmentCodePreviewController {
     @FXML
     VBox printCardsDisplay;
     @FXML
@@ -129,7 +128,6 @@ public class PrintCardsEquipmentController {
     }
 
 
-    @FXML
     private void printContent(Node nodeToPrint) {
         System.out.println("printContent called: " + nodeToPrint);
         PrinterJob job = PrinterJob.createPrinterJob();

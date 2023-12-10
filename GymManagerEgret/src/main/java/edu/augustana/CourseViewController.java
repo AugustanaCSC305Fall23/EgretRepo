@@ -201,7 +201,7 @@ public class CourseViewController {
         DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
-        alreadyAddedAlert.setTitle("Tool Tips");
+        alreadyAddedAlert.setTitle("Navigate");
         alreadyAddedAlert.setContentText("Click a lesson Plan and click 'open' to open the lesson plan" + "\n" +
                 "Click a lesson Plan and click 'duplicate' to duplicate the lesson plan."+ "\n" +
                 "Click a lesson Plan and click 'delete' to delete the lesson plan.");

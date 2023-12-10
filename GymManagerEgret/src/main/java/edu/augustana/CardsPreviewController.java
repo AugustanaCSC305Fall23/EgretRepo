@@ -1,7 +1,6 @@
 package edu.augustana;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.print.*;
@@ -18,7 +17,7 @@ import javafx.scene.layout.VBox;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class PrintCardsController {
+public class CardsPreviewController {
     @FXML
     VBox printCardsDisplay;
     @FXML
@@ -134,7 +133,6 @@ public class PrintCardsController {
         pageVBox.getChildren().add(coachNotesTilePane);
     }
 
-    @FXML
     private void printContent(Node nodeToPrint) {
         //Create printerjob
         PrinterJob job = PrinterJob.createPrinterJob();

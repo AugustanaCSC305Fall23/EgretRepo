@@ -20,7 +20,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.control.ButtonType;
-import javafx.scene.text.TextFlow;
 import org.controlsfx.control.ToggleSwitch;
 
 
@@ -127,7 +126,7 @@ public class PlanMakerController {
         }
         currentLessonPlan.setTitle(lessonTitle.getText());
         undoRedoHandler = new LessonPlanUndoRedoHandler(this);
-        print.setOnAction(event ->printOptions());
+        print.setOnAction(event -> previewOptions());
     }
 
 
@@ -335,18 +334,18 @@ public class PlanMakerController {
         }
     }
 
-    private void printOptions(){
+    private void previewOptions(){
 
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
-        imageAlert.setTitle("Print options");
+        imageAlert.setTitle("Lesson Preview Options");
         DialogPane dialogPane = imageAlert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-        ButtonType printCards = new ButtonType("Print Cards");
-        ButtonType printCardsTitles = new ButtonType("Print Cards Titles");
-        ButtonType printCardsEquipment = new ButtonType("Print Cards with Equipment");
+        ButtonType printCards = new ButtonType("Cards Preview");
+        ButtonType printCardsTitles = new ButtonType("Cards with Titles and Codes Preview");
+        ButtonType printCardsEquipment = new ButtonType("Cards with Equipment Preview");
 
         imageAlert.setGraphic(null);
         imageAlert.getButtonTypes().setAll(printCards, printCardsTitles, printCardsEquipment, ButtonType.CANCEL);
@@ -606,7 +605,7 @@ public class PlanMakerController {
         DialogPane dialogPane = alreadyAddedAlert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         alreadyAddedAlert.setHeaderText(null);
-        alreadyAddedAlert.setTitle("Tool Tips");
+        alreadyAddedAlert.setTitle("Navigate");
         alreadyAddedAlert.setContentText("Left click for card options." + "\n" +
                 "Right click to immediately add or remove cards." + "\n" + "Click on the title to rename title");
         alreadyAddedAlert.initOwner(App.primaryStage);
