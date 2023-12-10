@@ -24,12 +24,12 @@ public class CardDatabase {
         ArrayList<File> CSVList = retrieveCSVFiles();
         //File spreadsheetFile = new File("GymManagerAssets/cardSpreadsheets");
         for(File filename : CSVList) {
-            System.out.println(filename);
+            //System.out.println(filename);
             CSVReader reader = new CSVReaderBuilder(new FileReader(filename)).withSkipLines(1).build();
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 Card card = new Card(nextLine);
-                System.out.println(card);
+                //System.out.println(card);
                 addCard(card);
             }
         }
@@ -39,7 +39,7 @@ public class CardDatabase {
     private static ArrayList<File> retrieveCSVFiles(){
         File cardPacks = new File("GymManagerAssets/cardPacks");
         ArrayList<File> csvFiles = new ArrayList<>();
-        System.out.println(Arrays.toString(cardPacks.listFiles()));
+        //System.out.println(Arrays.toString(cardPacks.listFiles()));
         for(File f: Objects.requireNonNull(cardPacks.listFiles())) {
             File[] matchingFiles = f.listFiles((dir, name) -> name.endsWith("csv"));
             assert matchingFiles != null;
