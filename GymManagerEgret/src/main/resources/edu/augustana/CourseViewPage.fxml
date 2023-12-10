@@ -20,7 +20,7 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" styleClass="libraryBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.CourseViewController">
    <center>
-      <ListView fx:id="lessonList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="801.0" styleClass="libraryBackground" stylesheets="@style.css" BorderPane.alignment="CENTER">
+      <ListView fx:id="lessonList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="libraryBackground" stylesheets="@style.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
          </BorderPane.margin>
@@ -30,7 +30,7 @@
       </ListView>
    </center>
    <top>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
@@ -63,7 +63,7 @@
                   </Menu>
               </menus>
             </MenuBar>
-            <StackPane prefHeight="67.0" prefWidth="800.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
+            <StackPane prefHeight="67.0" styleClass="lessonTitleBackground" stylesheets="@style.css">
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" text="Lessons in Course" textFill="WHITE" StackPane.alignment="CENTER">
                      <font>
