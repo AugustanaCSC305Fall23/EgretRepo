@@ -31,39 +31,38 @@ Upon launching the program, the initial interface welcomes you with stylized fon
 
 Upon selecting the Plan Maker option, users are greeted with an empty canvas ready for lesson planning. To add cards to the lesson plan, simply right-click, and left-click to view card details.
 
-![Plan Maker Empty](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/EmptyPM.png?token=GHSAT0AAAAAACHGJYI34TWJKUUMYS3FH6VSZLVK3KA)
+![Plan Maker Empty](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/EmptyPM.png?raw=true)
 
 When adding cards, users can easily change the title by clicking on 'Lesson Plan 1' and pressing enter. The collapsible filter ensures a seamless update of cards based on user preferences.
 
-![Plan Maker with Cards](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/FilterPM.png?token=GHSAT0AAAAAACHGJYI25BJBC5CONTQXSBPGZLVK3QQ)
-
+![Plan Maker with Cards](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/FileMenuPM.png?raw=true)
 The File Menu provides options for Printing, Opening the course view, and Exit.
 
-![File Menu](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/FileMenuPM.png?token=GHSAT0AAAAAACHGJYI3ARCDU2BWZXJ56QFEZLVK3PA)
+![File Menu](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/FileMenuPM.png?raw=true)
 
 Printing options include sorting by events, printing only titles, printing cards with equipment, and cancellation.
 
-![Printing Options](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/PrintPM.png?token=GHSAT0AAAAAACHGJYI3WV4KRIC4R6JFC6CSZLVK3ZQ)
+![Printing Options](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/PrintPM.png?raw=true)
 
 The printed cards showcase a neat organization based on events.
 
-![Printed Cards](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/PrintCardPM.png?token=GHSAT0AAAAAACHGJYI3DXQZWGPOVIULO7AGZLVK3WA)
+![Printed Cards](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/PrintCardPM.png?raw=true)
 
 Similarly, the 'Print Card Titles' option provides a clean display of titles.
 
-![Printed Card Titles](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/PrintCardTiltePM.png?token=GHSAT0AAAAAACHGJYI2AZUCY7V5F3BTTXXMZLVK3XQ)
+![Printed Card Titles](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/PrintCardTiltePM.png?raw=true)
 
 Upon selecting Exit, a prompt asks, "Are you sure you want to exit?" Users can choose 'yes' to exit or 'no' to continue editing their lesson plan.
 
-![Exit Prompt](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/ExitPM.png?token=GHSAT0AAAAAACHGJYI2CVZA3TKZD5ZS3BTUZLVK3MA)
+![Exit Prompt](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/ExitPM.png?raw=true)
 
 The Edit Menu offers options to Rename Title, Start a New Lesson (saving the current one in the course view), Undo, and Redo.
 
-![Edit Menu](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/EditMenuPM.png?token=GHSAT0AAAAAACHGJYI3R35N7YDOWKZG2JBYZLVK3IQ)
+![Edit Menu](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/EditMenuPM.png?raw=true)
 
 Under the Help Menu, users can access Tool Tips for navigation and the About section for credits.
 
-![Help Menu](https://raw.githubusercontent.com/AugustanaCSC305Fall23/EgretRepo/main/PicturesGitHub/HelpMenuPM.png?token=GHSAT0AAAAAACHGJYI2KQ5APLZ44ET5SOHMZLVK3SA)
+![Help Menu](https://github.com/AugustanaCSC305Fall23/EgretRepo/blob/main/PicturesGitHub/HelpMenuPM.png?raw=true)
 
 This comprehensive interface ensures a user-friendly experience, empowering efficient lesson planning and management.
 ## Course View 📋
