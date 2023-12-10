@@ -93,4 +93,4 @@ Riva Kansakar:
 [![LinkedIn](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/riva-kansakar-173092220/)
 Drake Misfeldt:
 [![Github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Grumbumblior)
-[![LinkedIn](https://www.linkedin.com/in/drake-misfeldt-803501218/)
+[![LinkedIn](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)(https://www.linkedin.com/in/drake-misfeldt-803501218/)
