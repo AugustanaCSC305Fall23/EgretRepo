@@ -95,7 +95,13 @@ public class CardsPreviewController {
             tilePane.setAlignment(Pos.TOP_CENTER);
             pageVBox.getChildren().add(tilePane);
         }
-        generateCoachNotes(pageNum);
+        for(Card card :currentLessonPlan.getCopyOfLessonCards()){
+            if (!card.getCardNotes().isEmpty()){
+                generateCoachNotes(pageNum);
+                break;
+            }
+        }
+
     }
 
     void generateCoachNotes(int pageNum){
@@ -107,7 +113,9 @@ public class CardsPreviewController {
         tab.setContent(pageVBox);
         pagesTabPane.getTabs().add(tab);
 
-        Label lessonTitle = new Label(currentLessonPlan.getTitle());
+        Label lessonTitle = new Label("Lesson Title: " + currentLessonPlan.getTitle());
+        lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-family: 'Arial';");
+
         lessonTitle.setMaxHeight(10);
         pageVBox.getChildren().add(lessonTitle);
 
@@ -117,11 +125,12 @@ public class CardsPreviewController {
                 String cardName = card.getTitle();
                 Label title = new Label();
                 title.setText(cardName);
-                title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font: Arial; ");
+                title.setStyle("-fx-font-size: 17px; -fx-font-family: 'Arial';");
                 title.setAlignment(Pos.TOP_LEFT);
                 Label notesLabel = new Label();
                 notesLabel.setText(card.getCardNotes());
-                notesLabel.setStyle("-fx-font-size: 14px; -fx-font: Arial; ");
+                notesLabel.setWrapText(true);
+                notesLabel.setStyle("-fx-font-size: 14px; -fx-font-family: 'Arial';");
                 coachNotesTilePane.getChildren().add(title);
                 coachNotesTilePane.getChildren().add(notesLabel);
             }

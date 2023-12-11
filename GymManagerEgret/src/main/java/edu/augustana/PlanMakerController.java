@@ -161,7 +161,7 @@ public class PlanMakerController {
             favoriteButtonText = "Add to Favorites";
         }
         ButtonType printCard = new ButtonType("Print Card");
-        ButtonType addNotes = new ButtonType("Add Notes");
+        ButtonType addNotes = new ButtonType("Notes");
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
         imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, addNotes, ButtonType.CANCEL);
@@ -405,6 +405,7 @@ public class PlanMakerController {
                 displayLesson.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
                 setMouseEvent(tipLabel, card, false);
+                undoRedoHandler.saveState();
             }
         }
     }
@@ -414,7 +415,7 @@ public class PlanMakerController {
         lessonTitle.setText("Add Lesson Title");
         displayLesson.getChildren().clear();
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-
+        undoRedoHandler.saveState();
     }
 
     @FXML
@@ -495,6 +496,7 @@ public class PlanMakerController {
             currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
             edit.setDisable(false);
+            undoRedoHandler.saveState();
         }
     }
     @FXML

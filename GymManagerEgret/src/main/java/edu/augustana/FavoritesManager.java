@@ -72,6 +72,12 @@ public class FavoritesManager {
                 e.printStackTrace();
             }
     }
+    public void cleanFavoritesList() throws IOException {
+        String listString =  favoritesList.toString().replace(", ", "");
+        FileWriter favoritesWriter = new FileWriter(favorites, false);
+        favoritesWriter.append(listString);
+        favoritesWriter.close();
+    }
 
     public static void main(String[] args){
         initializeFavorites();

@@ -63,7 +63,7 @@ public class Card implements Comparable<Card>{
         this.title = cardData[3];
         this.pack = cardData[4];
         this.imageFileName = cardData[5];
-        System.out.println("GymManagerAssets/cardPacks/" + pack + "/thumbs/" + generateThumbnail());
+        //System.out.println("GymManagerAssets/cardPacks/" + pack + "/thumbs/" + generateThumbnail());
         this.image = new Image(new FileInputStream("GymManagerAssets/cardPacks/" + pack +"/thumbs/" + generateThumbnail()));
         this.gender = cardData[6];
         this.modelSex = cardData[7];

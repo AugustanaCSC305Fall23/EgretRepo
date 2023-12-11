@@ -85,6 +85,8 @@ The Edit Menu provides options to add new lessons, remove all lessons (with an a
 
 This interface streamlines the management of lesson plans within the Course View, offering essential functionalities for efficient course organization and manipulation.
 ## 🔗 Links
+
+Presentation Link: https://www.canva.com/design/DAF2jeu2CIc/_WSHjDx4pHfL6XPQSzSYBQ/view?utm_content=DAF2jeu2CIc&utm_campaign=designshare&utm_medium=link&utm_source=editor#2 
 Stuti Shrestha:
 [![Github](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/stutishrestha21)
 [![LinkedIn](https://img.shields.io/badge/linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/stuti-s-7b1536257)

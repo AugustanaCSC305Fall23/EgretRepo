@@ -40,12 +40,14 @@ public class CardNotesManager {
         try {
             if(!cardNotesMap.containsKey(cardID)){
                 FileWriter cardNotesWriter = new FileWriter(cardNotesFile, true);
+                cardNotesString = cardNotesString.replace("\n", " ");
                 cardNotesMap.put(cardID, cardNotesString);
                 cardNotesWriter.append(cardID).append(",").append(cardNotesString).append("\n");
                 cardNotesWriter.close();
                 System.out.println(cardID + " successfully saved to cardNotes");
             } else {
                 cardNotesMap.remove(cardID);
+                cardNotesString = cardNotesString.replace("\n", " ");
                 cardNotesMap.put(cardID, cardNotesString);
                 String oldContent = "";
                 String oldNote = "";
