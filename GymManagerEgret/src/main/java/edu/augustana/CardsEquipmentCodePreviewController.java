@@ -142,7 +142,7 @@ public class CardsEquipmentCodePreviewController {
         tab.setContent(pageVBox);
         pagesTabPane.getTabs().add(tab);
 
-        Label lessonTitle = new Label(currentLessonPlan.getTitle());
+        Label lessonTitle = new Label("Lesson Title: " + currentLessonPlan.getTitle());
         lessonTitle.setMaxHeight(10);
         pageVBox.getChildren().add(lessonTitle);
 

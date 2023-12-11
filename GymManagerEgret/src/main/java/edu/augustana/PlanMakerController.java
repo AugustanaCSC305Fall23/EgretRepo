@@ -415,7 +415,7 @@ public class PlanMakerController {
         lessonTitle.setText("Add Lesson Title");
         displayLesson.getChildren().clear();
         currentLessonPlan = App.getCurrentCourse().getCurrentLessonPlan();
-
+        undoRedoHandler.saveState();
     }
 
     @FXML
