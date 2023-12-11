@@ -80,7 +80,7 @@ public class App extends Application {
      * Switch to PrintCardsTitlesPage
      */
     public static void switchToPrintCardsTitles(){
-        switchToView("CardsTitlesCodesPage.fxml");
+        switchToView("CodeTitlesPage.fxml");
     }
 
     /**

@@ -339,13 +339,13 @@ public class PlanMakerController {
         Alert imageAlert = new Alert(AlertType.INFORMATION);
         imageAlert.initOwner(App.primaryStage);
         imageAlert.setHeaderText(null);
-        imageAlert.setTitle("Lesson Preview Options");
+        imageAlert.setTitle("Preview/Print Options");
         DialogPane dialogPane = imageAlert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-        ButtonType printCards = new ButtonType("Cards Preview");
-        ButtonType printCardsTitles = new ButtonType("Cards with Titles and Codes Preview");
-        ButtonType printCardsEquipment = new ButtonType("Cards with Equipment Preview");
+        ButtonType printCards = new ButtonType("Cards Preview/Print");
+        ButtonType printCardsTitles = new ButtonType("Codes and Lesson Title Preview/Print");
+        ButtonType printCardsEquipment = new ButtonType("Cards with Equipment Preview/Print");
 
         imageAlert.setGraphic(null);
         imageAlert.getButtonTypes().setAll(printCards, printCardsTitles, printCardsEquipment, ButtonType.CANCEL);

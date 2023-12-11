@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -20,7 +19,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 
-public class CardsTitlesPreviewController {
+public class CodeTitlesPreviewController {
     @FXML
     VBox printCardsDisplay;
     @FXML

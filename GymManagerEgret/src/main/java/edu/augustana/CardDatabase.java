@@ -2,7 +2,6 @@ package edu.augustana;
 
 import java.io.*;
 import java.util.*;
-
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
