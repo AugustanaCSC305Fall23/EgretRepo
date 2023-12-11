@@ -95,7 +95,13 @@ public class CardsPreviewController {
             tilePane.setAlignment(Pos.TOP_CENTER);
             pageVBox.getChildren().add(tilePane);
         }
-        generateCoachNotes(pageNum);
+        for(Card card :currentLessonPlan.getCopyOfLessonCards()){
+            if (!card.getCardNotes().isEmpty()){
+                generateCoachNotes(pageNum);
+                break;
+            }
+        }
+
     }
 
     void generateCoachNotes(int pageNum){
@@ -121,6 +127,7 @@ public class CardsPreviewController {
                 title.setAlignment(Pos.TOP_LEFT);
                 Label notesLabel = new Label();
                 notesLabel.setText(card.getCardNotes());
+                notesLabel.setWrapText(true);
                 notesLabel.setStyle("-fx-font-size: 14px; -fx-font: Arial; ");
                 coachNotesTilePane.getChildren().add(title);
                 coachNotesTilePane.getChildren().add(notesLabel);
