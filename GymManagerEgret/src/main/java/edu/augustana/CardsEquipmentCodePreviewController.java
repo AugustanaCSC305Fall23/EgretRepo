@@ -143,6 +143,8 @@ public class CardsEquipmentCodePreviewController {
         pagesTabPane.getTabs().add(tab);
 
         Label lessonTitle = new Label("Lesson Title: " + currentLessonPlan.getTitle());
+
+        lessonTitle.setStyle("-fx-font-size: 20px; -fx-font-family: 'Arial';");
         lessonTitle.setMaxHeight(10);
         pageVBox.getChildren().add(lessonTitle);
 
@@ -152,12 +154,12 @@ public class CardsEquipmentCodePreviewController {
                 String cardName = card.getTitle();
                 Label title = new Label();
                 title.setText(cardName);
-                title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font: Arial; ");
+                title.setStyle("-fx-font-size: 17px; -fx-font-family: 'Arial';");
                 title.setAlignment(Pos.TOP_LEFT);
                 Label notesLabel = new Label();
                 notesLabel.setText(card.getCardNotes());
                 notesLabel.setWrapText(true);
-                notesLabel.setStyle("-fx-font-size: 14px; -fx-font: Arial; ");
+                notesLabel.setStyle("-fx-font-size: 14px; -fx-font-family: 'Arial';");
                 coachNotesTilePane.getChildren().add(title);
                 coachNotesTilePane.getChildren().add(notesLabel);
             }
