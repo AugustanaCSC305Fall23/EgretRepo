@@ -161,7 +161,7 @@ public class PlanMakerController {
             favoriteButtonText = "Add to Favorites";
         }
         ButtonType printCard = new ButtonType("Print Card");
-        ButtonType addNotes = new ButtonType("Add Notes");
+        ButtonType addNotes = new ButtonType("Notes");
         ButtonType placeCardButtonType = new ButtonType(placeButtonText);
         ButtonType toggleFavoriteButton = new ButtonType(favoriteButtonText);
         imageAlert.getButtonTypes().setAll(placeCardButtonType, toggleFavoriteButton, printCard, addNotes, ButtonType.CANCEL);
