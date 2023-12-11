@@ -405,6 +405,7 @@ public class PlanMakerController {
                 displayLesson.getChildren().add(tipLabel);
                 displayLesson.getChildren().add(cardImageView);
                 setMouseEvent(tipLabel, card, false);
+                undoRedoHandler.saveState();
             }
         }
     }
@@ -495,6 +496,7 @@ public class PlanMakerController {
             currentLessonPlan.setTitle(enteredTitle);
             lessonTitle.setVisible(true);
             edit.setDisable(false);
+            undoRedoHandler.saveState();
         }
     }
     @FXML

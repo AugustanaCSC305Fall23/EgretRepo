@@ -90,7 +90,7 @@ public class CardsTitlesPreviewController {
                 break;
             }
         }
-        
+
     }
 
     void generateCoachNotes(int pageNum){
