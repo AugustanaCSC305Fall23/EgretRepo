@@ -19,6 +19,9 @@ public class CardDatabase {
     public static ObservableList<CardFilter> activeFilters = FXCollections.observableArrayList();
     CardDatabase(){};
 
+    /**
+     * Iterates through the supplied CSV files and creates a card for every line of data
+     */
     public static void addCardsFromCSV() throws IOException, CsvValidationException {
         //reads through the CSV file, skipping the headers in the first line.
         ArrayList<File> CSVList = retrieveCSVFiles();
@@ -65,16 +68,19 @@ public class CardDatabase {
         return allCards;
     }
 
-    /*public void filterFloor(){
-        filteredCards.removeIf(card -> !"Floor".equals(card.getEvent()));
-    }*/
 
+    /**
+     * Adds a filter to the list of active filters
+     */
     public static void addFilter(CardFilter filter){
         activeFilters.removeIf(currentFilter -> currentFilter.getClass().equals(filter.getClass()));
         activeFilters.add(filter);
         filterCards();
     }
 
+    /**
+     * Removes filters of a certain type
+     */
     public static void removeFilterType(CardFilter filter){
         activeFilters.removeIf(currentFilter -> currentFilter.getClass().equals(filter.getClass()));
         filterCards();
@@ -84,6 +90,10 @@ public class CardDatabase {
         activeFilters.clear();
     }
 
+
+    /**
+     * @return a list of cards that match the current filter criteria
+     */
     public static ArrayList<Card> filterCards(){
         ArrayList<Card> filteredCards = new ArrayList<>(allCards);
         ArrayList<Card> currentCards = new ArrayList<>();

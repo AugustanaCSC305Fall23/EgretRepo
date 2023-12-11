@@ -628,6 +628,9 @@ public class PlanMakerController {
         //repaint();
     }
 
+    /**
+     * Saves a state of the PlanMakerController to be used in undo redo
+     */
     public class State {
         LessonPlan lesson;
 

@@ -49,7 +49,6 @@ public class LessonPlan implements Cloneable{
     /**
      * @return if the card is in lesson or not
      */
-
     public boolean containsCard(Card card){
         return userChosenCardIDs.contains(card.getUniqueId());
     }

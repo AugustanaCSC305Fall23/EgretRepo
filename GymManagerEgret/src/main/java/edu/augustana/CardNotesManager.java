@@ -14,6 +14,11 @@ public class CardNotesManager {
     public static CardNotesManager getCardNotesManager(){
         return cardNotesManager;
     }
+
+    /**
+     * Stores any card notes from the card note file into a map
+     * for the card objects to access when they are created
+     */
     public static void initializeCardNotes(){
         try {
             if (cardNotesFile.createNewFile()) {
@@ -36,6 +41,9 @@ public class CardNotesManager {
         return cardNotesMap;
     }
 
+    /**
+     * Saves a new card note to the card note file
+     */
     public static void saveCardNotes(String cardID, String cardNotesString){
         try {
             if(!cardNotesMap.containsKey(cardID)){

@@ -46,7 +46,6 @@ public class Course implements Cloneable{
     /**
      * Load from the file to the app
      */
-
     public static Course loadFromFile(File courseFile)throws IOException {
         FileReader reader = new FileReader(courseFile);
         Gson gson = new Gson();

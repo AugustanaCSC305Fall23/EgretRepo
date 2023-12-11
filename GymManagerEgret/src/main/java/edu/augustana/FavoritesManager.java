@@ -16,6 +16,11 @@ public class FavoritesManager {
     public static FavoritesManager getFavoritesManager(){
         return favoritesManager;
     }
+
+    /**
+     * Stores all favorite card IDs to a list
+     * for the card objects to access when they are created
+     */
     public static void initializeFavorites(){
         try {
             if (favorites.createNewFile()) {
@@ -41,6 +46,9 @@ public class FavoritesManager {
         return favoritesList;
     }
 
+    /**
+     * adds a card to the favorites file
+     */
     public static void saveToFavorites(String cardID){
         try {
             if(!favoritesList.contains(cardID)){
@@ -59,6 +67,9 @@ public class FavoritesManager {
         }
     }
 
+    /**
+     * removes a card from the favorites file
+     */
     public static void removeFromFavorites(String cardID){
         try{
             if(favoritesList.contains(cardID)) {
@@ -72,22 +83,9 @@ public class FavoritesManager {
                 e.printStackTrace();
             }
     }
-    public void cleanFavoritesList() throws IOException {
-        String listString =  favoritesList.toString().replace(", ", "");
-        FileWriter favoritesWriter = new FileWriter(favorites, false);
-        favoritesWriter.append(listString);
-        favoritesWriter.close();
-    }
 
     public static void main(String[] args){
-        initializeFavorites();
-        saveToFavorites("C1");
-        saveToFavorites("C2");
-        saveToFavorites("C2");
-        saveToFavorites("C3");
-        System.out.println(favoritesList);
-        removeFromFavorites("C2");
-        System.out.println(favoritesList);
+
     }
 
 }
